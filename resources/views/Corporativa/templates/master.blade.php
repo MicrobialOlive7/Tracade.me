@@ -71,7 +71,7 @@
                 <li><a href="#contact">Contacto</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="get_free_btn"><a href="#">Iniciar Sesión</a></li>
+                <li class="get_free_btn"><a href="{{route('login')}}">Iniciar Sesión</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>

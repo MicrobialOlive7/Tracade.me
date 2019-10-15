@@ -1,4 +1,4 @@
-@extends('templates.master')
+@extends('Corporativa.templates.master')
 @section('content')
     <!--================Slider Area =================-->
     <section class="main_slider_area">
