@@ -31,6 +31,14 @@ Route::get('/', function (){
     return view('Corporativa.index');
 });
 
+Route::get('/Nosotros', function (){
+    return view('Corporativa.Nosotros');
+});
+
+Route::get('/Precios', function (){
+    return view('Corporativa.Precios');
+});
+
 /**
  * Alumnos
  */

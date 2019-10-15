@@ -393,21 +393,98 @@
     </section>
     <!--================End Exclusive Team Memebers Area =================-->
 
-    <!--================Discover Video Area =================-->
-    <section class="discover_video_area">
+    <!--================Ten Discover Area =================-->
+    <section class="ten_discover_area" id="feature">
         <div class="container">
-            <div class="discover_video_text">
-                <h3>Discover more with video </h3>
-                <a class="black_d_btn" href="#">Download Damo</a>
+            <div class="ten_d_text">
+                <h2>Discover Our Apps <span>Features</span></h2>
+                <p>There are many variations of passages of Lorem Ipsum available.</p>
             </div>
-            <div class="discover_video_inner">
-                <img src="img/discover-video.jpg" alt="">
-                <a class="popup-youtube" href="https://www.youtube.com/watch?v=WVPRkcczXCY"><i class="fa fa-play"></i></a>
+            <div class="ten_discover_inner">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="media">
+                            <div class="media-left">
+                                <div class="ten_d_icon">
+                                    <img src="img/icon/ten-d-1.png" alt="">
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <h4>Multitouch Option</h4>
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="media">
+                            <div class="media-left">
+                                <div class="ten_d_icon">
+                                    <img src="img/icon/ten-d-2.png" alt="">
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <h4>Multitouch Option</h4>
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="media">
+                            <div class="media-left">
+                                <div class="ten_d_icon">
+                                    <img src="img/icon/ten-d-3.png" alt="">
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <h4>Multitouch Option</h4>
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="media">
+                            <div class="media-left">
+                                <div class="ten_d_icon">
+                                    <img src="img/icon/ten-d-4.png" alt="">
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <h4>Multitouch Option</h4>
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="media">
+                            <div class="media-left">
+                                <div class="ten_d_icon">
+                                    <img src="img/icon/ten-d-5.png" alt="">
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <h4>Multitouch Option</h4>
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="media">
+                            <div class="media-left">
+                                <div class="ten_d_icon">
+                                    <img src="img/icon/ten-d-6.png" alt="">
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <h4>Multitouch Option</h4>
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-    <!--================End Discover Video Area =================-->
-
+    <!--================End Ten Discover Area =================-->
     <!--================Advanced Settings Area =================-->
     <section class="advanced_settings_area">
         <div class="advanced_settings_inner">

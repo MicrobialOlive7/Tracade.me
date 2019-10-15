@@ -23,17 +23,17 @@ Table of Content:
 03/ header
 04/ slider
 05/ photography
-06/ button 
-07/ work 
+06/ button
+07/ work
 08/ team
-09/ contact 
-10/ price 
-11/ portfolio 
-12/ blog 
-13/ sidebar  
-13/ page-header  
-13/ project  
-13/ we-dope  
+09/ contact
+10/ price
+11/ portfolio
+12/ blog
+13/ sidebar
+13/ page-header
+13/ project
+13/ we-dope
 13/ progress
 13/ comingsoon
 13/ error
@@ -3535,7 +3535,7 @@ iframe {
   display: -ms-flexbox;
   display: flex;
   background: #f6f7fa;
-  margin-top: -35px;
+    margin-top: -36px;
 }
 
 .powerfull_area .power_left_img {
@@ -3623,6 +3623,33 @@ iframe {
   padding-right: 16px;
 }
 
+.vs-cp {
+    font-size: 9em;
+    margin-top: 110px;
+    color: #00a6d0;
+    text-align: center;
+}
+
+.pap-tit th {
+    text-align: center;
+    font-size: 32px;
+    color: #000000;
+    border: 0px;
+    text-align: center;
+    padding-left:30px;
+}
+
+.pap-table td{
+    color: #333;
+    border: 0px;
+    padding:10px;
+    font-size:16px;
+}
+
+.paper-section {
+    padding: 52px 20px 30px 80px;
+}
+
 /* End Powerfull Area css
 ============================================================================================ */
 /* Provide Feature Area css
@@ -3630,6 +3657,7 @@ iframe {
 .provide_feature_area {
   overflow: hidden;
   padding-top: 112px;
+    padding-bottom: 112px;
 }
 
 .provide_feature_area .p_feature_left {
@@ -3871,7 +3899,7 @@ iframe {
 
 /* End Great Feature Area css
 ============================================================================================ */
-/*app_feature_area_two css 
+/*app_feature_area_two css
 ============================================================================================ */
 .app_feature_area_two {
   position: relative;
@@ -4764,14 +4792,16 @@ iframe {
 /* Discover Video Area css
 ============================================================================================ */
 .discover_video_area {
-  background: url(../img/discover-bg.jpg) no-repeat scroll center center;
-  background-size: cover;
-  padding-top: 110px;
+    background-image: linear-gradient(to bottom right,#2b9be2, deeppink);
+    margin-top: 90px;
+    width: 100%;
+    padding-top: 80px;
+    background-position: center;
+    height: 800px;
 }
 
 .discover_video_text {
   text-align: center;
-  padding-bottom: 48px;
 }
 
 .discover_video_text h3 {
@@ -4785,7 +4815,6 @@ iframe {
 .discover_video_inner {
   text-align: center;
   position: relative;
-  margin-bottom: -260px;
 }
 
 .discover_video_inner img {
@@ -4797,9 +4826,6 @@ iframe {
   left: 50%;
   display: block;
   top: 50%;
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  -ms-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
   width: 100%;
   text-align: center;
   height: 94px;
@@ -5821,7 +5847,7 @@ iframe {
 
 /* End Server Price Area css
 ============================================================================================ */
-/*pricing-area-two 
+/*pricing-area-two
 ================================================*/
 .pricing-area-two {
   padding: 100px 0px;
@@ -6286,7 +6312,7 @@ iframe {
 }
 
 .ten_price_item .ten_price_item_box ul li {
-  margin-bottom: 13px;
+  margin-bottom: 2;
 }
 
 .ten_price_item .ten_price_item_box ul li a {
@@ -6310,52 +6336,52 @@ iframe {
   padding-bottom: 30px;
 }
 
-.red {
-  background: #ff6767;
-}
-
-.red .ten_p_head h3 {
-  color: #ff6767;
-}
-
-.red .ten_price_item_box:before {
-  background: #ff6767;
-}
-
-.red .ten_price_item_box ul {
-  border-left: 1px dashed #ff6767;
-}
-
 .blue {
-  background: #0083ff;
+  background: #1dace4;
 }
 
 .blue .ten_p_head h3 {
-  color: #0083ff;
+  color: #1dace4;
 }
 
 .blue .ten_price_item_box:before {
-  background: #0083ff;
+  background: #1dace4;
 }
 
 .blue .ten_price_item_box ul {
-  border-left: 1px dashed #0083ff;
+  border-left: 1px dashed #1dace4;
 }
 
-.green {
-  background: #2cc990;
+.purple {
+  background: #b850ff;
 }
 
-.green .ten_p_head h3 {
-  color: #2cc990;
+.purple .ten_p_head h3 {
+  color: #b850ff;
 }
 
-.green .ten_price_item_box:before {
-  background: #2cc990;
+.purple .ten_price_item_box:before {
+  background: #b850ff;
 }
 
-.green .ten_price_item_box ul {
-  border-left: 1px dashed #2cc990;
+.purple .ten_price_item_box ul {
+  border-left: 1px dashed #b850ff;
+}
+
+.pink{
+  background: #ff35a5;
+}
+
+.pink .ten_p_head h3 {
+  color: #ff35a5;
+}
+
+.pink .ten_price_item_box:before {
+  background: #ff35a5;
+}
+
+.pink .ten_price_item_box ul {
+  border-left: 1px dashed #ff35a5;
 }
 
 /* End Ten Price Area css
@@ -10550,7 +10576,7 @@ iframe {
   position: relative;
 }
 
-/*h_work_area css 
+/*h_work_area css
 =========================================================*/
 .h_work_area {
   background: #f9faff;
@@ -13298,7 +13324,7 @@ iframe {
 
 /* End Footer Five Area css
 ============================================================================================ */
-/*footer_area_two 
+/*footer_area_two
 =============================================*/
 .footer_area_two {
   text-align: center;
