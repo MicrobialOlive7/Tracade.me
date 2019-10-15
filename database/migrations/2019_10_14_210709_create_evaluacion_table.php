@@ -14,7 +14,16 @@ class CreateEvaluacionTable extends Migration
     public function up()
     {
         Schema::create('evaluacion', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('eva_id');
+            $table->string('eva_comentario', 255);
+            $table->integer('eva_calificacion');
+
+            $table->unsignedBigInteger('hab_id');
+            $table->foreign('hab_id')->references('hab_id')->on('habilidad');
+
+            $table->unsignedBigInteger('alu_id');
+            $table->foreign('alu_id')->references('alu_id')->on('alumno');
+
             $table->timestamps();
         });
     }

@@ -14,7 +14,14 @@ class CreateVariacionTable extends Migration
     public function up()
     {
         Schema::create('variacion', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('var_id');
+
+            $table->unsignedBigInteger('hab_id');
+            $table->foreign('hab_id')->references('hab_id')->on('habilidad');
+
+            $table->unsignedBigInteger('hab_var_id');
+            $table->foreign('hab_var_id')->references('hab_id')->on('habilidad');
+
             $table->timestamps();
         });
     }
