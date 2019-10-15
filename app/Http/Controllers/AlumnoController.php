@@ -12,7 +12,6 @@ class AlumnoController extends Controller
         $alumno = new Alumno;
         return ($alumno);
 
-
     }
 
     public function read(){
