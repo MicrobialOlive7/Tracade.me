@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b40879a3-796c-4c6a-a3d6-5b8fab730c0c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/Instructor/alumnos.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Instructor/templates/master.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/argon-dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/argon-dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/c-service.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -192,6 +186,7 @@
       <workItem from="1571108614229" duration="3251000" />
       <workItem from="1571143451487" duration="10653000" />
       <workItem from="1571235439474" duration="11901000" />
+      <workItem from="1571248785742" duration="127000" />
     </task>
     <servers />
   </component>
