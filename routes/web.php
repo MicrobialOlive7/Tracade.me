@@ -46,3 +46,6 @@ Route::get('/Precios', function (){
 /**
  * Instructor
  */
+Route::get('/Alumnos', function (){
+    return view('Instructor.alumnos');
+});
