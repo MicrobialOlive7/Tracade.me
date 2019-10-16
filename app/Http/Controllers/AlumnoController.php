@@ -7,12 +7,6 @@ use Illuminate\Http\Request;
 
 class AlumnoController extends Controller
 {
-    public function create(Request $request){
-
-        $alumno = new Alumno;
-        return ($alumno);
-
-    }
 
     public function read(){
 
