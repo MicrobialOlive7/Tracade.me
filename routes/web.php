@@ -31,6 +31,14 @@ Route::get('/', function (){
     return view('Corporativa.index');
 });
 
+Route::get('/Nosotros', function (){
+    return view('Corporativa.Nosotros');
+});
+
+Route::get('/Precios', function (){
+    return view('Corporativa.Precios');
+});
+
 /**
  * Alumnos
  */
@@ -38,3 +46,6 @@ Route::get('/', function (){
 /**
  * Instructor
  */
+Route::get('/Alumnos', function (){
+    return view('Instructor.alumnos');
+});
