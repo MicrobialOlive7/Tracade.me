@@ -15,7 +15,8 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
+        //'passwords' => 'users',
+        'passwords' => 'alumno',
     ],
 
     /*
@@ -38,7 +39,8 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            //'provider' => 'users',
+            'provider' => 'alumno',
         ],
 
         'api' => [
@@ -71,6 +73,11 @@ return [
             'model' => App\User::class,
         ],
 
+        /* alumnos */
+        'alumno' => [
+            'driver' => 'eloquent',
+            'model' => App\Alumno::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -98,6 +105,12 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
         ],
+        /* alumno */
+        'alumno' => [
+            'provider' => 'alumno',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ]
     ],
 
     /*

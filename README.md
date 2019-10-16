@@ -27,3 +27,14 @@ php artisan make:controller Carpeta\NombreController
  ```
  Carpeta\NombreController@funcion
  ```
+ 
+ ## Default login
+ editar *config>auth*
+ 
+* providers 
+* passwords
+* guards
+    * web
+    * defaults
+        * passwords
+ * registerController

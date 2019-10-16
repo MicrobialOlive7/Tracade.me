@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Alumno;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -48,11 +49,15 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+
+            //'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'alu_correo_electronico' => ['required', 'string', 'email', 'max:255', 'unique:alumno'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
+
     }
 
     /**
@@ -63,10 +68,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+
+        return Alumno::create([
+            'alu_nombre' => $data['name'],
+            'alu_correo_electronico' => $data['email'],
+            'alu_apellido_paterno' => $data['ap_pat'],
+            'alu_apellido_materno' => $data['ap_mat'],
+            'alu_fecha_nacimiento' => $data['fecha'],
+            'alu_biografia' => $data['bio'],
+            'alu_password' => Hash::make($data['password']),
         ]);
     }
 }
