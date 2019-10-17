@@ -49,3 +49,10 @@ Route::get('/Precios', function (){
 Route::get('/Alumnos', function (){
     return view('Instructor.alumnos');
 });
+Route::get('/Grupos', function (){
+    return view('Instructor.grupos');
+});
+
+Route::get('/Calendario', function (){
+        return view('Instructor.calendario');
+});

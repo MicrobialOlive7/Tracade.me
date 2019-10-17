@@ -8,7 +8,7 @@
             <div class="col">
                 <div class="card shadow">
                     <div class="card-header border-0">
-                        <h3 class="mb-0">Alumnos</h3>
+                        <h3 class="mb-0">Grupos</h3>
                     </div>
                     <div class="table-responsive">
                         <table class="table align-items-center table-flush">
@@ -17,33 +17,35 @@
                             <tr>
                                 <th scope="col"> <input type="checkbox"></th>
                                 <th scope="col">Nombre</th>
-                                <th scope="col">Disciplina</th>
-                                <th scope="col">Grupos</th>
-                                <th scope="col">Habilidades</th>
-                                <th scope="col">Última Habilidad Aprendida</th>
-                                <th scope="col">Próxima Habilidad</th>
+                                <th scope="col">Día</th>
+                                <th scope="col">Horario</th>
+                                <th scope="col">Alumnos</th>
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
                                 <td> <input type="checkbox"></td>
-                                <th scope="row">
-                                    <div class="media align-items-center">
-                                        <a href="#" class="avatar rounded-circle mr-3">
-                                            <img alt="Image placeholder" src="../public/img/theme/team-2-800x800.jpg">
+                                <th scope="row"> L78M  </th>
+                                <th scope="row"> Lunes  </th>
+                                <th scope="row"> 7:00am - 8:00am </th>
+                                <td>
+                                    <div class="avatar-group">
+                                        <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                            <img alt="Image placeholder" src="../public/img/theme/team-1-800x800.jpg" class="rounded-circle">
                                         </a>
-                                        <div class="media-body">
-                                            <span class="mb-0 text-sm">Romina Hadid</span>
-                                        </div>
+                                        <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Romina Hadid">
+                                            <img alt="Image placeholder" src="../public/img/theme/team-2-800x800.jpg" class="rounded-circle">
+                                        </a>
+                                        <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Alexander Smith">
+                                            <img alt="Image placeholder" src="../public/img/theme/team-3-800x800.jpg" class="rounded-circle">
+                                        </a>
+                                        <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Jessica Doe">
+                                            <img alt="Image placeholder" src="../public/img/theme/team-4-800x800.jpg" class="rounded-circle">
+                                        </a>
                                     </div>
-                                </th>
-                                <th scope="row"> Pole fitness </th>
-                                <th scope="row" > <a href="{{ url('grupos') }}"> L78M </a>  </th>
-                                <th scope="row"> 10 </th>
-                                <th scope="row"> <a href="#">Dangerous Brian </a> </th>
-                                <th scope="row"> <a href="#"> Fallen Marley </a></th>
-                                <th class="text-right">
+                                </td>
+                                <td class="text-right">
                                     <div class="dropdown">
                                         <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="fas fa-ellipsis-v"></i>
@@ -53,7 +55,7 @@
                                             <a class="dropdown-item" href="#">Eliminar</a>
                                         </div>
                                     </div>
-                                </th>
+                                </td>
                             </tr>
                             </tbody>
                         </table>
