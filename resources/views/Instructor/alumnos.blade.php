@@ -10,13 +10,16 @@
                     <div class="card-header border-0">
                         <h3 class="mb-0">Alumnos</h3>
                         <div class="col text-right">
-                            <button class="btn btn-icon btn-2 btn-info btn-sm" type="button">
-                                <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
-                            </button>
-                            <button class="btn btn-icon btn-2 btn-danger btn-sm" type="button">
-                                <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
-                            </button>
-
+                            <span class="btn-inner--icon">
+                                <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Agregar" href="{{ url('AgregarAlumno') }}">
+                                    <i class="ni ni-fat-add" ></i>
+                                </a>
+                            </span>
+                            <span class="btn-inner--icon">
+                                <a class="btn btn-icon btn-2 btn-danger btn-sm" role="button" title="Eliminación Masiva" href="{{ url('') }}">
+                                    <i class="ni ni-fat-remove" ></i>
+                                </a>
+                            </span>
                         </div>
                     </div>
 
@@ -59,7 +62,7 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#">Modificar</a>
+                                            <a class="dropdown-item" href="{{ url('ModificarAlumno') }}">Modificar</a>
                                             <a class="dropdown-item" href="#">Eliminar</a>
                                         </div>
                                     </div>

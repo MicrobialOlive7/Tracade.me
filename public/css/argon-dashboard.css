@@ -15919,6 +15919,11 @@ a.btn-icon-only {
   position: relative;
 }
 
+form{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
 .form-control-label {
   color: #525f7f;
   font-size: 0.875rem;

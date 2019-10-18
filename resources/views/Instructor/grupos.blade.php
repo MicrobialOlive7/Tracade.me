@@ -9,6 +9,19 @@
                 <div class="card shadow">
                     <div class="card-header border-0">
                         <h3 class="mb-0">Grupos</h3>
+                        <div class="col text-right">
+                            <span class="btn-inner--icon">
+                                <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Agregar" href="{{ url('AgregarGrupo') }}">
+                                    <i class="ni ni-fat-add" ></i>
+                                </a>
+                            </span>
+                            <span class="btn-inner--icon">
+                                <a class="btn btn-icon btn-2 btn-danger btn-sm" role="button" title="Eliminación Masiva" href="{{ url('') }}">
+                                    <i class="ni ni-fat-remove" ></i>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
                     </div>
                     <div class="table-responsive">
                         <table class="table align-items-center table-flush">
@@ -85,6 +98,7 @@
                             </ul>
                         </nav>
                     </div>
+            </div>
                 </div>
             </div>
         </div>

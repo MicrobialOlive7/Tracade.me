@@ -49,6 +49,12 @@ Route::get('/Precios', function (){
 Route::get('/Alumnos', function (){
     return view('Instructor.alumnos');
 });
+Route::get('/AgregarAlumno', function (){
+    return view('Instructor.CrearModAlumno');
+});
+Route::get('/ModificarAlumno', function (){
+    return view('Instructor.CrearModAlumno');
+});
 Route::get('/Grupos', function (){
     return view('Instructor.grupos');
 });

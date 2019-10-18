@@ -108,22 +108,22 @@
                 </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="../examples/icons.html">
+                    <a class="nav-link "href="{{ url('Calendario') }}">
                         <i class="ni ni-calendar-grid-58 text-blue"></i> Calendario
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="../examples/maps.html">
+                    <a class="nav-link " href="{{ url('Alumnos') }}">
                         <i class="ni ni-single-02 text-purple"></i> Alumnos
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="../examples/profile.html">
+                    <a class="nav-link " href="{{ url('Grupos') }}">
                         <i class="ni ni-bullet-list-67 text-pink"></i> Grupos
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  active " href="../examples/tables.html">
+                    <a class="nav-link  active " href="{{ url('Habilidades') }}">
                         <i class="ni ni-trophy text-red"></i> Habilidades
                     </a>
                 </li>
@@ -233,6 +233,7 @@
 <script src="../public/js/plugins/jquery/dist/jquery.min.js"></script>
 <script src="../public/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <!--   Optional JS   -->
+<script src="/assets/js/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <!--   Argon JS   -->
 <script src="../public/js/argon-dashboard.min.js?v=1.1.0"></script>
 <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
