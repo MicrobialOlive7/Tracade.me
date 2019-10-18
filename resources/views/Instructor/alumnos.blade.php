@@ -9,7 +9,17 @@
                 <div class="card shadow">
                     <div class="card-header border-0">
                         <h3 class="mb-0">Alumnos</h3>
+                        <div class="col text-right">
+                            <button class="btn btn-icon btn-2 btn-info btn-sm" type="button">
+                                <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
+                            </button>
+                            <button class="btn btn-icon btn-2 btn-danger btn-sm" type="button">
+                                <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
+                            </button>
+
+                        </div>
                     </div>
+
                     <div class="table-responsive">
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
