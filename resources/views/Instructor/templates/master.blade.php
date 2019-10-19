@@ -233,7 +233,7 @@
 <script src="../public/js/plugins/jquery/dist/jquery.min.js"></script>
 <script src="../public/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <!--   Optional JS   -->
-<script src="/assets/js/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="../public/js/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <!--   Argon JS   -->
 <script src="../public/js/argon-dashboard.min.js?v=1.1.0"></script>
 <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
