@@ -723,12 +723,14 @@ pre code {
   flex-basis: 0;
   flex-grow: 1;
   max-width: 100%;
+  padding-bottom: 1.5rem;
 }
 
 .col-auto {
   flex: 0 0 auto;
   width: auto;
   max-width: none;
+  padding: 5px;
 }
 
 .col-1 {
@@ -895,7 +897,7 @@ pre code {
   margin-left: 91.666667%;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 567px) {
   .col-sm {
     flex-basis: 0;
     flex-grow: 1;
@@ -4059,7 +4061,7 @@ input[type="button"].btn-block {
 
 .custom-control-input:checked~.custom-control-label::before {
   color: #fff;
-  background-color: #5e72e4;
+  background-color: #32325d;
   box-shadow: none;
 }
 
@@ -4118,7 +4120,7 @@ input[type="button"].btn-block {
 }
 
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
-  background-color: #ff009e;
+  background-color: #32325d;
 }
 
 .custom-checkbox .custom-control-input:checked~.custom-control-label::after {
@@ -15584,7 +15586,7 @@ a.btn-icon-only {
 @media (min-width: 768px) {
   .main-content .container-fluid {
     padding-left: 39px !important;
-    padding-right: 39px !important;
+    padding-right: 100px !important;
   }
 }
 
@@ -15642,7 +15644,7 @@ a.btn-icon-only {
 }
 
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
-  border-color: #06c0fb;
+  border-color: #32325d;
 }
 
 .custom-checkbox .custom-control-input:checked~.custom-control-label::after {
@@ -15691,7 +15693,7 @@ a.btn-icon-only {
 }
 
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
-  border-color: #00abff;
+  border-color: #32325d;
 }
 
 .custom-checkbox .custom-control-input:checked~.custom-control-label::after {

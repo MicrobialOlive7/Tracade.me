@@ -6,9 +6,23 @@
         <!-- Header End -->
                 <div class="card shadow">
                     <div class="card-header border-0">
-                        <h3 class="mb-0">Alumno Nuevo</h3>
+                        <h3 class="mb-0">Alumnos</h3>
                     </div>
                         <form >
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="custom-control custom-checkbox mb-3">
+                                        <input class="custom-control-input" id="customCheck1" type="checkbox">
+                                        <label class="custom-control-label" for="customCheck1">Pole Fitness</label>
+                                    </div>
+                                </div>
+                                    <div class="col-md-2">
+                                        <div class="custom-control custom-checkbox mb-3">
+                                        <input class="custom-control-input" id="customCheck2" type="checkbox">
+                                        <label class="custom-control-label" for="customCheck2">Telas Aéreas</label>
+                                        </div>
+                                    </div>
+                            </div>
                             <div class="row">
                                 <div class="col-sm">
                                     <div class="form-group">
@@ -27,7 +41,8 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-3"></div>
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <div class="input-group mb-4">
                                             <div class="input-group-prepend">
@@ -37,7 +52,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <div class="input-group mb-4">
                                             <div class="input-group-prepend">
@@ -48,33 +63,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md">
-                                    <div class="form-group">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Sobre Mí ..."></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-sm"></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <div  class="col-md-offset-right-1">
-                                        <div class="form-group">
-                                            <span class="btn-inner--icon">
-                                                 <a class="btn btn-icon btn-2 btn-danger btn-lg" role="button" title="Cancelar" href="{{ url('Alumnos') }}"> Cancelar </a>
-                                            </span>
+                            <div class="container">
+                                <div class="row justify-content-md-center">
+                                    <div class="col-auto">
+                                        <div  class="col-md-offset-right-1">
+                                            <div class="form-group">
+                                    <span class="btn-inner--icon">
+                                        <a class="btn btn-icon btn-2 btn-info btn-lg" role="button" title="Agregar" href="{{ url('Alumnos') }}"> Agregar </a>
+                                    </span>
+                                                <span class="btn-inner--icon">
+                                         <a class="btn btn-icon btn-2 btn-danger btn-lg" role="button" title="Cancelar" href="{{ url('Alumnos') }}"> Cancelar </a>
+                                    </span>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="col text-right">
-                                    <div  class="col-md-offset-right-1">
-                                        <div class="form-group">
-                                            <span class="btn-inner--icon">
-                                                 <a class="btn btn-icon btn-2 btn-info btn-lg" role="button" title="Agregar" href="{{ url('Alumnos') }}"> Agregar </a>
-                                            </span>
-                                        </div>
-                                    </div>
                                     </div>
                                 </div>
                             </div>

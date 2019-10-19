@@ -46,19 +46,49 @@ Route::get('/Precios', function (){
 /**
  * Instructor
  */
-Route::get('/Alumnos', function (){
-    return view('Instructor.alumnos');
-});
-Route::get('/AgregarAlumno', function (){
-    return view('Instructor.CrearModAlumno');
-});
-Route::get('/ModificarAlumno', function (){
-    return view('Instructor.CrearModAlumno');
-});
-Route::get('/Grupos', function (){
-    return view('Instructor.grupos');
-});
 
-Route::get('/Calendario', function (){
-        return view('Instructor.calendario');
-});
+    /** Alumnos **/
+    Route::get('/Alumnos', function (){
+        return view('Instructor.alumnos');
+    });
+    Route::get('/AgregarAlumno', function (){
+        return view('Instructor.CrearModAlumno');
+    });
+    Route::get('/ModificarAlumno', function (){
+        return view('Instructor.CrearModAlumno');
+    });
+
+    /** Grupos **/
+    Route::get('/Grupos', function (){
+        return view('Instructor.grupos');
+    });
+    Route::get('/AgregarGrupos', function (){
+        return view('Instructor.CrearModGrupos');
+    });
+    Route::get('/ModificarGrupos', function (){
+        return view('Instructor.CrearModGrupos');
+    });
+
+    /** Habilidades **/
+    Route::get('/Habilidades', function (){
+        return view('Instructor.habilidades');
+    });
+    Route::get('/AgregarHabilidades', function (){
+        return view('Instructor.CrearModHabilidades');
+    });
+    Route::get('/ModificarHabilidades', function (){
+        return view('Instructor.CrearModHabilidades');
+    });
+
+/** Calendario **/
+    Route::get('/Calendario', function (){
+            return view('Instructor.calendario');
+    });
+
+    Route::get('/AgregarEventos', function (){
+        return view('Instructor.CrearModEventos');
+    });
+
+    Route::get('/ModificarEventos', function (){
+        return view('Instructor.CrearModEventos');
+    });

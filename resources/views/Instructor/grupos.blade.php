@@ -11,7 +11,7 @@
                         <h3 class="mb-0">Grupos</h3>
                         <div class="col text-right">
                             <span class="btn-inner--icon">
-                                <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Agregar" href="{{ url('AgregarGrupo') }}">
+                                <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Agregar" href="{{ url('AgregarGrupos') }}">
                                     <i class="ni ni-fat-add" ></i>
                                 </a>
                             </span>
@@ -21,7 +21,6 @@
                                 </a>
                             </span>
                         </div>
-                    </div>
                     </div>
                     <div class="table-responsive">
                         <table class="table align-items-center table-flush">
@@ -64,13 +63,13 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#">Modificar</a>
-                                            <a class="dropdown-item" href="#">Eliminar</a>
+                                            <a class="dropdown-item" href="{{ url('ModificarGrupos') }}">Modificar</a>
+                                            <a class="dropdown-item" href="{{ url('') }}">Eliminar</a>
                                         </div>
                                     </div>
                                 </td>
-                            </tr>
-                            </tbody>
+                         </tr>
+                         </tbody>
                         </table>
                     </div>
                     <div class="card-footer py-4">
@@ -98,10 +97,10 @@
                             </ul>
                         </nav>
                     </div>
-            </div>
                 </div>
             </div>
         </div>
+    </div>
         <!-- End of Table -->
 @endsection
 
