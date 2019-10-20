@@ -245,6 +245,7 @@
     });
 </script>
 
+@yield('js_content')
 
 </body>
 
