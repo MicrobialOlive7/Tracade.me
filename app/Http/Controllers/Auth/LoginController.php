@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use http\Env\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -27,7 +28,7 @@ class LoginController extends Controller
      *
      * CAMBIAR LOGIN POR DASHBOARD DE ESTUDIANTE E INSTRUCTOR
      */
-    protected $redirectTo = '/login';
+    protected $redirectTo = '/Alumnos';
 
     /**
      * Create a new controller instance.
