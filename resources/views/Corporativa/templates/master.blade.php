@@ -88,35 +88,29 @@
                 <div class="col-md-2 col-md-offset-1 col-xs-6">
                     <aside class="f_widget p_menu_widget">
                         <div class="p_f_w_title">
-                            <h3>Drimo pages</h3>
+                            <h3>Enlaces</h3>
                         </div>
                         <ul>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Features</a></li>
-                            <li><a href="#">Screenshots</a></li>
-                            <li><a href="#">Team</a></li>
-                            <li><a href="#">Blog</a></li>
+                            <li><a href="{{ url('Nosotros') }}">Nosotros</a></li>
+                            <li><a href="{{ url('Precios') }}">Precio</a></li>
                         </ul>
                     </aside>
                 </div>
                 <div class="col-md-2 col-md-offset-1 col-xs-6">
                     <aside class="f_widget p_support_widget">
                         <div class="p_f_w_title">
-                            <h3>Our support</h3>
+                            <h3>Soporte</h3>
                         </div>
                         <ul>
-                            <li><a href="#">Help & Support</a></li>
-                            <li><a href="#">Getting Started FAQ</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Sign Up</a></li>
-                            <li><a href="#">Sign In</a></li>
+                            <li><a href="{{ url('login') }}">Iniciar Sesión</a></li>
+                            <li><a href="{{ url('Contacto') }}">Contactanos</a></li>
                         </ul>
                     </aside>
                 </div>
                 <div class="col-md-3 col-md-offset-1 col-xs-6">
                     <aside class="f_widget p_contact_widget">
                         <div class="p_f_w_title">
-                            <h3>Contact information</h3>
+                            <h3>Información de Contacto</h3>
                         </div>
                         <ul class="contact_info">
                             <li>Phone  :<a href="#"> 00-29-03-9084413</a></li>
@@ -139,12 +133,12 @@
     <div class="pink_copyright">
         <div class="container">
             <div class="pull-left">
-                <a href="#"><img src="{{asset('img/dash-logo.png')}}" alt=""></a>
+                <a href="#"><img src="{{asset('img/logo-white.png')}}" alt=""></a>
             </div>
             <div class="pull-right">
-                <p class="copyright">
+                <a class="copyright">
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved |by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script></a><a> All rights reserved |by </a><a href="https://colorlib.com" target="_blank">Colorlib</a>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </p>
             </div>

@@ -15,18 +15,19 @@ a{
     margin: 0px;
 }
 .p0{
-    padding: 0px;   
+    padding: 0px;
 }
 body{
     line-height: 24px;
     font-size: 14px;
-    font-family: $pop; 
+    font-family: $pop;
     color: $pfont;
 }
 
 body, p, h1, h2, h3, h4, h5, h6{
     margin: 0px;
-    padding: 0px;
+    padding-top: 2.5rem;
+    padding-bottom:2.5rem;
 }
 #success{
     display: none;
@@ -70,11 +71,11 @@ iframe{
     }
    50% {
         opacity: 1;
-        transform: scale(1.2);   
+        transform: scale(1.2);
     }
     100% {
         opacity: 0;
-    }    
+    }
 }
 
 
@@ -264,7 +265,7 @@ iframe{
         color: #fff;
         &:before{
             background: #fff;
-        }  
+        }
     }
     p{
         color: #fff;
