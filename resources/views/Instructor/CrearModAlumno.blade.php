@@ -26,39 +26,49 @@
                             <div class="row">
                                 <div class="col-sm">
                                     <div class="form-group">
-                                        <input type="nombre" class="form-control" id="exampleFormControlInput1" placeholder="Nombre">
+                                        <input type="nombre" class="form-control" id="alu_nombre" placeholder="Nombre">
                                     </div>
                                 </div>
                                 <div class="col-sm">
                                     <div class="form-group">
-                                        <input type="ap" class="form-control" id="exampleFormControlInput2" placeholder="Apellido Paterno">
+                                        <input type="ap" class="form-control" id="alu_app" placeholder="Apellido Paterno">
                                     </div>
                                 </div>
                                 <div class="col-sm">
                                     <div class="form-group">
-                                        <input type="am" class="form-control" id="exampleFormControlInput3" placeholder="Apellido Materno">
+                                        <input type="am" class="form-control" id="alu_apm" placeholder="Apellido Materno">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-3"></div>
-                                <div class="col-md-3">
+
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <div class="input-group mb-4">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                             </div>
-                                            <input class="form-control" placeholder="Correo Electrónico" type="text">
+                                            <input class="form-control" id="alu_email" placeholder="Correo Electrónico" type="text">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="input-group mb-4">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                            </div>
+                                            <input class="form-control" id="alu_password" placeholder="Contraseña" type="password">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <div class="input-group mb-4">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                             </div>
-                                            <input class="form-control datepicker" placeholder="Seleccionar Fecha" type="text" value="Fecha de Nacimiento">
+                                            <input class="form-control datepicker" id="alu_fecha" placeholder="Seleccionar Fecha" type="text" value="Fecha de Nacimiento">
                                         </div>
                                     </div>
                                 </div>
@@ -69,7 +79,7 @@
                                         <div  class="col-md-offset-right-1">
                                             <div class="form-group">
                                     <span class="btn-inner--icon">
-                                        <a class="btn btn-icon btn-2 btn-info btn-lg" role="button" title="Agregar" href="{{ url('Alumnos') }}"> Agregar </a>
+                                        <a id="crearAlumno" href="#" class="btn btn-icon btn-2 btn-info btn-lg" role="button" title="Agregar" > Agregar </a>
                                     </span>
                                                 <span class="btn-inner--icon">
                                          <a class="btn btn-icon btn-2 btn-danger btn-lg" role="button" title="Cancelar" href="{{ url('Alumnos') }}"> Cancelar </a>
@@ -82,4 +92,59 @@
                         </form>
                     </div>
     </div>
+@endsection
+
+@section('js_content')
+
+<script type="text/javascript">
+
+
+$("#crearAlumno").click(function (){
+  console.log("aaaaaaaaaa");
+  var alu_nombre = $("#alu_nombre").val().trim();
+  var alu_apellido_paterno = $("#alu_app").val().trim();
+  var alu_apellido_materno = $("#alu_apm").val().trim();
+  var alu_correo_electronico = $("#alu_email").val().trim();
+  var alu_password = $("#alu_password").val().trim();
+  var alu_fecha_nacimiento = $("#alu_fecha").val();
+
+
+  var aDatos = {
+  'alu_nombre': alu_nombre,
+  'alu_apellido_paterno': alu_apellido_paterno,
+  'alu_apellido_materno': alu_apellido_paterno,
+  'alu_correo_electronico': alu_correo_electronico,
+  'alu_fecha_nacimiento': alu_fecha_nacimiento,
+  'alu_password': alu_password
+}
+
+
+  $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        type: "POST",
+        url: "{{ asset ('api/crear-alumno') }}",
+        data: aDatos,
+        cache: false,
+        dataType: "json",
+        beforeSend: function (){
+          //modal.preloader();
+        },
+        success: function (result) {
+          //modal.close("-preloader");
+          console.log(result);
+          if(result.estatus === 1){
+
+          }else{
+
+          }
+        },
+        complete: function () {
+        },
+        error: function (result) {
+          console.log("errorsin");
+        }
+      });
+
+});
+</script>
 @endsection
