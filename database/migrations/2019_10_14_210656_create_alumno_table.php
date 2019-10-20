@@ -18,11 +18,11 @@ class CreateAlumnoTable extends Migration
             $table->string('alu_nombre', 100);
             $table->string('alu_apellido_paterno', 100);
             $table->string('alu_apellido_materno', 100);
-            $table->string('alu_correo_electronico')->unique();
+            $table->string('email')->unique();
 
             $table->date('alu_fecha_nacimiento');
             $table->string('alu_biografia', 255);
-            $table->string('alu_password');
+            $table->string('password');
 
             /* campo por default de 'users' de laravel */
             $table->timestamp('email_verified_at')->nullable();
