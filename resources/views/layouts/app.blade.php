@@ -74,7 +74,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <form role="form" method="post" action="{{route('login')}}">
+                            <form method="POST" action="{{route('login')}}">
                                 @csrf
                                 <div class="form-group mb-3">
                                     <div id="div-em" class="input-group input-group-alternative">
@@ -82,6 +82,11 @@
                                             <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                         </div>
                                         <input  id="email" name="alu_correo_electronico" class="form-control is-invalid" placeholder="Correo Electrónico" type="email" required>
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -90,6 +95,11 @@
                                             <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                         </div>
                                         <input id="password" name="alu_password" class="form-control" placeholder="Contraseña" type="password">
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="custom-control custom-control-alternative custom-checkbox">

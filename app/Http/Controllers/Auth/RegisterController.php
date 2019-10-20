@@ -54,7 +54,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
 
             //'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'alu_correo_electronico' => ['required', 'string', 'email', 'max:255', 'unique:alumno'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:alumno'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
@@ -71,12 +71,12 @@ class RegisterController extends Controller
 
         return Alumno::create([
             'alu_nombre' => $data['name'],
-            'alu_correo_electronico' => $data['email'],
+            'email' => $data['email'],
             'alu_apellido_paterno' => $data['ap_pat'],
             'alu_apellido_materno' => $data['ap_mat'],
             'alu_fecha_nacimiento' => $data['fecha'],
             'alu_biografia' => $data['bio'],
-            'alu_password' => Hash::make($data['password']),
+            'password' => Hash::make($data['password']),
         ]);
     }
 }
