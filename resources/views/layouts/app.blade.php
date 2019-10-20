@@ -74,19 +74,19 @@
                             </div>
                             <form role="form">
                                 <div class="form-group mb-3">
-                                    <div class="input-group input-group-alternative">
+                                    <div id="div-em" class="input-group input-group-alternative">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                         </div>
-                                        <input class="form-control" placeholder="Correo Electrónico" type="email">
+                                        <input  id="email" class="form-control is-invalid" placeholder="Correo Electrónico" type="email" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="input-group input-group-alternative">
+                                    <div id="div-pas" class="input-group input-group-alternative">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                         </div>
-                                        <input class="form-control" placeholder="Contraseña" type="password">
+                                        <input id="password" class="form-control" placeholder="Contraseña" type="password">
                                     </div>
                                 </div>
                                 <div class="custom-control custom-control-alternative custom-checkbox">
@@ -96,7 +96,7 @@
                                     </label>
                                 </div>
                                 <div class="text-center">
-                                    <button type="button" class="btn btn-primary my-4">Iniciar Sesión</button>
+                                    <button id="btn-inicar_sesion" type="button" class="btn btn-primary my-4" >Iniciar Sesión</button>
                                 </div>
                             </form>
                         </div>
@@ -118,6 +118,8 @@
     </div>
 
 </div>
+
+
 <!--   Core   -->
 <script src="../public/js/plugins/jquery/dist/jquery.min.js"></script>
 <script src="../public/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -130,6 +132,45 @@
     TrackJS.install({
         token: "ee6fab19c5a04ac1a32a645abde4613a",
         application: "argon-dashboard-free"
+    });
+
+    $("#div-em").click(function(){
+      $("#div-em").removeClass("has-danger");
+    })
+
+    $("#div-pas").click(function(){
+      $("#div-pas").removeClass("has-danger");
+    })
+
+
+    $("#btn-inicar_sesion").click(function (){
+
+      var cont = 0;
+      var errores = "";
+      var email = $("#email").val().trim();
+      var password = $("#password").val().trim();
+
+      if(email == ""){
+        console.log("em-inv")
+        $("#div-em").addClass("has-danger");
+        cont = 1;
+        errores += "El correo electrónico es obligatorio.<br>";
+      }
+      if(password == ""){
+        console.log("pas-inv")
+        $("#div-pas").addClass("has-danger");
+        cont = 1;
+        errores += "La contraseña es obligatoria.";
+      }
+
+      if(cont =! 0){
+        $("#warning_modal").modal().find('.modal-title').text('Error de Inicio de Sesión.');
+        $("#warning_modal").modal().find('.message-text').empty();
+        $("#warning_modal").modal().find('.message-text').append(errores);
+
+        return false
+      }
+
     });
 </script>
 </body>
