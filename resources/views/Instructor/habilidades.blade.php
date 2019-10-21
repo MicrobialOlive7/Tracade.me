@@ -36,11 +36,14 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
+
+
+                              @foreach($Habilidades as $key => $value)
+                              <tr>
                                 <td> <input type="checkbox"></td>
-                                <th scope="row"> Fallen Marley  </th>
-                                <th scope="row"> Avanzado </th>
-                                <th scope="row"> Pole Fitness </th>
+                                <th scope="row"> {{$value['hab_nombre']}}  </th>
+                                <th scope="row"> {{$value['hab_dificultad']}} </th>
+                                <th scope="row"> {{$value['dis_nombre']}} </th>
                                 <th></th>
                                 <td class="text-right">
                                     <div class="dropdown">
@@ -48,12 +51,15 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="{{ url('ModificarHabilidades') }}">Modificar</a>
+                                            <a class="dropdown-item" href="{{ url('ModificarHabilidades/'. $value['hab_id']) }}">Modificar</a>
                                             <a class="dropdown-item" href="{{ url('') }}">Eliminar</a>
                                         </div>
                                     </div>
                                 </td>
-                            </tr>
+                              </tr>
+
+                              @endforeach
+
                             </tbody>
                         </table>
                     </div>
@@ -88,5 +94,3 @@
     </div>
     <!-- End of Table -->
 @endsection
-
-

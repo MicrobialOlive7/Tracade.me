@@ -17,4 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('crear-alumno', 'AlumnoController@create');
+Route::post('crear-grupo', 'Grupos\GruposController@create');
+Route::post('modificar-grupo', 'Grupos\GruposController@update');
+Route::post('borrar-grupo', 'Grupos\GruposController@delete');
+
+Route::post('crear-habilidad', 'Habilidades\HabilidadesController@create');

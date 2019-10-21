@@ -23,14 +23,14 @@
         Tracade.Me - Seguimiento de Habilidades
     </title>
     <!-- Favicon -->
-    <link href="../public/img/fav-icon.ico" rel="icon" type="image/png">
+    <link href="{{asset('../public/img/fav-icon.ico')}}" rel="icon" type="image/png">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <!-- Icons -->
-    <link href="../public/js/plugins/nucleo/css/nucleo.css" rel="stylesheet" />
-    <link href="../public/js/plugins/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <link href="{{asset('../public/js/plugins/nucleo/css/nucleo.css')}}" rel="stylesheet" />
+    <link href="{{asset('../public/js/plugins/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet" />
     <!-- CSS Files -->
-    <link href="../public/css/argon-dashboard.css?v=1.1.0" rel="stylesheet" />
+    <link href="{{asset('../public/css/argon-dashboard.css?v=1.1.0')}}" rel="stylesheet" />
 </head>
 
 <body class="">
@@ -42,7 +42,7 @@
         </button>
         <!-- Brand -->
         <a class="navbar-brand pt-0" href="{{ url('') }}">
-            <img src="../public/img/dash-logo.png" class="navbar-brand-img" alt="...">
+            <img src="{{asset('../public/img/dash-logo.png')}}" class="navbar-brand-img" alt="...">
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
@@ -51,8 +51,7 @@
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
-                <img alt="Image placeholder" src="../public/img/theme/team-1-800x800.jpg
-">
+                <img alt="Image placeholder" src="{{asset('../public/img/theme/team-1-800x800.jpg')}}">
               </span>
                     </div>
                 </a>
@@ -79,7 +78,7 @@
                 <div class="row">
                     <div class="col-6 collapse-brand">
                         <a href="../index.html">
-                            <img src="../public/img/dash-logo.png">
+                            <img src="{{asset('../public/img/dash-logo.png')}}">
                         </a>
                     </div>
                     <div class="col-6 collapse-close">
@@ -168,7 +167,7 @@
                     <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media align-items-center">
                 <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="../public/img/theme/team-4-800x800.jpg">
+                  <img alt="Image placeholder" src="{{asset('../public/img/theme/team-4-800x800.jpg')}}">
                 </span>
                             <div class="media-body ml-2 d-none d-lg-block">
                                 <span class="mb-0 text-sm  font-weight-bold">Jessica Jones</span>
@@ -230,13 +229,13 @@
 </div>
 </div>
 <!--   Core   -->
-<script src="../public/js/plugins/jquery/dist/jquery.min.js"></script>
-<script src="../public/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{asset('../public/js/plugins/jquery/dist/jquery.min.js')}}"></script>
+<script src="{{asset('../public/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
 <!--   Optional JS   -->
-<script src="../public/js/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="{{asset('../public/js/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
 <!--   Argon JS   -->
-<script src="../public/js/argon-dashboard.min.js?v=1.1.0"></script>
-<script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+<script src="{{asset('../public/js/argon-dashboard.min.js?v=1.1.0')}}"></script>
+<script src="{{asset('https://cdn.trackjs.com/agent/v3/latest/t.js')}}"></script>
 <script>
     window.TrackJS &&
     TrackJS.install({
