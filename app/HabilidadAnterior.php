@@ -9,6 +9,6 @@ class HabilidadAnterior extends Model
     protected $table = 'habilidad_anterior';
 
     protected $fillable = [
-        'han_id_habilidad','han_id_habilidad_anterior'
+        'hab_id','hab_ant_id'
     ];
 }

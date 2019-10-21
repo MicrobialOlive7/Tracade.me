@@ -100,7 +100,7 @@
 
 
 $("#crearAlumno").click(function (){
-  console.log("aaaaaaaaaa");
+  
   var alu_nombre = $("#alu_nombre").val().trim();
   var alu_apellido_paterno = $("#alu_app").val().trim();
   var alu_apellido_materno = $("#alu_apm").val().trim();
@@ -110,19 +110,20 @@ $("#crearAlumno").click(function (){
 
 
   var aDatos = {
-  'alu_nombre': alu_nombre,
-  'alu_apellido_paterno': alu_apellido_paterno,
-  'alu_apellido_materno': alu_apellido_paterno,
-  'alu_correo_electronico': alu_correo_electronico,
-  'alu_fecha_nacimiento': alu_fecha_nacimiento,
-  'alu_password': alu_password
+  'name': 'valeria',
+  'ap_pat': 'de leon',
+  'ap_mat': 'ochoa',
+  'email': 'vaale-ochoa@gmail.com',
+  'fecha': '12/09/1998',
+  'password': 'password',
+  'bio': 'lalalalalalal'
 }
 
 
   $.ajax({
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
         type: "POST",
-        url: "{{ asset ('api/crear-alumno') }}",
+        url: "{{ asset ('register') }}",
         data: aDatos,
         cache: false,
         dataType: "json",

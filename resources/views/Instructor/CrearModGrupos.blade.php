@@ -1,4 +1,5 @@
 @extends('Instructor.templates.master')
+@extends('layouts.modal')
 @section('content')
     <!-- Header -->
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8"> </div>
@@ -14,15 +15,15 @@
                     <div class="row justify-content-md-center">
                         <!-- Inicia Seccion Nombre y Dia -->
 
-                        <div class="col-md-5">
+                        <div class="col-md-4">
                             <div class="form-group">
-                                <input type="nombre" class="form-control" id="exampleFormControlInput1" placeholder="Nombre">
+                                <input type="nombre" class="form-control" id="gru_nombre" placeholder="Nombre">
                             </div>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <div class="input-group md-4">
-                                    <select type="ap" class="form-control" id="exampleFormControlInput2" >
+                                    <select type="ap" class="form-control" id="gru_dia" >
                                         <option value="" disabled selected>Día</option>
                                         <option value="Lunes"> Lunes </option>
                                         <option value="Martes"> Martes </option>
@@ -34,20 +35,46 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <div class="input-group md-4">
+                                    <select type="ap" class="form-control" id="id_disciplina" >
+                                        <option value="" disabled selected>Disciplina</option>
+                                        <option value="1"> Telas Aéreas </option>
+                                        <option value="2"> Pole </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                         <!-- Termina Seccion Nombre y Dia -->
 
                         <!-- Inicia Campo Horario -->
 
-                <div class="col-md-12 text-center">
+                <div class="col-md-3 offset-md-7 text-center">
                     <h5 class="card-title text-uppercase text-muted mb-0">Horario</h5>
                 </div>
 
                 <div class="container">
+
                     <div class="row justify-content-center">
+
+                      <div class="col-md-5">
+                          <div class="form-group">
+                              <div class="input-group md-4">
+                                  <select type="ap" class="form-control" id="id_aula" >
+                                      <option value="" disabled selected>Aula</option>
+                                      <option value="1"> Aula01 </option>
+                                      <option value="2"> Aula02 </option>
+                                  </select>
+                              </div>
+                          </div>
+                      </div>
+
+
                         <div class="col-auto">
-                            <select type="ap" class="form-control" id="exampleFormControlInput1" >
+                            <select type="ap" class="form-control" id="gru_hora_de" >
                                 <option value="" disabled selected>Hora</option>
                                 <option value="1" > 01 </option>
                                 <option value="2" > 02 </option>
@@ -67,10 +94,10 @@
                         <div class="col-xs-1">:</div>
 
                         <div class="col-auto">
-                            <input class="form-control" placeholder="Min" type="number" max="59" min="00">
+                            <input class="form-control" id="gru_minutos_de" placeholder="Min" type="number" max="59" min="00">
                         </div>
                         <div class="col-auto">
-                            <select type="ap" class="form-control" id="exampleFormControlInput2" >
+                            <select type="ap" class="form-control" id="gru_hora_a" >
                                 <option value="" disabled selected>Hora</option>
                                 <option value="1" > 01 </option>
                                 <option value="2" > 02 </option>
@@ -90,7 +117,7 @@
                         <div class="col-xs-1">:</div>
 
                         <div class="col-auto">
-                            <input class="form-control" placeholder="Min" type="number" max="59" min="00">
+                            <input class="form-control" placeholder="Min" id="gru_minutos_a" type="number" max="59" min="00">
                         </div>
                     </div>
                 </div>
@@ -103,11 +130,17 @@
                         <div class="col-auto">
                             <div  class="col-md-offset-right-1">
                                 <div class="form-group">
+                                  @if($Mod==0)
                                     <span class="btn-inner--icon">
-                                        <a class="btn btn-icon btn-2 btn-info btn-lg" role="button" title="Agregar" href="{{ url('Alumnos') }}"> Agregar </a>
+                                        <a class="btn btn-icon btn-2 btn-info btn-lg" id="btn-agregarGrupo" role="button" title="Agregar"> Agregar </a>
                                     </span>
+                                    @else
                                     <span class="btn-inner--icon">
-                                         <a class="btn btn-icon btn-2 btn-danger btn-lg" role="button" title="Cancelar" href="{{ url('Alumnos') }}"> Cancelar </a>
+                                        <a class="btn btn-icon btn-2 btn-info btn-lg" id="btn-modificarGrupo" role="button" title="Agregar"> Modificar </a>
+                                    </span>
+                                  @endif
+                                    <span class="btn-inner--icon">
+                                         <a class="btn btn-icon btn-2 btn-danger btn-lg" role="button" title="Cancelar" href="{{ url('Grupos') }}"> Cancelar </a>
                                     </span>
                                 </div>
                             </div>
@@ -119,4 +152,126 @@
             <!-- Termina Form -->
         </div>
     </div>
+@endsection
+
+@section('js_content')
+
+<script type="text/javascript">
+
+if({{$Mod==1}}){
+  var nombre = '{{$Grupo[0]['gru_nombre']}}';
+  var dia='{{$Grupo[0]['gru_horario']}}'.split(' ')[0];
+  var hora_de='{{$Grupo[0]['gru_horario']}}'.split(' ')[1].split(':')[0];
+  var minutos_de='{{$Grupo[0]['gru_horario']}}'.split(' ')[1].split(':')[1];
+  var hora_a='{{$Grupo[0]['gru_horario']}}'.split(' ')[3].split(':')[0];
+  var minutos_a='{{$Grupo[0]['gru_horario']}}'.split(' ')[3].split(':')[1];
+  var disciplina = '{{$Grupo[0]['dis_id']}}';
+  var aula= '{{$Grupo[0]['aul_id']}}';
+
+  $("#gru_nombre").val(nombre);
+  $("#gru_dia").val(dia);
+  $("#id_disciplina").val(disciplina);
+  $("#id_aula").val(aula);
+  $("#gru_hora_de").val(hora_de);
+  $("#gru_minutos_de").val(minutos_de);
+  $("#gru_hora_a").val(hora_a);
+  $("#gru_minutos_a").val(minutos_a);
+
+}
+
+$("#btn-modificarGrupo").click(function(){
+  var gru_nombre = $("#gru_nombre").val().trim();
+  var gru_horario = $("#gru_dia").val() + ' ' + $("#gru_hora_de").val()  + ':' +  $("#gru_minutos_de").val() + ' - ' + $("#gru_hora_a").val() + ':' + $("#gru_minutos_a").val();
+  var dis_id = $("#id_disciplina").val();
+  var aul_id = $("#id_aula").val();
+  var gru_id='{{$Grupo[0]['gru_id']}}';
+
+  var aDatos = {
+  'gru_id': gru_id,
+  'gru_nombre': gru_nombre,
+  'gru_horario': gru_horario,
+  'dis_id': dis_id,
+  'aul_id': aul_id
+}
+
+  $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        type: "POST",
+        url: "{{ asset ('api/modificar-grupo') }}",
+        data: aDatos,
+        cache: false,
+        dataType: "json",
+        beforeSend: function (){
+          //modal.preloader();
+        },
+        success: function (result) {
+          //modal.close("-preloader");
+          console.log(result.estatus===1);
+          if(result.estatus === 1){
+            console.log("Sacar modal y pasar a grupos");
+            window.location.href = "{{ asset('/Grupos') }}";
+
+          }else{
+            console.log("Sacar modal error y pasar a grupos")
+            window.location.href = "{{ asset('/Grupos') }}";
+          }
+        },
+        complete: function () {
+        },
+        error: function (result) {
+          console.log("errorsin");
+        }
+      });
+
+
+});
+
+$("#btn-agregarGrupo").click(function (){
+
+  var gru_nombre = $("#gru_nombre").val().trim();
+  var gru_horario = $("#gru_dia").val() + ' ' + $("#gru_hora_de").val()  + ':' +  $("#gru_minutos_de").val() + ' - ' + $("#gru_hora_a").val() + ':' + $("#gru_minutos_a").val();
+  var dis_id = $("#id_disciplina").val();
+  var aul_id = $("#id_aula").val();
+
+  console.log(gru_nombre, gru_horario, dis_id, aul_id)
+
+  var aDatos = {
+  'gru_nombre': gru_nombre,
+  'gru_horario': gru_horario,
+  'dis_id': dis_id,
+  'aul_id': aul_id
+}
+
+
+$.ajax({
+      headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+      type: "POST",
+      url: "{{ asset ('api/crear-grupo') }}",
+      data: aDatos,
+      cache: false,
+      dataType: "json",
+      beforeSend: function (){
+        //modal.preloader();
+      },
+      success: function (result) {
+        //modal.close("-preloader");
+        console.log(result.estatus===1);
+        if(result.estatus === 1){
+          console.log("Sacar modal y pasar a grupos");
+          window.location.href = "{{ asset('/Grupos') }}";
+
+        }else{
+          console.log("Sacar modal error y pasar a grupos")
+          window.location.href = "{{ asset('/Grupos') }}";
+        }
+      },
+      complete: function () {
+      },
+      error: function (result) {
+        console.log("errorsin");
+      }
+    });
+
+});
+</script>
 @endsection
