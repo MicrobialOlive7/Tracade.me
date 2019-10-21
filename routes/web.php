@@ -46,6 +46,10 @@ Route::get('/Precios', function (){
 /**
  * Instructor
  */
+    Route::get('tmp-pago', function (){
+        return view('instructor.TMP-pago');
+    })->name('tmp-pago');
+
 
     /** Alumnos **/
     Route::get('/Alumnos', function (){
