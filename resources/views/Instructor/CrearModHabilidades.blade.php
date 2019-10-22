@@ -164,7 +164,7 @@
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <input type="file" name="pic" accept="image/*">
+                                <input type="file" name="image" id="image" accept="image/*">
                             </div>
                         </div>
                     </div>
@@ -234,6 +234,7 @@ $("#btn-agregarHabilidad").click(function(){
   var hab_dificultad =  $('#hab_dificultad').val();
   var hab_descripcion =  $('#hab_descripcion').val();
   var han_id_habilidad_anterior = $('#hab_id').val();
+  var image = $('#image').val();
   var campos = [];
 
   $('#campos_adicionales').children().each(function(){
@@ -250,7 +251,8 @@ $("#btn-agregarHabilidad").click(function(){
     'hab_dificultad' :  hab_dificultad,
     'hab_descripcion' :  hab_descripcion,
     'han_id_habilidad_anterior' : han_id_habilidad_anterior,
-    'campos' : campos
+    'campos' : campos,
+      'image' : image
   };
 
   $.ajax({
