@@ -16,6 +16,8 @@
     <link href="../public/js/plugins/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link href="../public/css/argon-dashboard.css?v=1.1.0" rel="stylesheet" />
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body class="bg-gradient-primary py-4">
@@ -50,13 +52,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <form role="form">
+                            <form method="POST" action="{{route('login')}}">
+                                @csrf
                                 <div class="form-group mb-3">
                                     <div id="div-em" class="input-group input-group-alternative">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                         </div>
-                                        <input  id="email" class="form-control is-invalid" placeholder="Correo Electrónico" type="email" required>
+                                        <input  id="email" name="alu_correo_electronico" class="form-control is-invalid" placeholder="Correo Electrónico" type="email" required>
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -64,7 +72,12 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                         </div>
-                                        <input id="password" class="form-control" placeholder="Contraseña" type="password">
+                                        <input id="password" name="alu_password" class="form-control" placeholder="Contraseña" type="password">
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="custom-control custom-control-alternative custom-checkbox">
@@ -73,8 +86,9 @@
                                         <span class="text-muted">Recuérdame</span>
                                     </label>
                                 </div>
+
                                 <div class="text-center">
-                                    <button id="btn-inicar_sesion" type="button" class="btn btn-primary my-4" >Iniciar Sesión</button>
+                                    <button id="btn-inicar_sesion2" type="submit" class="btn btn-primary my-4" >Iniciar Sesión</button>
                                 </div>
                             </form>
                         </div>

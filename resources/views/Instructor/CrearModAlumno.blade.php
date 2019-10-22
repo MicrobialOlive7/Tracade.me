@@ -8,17 +8,18 @@
                     <div class="card-header border-0">
                         <h3 class="mb-0">Alumnos</h3>
                     </div>
-                        <form >
+                        <form method="POST" action="{{route('register')}}">
+                            @csrf
                             <div class="row">
                                 <div class="col-md-2">
                                     <div class="custom-control custom-checkbox mb-3">
-                                        <input class="custom-control-input" id="customCheck1" type="checkbox">
+                                        <input class="custom-control-input" value="1" name="disciplina" id="customCheck1" type="checkbox">
                                         <label class="custom-control-label" for="customCheck1">Pole Fitness</label>
                                     </div>
                                 </div>
                                     <div class="col-md-2">
                                         <div class="custom-control custom-checkbox mb-3">
-                                        <input class="custom-control-input" id="customCheck2" type="checkbox">
+                                        <input class="custom-control-input" value="2" name="disciplina" id="customCheck2" type="checkbox">
                                         <label class="custom-control-label" for="customCheck2">Telas Aéreas</label>
                                         </div>
                                     </div>
@@ -26,39 +27,50 @@
                             <div class="row">
                                 <div class="col-sm">
                                     <div class="form-group">
-                                        <input type="nombre" class="form-control" id="exampleFormControlInput1" placeholder="Nombre">
+                                        <input type="text" name="name" class="form-control" id="name" placeholder="Nombre" required>
                                     </div>
                                 </div>
                                 <div class="col-sm">
                                     <div class="form-group">
-                                        <input type="ap" class="form-control" id="exampleFormControlInput2" placeholder="Apellido Paterno">
+                                        <input type="text" name="alu_apellido_paterno" class="form-control" id="alu_apellido_paterno" placeholder="Apellido Paterno" required>
                                     </div>
                                 </div>
                                 <div class="col-sm">
                                     <div class="form-group">
-                                        <input type="am" class="form-control" id="exampleFormControlInput3" placeholder="Apellido Materno">
+                                        <input type="text" class="form-control" name="alu_apellido_materno" id="alu_apellido_materno" placeholder="Apellido Materno" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-3"></div>
-                                <div class="col-md-3">
+
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <div class="input-group mb-4">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                             </div>
-                                            <input class="form-control" placeholder="Correo Electrónico" type="text">
+                                            <input class="form-control" id="email" name="email" placeholder="Correo Electrónico" type="email" required>
+
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="input-group mb-4">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                            </div>
+                                            <input class="form-control" id="password" name="password" placeholder="Contraseña" type="password" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <div class="input-group mb-4">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                             </div>
-                                            <input class="form-control datepicker" placeholder="Seleccionar Fecha" type="text" value="Fecha de Nacimiento">
+                                            <input class="form-control datepicker" id="alu_fecha_nacimiento" name="alu_fecha_nacimiento" placeholder="Seleccionar Fecha" type="text" value="Fecha de Nacimiento" required>
                                         </div>
                                     </div>
                                 </div>
@@ -68,12 +80,16 @@
                                     <div class="col-auto">
                                         <div  class="col-md-offset-right-1">
                                             <div class="form-group">
-                                    <span class="btn-inner--icon">
-                                        <a class="btn btn-icon btn-2 btn-info btn-lg" role="button" title="Agregar" href="{{ url('Alumnos') }}"> Agregar </a>
-                                    </span>
                                                 <span class="btn-inner--icon">
-                                         <a class="btn btn-icon btn-2 btn-danger btn-lg" role="button" title="Cancelar" href="{{ url('Alumnos') }}"> Cancelar </a>
-                                    </span>
+                                                    <button type="submit" class="btn btn-icon btn-2 btn-info btn-lg">
+                                                        {{ __('Agregar') }}
+                                                    </button>
+                                                </span>
+                                                <span class="btn-inner--icon">
+                                                     <a class="btn btn-icon btn-2 btn-danger btn-lg" role="button" title="Cancelar" href="{{ url('/Alumnos') }}">
+                                                         {{ __('Cancelar') }}
+                                                     </a>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -83,3 +99,4 @@
                     </div>
     </div>
 @endsection
+

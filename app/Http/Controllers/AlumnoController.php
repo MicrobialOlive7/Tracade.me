@@ -19,4 +19,5 @@ class AlumnoController extends Controller
     public function delete(){
 
     }
+
 }

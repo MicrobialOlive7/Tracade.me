@@ -1,4 +1,5 @@
 @extends('Instructor.templates.master')
+@extends('layouts.modal')
 @section('content')
     <!-- Header -->
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8"> </div>
@@ -36,10 +37,11 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
+                              @foreach($Grupos as $key => $value)
+                              <tr>
                                 <td> <input type="checkbox"></td>
-                                <th scope="row"> L78M  </th>
-                                <th scope="row"> Lunes  </th>
+                                <th scope="row"> {{$value['gru_nombre']}}  </th>
+                                <th scope="row"> {{$value['gru_horario']}}  </th>
                                 <th scope="row"> 7:00am - 8:00am </th>
                                 <td>
                                     <div class="avatar-group">
@@ -63,12 +65,14 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="{{ url('ModificarGrupos') }}">Modificar</a>
-                                            <a class="dropdown-item" href="{{ url('') }}">Eliminar</a>
+                                            <a class="dropdown-item" href="{{ url('ModificarGrupos/'. $value['gru_id']) }}">Modificar</a>
+                                            <a class="dropdown-item" onclick="eliminarGrupo('{{$value['gru_nombre']}}','{{$value['gru_id']}}')">Eliminar</a>
                                         </div>
                                     </div>
                                 </td>
-                         </tr>
+                              </tr>
+                              @endforeach
+
                          </tbody>
                         </table>
                     </div>
@@ -104,3 +108,103 @@
         <!-- End of Table -->
 @endsection
 
+@section('js_content')
+
+
+<script type="text/javascript">
+
+function  eliminarGrupo(gru_nombre, gru_id){
+
+  $("#delete_modal").modal().find('.modal-title').text('Eliminar grupo');
+  $("#delete_modal").modal().find('.message-text').empty();
+  $("#delete_modal").modal().find('.message-text').append('¿Estás seguro de eliminar el grupo ' + gru_nombre + '?');
+  $("#delete_modal").modal().find('#borrar').val( gru_id);
+}
+
+$("#borrar").click(function(){
+    var gru_id = $("#borrar").val();
+
+    var aDatos={
+      'gru_id' : gru_id
+    };
+
+    $.ajax({
+          headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+          type: "POST",
+          url: "{{ asset ('api/borrar-grupo') }}",
+          data: aDatos,
+          cache: false,
+          dataType: "json",
+          beforeSend: function (){
+            //modal.preloader();
+          },
+          success: function (result) {
+            //modal.close("-preloader");
+            console.log(result.estatus===1);
+            if(result.estatus === 1){
+              console.log("Sacar modal y pasar a grupos");
+              window.location.href = "{{ asset('/Grupos') }}";
+
+            }else{
+              console.log("Sacar modal error y pasar a grupos")
+              window.location.href = "{{ asset('/Grupos') }}";
+            }
+          },
+          complete: function () {
+          },
+          error: function (result) {
+            console.log("errorsin");
+          }
+        });
+
+
+  });
+
+  $("#btn-agregarGrupo").click(function (){
+
+    var gru_nombre = $("#gru_nombre").val().trim();
+    var gru_horario = $("#gru_dia").val() + ' ' + $("#gru_hora_de").val()  + ':' +  $("#gru_minutos_de").val() + ' - ' + $("#gru_hora_a").val() + ':' + $("#gru_minutos_a").val();
+    var dis_id = $("#id_disciplina").val();
+    var aul_id = $("#id_aula").val();
+
+    console.log(gru_nombre, gru_horario, dis_id, aul_id)
+
+    var aDatos = {
+    'gru_nombre': gru_nombre,
+    'gru_horario': gru_horario,
+    'dis_id': dis_id,
+    'aul_id': aul_id
+  }
+
+
+  $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        type: "POST",
+        url: "{{ asset ('api/crear-grupo') }}",
+        data: aDatos,
+        cache: false,
+        dataType: "json",
+        beforeSend: function (){
+          //modal.preloader();
+        },
+        success: function (result) {
+          //modal.close("-preloader");
+          console.log(result.estatus===1);
+          if(result.estatus === 1){
+            console.log("Sacar modal y pasar a grupos");
+            window.location.href = "{{ asset('/Grupos') }}";
+
+          }else{
+            console.log("Sacar modal error y pasar a grupos")
+            window.location.href = "{{ asset('/Grupos') }}";
+          }
+        },
+        complete: function () {
+        },
+        error: function (result) {
+          console.log("errorsin");
+        }
+      });
+})
+</script>
+@endsection
