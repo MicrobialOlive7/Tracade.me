@@ -148,7 +148,6 @@
 		max-width: 100%;
 	}
 	.provide_feature_area .p_feature_left .p_f_left_content {
-		padding-left: 15px;
 		float: none;
 		margin: auto;
 	}
@@ -1039,7 +1038,7 @@
 		display: none;
 	}
 }
-@media (max-width: 767px){
+@media (max-width: 100px){
 	.gd_title h2::before {
 		font-size: 70px;
 	}
@@ -1113,7 +1112,7 @@
 		padding-bottom: 32px;
 	}
 	.discover_video_area {
-		padding-top: 45px;
+		/* padding-top: 45px; */
 	}
 	.discover_video_text {
 		padding-bottom: 76px;
@@ -1421,6 +1420,7 @@
 	.single_title {
 		font-size: 3.8rem;
 		line-height: 36px;
+		padding-top: 2rem;
 	}
 	.subscrib_area2 .input-group input {
 		height: 60px;

@@ -60,15 +60,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><img src="{{asset('img/dash-logo.png')}}" alt=""></a>
+            <a class="navbar-brand" href="{{ url('') }}"><img src="{{asset('img/dash-logo.png')}}" alt=""></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#about">Nosotros</a></li>
-                <li><a href="#feature">Precio</a></li>
-                <li><a href="#contact">Contacto</a></li>
+                <li class="active"><a href="{{ url('Nosotros') }}">Nosotros</a></li>
+                <li><a href="{{ url('Precios') }}">Precio</a></li>
+                <li><a href="{{ url('Contacto') }}">Contacto</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="get_free_btn"><a href="{{route('login')}}">Iniciar Sesión</a></li>
@@ -103,7 +103,7 @@
                         </div>
                         <ul>
                             <li><a href="{{ url('login') }}">Iniciar Sesión</a></li>
-                            <li><a href="{{ url('Contacto') }}">Contactanos</a></li>
+                            <li><a href="{{ url('Contacto') }}">Contacto</a></li>
                         </ul>
                     </aside>
                 </div>

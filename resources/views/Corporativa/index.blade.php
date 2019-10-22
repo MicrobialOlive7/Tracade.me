@@ -87,7 +87,6 @@
                             <h3 class="single_title">Utiliza Estrellas para Evaluar</h3>
                             <div class="power_left_content_inner">
                                 <p> Puedes evaluar cada actividad con una, dos o tres estrellas. </p>
-                            </div>
                             <div class="table-responsive">
                                 <table class="table align-items-center table-flush">
                                     <tbody>
@@ -104,6 +103,7 @@
                                 </tr>
                                     </tbody>
                                 </table>
+                            </div>
                             </div>
                         </div>
                 </div>
@@ -144,7 +144,7 @@
                     <div class="p_item">
                         <div class="media">
                             <div class="media-left">
-                                <img src="img/icon/p-icon-1.png" alt="">
+                                <img src="../public/img/icon/p-icon-1.png" alt="">
                             </div>
                             <div class="media-body">
                                 <h4>Panel de Administración</h4>
@@ -155,7 +155,7 @@
                     <div class="p_item">
                         <div class="media">
                             <div class="media-left">
-                                <img src="img/icon/p-icon-2.png" alt="">
+                                <img src="../public/img/icon/p-icon-2.png" alt="">
                             </div>
                             <div class="media-body">
                                 <h4>Tablas Personalizables</h4>
@@ -166,7 +166,7 @@
                     <div class="p_item">
                         <div class="media">
                             <div class="media-left">
-                                <img src="img/icon/p-icon-3.png" alt="">
+                                <img src="../public/img/icon/p-icon-3.png" alt="">
                             </div>
                             <div class="media-body">
                                 <h4>Calendario con Eventos</h4>
@@ -177,7 +177,7 @@
                     <div class="p_item">
                         <div class="media">
                             <div class="media-left">
-                                <img src="img/icon/p-icon-4.png" alt="">
+                                <img src="../public/img/icon/p-icon-4.png" alt="">
                             </div>
                             <div class="media-body">
                                 <h4>Generación de Gráficas</h4>
@@ -188,7 +188,7 @@
                     <div class="p_item">
                         <div class="media">
                             <div class="media-left">
-                                <img src="img/icon/p-icon-5.png" alt="">
+                                <img src="../public/img/icon/p-icon-5.png" alt="">
                             </div>
                             <div class="media-body">
                                 <h4>Panel para Alumnos</h4>
@@ -199,7 +199,7 @@
                     <div class="p_item">
                         <div class="media">
                             <div class="media-left">
-                                <img src="img/icon/p-icon-6.png" alt="">
+                                <img src="../public/img/icon/p-icon-6.png" alt="">
                             </div>
                             <div class="media-body">
                                 <h4>Fácil de Usar</h4>
