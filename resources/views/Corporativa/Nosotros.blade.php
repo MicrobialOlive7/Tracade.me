@@ -13,79 +13,45 @@
      </section>
 
     <!--================End Discover Video Area =================-->
-    <!--================Powerful Area =================-->
-    <section class="powerfull_area" id="about">
-        <div class="row pawerfull_area_inner">
-            <div class="col-md-5">
-                <div class="power_left_img">
-                    <img src="img/power-ds-img.png" alt="">
-                </div>
-            </div>
-            <div class="col-md-7">
-                <div class="power_right_content">
-                    <div class="power_right_content_inner">
-                        <h3 class="single_title">¿Quiénes Somos?</h3>
-                        <p>I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. </p>
-                    </div>
-                </div>
+    <!--================Provide Feature Area =================-->
+    <section class="provide_feature_area" id="feature">
+        <div class="p_feature_img ">
+            <div class="col-md-6">
+                <img src="img/feature/ten-f-mobile.png" alt="" style= width:90%;>
             </div>
         </div>
-    </section>
-    <!--================End Powerful Area =================-->
+            <div class="col-md-6">
+                <h3 class="single_title text-center">¿Quiénes Somos?</h3>
+                <br>
+                <p>La propuesta de desarrollar el sistema surge de la idea de automatizar el proceso de registro de seguimiento de los alumnos en numerosas disciplinas, ya que en su mayoría, es realizado a lápiz y papel. </p>
+                <br>
+                <p>Es por esto que creamos Tracade.Me, una plataforma de seguimiento de habilidades en línea para educadores y estudiantes dentro de la industria.</p>
+                <br>
+                <p>Para rastrear con éxito el progreso de los estudiantes, debemos proporcionar lo siguiente: Una forma efectiva de rastrear habilidades, un método eficiente para comunicar comentarios y una forma simple de ver ese progreso respecto al tiempo. Este es nuestro enfoque principal a medida que continuamos construyendo nuestra plataforma.</p>
+        </div>
+
+        </section>
+    <!--================End Provide Feature Area =================-->
     <!--================Provide Feature Area =================-->
     <section class="provide_feature_area" id="feature">
         <div class="p_feature_left">
             <div class="p_f_left_content">
+                <div class="col-md-12">
                 <h3 class="single_title">Nuestra Misión</h3>
-                <p>I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. </p>
+                <p>Nuestra misión es finalmente brindar a los entrenadores, maestros e instructores una solución real al problema continuo del seguimiento del progreso de los estudiantes. Al proporcionar un foro para estudiantes e instructores para rastrear, comunicarse y ver el progreso, confiamos en que la retención y los resultados de los estudiantes aumentarán significativamente en todos los que participan en el proyecto.</p>
                 <br>
-                <div class="p_left_item_inner">
-                    <div class="p_item">
-                        <div class="media">
-                            <div class="media-left">
-                                <img src="img/icon/check-icon.png" alt="">
-                            </div>
-                            <div class="media-body">
-                                <h4>Perfect Dashboard</h4>
-                                <p>There's lot of hate out there for a text that amounts to little more than garbled words.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p_item">
-                        <div class="media">
-                            <div class="media-left">
-                                <img src="img/icon/check-icon.png" alt="">
-                            </div>
-                            <div class="media-body">
-                                <h4>SEO Marketing</h4>
-                                <p>There's lot of hate out there for a text that amounts to little more than garbled words.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p_item">
-                        <div class="media">
-                            <div class="media-left">
-                                <img src="img/icon/check-icon.png" alt="">
-                            </div>
-                            <div class="media-body">
-                                <h4>Unique Design</h4>
-                                <p>There's lot of hate out there for a text that amounts to little more than garbled words.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p_item">
-                        <div class="media">
-                            <div class="media-left">
-                                <img src="img/icon/check-icon.png" alt="">
-                            </div>
-                            <div class="media-body">
-                                <h4>Data Analytics</h4>
-                                <p>There's lot of hate out there for a text that amounts to little more than garbled words.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <p>Ya hemos comenzado, y esperamos que te unas a nosotros en el esfuerzo humano más importante, permitir a tus alumnos alcanzar su mayor potencial convirtiéndose en individuos exitosos a través de su propio mérito e individualidad.</p>
+                <br>
+                <ol class="fa-ul">
+                    <li><img src="../public/img/icon/star.png" alt=""></i></span>¡Tablas en línea completamente personalizables!</li>
+                    <li><img src="../public/img/icon/star.png" alt=""></i></span>¡Acceso completo para las estudiantes las 24 horas, los 7 días de la semana!</li>
+                    <li><img src="../public/img/icon/star.png" alt=""></i></span>¡Actualización en tiempo real!</li>
+                    <li><img src="../public/img/icon/star.png" alt=""></i></span>¡Sube tus fotos y videos personalizados!</li>
+                    <li><img src="../public/img/icon/star.png" alt=""></i></span>¡Almacena información de tus estudiantes!</li>
+                    <li><img src="../public/img/icon/star.png" alt=""></i></span>¡Mantén a tus estudiantes comprometidos con objetivos que pueden revisar diariamente!</li>
+                </ol>
             </div>
+        </div>
         </div>
         <div class="p_feature_right">
             <div class="p_feature_img">
@@ -100,52 +66,48 @@
     <section class="paper-section">
         <div class="container">
             <div class="inner-paper row">
-                <div class="col-lg-5 col-sm-12">
+                <div class="col-md-5">
                     <table class="pap-table">
                         <tbody ><tr class="pap-tit">
-                            <th>Paper Charting <i class="fa fa-file-text-o pap-ic" aria-hidden="true"></i></th>
+                            <th>Registro en Papel <i class="fa fa-file-text-o pap-ic" aria-hidden="true"></i></th>
                         </tr>
 
                         <tr>
-                            <td>To modify curriculum on a paper chart you have to purge the old charts</td>  <br>
+                            <td>El papel se pierde fácilmente, especialmente si se entrega al estudiante.</td>  <br>
                         </tr>
                         <tr>
-                            <td>Paper charts are easily misplaced and lost, especially if given to the student or family</td>
+                            <td>El papel se arruga y se rasga fácilmente, además se raya con marcas de borrado y errores.</td>
                         </tr>
                         <tr>
-                            <td>Paper charts are easily wrinkled, torn, with water damage from the water fountain or scuffed up by erase marks and mistakes</td>
+                            <td>Almacenar y archivar registros lleva mucho tiempo, requiere mucho trabajo y puede comprometer la privacidad de los estudiantes.</td>
                         </tr>
-                        <tr>
-                            <td>Storing and filing paper charts becomes time consuming, labor intensive, and can compromise student privacy if files are available to the members</td>
-                        </tr>
-                        </tbody></table>
+                        </tbody>
+                    </table>
                 </div>
 
-                <div class="col-lg-2 col-sm-12">
+                <div class="col-md-2">
                     <h4 class="vs-cp">Vs.</h4>
                 </div>
 
-                <div class="power_right_content_inner">
+                   <div class="col-md-5">
                     <table class="pap-table">
                         <tbody>
                         <tr class="pap-tit">
-                            <th>Online Charting <i class="fa fa-desktop pap-ic" aria-hidden="true"></i></th>
+                            <br>
+                            <th>Registro Electrónico <i class="fa fa-desktop pap-ic" aria-hidden="true"></i></th>
                         </tr>
                         <tr>
-                            <td>Modifying curriculum on an online chart is a click away, no starting over or erasing is necessary</td>
+                            <td>La modificación de un registro en línea está a un clic de distancia, no es necesario comenzar de nuevo ni borrar.</td>
                         </tr>
                         <tr>
-                            <td>Charts are securely stored in the cloud and will never be lost or breached</td>
+                            <td>Los gráficos se almacenan de forma segura en la nube y nunca se perderán.</td>
                         </tr>
                         <tr>
-                            <td>Online skill charts don’t get wrinkled, torn, water damage or scuffed up</td>
-                        </tr>
-                        <tr>
-                            <td>Online skill charts, save you time; no filing is necessary</td>
+                            <td>Las tablas de habilidades en línea no se arrugan, rasgan, dañan por agua ni se rayan</td>
                         </tr>
                         </tbody></table>
                 </div>
-
+            </div>
 
 
             </div>
