@@ -17,13 +17,29 @@
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input type="nombre" class="form-control" id="hab_nombre" placeholder="Nombre">
+                                <input type="nombre"
+                                @if($Mod=='1')
+                                 value="{{$Habilidad->hab_nombre}}"
+                                @else
+                                  value=""
+                                @endif
+                                class="form-control" id="hab_nombre" placeholder="Nombre">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <select type="ap" class="form-control" id="dis_id" >
-                                    <option value="" disabled selected>Disciplina</option>
+                                <select type="ap"
+                                  @if($Mod=='1')
+                                   value="{{$Habilidad->dis_id}}"
+                                  @else
+                                    value=""
+                                  @endif
+                                  class="form-control" id="dis_id" >
+                                    <option value="" disabled
+                                    @if($Mod=='0')
+                                     selected
+                                    @endif
+                                    >Disciplina</option>
                                     <option value="1" > Pole Fitness </option>
                                     <option value="2" > Telas Aereas </option>
                                 </select>
@@ -31,8 +47,18 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <select type="ap" class="form-control" id="hab_dificultad" >
-                                    <option value="" disabled selected>Dificultad</option>
+                                <select type="ap"
+                                @if($Mod=='1')
+                                 value="{{$Habilidad->hab_dificultad}}"
+                                @else
+                                  value=""
+                                @endif
+                                class="form-control" id="hab_dificultad" >
+                                    <option value="" disabled
+                                    @if($Mod=='0')
+                                    selected
+                                    @endif
+                                    >Dificultad</option>
                                     <option value="1" > Principiante </option>
                                     <option value="2" > Intermedio </option>
                                     <option value="3" > Avanzado </option>
@@ -50,16 +76,29 @@
                     <div class="row justify-content-md-start">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <textarea class="form-control" id="hab_descripcion" rows="3" placeholder="Descripción ..."></textarea>
+                                <textarea class="form-control" id="hab_descripcion" rows="3" placeholder="Descripción ..."> @if($Mod=='1')
+                                 {{$Habilidad->hab_descripcion}}
+                                @else
+
+                                @endif </textarea>
                             </div>
                         </div>
                         <!-- Inicia Seccion Habilidades requeridas -->
                         <div class="col-md-6">
                             <div class="form-group">
-                                <select type="ap" class="form-control" id="hab_id" >
-                                    <option value="" disabled selected>Habilidad Requerida</option>
+                                <select type="ap"
+                                @if($Mod=='1')
+                                 value="{{$Habilidad->hab_dificultad}}"
+                                @else
+                                  value=""
+                                @endif
+                                class="form-control" id="hab_id" >
+                                    <option value="" disabled
+                                    @if($Mod=='0')
+                                    selected
+                                    @endif >Habilidad Requerida</option>
                                     @foreach($Habilidades as $key => $value)
-                                    <option value="{{$value['hab_id']}}" > {{$value['hab_nombre']}} </option>
+                                    <option value="{{$value['hab_id']}}"> {{$value['hab_nombre']}} </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -169,23 +208,6 @@
 <script type="text/javascript">
 
 
-if({{$Mod=='1'}}){
-  var nombre = '{{$Habilidad[0]['hab_nombre']}}';
-  var disciplina = '{{$Habilidad[0]['dis_id']}}';
-  var dificultad = '{{$Habilidad[0]['hab_dificultad']}}';
-  var descripcion = '{{$Habilidad[0]['hab_descripcion']}}';
-  var habreq = '{{$HabReq[0]['hab_ant_id']}}';
-
-
-
-  $("#hab_nombre").val(nombre);
-  $("#dis_id").val(disciplina);
-  $("#hab_dificultad").val(dificultad);
-  $("#hab_descripcion").val(descripcion);
-  $("#hab_id").val(habreq);
-
-
-}
 
 $("#añadirHabilidad").click(function(){
 
