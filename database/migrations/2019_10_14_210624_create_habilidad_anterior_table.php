@@ -14,7 +14,8 @@ class CreateHabilidadAnteriorTable extends Migration
     public function up()
     {
         Schema::create('habilidad_anterior', function (Blueprint $table) {
-            $table->bigIncrements('han_id');
+            $table->bigIncrements('id');
+            $table->boolean('activo');
 
             $table->unsignedBigInteger('hab_id');
             $table->foreign('hab_id')->references('hab_id')->on('habilidad');

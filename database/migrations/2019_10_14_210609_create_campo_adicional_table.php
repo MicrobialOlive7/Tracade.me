@@ -14,7 +14,8 @@ class CreateCampoAdicionalTable extends Migration
     public function up()
     {
         Schema::create('campo_adicional', function (Blueprint $table) {
-            $table->bigIncrements('cad_id');
+            $table->bigIncrements('id');
+            $table->boolean('activo');
             $table->string('cad_nombre', 100);
             $table->string('cad_contenido', 255);
 

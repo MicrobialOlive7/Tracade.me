@@ -14,7 +14,8 @@ class CreateGrupoAlumnoTable extends Migration
     public function up()
     {
         Schema::create('grupo_alumno', function (Blueprint $table) {
-            $table->bigIncrements('gra_id');
+            $table->bigIncrements('id');
+            $table->boolean('activo');
 
             $table->unsignedBigInteger('gru_id');
             $table->foreign('gru_id')->references('gru_id')->on('grupo');

@@ -14,7 +14,8 @@ class CreateAulaTable extends Migration
     public function up()
     {
         Schema::create('aula', function (Blueprint $table) {
-            $table->bigIncrements('aul_id');
+            $table->bigIncrements('id');
+            $table->boolean('activo');
             $table->string('aul_salon', 50);
             $table->string('aul_edificio', 50);
             $table->string('aul_campus', 100);

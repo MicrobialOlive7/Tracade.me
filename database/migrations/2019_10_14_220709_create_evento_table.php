@@ -14,7 +14,8 @@ class CreateEventoTable extends Migration
     public function up()
     {
         Schema::create('evento', function (Blueprint $table) {
-            $table->bigIncrements('eve_id');
+            $table->bigIncrements('id');
+            $table->boolean('activo');
             $table->string('eve_nombre');
             $table->timestamp('eve_fecha');
             $table->string('eve_descripcion', 255);

@@ -14,7 +14,8 @@ class CreateEvaluacionTable extends Migration
     public function up()
     {
         Schema::create('evaluacion', function (Blueprint $table) {
-            $table->bigIncrements('eva_id');
+            $table->bigIncrements('id');
+            $table->boolean('activo');
             $table->string('eva_comentario', 255);
             $table->integer('eva_calificacion');
 
