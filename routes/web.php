@@ -50,51 +50,6 @@ Route::get('/Contacto', function (){
 /**
  * Instructor
  */
-<<<<<<< Updated upstream
 Route::get('/Alumnos', function (){
     return view('Instructor.alumnos');
 });
-=======
-
-    /** Alumnos **/
-    Route::get('/Alumnos', function (){
-        return view('Instructor.login');
-    });
-    Route::get('/AgregarAlumno', function (){
-        return view('Instructor.CrearModAlumno');
-    });
-    Route::get('/ModificarAlumno', function (){
-        return view('Instructor.CrearModAlumno');
-    });
-
-    /** Grupos **/
-    Route::get('/Grupos', 'Grupos\GruposController@index');
-
-    Route::get('/AgregarGrupos', function (){
-        return view('Instructor.CrearModGrupos', ['Grupo' => [],'Mod'=>'0']);
-    });
-    Route::get('/ModificarGrupos/{gru_id}', 'Grupos\GruposController@indexMod');
-    /*Route::get('/ModificarGrupos', function (){
-        return view('Instructor.CrearModGrupos');
-    });*/
-
-
-    /** Habilidades **/
-    Route::get('/Habilidades', 'Habilidades\HabilidadesController@index');
-    Route::get('/AgregarHabilidades', 'Habilidades\HabilidadesController@indexCrear');
-
-    Route::get('/ModificarHabilidades/{hab_id}', 'Habilidades\HabilidadesController@indexModificar');
-
-/** Calendario **/
-    Route::get('/Calendario', function (){
-            return view('Instructor.calendario');
-    });
-
-    Route::get('/AgregarEventos', function (){
-        return view('Instructor.CrearModEventos');
-    });
-
-    Route::get('/ModificarEventos', function (){
-        return view('Instructor.CrearModEventos');
-    });
->>>>>>> Stashed changes
