@@ -15,7 +15,7 @@ class CreateDisciplinaAlumnoTable extends Migration
     {
         Schema::create('disciplina_alumno', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->boolean('activo');
+            $table->softDeletes();
 
             $table->unsignedBigInteger('alu_id');
             $table->foreign('alu_id')->references('alu_id')->on('alumno');

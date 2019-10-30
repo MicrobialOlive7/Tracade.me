@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Alumno extends Authenticatable
 {
+    protected $dates = ['deleted_at'];
+
     protected $table = 'alumno';
     protected $primaryKey = 'alu_id';
 

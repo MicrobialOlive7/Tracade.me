@@ -15,7 +15,7 @@ class CreateGrupoTable extends Migration
     {
         Schema::create('grupo', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->boolean('activo');
+            $table->softDeletes();
             $table->string('gru_nombre', 100);
             $table->string('gru_horario', 100);
 

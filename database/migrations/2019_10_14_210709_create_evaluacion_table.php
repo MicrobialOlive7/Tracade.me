@@ -15,7 +15,7 @@ class CreateEvaluacionTable extends Migration
     {
         Schema::create('evaluacion', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->boolean('activo');
+            $table->softDeletes();
             $table->string('eva_comentario', 255);
             $table->integer('eva_calificacion');
 

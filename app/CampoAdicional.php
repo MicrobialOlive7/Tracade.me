@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class CampoAdicional extends Model
 {
+    protected $dates = ['deleted_at'];
+
     protected $table = 'campo_adicional';
 
     protected $fillable = [

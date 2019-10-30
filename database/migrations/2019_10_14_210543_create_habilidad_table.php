@@ -15,7 +15,7 @@ class CreateHabilidadTable extends Migration
     {
         Schema::create('habilidad', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->boolean('activo');
+            $table->softDeletes();
             $table->string('hab_nombre', 100);
             /* usar select con valores predeterminados con dificultad en string (facil, dificl, etc) */
             $table->string('hab_dificultad', 50);

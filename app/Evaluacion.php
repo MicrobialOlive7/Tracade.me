@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Evaluacion extends Model
 {
+    protected $dates = ['deleted_at'];
+
     protected $table = 'evaluacion';
 
     protected $fillable = [

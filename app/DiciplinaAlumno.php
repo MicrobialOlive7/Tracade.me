@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class DiciplinaAlumno extends Model
 {
+    protected $dates = ['deleted_at'];
+
     protected $table = 'disciplina_alumno';
 
     protected $fillable = [

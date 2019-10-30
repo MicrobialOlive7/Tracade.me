@@ -15,7 +15,7 @@ class CreateVariacionTable extends Migration
     {
         Schema::create('variacion', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->boolean('activo');
+            $table->softDeletes();
 
             $table->unsignedBigInteger('hab_id');
             $table->foreign('hab_id')->references('hab_id')->on('habilidad');

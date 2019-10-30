@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Grupo extends Model
 {
+    protected $dates = ['deleted_at'];
+
     protected $table = 'grupo';
 
     protected $fillable = [

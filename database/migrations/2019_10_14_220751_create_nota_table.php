@@ -15,7 +15,7 @@ class CreateNotaTable extends Migration
     {
         Schema::create('nota', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->boolean('activo');
+            $table->softDeletes();3
             $table->string('not_nota', 255);
 
             $table->unsignedBigInteger('hab_id');

@@ -15,7 +15,7 @@ class CreateEventoTable extends Migration
     {
         Schema::create('evento', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->boolean('activo');
+            $table->softDeletes();
             $table->string('eve_nombre');
             $table->timestamp('eve_fecha');
             $table->string('eve_descripcion', 255);
