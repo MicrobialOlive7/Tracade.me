@@ -18,10 +18,10 @@ class CreateHabilidadAnteriorTable extends Migration
             $table->softDeletes();
 
             $table->unsignedBigInteger('hab_id');
-            $table->foreign('hab_id')->references('hab_id')->on('habilidad');
+            $table->foreign('hab_id')->references('id')->on('habilidad');
 
             $table->unsignedBigInteger('hab_ant_id');
-            $table->foreign('hab_ant_id')->references('hab_id')->on('habilidad');
+            $table->foreign('hab_ant_id')->references('id')->on('habilidad');
 
             $table->timestamps();
         });

@@ -20,10 +20,10 @@ class CreateEvaluacionTable extends Migration
             $table->integer('eva_calificacion');
 
             $table->unsignedBigInteger('hab_id');
-            $table->foreign('hab_id')->references('hab_id')->on('habilidad');
+            $table->foreign('hab_id')->references('id')->on('habilidad');
 
             $table->unsignedBigInteger('alu_id');
-            $table->foreign('alu_id')->references('alu_id')->on('alumno');
+            $table->foreign('alu_id')->references('id')->on('alumno');
 
             $table->timestamps();
         });

@@ -20,7 +20,7 @@ class CreateCampoAdicionalTable extends Migration
             $table->string('cad_contenido', 255);
 
             $table->unsignedBigInteger('hab_id');
-            $table->foreign('hab_id')->references('hab_id')->on('habilidad');
+            $table->foreign('hab_id')->references('id')->on('habilidad');
 
             $table->timestamps();
         });

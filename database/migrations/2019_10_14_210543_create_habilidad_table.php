@@ -22,7 +22,7 @@ class CreateHabilidadTable extends Migration
             $table->string('hab_descripcion', 255);
 
             $table->unsignedBigInteger('dis_id');
-            $table->foreign('dis_id')->references('dis_id')->on('disciplina');
+            $table->foreign('dis_id')->references('id')->on('disciplina');
 
             $table->timestamps();
         });

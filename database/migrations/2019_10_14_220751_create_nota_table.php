@@ -15,14 +15,14 @@ class CreateNotaTable extends Migration
     {
         Schema::create('nota', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->softDeletes();3
+            $table->softDeletes();
             $table->string('not_nota', 255);
 
             $table->unsignedBigInteger('hab_id');
-            $table->foreign('hab_id')->references('hab_id')->on('habilidad');
+            $table->foreign('hab_id')->references('id')->on('habilidad');
 
             $table->unsignedBigInteger('alu_id');
-            $table->foreign('alu_id')->references('alu_id')->on('alumno');
+            $table->foreign('alu_id')->references('id')->on('alumno');
 
             $table->timestamps();
         });

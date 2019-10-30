@@ -20,10 +20,10 @@ class CreateGrupoTable extends Migration
             $table->string('gru_horario', 100);
 
             $table->unsignedBigInteger('dis_id');
-            $table->foreign('dis_id')->references('dis_id')->on('disciplina');
+            $table->foreign('dis_id')->references('id')->on('disciplina');
 
             $table->unsignedBigInteger('aul_id');
-            $table->foreign('aul_id')->references('aul_id')->on('aula');
+            $table->foreign('aul_id')->references('id')->on('aula');
 
             $table->timestamps();
         });

@@ -18,10 +18,10 @@ class CreateDisciplinaAlumnoTable extends Migration
             $table->softDeletes();
 
             $table->unsignedBigInteger('alu_id');
-            $table->foreign('alu_id')->references('alu_id')->on('alumno');
+            $table->foreign('alu_id')->references('id')->on('alumno');
 
             $table->unsignedBigInteger('dis_id');
-            $table->foreign('dis_id')->references('dis_id')->on('disciplina');
+            $table->foreign('dis_id')->references('id')->on('disciplina');
 
             $table->timestamps();
         });
