@@ -39,10 +39,7 @@ class AlumnoController extends Controller
     }
 
     public function delete($id){
-        $des = DisciplinaAlumno::all()->where('alu_id', $id);
-        foreach ($des as $d){
-            $d->delete();
-        }
+
 
         Alumno::all()->find($id)->delete();
         return redirect()->route('alumnos');

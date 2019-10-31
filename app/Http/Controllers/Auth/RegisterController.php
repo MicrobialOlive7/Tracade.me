@@ -71,16 +71,16 @@ class RegisterController extends Controller
         $alumno = Alumno::create([
             'alu_nombre' => $data['name'],
             'email' => $data['email'],
-            'alu_apellido_paterno' => $data['alu_apellido_paterno'],
-            'alu_apellido_materno' => $data['alu_apellido_materno'],
-            'alu_fecha_nacimiento' => $data['alu_fecha_nacimiento'],
+            'alu_apellido_paterno' => $data['ap_pat'],
+            'alu_apellido_materno' => $data['ap_mat'],
+            'alu_fecha_nacimiento' => $data['fecha'],
             'alu_biografia' => "",
             'password' => Hash::make($data['password']),
         ]);
 
         $dis_alu = DiciplinaAlumno::create([
             'alu_id' => $alumno->alu_id,
-            'dis_id' => $data['disciplina']
+            'dis_id' => 1
         ]);
 
         return $alumno;
