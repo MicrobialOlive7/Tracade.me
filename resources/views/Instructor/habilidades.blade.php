@@ -1,4 +1,5 @@
 @extends('Instructor.templates.master')
+@extends('layouts.modal')
 @section('content')
     <!-- Header -->
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8"> </div>
@@ -52,7 +53,7 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                             <a class="dropdown-item" href="{{ url('ModificarHabilidades/'. $value['hab_id']) }}">Modificar</a>
-                                            <a class="dropdown-item" href="{{ url('') }}">Eliminar</a>
+                                            <a class="dropdown-item" href="#" onclick="eliminarHabilidad('{{$value['hab_nombre']}}','{{$value['hab_id']}}')" >Eliminar</a>
                                         </div>
                                     </div>
                                 </td>
@@ -93,4 +94,59 @@
         </div>
     </div>
     <!-- End of Table -->
+@endsection
+
+@section('js_content')
+
+
+<script type="text/javascript">
+
+function  eliminarHabilidad(hab_nombre, hab_id){
+
+  $("#delete_modal").modal().find('.modal-title').text('Eliminar habilidad');
+  $("#delete_modal").modal().find('.message-text').empty();
+  $("#delete_modal").modal().find('.message-text').append('¿Estás seguro de eliminar la habilidad ' + hab_nombre + '?');
+  $("#delete_modal").modal().find('#borrar').val(hab_id);
+}
+
+$("#borrar").click(function(){
+    var hab_id = $("#borrar").val();
+
+    var aDatos={
+      'hab_id' : hab_id
+    };
+
+    $.ajax({
+          headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+          type: "POST",
+          url: "{{ asset ('api/borrar-habilidad') }}",
+          data: aDatos,
+          cache: false,
+          dataType: "json",
+          beforeSend: function (){
+            //modal.preloader();
+          },
+          success: function (result) {
+            //modal.close("-preloader");
+            console.log(result.estatus===1);
+            if(result.estatus === 1){
+              console.log("Sacar modal y pasar a grupos");
+              window.location.href = "{{ asset('/Habilidades') }}";
+
+            }else{
+              console.log("Sacar modal error y pasar a grupos")
+              window.location.href = "{{ asset('/Habilidades') }}";
+            }
+          },
+          complete: function () {
+          },
+          error: function (result) {
+            console.log("errorsin");
+          }
+        });
+
+
+  });
+</script>
+
 @endsection

@@ -19,8 +19,16 @@ class GruposController extends Controller
 
     public function indexMod($gru_id){
 
-      $GrupoInfo = Grupo::where('gru_id', $gru_id)->get();
-      return view('Instructor.CrearModGrupos', [ 'Grupo' => $GrupoInfo, 'Mod'=>'1']);
+      $GrupoInfo = Grupo::where('gru_id', $gru_id)->get()->toArray();
+      $horario = explode(' ',$GrupoInfo[0]['gru_horario']);
+      $dia= $horario[0];
+      $hora_de = explode(':',$horario[1])[0];
+      $min_de = explode(':',$horario[1])[1];
+      $hora_a = explode(':',$horario[3])[0];
+      $min_a = explode(':',$horario[3])[1];
+
+
+      return view('Instructor.CrearModGrupos', [ 'Grupo' => $GrupoInfo[0], 'Mod'=>'1', 'Horario' => [$dia, $hora_de, $min_de, $hora_a, $min_a] ]);
     }
 
     public function delete(Request $request){

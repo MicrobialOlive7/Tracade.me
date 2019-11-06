@@ -23,7 +23,14 @@
                                 @else
                                   value=""
                                 @endif
-                                class="form-control" id="hab_nombre" placeholder="Nombre">
+
+                                class="form-control " id="hab_nombre"
+
+                               @if($Mod=='1')
+                                data-id= "{{$Habilidad->hab_id}}" data-id_cad= "{{$CamposAd[0]['cad_id']}}" data-id-han="{{$HabReq}}"
+                              @else
+                                data-id = ''
+                              @endif placeholder="Nombre">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -41,7 +48,7 @@
                                     @endif
                                     >Disciplina</option>
                                     <option value="1" > Pole Fitness </option>
-                                    <option value="2" > Telas Aereas </option>
+                                    <option value="3" > Telas Aereas </option>
                                 </select>
                             </div>
                         </div>
@@ -88,7 +95,7 @@
                             <div class="form-group">
                                 <select type="ap"
                                 @if($Mod=='1')
-                                 value="{{$Habilidad->hab_dificultad}}"
+                                 value="{{$HabReq}}"
                                 @else
                                   value=""
                                 @endif
@@ -131,15 +138,16 @@
                                   </div>
                                   </div>
                   @endforeach
+
                   @endif
                 </div>
                 <!-- Termina contariner de campos adicionales -->
                 <!-- Boton para añadir campos adicionales -->
-                <div class="container row">
+                <div class="container row" id="remove">
                   <div class="col-md-12 text-left">
 
                       <span class="btn-inner--icon">
-                          <a class="btn btn-icon btn-2 btn-outline-info btn-LG" id="añadirHabilidad" role="button" title="AnadirCampo" >
+                          <a class="btn btn-icon btn-2 btn-outline-info btn-LG" id="añadirHabilidad"role="button" title="AnadirCampo" >
                               <i class="ni ni-fat-add" ></i>
                           </a>
                       </span>
@@ -152,23 +160,18 @@
                 </div>
                 <!-- Termianr botón para añadir campos adicionales -->
 
-
+            @if($Mod==0)
                 <div class="container">
                     <div class="row justify-content-md-start">
-                        <div class="col-xl-1">
-                            <span class="btn-inner--icon">
-                                <a class="btn btn-icon btn-2 btn-outline-info btn-LG" role="button" title="AnadirFoto" href="">
-                                    <i class="ni ni-fat-add" ></i>
-                                </a>
-                            </span>
-                        </div>
                         <div class="col">
                             <div class="form-group">
-                                <input type="file" name="image" id="image" accept="image/*">
+                                <input id="hab_imagen" type="file" name="pic" accept="image/*">
+
                             </div>
                         </div>
                     </div>
                 </div>
+            @endif
 
                 <!-- Inician Botones de Guardado -->
                 <div class="container">
@@ -207,7 +210,7 @@
 
 <script type="text/javascript">
 
-
+var campos=0;
 
 $("#añadirHabilidad").click(function(){
 
@@ -220,13 +223,95 @@ $("#añadirHabilidad").click(function(){
                     '</div>'+
                     '<div class="col-md-4">'+
                         '<div class="form-group">'+
-                            '<input type="nombre" class="form-control" id=cad_contenido" placeholder="Contenido campo">'+
+                            '<input type="nombre" class="form-control" id="cad_contenido" placeholder="Contenido campo">'+
                         '</div>'+
                     '</div>'+
                   '</div>'+
                   '</div>';
   $("#campos_adicionales").append(campo_adicional);
+  $("#remove").remove();
+
+  campos=1;
 });
+
+$("#btn-modificarHabilidad").click(function(){
+  var gru_id= document.getElementById("hab_nombre").dataset.id;
+
+
+  var hab_nombre = $('#hab_nombre').val();
+  var dis_id = $('#dis_id').val();
+  var hab_dificultad =  $('#hab_dificultad').val();
+  var hab_descripcion =  $('#hab_descripcion').val();
+  var han_id_habilidad_anterior = $('#hab_id').val();
+  var hab_imagen = document.getElementById("hab_imagen");
+  var han_id = document.getElementById("hab_nombre").dataset.id_han;
+  var cad_id = document.getElementById("habnombre").dataset.id_cad;
+  if ($('#cad_nombre').length){
+    var cad_nombre =  $('#cad_nombre').val();
+    var cad_contenido =  $('#cad_contenido').val();
+  }else {
+    var cad_nombre =  '';
+    var cad_contenido =  '';
+  }
+
+  if(hab_nombre=="" || dis_id=='' || hab_dificultad =='' || hab_descripcion == '' || han_id_habilidad_anterior == ''  || hab_imagen==''  ){
+
+    $("#warning_modal").modal().find('.modal-title').text('Error de registro.');
+    $("#warning_modal").modal().find('.message-text').empty();
+    $("#warning_modal").modal().find('.message-text').append('Todos los datos deben ser rellenados');
+
+    return false;
+  }
+
+
+    var aDatos = new FormData();
+    aDatos.append('hab_id' , hab_id);
+    aDatos.append('hab_nombre' , hab_nombre);
+    aDatos.append('dis_id' , dis_id);
+    aDatos.append('hab_dificultad' , hab_dificultad);
+    aDatos.append('hab_descripcion' , hab_descripcion);
+    aDatos.append('han_id_habilidad_anterior' , han_id_habilidad_anterior);
+    aDatos.append('cad_nombre' , cad_nombre);
+    aDatos.append('cad_contenido' , cad_contenido);
+    aDatos.append('hab_imagen' , hab_imagen);
+    aDatos.append('cad_id' , cad_id);
+    aDatos.append('han_id' , han_id);
+
+    $.ajax({
+      async: true,
+      headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+      type: "POST",
+      url: "{{ asset ('api/modificar-habilidad') }}",
+      data: aDatos,
+      contentType: false,
+      processData: false,
+      cache: false,
+      dataType: "json",
+          beforeSend: function (){
+            //modal.preloader();
+          },
+          success: function (result) {
+            //modal.close("-preloader");
+            console.log(result.estatus===1);
+            if(result.estatus === 1){
+              console.log("Sacar modal y pasar a habilidades");
+              window.location.href = "{{ asset('/Habilidades') }}";
+
+            }else{
+              console.log("Sacar modal error y pasar a grupos")
+              window.location.href = "{{ asset('/Habilidades') }}";
+            }
+          },
+          complete: function () {
+          },
+          error: function (result) {
+            console.log("errorsin");
+          }
+        });
+});
+
+
+
 
 $("#btn-agregarHabilidad").click(function(){
   var hab_nombre = $('#hab_nombre').val();
@@ -234,34 +319,47 @@ $("#btn-agregarHabilidad").click(function(){
   var hab_dificultad =  $('#hab_dificultad').val();
   var hab_descripcion =  $('#hab_descripcion').val();
   var han_id_habilidad_anterior = $('#hab_id').val();
-  var image = $('#image').val();
-  var campos = [];
+  var hab_imagen = document.getElementById("hab_imagen");
+  if (campos == 1){
+    var cad_nombre =  $('#cad_nombre').val();
+    var cad_contenido =  $('#cad_contenido').val();
+  }else {
+    var cad_nombre =  '';
+    var cad_contenido =  '';
+  }
 
-  $('#campos_adicionales').children().each(function(){
-    var campo = [];
-    $(this).find('input').each(function(){
-      campo.push($(this).val());
-    });
-    campos.push(campo);
-  });
+  hab_imagen = hab_imagen.files[0];
 
-  var aDatos = {
-    'hab_nombre' : hab_nombre,
-    'dis_id' : dis_id ,
-    'hab_dificultad' :  hab_dificultad,
-    'hab_descripcion' :  hab_descripcion,
-    'han_id_habilidad_anterior' : han_id_habilidad_anterior,
-    'campos' : campos,
-      'image' : image
-  };
+  if(hab_nombre==="" || dis_id=='' || hab_dificultad =='' || hab_descripcion == '' || han_id_habilidad_anterior == ''  || hab_imagen==''  ){
+
+    $("#warning_modal").modal().find('.modal-title').text('Error de registro.');
+    $("#warning_modal").modal().find('.message-text').empty();
+    $("#warning_modal").modal().find('.message-text').append('Todos los datos deben ser rellenados');
+
+    return false;
+  }
+
+
+  var aDatos = new FormData();
+  aDatos.append('hab_nombre' , hab_nombre);
+  aDatos.append('dis_id' , dis_id);
+  aDatos.append('hab_dificultad' , hab_dificultad);
+  aDatos.append('hab_descripcion' , hab_descripcion);
+  aDatos.append('han_id_habilidad_anterior' , han_id_habilidad_anterior);
+  aDatos.append('cad_nombre' , cad_nombre);
+  aDatos.append('cad_contenido' , cad_contenido);
+  aDatos.append('hab_imagen' , hab_imagen);
 
   $.ajax({
-        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-        type: "POST",
-        url: "{{ asset ('api/crear-habilidad') }}",
-        data: aDatos,
-        cache: false,
-        dataType: "json",
+    async: true,
+    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+    type: "POST",
+    url: "{{ asset ('api/crear-habilidad') }}",
+    data: aDatos,
+    contentType: false,
+    processData: false,
+    cache: false,
+    dataType: "json",
         beforeSend: function (){
           //modal.preloader();
         },
