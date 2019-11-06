@@ -79,8 +79,8 @@ class RegisterController extends Controller
         ]);
 
         $dis_alu = DiciplinaAlumno::create([
-            'alu_id' => $alumno->alu_id,
-            'dis_id' => 1
+            'alu_id' => $alumno->id,
+            'dis_id' => $data['disciplina']
         ]);
 
         return $alumno;

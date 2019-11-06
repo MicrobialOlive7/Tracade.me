@@ -39,8 +39,6 @@ class AlumnoController extends Controller
     }
 
     public function delete($id){
-
-
         Alumno::all()->find($id)->delete();
         return redirect()->route('alumnos');
     }

@@ -54,10 +54,10 @@ Route::get('/Precios', function (){
 
     /** Alumnos **/
     Route::get('/Alumnos', 'AlumnoController@show')->name('alumnos');
-    Route::get('/AgregarAlumno', function (){
+    /*Route::get('/AgregarAlumno', function (){
         return view('Instructor.CrearModAlumno');
-    });
-
+    });*/
+    //Route::get('/AgregarAlumno', 'Aut');
 
     Route::get('/ModificarAlumno/{id}', 'AlumnoController@showUpdate')->name('modificar-alumno-vista');
     Route::post('modificar-alumno/{id}', 'AlumnoController@update')->name('modificar-alumno');

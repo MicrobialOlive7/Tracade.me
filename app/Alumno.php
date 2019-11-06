@@ -3,14 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Alumno extends Authenticatable
 {
+    use SoftDeletes;
     protected $dates = ['deleted_at'];
 
     protected $table = 'alumno';
-    protected $primaryKey = 'alu_id';
+
 
     /**
      * The attributes that are mass assignable.
