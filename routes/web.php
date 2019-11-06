@@ -40,6 +40,10 @@ Route::get('/Precios', function (){
     return view('Corporativa.Precios');
 });
 
+Route::get('/Contacto', function (){
+    return view('Corporativa.Contacto');
+});
+
 /**
  * Alumnos
  */
@@ -47,17 +51,23 @@ Route::get('/Precios', function (){
 /**
  * Instructor
  */
+    Route::get('tmp-pago', function (){
+        return view('instructor.TMP-pago');
+    })->name('tmp-pago');
+
 
     /** Alumnos **/
-    Route::get('/Alumnos', function (){
-        return view('Instructor.alumnos');
-    });
+    Route::get('/Alumnos', 'AlumnoController@show')->name('alumnos');
     Route::get('/AgregarAlumno', function (){
         return view('Instructor.CrearModAlumno');
     });
-    Route::get('/ModificarAlumno', function (){
-        return view('Instructor.CrearModAlumno');
-    });
+
+
+    Route::get('/ModificarAlumno/{id}', 'AlumnoController@showUpdate')->name('modificar-alumno-vista');
+    Route::post('modificar-alumno/{id}', 'AlumnoController@update')->name('modificar-alumno');
+
+
+    Route::get('eliminar-alumno/{id}', 'AlumnoController@delete')->name('eliminar-alumno');
 
     /** Grupos **/
     Route::get('/Grupos', 'Grupos\GruposController@index');
@@ -89,3 +99,8 @@ Route::get('/Precios', function (){
     Route::get('/ModificarEventos', function (){
         return view('Instructor.CrearModEventos');
     });
+
+    Route::post('crear-evento', 'EventoController@create')->name('crear-evento');
+    Route::post('modificar-evento/{id}', 'EventoController@update')->name('modificar-evento');
+    Route::post('eliminar-evento/{id}', 'EventoController@delete')->name('eliminar-evento');
+

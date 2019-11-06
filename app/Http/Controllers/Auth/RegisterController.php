@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Alumno;
+use App\DiciplinaAlumno;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -67,7 +68,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-        return Alumno::create([
+        $alumno = Alumno::create([
             'alu_nombre' => $data['name'],
             'email' => $data['email'],
             'alu_apellido_paterno' => $data['alu_apellido_paterno'],
@@ -76,5 +77,12 @@ class RegisterController extends Controller
             'alu_biografia' => "",
             'password' => Hash::make($data['password']),
         ]);
+
+        $dis_alu = DiciplinaAlumno::create([
+            'alu_id' => $alumno->alu_id,
+            'dis_id' => $data['disciplina']
+        ]);
+
+        return $alumno;
     }
 }

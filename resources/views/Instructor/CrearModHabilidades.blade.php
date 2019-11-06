@@ -166,6 +166,7 @@
                         <div class="col">
                             <div class="form-group">
                                 <input id="hab_imagen" type="file" name="pic" accept="image/*">
+
                             </div>
                         </div>
                     </div>
@@ -348,8 +349,6 @@ $("#btn-agregarHabilidad").click(function(){
   aDatos.append('cad_nombre' , cad_nombre);
   aDatos.append('cad_contenido' , cad_contenido);
   aDatos.append('hab_imagen' , hab_imagen);
-
-
 
   $.ajax({
     async: true,

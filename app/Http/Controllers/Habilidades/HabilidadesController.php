@@ -8,6 +8,7 @@ use App\CampoAdicional;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class HabilidadesController extends Controller
 {
@@ -163,6 +164,25 @@ class HabilidadesController extends Controller
         ];
 
 
+            $HabilidadAnterior = new HabilidadAnterior([
+                'hab_id' => $Habilidad->id,
+                'hab_ant_id' => $han_id_habilidad_anterior
+            ]);
+            $HabilidadAnterior -> save();
+
+            $this->storeImage($request, $Habilidad->id);
+
+            if($campos!=null){
+                foreach($campos as $key => $values){
+                    $CampoAdicional = new CampoAdicional([
+                        'cad_nombre' => $values[0],
+                        'cad_contenido' => $values[1],
+                        'hab_id' => $Habilidad->id
+                    ]);
+                    $CampoAdicional -> save();
+                }
+            }
+
       }catch(Exception $e){
         $Response= [
             'resultado' => [$HabilidadAnterior,$Habilidad],
@@ -175,4 +195,5 @@ class HabilidadesController extends Controller
      return $Response;
 
     }
+
 }

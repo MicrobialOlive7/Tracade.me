@@ -70,7 +70,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                             </div>
-                                            <input class="form-control datepicker" id="alu_fecha_nacimiento" name="alu_fecha_nacimiento" placeholder="Seleccionar Fecha" type="text" value="Fecha de Nacimiento" required>
+                                            <input class="form-control datepicker" id="alu_fecha_nacimiento" name="alu_fecha_nacimiento" placeholder="Fecha de Nacimiento" type="text" required>
                                         </div>
                                     </div>
                                 </div>
