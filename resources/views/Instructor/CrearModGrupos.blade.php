@@ -17,14 +17,27 @@
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input type="nombre" class="form-control" id="gru_nombre" placeholder="Nombre">
+                                <input type="nombre" class="form-control" id="gru_nombre" @if($Mod=='1')
+                                 value="{{$Grupo['gru_nombre']}}"
+                                @else
+                                  value=""
+                                @endif
+                                placeholder="Nombre">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <div class="input-group md-4">
-                                    <select type="ap" class="form-control" id="gru_dia" >
-                                        <option value="" disabled selected>Día</option>
+                                    <select type="ap"
+                                    @if($Mod=='1')
+                                     value="{{$Horario[0]}}"
+                                    @else
+                                      value=""
+                                    @endif
+                                     class="form-control" id="gru_dia" >
+                                        <option value="" disabled                                     @if($Mod=='0')
+                                                                             selected
+                                                                            @endif >Día</option>
                                         <option value="Lunes"> Lunes </option>
                                         <option value="Martes"> Martes </option>
                                         <option value="Miercoles"> Miércoles </option>
@@ -38,8 +51,16 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <div class="input-group md-4">
-                                    <select type="ap" class="form-control" id="id_disciplina" >
-                                        <option value="" disabled selected>Disciplina</option>
+                                    <select type="ap"
+                                    @if($Mod=='1')
+                                     value="{{$Grupo['dis_id']}}"
+                                    @else
+                                      value=""
+                                    @endif
+                                    class="form-control" id="id_disciplina" >
+                                        <option value="" disabled                                     @if($Mod=='0')
+                                                                             selected
+                                                                            @endif >Disciplina</option>
                                         <option value="1"> Telas Aéreas </option>
                                         <option value="2"> Pole </option>
                                     </select>
@@ -63,8 +84,16 @@
                       <div class="col-md-5">
                           <div class="form-group">
                               <div class="input-group md-4">
-                                  <select type="ap" class="form-control" id="id_aula" >
-                                      <option value="" disabled selected>Aula</option>
+                                  <select type="ap"
+                                  @if($Mod=='1')
+                                   value="{{$Grupo['aul_id']}}"
+                                  @else
+                                    value=""
+                                  @endif
+                                  class="form-control" id="id_aula" >
+                                      <option value="" disabled                                     @if($Mod=='0')
+                                                                           selected
+                                                                          @endif >Aula</option>
                                       <option value="1"> Aula01 </option>
                                       <option value="2"> Aula02 </option>
                                   </select>
@@ -74,8 +103,16 @@
 
 
                         <div class="col-auto">
-                            <select type="ap" class="form-control" id="gru_hora_de" >
-                                <option value="" disabled selected>Hora</option>
+                            <select type="ap" class="form-control"
+                             @if($Mod=='1')
+                               value="{{$Horario[1]}}"
+                              @else
+                                value=""
+                              @endif
+                              id="gru_hora_de" >
+                                <option value="" disabled                                     @if($Mod=='0')
+                                                                     selected
+                                                                    @endif>Hora</option>
                                 <option value="1" > 01 </option>
                                 <option value="2" > 02 </option>
                                 <option value="3" > 03 </option>
@@ -94,11 +131,21 @@
                         <div class="col-xs-1">:</div>
 
                         <div class="col-auto">
-                            <input class="form-control" id="gru_minutos_de" placeholder="Min" type="number" max="59" min="00">
+                            <input                              @if($Mod=='1')
+                                                           value="{{$Horario[2]}}"
+                                                          @else
+                                                            value=""
+                                                          @endif  class="form-control" id="gru_minutos_de" placeholder="Min" type="number" max="59" min="00">
                         </div>
                         <div class="col-auto">
-                            <select type="ap" class="form-control" id="gru_hora_a" >
-                                <option value="" disabled selected>Hora</option>
+                            <select type="ap" class="form-control"                              @if($Mod=='1')
+                                                           value="{{$Horario[3]}}"
+                                                          @else
+                                                            value=""
+                                                          @endif id="gru_hora_a" >
+                                <option value="" disabled                                     @if($Mod=='0')
+                                                                     selected
+                                                                    @endif>Hora</option>
                                 <option value="1" > 01 </option>
                                 <option value="2" > 02 </option>
                                 <option value="3" > 03 </option>
@@ -117,7 +164,11 @@
                         <div class="col-xs-1">:</div>
 
                         <div class="col-auto">
-                            <input class="form-control" placeholder="Min" id="gru_minutos_a" type="number" max="59" min="00">
+                            <input class="form-control"                              @if($Mod=='1')
+                                                           value="{{$Horario[4]}}"
+                                                          @else
+                                                            value=""
+                                                          @endif placeholder="Min" id="gru_minutos_a" type="number" max="59" min="00">
                         </div>
                     </div>
                 </div>
@@ -158,33 +209,12 @@
 
 <script type="text/javascript">
 
-if({{$Mod==1}}){
-  var nombre = '{{$Grupo[0]['gru_nombre']}}';
-  var dia='{{$Grupo[0]['gru_horario']}}'.split(' ')[0];
-  var hora_de='{{$Grupo[0]['gru_horario']}}'.split(' ')[1].split(':')[0];
-  var minutos_de='{{$Grupo[0]['gru_horario']}}'.split(' ')[1].split(':')[1];
-  var hora_a='{{$Grupo[0]['gru_horario']}}'.split(' ')[3].split(':')[0];
-  var minutos_a='{{$Grupo[0]['gru_horario']}}'.split(' ')[3].split(':')[1];
-  var disciplina = '{{$Grupo[0]['dis_id']}}';
-  var aula= '{{$Grupo[0]['aul_id']}}';
-
-  $("#gru_nombre").val(nombre);
-  $("#gru_dia").val(dia);
-  $("#id_disciplina").val(disciplina);
-  $("#id_aula").val(aula);
-  $("#gru_hora_de").val(hora_de);
-  $("#gru_minutos_de").val(minutos_de);
-  $("#gru_hora_a").val(hora_a);
-  $("#gru_minutos_a").val(minutos_a);
-
-}
-
 $("#btn-modificarGrupo").click(function(){
   var gru_nombre = $("#gru_nombre").val().trim();
   var gru_horario = $("#gru_dia").val() + ' ' + $("#gru_hora_de").val()  + ':' +  $("#gru_minutos_de").val() + ' - ' + $("#gru_hora_a").val() + ':' + $("#gru_minutos_a").val();
   var dis_id = $("#id_disciplina").val();
   var aul_id = $("#id_aula").val();
-  var gru_id='{{$Grupo[0]['gru_id']}}';
+  var gru_id='';
 
   var aDatos = {
   'gru_id': gru_id,
