@@ -49,16 +49,16 @@
                                     <span class="sr-only">Menu</span>
                                     <i class="ti-menu"></i>
                                 </button><!-- /.navbar-toggle collapsed -->
-                                <a class="navbar-brand text-uppercase" href="#"><img src="../public/img/logo/logo.png" alt="logo"></a>
+                                <a class="navbar-brand text-uppercase" href="{{ url('') }}"><img src="../public/img/logo/logo.png" alt="logo"></a>
                             </div><!-- /.navbar-header -->
 
                             <!-- Collect the nav links, forms, and other content for toggling -->
                             <nav class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                                 <ul id="main-nav" class="nav navbar-nav">
-                                    <li><a href="#about">Nosotros</a></li>
-                                    <li><a href="#pricing">Precios</a></li>
-                                    <li><a href="#contact">Contacto</a></li>
-                                    <li><a href="#login">Iniciar Sesión</a></li>
+                                    <li><a href="{{ url('Nosotros') }}">Nosotros</a></li>
+                                    <li><a href="{{ url('Precios') }}">Precios</a></li>
+                                    <li><a href="{{ url('Contacto') }}">Contacto</a></li>
+                                    <li><a href="{{ url('login') }}">Iniciar Sesión</a></li>
                                 </ul><!-- /#main-nav -->
                             </nav><!-- /.navbar-collapse -->
                         </div><!-- /.container-fluid -->

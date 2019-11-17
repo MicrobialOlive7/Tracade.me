@@ -52,7 +52,6 @@ body {
 	color: #757575;
 	font-family: 'Merriweather Sans', sans-serif;
 	-webkit-font-smoothing: antialiased;
-
 }
 
 .ul-li ul {
@@ -68,6 +67,7 @@ body {
 }
 section {
 	overflow: hidden;
+	padding-left: 10px;
 }
 img {
 	max-width: 100%;
@@ -96,7 +96,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .section-content {
-	padding: 100px 0px;
+	padding: 100px 50px;
 }
 .orange-gred {
 	background: -moz-linear-gradient(left, #ee0979 0%, #8d68ff 100%);
@@ -337,7 +337,8 @@ Start of how to install
 	background-position: center center;
 	background-repeat: no-repeat;
 	background: rgba(0, 0, 0, 0) -webkit-linear-gradient(left, #ee0979 0%, #8d68ff 100%) repeat scroll 0 0;
-	background: rgba(0, 0, 0, 0) linear-gradient(to right, #ee0979 0%, #8d68ff 100%) repeat scroll 0 0;
+	background: rgba(0, 0, 0, 0) linear-gradient(to right, #ee0979 0%, #5435fe 100%) repeat scroll 0 0;
+	padding-top: 80px;
 }
 .how-to-install .section-content {
 	padding-bottom: 150px;
@@ -758,7 +759,7 @@ Start of home-2 banner
 	overflow: visible;
 	padding-top: 340px;
 	background: rgba(0, 0, 0, 0) -webkit-linear-gradient(left, #ee0979 0%, #8d68ff 100%) repeat scroll 0 0;
-	background: rgba(0, 0, 0, 0) linear-gradient(to right, #ee0979 0%, #8d68ff 100%) repeat scroll 0 0;
+	background: rgba(0, 0, 0, 0) linear-gradient(to right, #ee0979 0%, #7433f5 100%) repeat scroll 0 0;
 }
 .banner-area-head h1 {
 	font-size: 52px;
@@ -781,7 +782,7 @@ Start of home-2 banner
 	top: 0;
 }
 .banner-mock-up.home-1 {
-	top: -35px;
+	top: -100px;
 }
 
 .banner-slider {
@@ -890,7 +891,6 @@ End of blog area section
 .load-more {
 	margin-top: 50px;
 }
-<<<<<<< Updated upstream
 
 .middle_menu .main_menu_area .navbar.navbar-default .nav.navbar-nav li:last-child {
   margin-right: 0px;
@@ -1029,7 +1029,7 @@ End of blog area section
   cursor: pointer;
   height: 100%;
   z-index: 35;
-  color: #fc5a1a;
+  color: #9736ff;
   font-size: 30px;
   cursor: pointer;
 }
@@ -1063,7 +1063,7 @@ End of blog area section
 }
 
 .offcanvas_menu .nav.flex-column li:hover a, .offcanvas_menu .nav.flex-column li.active a {
-  color: #fc5a1a;
+  color: #9736ff;
 }
 
 .offcanvas_menu .nav.flex-column li.submenu ul {
@@ -6035,7 +6035,7 @@ End of blog area section
 }
 
 .pink{
-  background: #ff35a5;
+  background: #ffffff00;
 }
 
 .pink .ten_p_head h3 {

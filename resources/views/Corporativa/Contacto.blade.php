@@ -1,29 +1,68 @@
 @extends('Corporativa.templates.master')
 @section('content')
-<!--================Get Form Area =================-->
-<section class="get_form_area" id="contact">
-    <div class="container">
-        <h2 class="single_title_center">Get in touch</h2>
-        <div class="row m0">
-            <form class="contact_us_form row m0" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
-                <div class="form-group col-md-4">
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Type name..">
+
+    <!-- Start of download
+        ============================================= -->
+    <section id="download-area" class="download-section">
+        <div class="container">
+            <div class="row section-content">
+                <div class="download-area-content  text-center">
+                    <div class="download-now pb40">
+                        <h3><strong>CONTACTO</strong></h3>
+                    </div>
+                    <div class="download-area-text  pb20">
+                        <span>Permitenos conocer más de tu academia.</span>
+                    </div>
                 </div>
-                <div class="form-group col-md-4">
-                    <input type="email" class="form-control" id="email" name="email" placeholder="examplename.20@domain.com">
+            </div><!--  /row -->
+        </div><!--  /container -->
+    </section>
+    <!-- End of  download
+        ============================================= -->
+<!-- Start of contact section
+    ============================================= -->
+<section id="contact" class="contact-section">
+        <div class="row section-content">
+            <div class="col-md-6">
+                <div class="section-title text-left pb50">
+                    <h1 class="title deep-black pb40"><Strong>Permanece en Contacto</Strong></h1>
+                    <span class="title-dec"> Contactanos en nuestras redes sociales </span>
+                    <br>
+                    <span class="title-dec"> Facebook </span>
+                    <br>
+                    <span class="title-dec"> Twitter </span>
+                    <br>
+                    <span class="title-dec"> Instagram </span>
+                    <br>
+                    <span class="title-dec"> hola@tracade.me </span>
                 </div>
-                <div class="form-group col-md-4">
-                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
+            </div>
+            <!-- //section-title -->
+            <div class="col-md-5">
+                <h1 class="title deep-black pb40"><strong>¡Envíanos un mensaje!</strong></h1>
+                <div class="comment-form">
+                    <form id="contact_form" action="#" method="POST" enctype="multipart/form-data">
+                        <div class="contact-info-1">
+                            <input class="name  mr30" name="name" type="text" placeholder="Nombre*">
+                        </div>
+                        <div class="contact-info-1">
+                            <input class="email" name="email" type="text" placeholder="Correo Electrónico*">
+                        </div>
+                        <div class="contact-info-1">
+                            <input class="name" name="name" type="text" placeholder="Asunto">
+                        </div>
+                        <div class="contact-info">
+                            <textarea id="message" name="message" placeholder="Mensaje" rows="7" cols="30"></textarea>
+                        </div>
+                        <div class="submit-btn text-center mt20">
+                            <button type="submit" value="Submit">Enviar</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group col-md-12">
-                    <textarea class="form-control" name="message" id="message" rows="1" placeholder="Type here your massage"></textarea>
-                </div>
-                <div class="form-group col-md-12">
-                    <button type="submit" value="submit" class="btn send_btn form-control">Send Message</button>
-                </div>
-            </form>
-        </div>
-    </div>
+            </div>
+        </div><!--  //row-->
+   <!--  //container -->
 </section>
-<!--================End Get Form Area =================-->
+<!-- End of contact section
+    ============================================= -->
 @endsection
