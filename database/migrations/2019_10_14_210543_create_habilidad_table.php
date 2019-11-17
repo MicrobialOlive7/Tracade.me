@@ -14,14 +14,15 @@ class CreateHabilidadTable extends Migration
     public function up()
     {
         Schema::create('habilidad', function (Blueprint $table) {
-            $table->bigIncrements('hab_id');
+            $table->bigIncrements('id');
+            $table->softDeletes();
             $table->string('hab_nombre', 100);
             /* usar select con valores predeterminados con dificultad en string (facil, dificl, etc) */
             $table->string('hab_dificultad', 50);
             $table->string('hab_descripcion', 255);
 
             $table->unsignedBigInteger('dis_id');
-            $table->foreign('dis_id')->references('dis_id')->on('disciplina');
+            $table->foreign('dis_id')->references('id')->on('disciplina');
 
             $table->timestamps();
         });
