@@ -17,7 +17,8 @@ class CreateGrupoTable extends Migration
             $table->bigIncrements('id');
             $table->softDeletes();
             $table->string('gru_nombre', 100);
-            $table->string('gru_horario', 100);
+            $table->string('gr_dia', 100);
+            $table->dateTime('gru_hora');
 
             $table->unsignedBigInteger('dis_id');
             $table->foreign('dis_id')->references('id')->on('disciplina');
