@@ -611,13 +611,13 @@ End of testimonial section
 Start of download area section
 -------------------------------------------------------------------------*/
 .download-number h2 {
-	font-size: 52px;
+	font-size: 250%;
 	color: #fff;
 	font-weight: 600;
 }
 .download-area-text span {
 	color: #fff;
-	font-size: 26px;
+	font-size: 150%;
 }
 .download-area-text {
 	max-width: 500px;
@@ -3285,9 +3285,8 @@ End of blog area section
 }
 
 .vs-cp {
-    font-size: 7.5em;
-    margin-top: 110px;
-    color: #00a6d0;
+    font-size: 13em;
+    color: #ee0979;
     text-align: center;
 }
 
@@ -13471,7 +13470,15 @@ End of blog area section
 /* End Ten Footer Area css
 ============================================================================================ */
 /*---------------------------------------------------- */
+ul.icon
+{
+    list-style-type: none;
+}
 
+ul.icon li
+{
+    text-indent: -1.4em;
+}
 /*# sourceMappingURL=style.css.map */
 =======
 >>>>>>> Stashed changes

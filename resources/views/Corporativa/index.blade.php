@@ -1,9 +1,7 @@
 @extends('Corporativa.templates.master')
 @section('content')
-    <!-- Start of banner section
+    <!-- Start of banner section -->
 
-	<!-- Start of banner section
-		============================================= -->
     <section id="banner-area" class="banner-area-section home-2">
         <div class="container">
             <div class="row">
@@ -113,17 +111,17 @@
                             </div>
                             <!-- //icon -->
                             <div class="testimonial-text">
-                                <span>Desde que uso Tracade.Me, mis alumnos han progresado mucho más rápido que antes, ya que cada día quieren mejorar sus puntaje.</span>
+                                <span>Para mi video con Komodo use Tracade.Me, fue la herramienta más útil para aprender nuevos movimientos. No la cambiaría por nada. </span>
                             </div>
                             <!-- //text -->
                             <div class="testimonial-name-des  pt25">
                                 <div class="testimonial-pic">
-                                    <img src="../public/img/testimonial/testi-1.jpg" alt="img">
+                                    <img src="../public/img/testimonial/KasiaBielecka.jpg" alt="img">
                                 </div>
                                 <!-- //pic -->
                                 <div class="client-designation pt20">
-                                    <span class="name deep-black">Tania Aguilar</span>
-                                    <span class="designation">Instructora de Pole Fitness</span>
+                                    <span class="name deep-black">Kasia Bielecka</span>
+                                    <span class="designation">Pole Dancer</span>
                                 </div>
                                 <!-- //client-designation  -->
                             </div>
@@ -140,17 +138,17 @@
                             </div>
                             <!-- //icon -->
                             <div class="testimonial-text">
-                                <span>No hay nada igual a Tracade.Me, desde que lo uso puedo calificar y comentar cada nueva habilidad de mis alumnos.</span>
+                                <span>Tracade.Me es un servicio con altura, no hay nada igual. Desde que lo uso puedo calificar y comentar cada nueva habilidad de mis alumnos.</span>
                             </div>
                             <!-- //text -->
                             <div class="testimonial-name-des  pt25">
                                 <div class="testimonial-pic">
-                                    <img src="../public/img/testimonial/testi-3.jpg" alt="img">
+                                    <img src="../public/img/testimonial/LaRosalia.jpg" alt="img">
                                 </div>
                                 <!-- //pic -->
                                 <div class="client-designation pt20">
-                                    <span class="name deep-black">Rosalía Pérez</span>
-                                    <span class="designation">Instructora de Telas Aéreas</span>
+                                    <span class="name deep-black">Rosalía Tobella</span>
+                                    <span class="designation">Instructora</span>
                                 </div>
                                 <!-- //client-designation  -->
                             </div>
@@ -168,17 +166,17 @@
                             </div>
                             <!-- //icon -->
                             <div class="testimonial-text">
-                                <span>Tracade.Me es la mejor plataforma para dar seguimiento a mis alumnos. Me permite ver mis estadísticas a fin de mes para ver como han progresado.</span>
+                                <span>Para mi película "Estafadoras de Wall Street" uilicé Tracade.Me para establecer objetivo alcanzables y cumplir con mi papel.</span>
                             </div>
                             <!-- //text -->
                             <div class="testimonial-name-des  pt25">
                                 <div class="testimonial-pic">
-                                    <img src="../public/img/testimonial/testi-1.jpg" alt="img">
+                                    <img src="../public/img/testimonial/JenniferLopez.png" alt="img">
                                 </div>
                                 <!-- //pic -->
                                 <div class="client-designation pt20">
-                                    <span class="name deep-black">Selena Ramírez</span>
-                                    <span class="designation">Instructora de Pole Fitness</span>
+                                    <span class="name deep-black">Jennifer López</span>
+                                    <span class="designation">Actriz</span>
                                 </div>
                                 <!-- //client-designation  -->
                             </div>
@@ -193,12 +191,6 @@
     </section>
     <!-- End of testimonial section
         ============================================= -->
-
-
-
-
-
-
 
     <!-- Start of showcase section
         ============================================= -->
