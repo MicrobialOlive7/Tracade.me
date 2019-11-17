@@ -83,14 +83,11 @@
             <div class="row section-content">
                 <div class="footer-area-content">
                     <div class="row">
-                        <div class="col-md-3 col-sm-6">
+                        <div class="col-md-4 col-sm-6">
                             <div class="footer-content">
-                                <span class="right deep-black">2017 Landy. All right reserved</span>
+                                <span class="right deep-black"> Tracade.Me</span>
                                 <div class="footer-address mt20">
-											<span>457 Shantibag, Green Road
-												Philadelphia, PH USA 17512
-												+1 437 800 2078
-											</span>
+											<span>2017 Landy. All right reserved</span>
                                 </div>
                                 <div class="footer-social ul-li mt20">
                                     <ul class="footer-social-list">
@@ -104,55 +101,35 @@
                         </div>
                         <!-- //col-sm-4 -->
 
-                        <div class="col-md-3 col-sm-6">
+                        <div class="col-md-4 col-sm-6">
                             <div class="footer-service-list">
                                 <div class="footer-widget pb20">
-                                    <h2 class="widgettile deep-black">Information</h2>
+                                    <h2 class="widgettile deep-black">Información</h2>
                                 </div>
                                 <div class="service-list ul-li ul-li-block">
                                     <ul class="service-list-item">
-                                        <li><a href="#">Terms & Condision</a></li>
-                                        <li><a href="#">About Us</a></li>
-                                        <li><a href="#">Privacy Policy</a></li>
-                                        <li><a href="#">Download</a></li>
+                                        <li><a href="{{ url('') }}">Inicio</a></li>
+                                        <li><a href="{{ url('Nosotros') }}">Nosotros</a></li>
+                                        <li><a href="{{ url('Precios') }}">Precios</a></li>
+                                        <li><a href="{{ url('Contacto') }}">Contacto</a></li>
                                     </ul>
                                 </div>
                             </div>
                             <!-- //1st service -->
                         </div>
-
-
-                        <div class="col-md-3 col-sm-6">
+                        <div class="col-md-4 col-sm-6">
                             <div class="footer-service-list">
                                 <div class="footer-widget pb20">
-                                    <h2 class="widgettile deep-black">Support</h2>
+                                    <h2 class="widgettile deep-black">Inicia Sesión</h2>
                                 </div>
                                 <div class="service-list ul-li ul-li-block">
                                     <ul class="service-list-item">
-                                        <li><a href="#">FAQ</a></li>
-                                        <li><a href="#">Help</a></li>
-                                        <li><a href="#">Contact</a></li>
+                                        <li><a href="{{ url('login') }}">Login</a></li>
+                                        <li><a href={{ url('Contacto') }}>Ayuda</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <!-- //col-sm-4 -->
-
-                        <div class="col-md-3 col-sm-6">
-                            <div class="footer-widget pb20">
-                                <h2 class="widgettile deep-black">Subscribe</h2>
-                            </div>
-                            <span>Don’t miss out our every updates and news!</span>
-                            <div class="newsletter">
-                                <form action="#" method="get">
-                                    <div class="newsletter-email">
-                                        <input type="email" class="" >
-                                        <button type="submit" value="Submit"><span class="orange-gred ti-arrow-right"></span></button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-
                     </div>
                 </div><!--  //row -->
             </div><!--  //footer-area-content -->

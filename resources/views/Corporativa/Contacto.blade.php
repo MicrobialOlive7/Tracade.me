@@ -29,13 +29,12 @@
                     <h1 class="title deep-black pb40"><Strong>Permanece en Contacto</Strong></h1>
                     <span class="title-dec"> Contactanos en nuestras redes sociales </span>
                     <br>
-                    <span class="title-dec"> Facebook </span>
-                    <br>
-                    <span class="title-dec"> Twitter </span>
-                    <br>
-                    <span class="title-dec"> Instagram </span>
-                    <br>
-                    <span class="title-dec"> hola@tracade.me </span>
+                    <ul class="icon">
+                    <li><a href="#"><span class="ti-facebook"></span><span class="title-dec"> Facebook </span></a></li>
+                    <li><a href="#"><span class="ti-twitter-alt"></span><span class="title-dec"> Twitter </span></a></li>
+                    <li><a href="#"><span class="ti-instagram"></span><span class="title-dec"> Instagram </span></a></li>
+                    <li><span class="ti-email"></span><span class="title-dec"> hola@tracade.me </span></li>
+                    </ul>
                 </div>
             </div>
             <!-- //section-title -->

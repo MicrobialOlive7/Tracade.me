@@ -518,11 +518,11 @@ End of testimonial section
 Start of pricing plan
 -------------------------------------------------------------------------*/
 .landy-pricing .pricing-price .content-price {
-	font-size: 52px;
+	font-size: 250%;
 	display: block;
 }
 .landy-pricing .content-title {
-	font-size: 36px;
+	font-size: 180%;
 }
 .landy-pricing {
 	-webkit-box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.1);
