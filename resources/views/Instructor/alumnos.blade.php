@@ -11,7 +11,7 @@
                         <h3 class="mb-0">Alumnos</h3>
                         <div class="col text-right">
                             <span class="btn-inner--icon">
-                                <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Guardar" href="{{ url('AgregarAlumno') }}">
+                                <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Guardar" href="{{ route('register') }}">
                                     <i class="ni ni-fat-add" ></i>
                                 </a>
                             </span>
@@ -52,7 +52,7 @@
                                             </div>
                                         </div>
                                     </th>
-                                    <th scope="row"> {{$disciplinas->where('dis_id', $dis_alu->where('alu_id', $alumno->alu_id)->first()['dis_id'])->first()['dis_nombre']}}</th>
+                                    <th scope="row"> {{$dis_alu->where('alu_id', $alumno->id)->first()['dis_id']}}</th>
 
                                     <th scope="row" > <a href="{{ url('grupos') }}"> L78M </a>  </th>
                                     <th scope="row"> 10 </th>
@@ -64,8 +64,8 @@
                                                 <i class="fas fa-ellipsis-v"></i>
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item" href="{{ route('modificar-alumno-vista', $alumno->alu_id) }}">Modificar</a>
-                                                <a class="dropdown-item" href="{{route('eliminar-alumno', $alumno->alu_id)}}">Eliminar</a>
+                                                <a class="dropdown-item" href="{{ route('modificar-alumno-vista', $alumno->id) }}">Modificar</a>
+                                                <a class="dropdown-item" href="{{route('eliminar-alumno', $alumno->id)}}">Eliminar</a>
                                             </div>
                                         </div>
                                     </th>
