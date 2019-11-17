@@ -7432,6 +7432,15 @@ End of blog area section
 ============================================================================================ */
 /* Contact Form Widget Area css
 ============================================================================================ */
+.splash_img {
+    background: url(../img/discover-bg.jpg) no-repeat center center fixed;
+    margin-top: 9rem;
+    height:16rem;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 .contact_widget_form .form-group {
   margin-bottom: 20px;
 }
@@ -7636,8 +7645,8 @@ End of blog area section
 /* Get Contact Form Area css
 ============================================================================================ */
 .get_form_area {
-  background: #f1f5f8;
-  padding: 110px 0px;
+  background: #fbfbfb;
+  padding: 50px 0px;
 }
 
 .contact_us_form {

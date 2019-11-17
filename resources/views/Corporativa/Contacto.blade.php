@@ -1,6 +1,7 @@
 @extends('Corporativa.templates.master')
 @section('content')
 
+
     <!-- Start of download
         ============================================= -->
     <section id="download-area" class="download-section">

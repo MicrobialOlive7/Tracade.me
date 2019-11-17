@@ -18,11 +18,12 @@
 |     dentro de esa carpeta
 | - Ruta: Carpeta\NombreController@funcion
 |
-*/
+**/
 
 Auth::routes();
 
 Route::get('/home', 'Corporativa\CorpController@index')->name('home');
+
 
 /**
  * Página Corporativa
@@ -43,45 +44,65 @@ Route::get('/Contacto', function (){
     return view('Corporativa.Contacto');
 });
 
-/** Alumnos **/
-Route::get('/Alumnos', function (){
-    return view('Instructor.login');
-});
-Route::get('/AgregarAlumno', function (){
-    return view('Instructor.CrearModAlumno');
-});
-Route::get('/ModificarAlumno', function (){
-    return view('Instructor.CrearModAlumno');
-});
 
-/** Grupos **/
-Route::get('/Grupos', 'Grupos\GruposController@index');
+/**
+ * Alumnos
+ */
 
-Route::get('/AgregarGrupos', function (){
-    return view('Instructor.CrearModGrupos', ['Grupo' => [],'Mod'=>'0']);
-});
-Route::get('/ModificarGrupos/{gru_id}', 'Grupos\GruposController@indexMod');
-/*Route::get('/ModificarGrupos', function (){
-    return view('Instructor.CrearModGrupos');
-});*/
+/**
+ * Instructor
+ */
+    Route::get('tmp-pago', function (){
+        return view('instructor.TMP-pago');
+    })->name('tmp-pago');
 
 
-/** Habilidades **/
-Route::get('/Habilidades', 'Habilidades\HabilidadesController@index');
-Route::get('/AgregarHabilidades', 'Habilidades\HabilidadesController@indexCrear');
+    /** Alumnos **/
+    Route::get('/Alumnos', 'AlumnoController@show')->name('alumnos');
+    /*Route::get('/AgregarAlumno', function (){
+        return view('Instructor.CrearModAlumno');
+    });*/
+    //Route::get('/AgregarAlumno', 'Aut');
 
-Route::get('/ModificarHabilidades/{hab_id}', 'Habilidades\HabilidadesController@indexModificar');
+    Route::get('/ModificarAlumno/{id}', 'AlumnoController@showUpdate')->name('modificar-alumno-vista');
+    Route::post('modificar-alumno/{id}', 'AlumnoController@update')->name('modificar-alumno');
+
+
+    Route::get('eliminar-alumno/{id}', 'AlumnoController@delete')->name('eliminar-alumno');
+
+    /** Grupos **/
+    Route::get('/Grupos', 'Grupos\GruposController@index');
+
+    Route::get('/AgregarGrupos', function (){
+        return view('Instructor.CrearModGrupos', ['Grupo' => [],'Mod'=>'0']);
+    });
+    Route::get('/ModificarGrupos/{gru_id}', 'Grupos\GruposController@indexMod');
+    /*Route::get('/ModificarGrupos', function (){
+        return view('Instructor.CrearModGrupos');
+    });*/
+
+
+    /** Habilidades **/
+    Route::get('/Habilidades', 'Habilidades\HabilidadesController@index');
+    Route::get('/AgregarHabilidades', 'Habilidades\HabilidadesController@indexCrear');
+
+    Route::get('/ModificarHabilidades/{hab_id}', 'Habilidades\HabilidadesController@indexModificar');
 
 /** Calendario **/
-Route::get('/Calendario', function (){
-        return view('Instructor.calendario');
-});
+    Route::get('/Calendario', function (){
+            return view('Instructor.calendario');
+    });
 
-Route::get('/AgregarEventos', function (){
-    return view('Instructor.CrearModEventos');
-});
+    Route::get('/AgregarEventos', function (){
+        return view('Instructor.CrearModEventos');
+    });
 
-Route::get('/ModificarEventos', function (){
-    return view('Instructor.CrearModEventos');
-});
+    Route::get('/ModificarEventos', function (){
+        return view('Instructor.CrearModEventos');
+    });
+
+    Route::post('crear-evento', 'EventoController@create')->name('crear-evento');
+    Route::post('modificar-evento/{id}', 'EventoController@update')->name('modificar-evento');
+    Route::post('eliminar-evento/{id}', 'EventoController@delete')->name('eliminar-evento');
+
 

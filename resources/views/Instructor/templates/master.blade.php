@@ -23,14 +23,14 @@
         Tracade.Me - Seguimiento de Habilidades
     </title>
     <!-- Favicon -->
-    <link href="../public/img/fav-icon.ico" rel="icon" type="image/png">
+    <link href="{{asset('../public/img/fav-icon.ico')}}" rel="icon" type="image/png">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <!-- Icons -->
-    <link href="../public/js/plugins/nucleo/css/nucleo.css" rel="stylesheet" />
-    <link href="../public/js/plugins/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <link href="{{asset('../public/js/plugins/nucleo/css/nucleo.css')}}" rel="stylesheet" />
+    <link href="{{asset('../public/js/plugins/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet" />
     <!-- CSS Files -->
-    <link href="../public/css/argon-dashboard.css?v=1.1.0" rel="stylesheet" />
+    <link href="{{asset('../public/css/argon-dashboard.css?v=1.1.0')}}" rel="stylesheet" />
 </head>
 
 <body class="">
@@ -42,7 +42,7 @@
         </button>
         <!-- Brand -->
         <a class="navbar-brand pt-0" href="{{ url('') }}">
-            <img src="../public/img/dash-logo.png" class="navbar-brand-img" alt="...">
+            <img src="{{asset('../public/img/dash-logo.png')}}" class="navbar-brand-img" alt="...">
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
@@ -51,8 +51,7 @@
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
-                <img alt="Image placeholder" src="../public/img/theme/team-1-800x800.jpg
-">
+                <img alt="Image placeholder" src="{{asset('../public/img/theme/team-1-800x800.jpg')}}">
               </span>
                     </div>
                 </a>
@@ -79,7 +78,7 @@
                 <div class="row">
                     <div class="col-6 collapse-brand">
                         <a href="../index.html">
-                            <img src="../public/img/dash-logo.png">
+                            <img src="{{asset('../public/img/dash-logo.png')}}">
                         </a>
                     </div>
                     <div class="col-6 collapse-close">
@@ -103,27 +102,27 @@
             </form>
             <!-- Navigation -->
             <ul class="navbar-nav">
-                <li class="nav-item  class=" active" ">
+                <li class="nav-item"  class="active">
                 <a class=" nav-link " href=" ../index.html"> <i class="ni ni-chart-pie-35 text-primary"></i> Inicio
                 </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="../examples/icons.html">
+                    <a class="nav-link "href="{{ url('Calendario') }}">
                         <i class="ni ni-calendar-grid-58 text-blue"></i> Calendario
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="../examples/maps.html">
+                    <a class="nav-link " href="{{ url('Alumnos') }}">
                         <i class="ni ni-single-02 text-purple"></i> Alumnos
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="../examples/profile.html">
+                    <a class="nav-link " href="{{ url('Grupos') }}">
                         <i class="ni ni-bullet-list-67 text-pink"></i> Grupos
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  active " href="../examples/tables.html">
+                    <a class="nav-link  active " href="{{ url('Habilidades') }}">
                         <i class="ni ni-trophy text-red"></i> Habilidades
                     </a>
                 </li>
@@ -168,7 +167,7 @@
                     <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media align-items-center">
                 <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="../public/img/theme/team-4-800x800.jpg">
+                  <img alt="Image placeholder" src="{{asset('../public/img/theme/team-4-800x800.jpg')}}">
                 </span>
                             <div class="media-body ml-2 d-none d-lg-block">
                                 <span class="mb-0 text-sm  font-weight-bold">Jessica Jones</span>
@@ -203,13 +202,13 @@
 
 <!-- Footer -->
     <footer class="footer">
-        <div class="row align-items-center justify-content-xl-between">
-            <div class="col-xl-6">
+        <div class="row align-items-center ">
+            <div class="col-md-6">
                 <div class="copyright text-center text-xl-left text-muted">
                     &copy; 2018 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
                 </div>
             </div>
-            <div class="col-xl-6">
+            <div class="col-md-6">
                 <ul class="nav nav-footer justify-content-center justify-content-xl-end">
                     <li class="nav-item">
                         <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
@@ -230,12 +229,13 @@
 </div>
 </div>
 <!--   Core   -->
-<script src="../public/js/plugins/jquery/dist/jquery.min.js"></script>
-<script src="../public/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{asset('../public/js/plugins/jquery/dist/jquery.min.js')}}"></script>
+<script src="{{asset('../public/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
 <!--   Optional JS   -->
+<script src="{{asset('../public/js/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
 <!--   Argon JS   -->
-<script src="../public/js/argon-dashboard.min.js?v=1.1.0"></script>
-<script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+<script src="{{asset('../public/js/argon-dashboard.min.js?v=1.1.0')}}"></script>
+<script src="{{asset('https://cdn.trackjs.com/agent/v3/latest/t.js')}}"></script>
 <script>
     window.TrackJS &&
     TrackJS.install({
@@ -244,6 +244,7 @@
     });
 </script>
 
+@yield('js_content')
 
 </body>
 
