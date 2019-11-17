@@ -13462,9 +13462,11 @@ button.bg-lighter:focus {
 }
 
 .bg-gradient-primary {
-    background: linear-gradient(45deg, #00b9ff 0, #006dff 100%) !important;
-    background: -moz-linear-gradient(45deg, #00b9ff 0, #006dff 100%) !important;
-    background: -ms-linear-gradient(45deg, #00b9ff 0, #006dff 100%) !important;
+    background: linear-gradient(65deg, #ee0979 0,#336ff5 100%) !important;
+    background:
+    -moz-linear-gradient(45deg, #00b9ff 0, #006dff 100%) !important;
+    background:
+    -ms-linear-gradient(45deg, #00b9ff 0, #006dff 100%) !important;
 }
 
 .bg-gradient-secondary {

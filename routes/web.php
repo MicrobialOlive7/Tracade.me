@@ -44,6 +44,7 @@ Route::get('/Contacto', function (){
     return view('Corporativa.Contacto');
 });
 
+
 /**
  * Alumnos
  */
@@ -103,4 +104,5 @@ Route::get('/Contacto', function (){
     Route::post('crear-evento', 'EventoController@create')->name('crear-evento');
     Route::post('modificar-evento/{id}', 'EventoController@update')->name('modificar-evento');
     Route::post('eliminar-evento/{id}', 'EventoController@delete')->name('eliminar-evento');
+
 

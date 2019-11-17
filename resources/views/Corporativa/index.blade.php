@@ -1,241 +1,288 @@
 @extends('Corporativa.templates.master')
 @section('content')
-    <!--================Slider Area =================-->
-    <section class="main_slider_area">
-        <div id="dash_slider" class="rev_slider" data-version="5.3.1.6">
-            <ul>
-                <li data-index="rs-2972" data-transition="slidingoverlayhorizontal" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default"  data-thumb="img/home-slider/slider-1.jpg"   data-saveperformance="off"   data-description="">
-                    <!-- LAYERS -->
-                    <div class="slider_text_box">
-                        <div class="slider_text_box">
-                            <!-- [DESKTOP, LAPTOP, TABLET, SMARTPHONE]  -->
-                            <div class="tp-caption ds_first_text text-align-ce"
-                                 data-x="['left','left','center','left']"
-                                 data-y="['middle','middle','middle','middle']"
-                                 data-hoffset="['-150','-150','0','-10']"
-                                 data-voffset="['-100','-100','-100','-50']"
-                                 data-fontsize="['60','60','60','26']"
-                                 data-lineheight="['85','85','85','40']"
-                                 data-width="['none','none','none','none']"
-                                 data-height="none"
-                                 data-whitespace="['nowrap','nowrap','nowrap','nowrap']"
-                                 data-type="text"
-                                 data-responsive_offset="on"
-                                 data-frames='[{"from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","speed":1500,"to":"o:1;","delay":1700,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"x:left(R);","ease":"Power3.easeIn"}]'
-                                 data-textAlign="['left','left','center','left']"
-                                 data-paddingtop="[0,0,0,0]"
-                                 data-paddingright="[0,0,0,0]"
-                                 data-paddingbottom="[10,10,10,10]"
-                                 data-paddingleft="[0,0,0,0]">Tracade.Me<br>Seguimiento de Habilidades</div>
+    <!-- Start of banner section
 
-                        <div class="tp-caption ds_secand_text"
-                             data-x="['left','left','left','left']"
-                             data-y="['middle','middle','middle']"
-                             data-hoffset="['-150','-150','50','-10']"
-                             data-voffset="['130','80','80','90']"
-                             data-fontsize="['22','22','22','14']"
-                             data-lineheight="['28','28','28','28']"
-                             data-width="['70%','70%','95%','95%']"
-                             data-height="none"
-                             data-whitespace="normal"
-                             data-type="text"
-                             data-responsive_offset="on"
-                             data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1750,"ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
-                             data-textAlign="['left','left','center','left']"
-                             data-paddingtop="[0,0,0,0]"
-                             data-paddingright="[0,0,0,0]"
-                             data-paddingbottom="[0,0,0,0]"
-                             data-paddingleft="[0,0,0,0]">¡Deshazte del papel y registra el progreso de tus alumnos fácilmente con un sitio dedicado al seguimiento de habilidades personalizable!</div>
-
-                        <div class="tp-caption right_img"
-                             data-x="['right','right','right','right']"
-                             data-y="['middle','middle','middle','middle']"
-                             data-hoffset="['-300','0','0','0']"
-                             data-voffset="['100','40','40','0']"
-                             data-fontsize="['16','16','16','16']"
-                             data-lineheight="['28','28','28','28']"
-                             data-width="['none','400']"
-                             data-height="none"
-                             data-whitespace="nowrap"
-                             data-type="text"
-                             data-responsive="on"
-                             data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1750,"ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
-                             data-textAlign="['left','left','left','left']"
-                             data-paddingtop="[0,0,0,0]"
-                             data-paddingright="[0,0,0,0]"
-                             data-paddingbottom="[0,0,0,0]"
-                             data-paddingleft="[0,0,0,0]"><img src="../public/img/home-slider/slider-right-img.png" alt=""></div>
-                    </div>
-                    </div>
-                <!-- LAYERS -->
-                </li>
-            </ul>
-        </div>
-    </section>
-    <!--================End Slider Area =================-->
-
-    <!--================Powerful Area =================-->
-    <section class="powerfull_area" id="about">
-        <div class="row pawerfull_area_inner">
-                <div class="col-md-5">
-                    <div class="power_left_img">
-                        <img src="img/power-ds-img.png" alt="">
-                    </div>
-                </div>
-                <div class="col-md-7">
-                    <div class="power_right_content">
-                            <h3 class="single_title">Utiliza Estrellas para Evaluar</h3>
-                            <div class="power_left_content_inner">
-                                <p> Puedes evaluar cada actividad con una, dos o tres estrellas. </p>
-                            <div class="table-responsive">
-                                <table class="table align-items-center table-flush">
-                                    <tbody>
-                                <tr>
-                                    <th scope="row"><h3> Comenzando</h3></th>
-                                    <th scope="col"><img src="../public/img/icon/star-icon.png" alt=""></th>
-                                <tr>
-                                    <th scope="row"><h3> En Progreso</h3></th>
-                                    <th scope="col"><img src="../public/img/icon/star-icon.png" alt=""><img src="../public/img/icon/star-icon.png" alt=""></th>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><h3>¡Listo!</h3></th>
-                                    <th scope="col"><img src="../public/img/icon/star-icon.png" alt=""><img src="../public/img/icon/star-icon.png" alt=""><img src="../public/img/icon/star-icon.png" alt=""></th>
-                                </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            </div>
-                        </div>
-                </div>
-            </div>
-        <br>
-    </section>
-    <!--================End Powerful Area =================-->
-
-    <!--================Powerful Area =================-->
-    <section class="powerfull_area" id="about">
-        <div class="row pawerfull_area_inner">
-            <div class="col-md-7">
-                <div class="power_right_content">
-                    <h3 class="single_title" >Deja Comentarios</h3>
-                    <div class="power_left_content_inner">
-                        <p> Escribe el razonamiento detrás de cada calificación.</p>
-                        <img src="../public/img/icon/star-icon.png" alt=""><img src="../public/img/icon/star-icon.png" alt=""><img src="../public/img/icon/star-icon.png" alt="">
-                        <p> Recuérdale al estudiante lo que necesita mejorar, </p>
-                        <p> felicitalo por su progreso o simplemente deja palabras de aliento.  </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-5">
-                <div class="power_right_img">
-                    <img src="img/macbook-res.png" alt="">
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--================End Powerful Area =================-->
-
-    <!--================Provide Feature Area =================-->
-    <section class="provide_feature_area" id="feature">
-        <div class="p_feature_left">
-            <div class="p_f_left_content">
-                <h3 class="single_title">Características</h3>
-                <div class="p_left_item_inner">
-                    <div class="p_item">
-                        <div class="media">
-                            <div class="media-left">
-                                <img src="../public/img/icon/p-icon-1.png" alt="">
-                            </div>
-                            <div class="media-body">
-                                <h4>Panel de Administración</h4>
-                                <p>Utiliza el panel para ver el progreso general de tus alumnos.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p_item">
-                        <div class="media">
-                            <div class="media-left">
-                                <img src="../public/img/icon/p-icon-2.png" alt="">
-                            </div>
-                            <div class="media-body">
-                                <h4>Tablas Personalizables</h4>
-                                <p>Edita cada tabla para que cumplan con tus necesidades.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p_item">
-                        <div class="media">
-                            <div class="media-left">
-                                <img src="../public/img/icon/p-icon-3.png" alt="">
-                            </div>
-                            <div class="media-body">
-                                <h4>Calendario con Eventos</h4>
-                                <p>Crea eventos en el calendario para que tus alumnos puedan verlos.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p_item">
-                        <div class="media">
-                            <div class="media-left">
-                                <img src="../public/img/icon/p-icon-4.png" alt="">
-                            </div>
-                            <div class="media-body">
-                                <h4>Generación de Gráficas</h4>
-                                <p>Manténte actualizado con el estado de las habilidades de los estudiantes.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p_item">
-                        <div class="media">
-                            <div class="media-left">
-                                <img src="../public/img/icon/p-icon-5.png" alt="">
-                            </div>
-                            <div class="media-body">
-                                <h4>Panel para Alumnos</h4>
-                                <p>Permite a tus alumnos ver su progreso.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p_item">
-                        <div class="media">
-                            <div class="media-left">
-                                <img src="../public/img/icon/p-icon-6.png" alt="">
-                            </div>
-                            <div class="media-body">
-                                <h4>Fácil de Usar</h4>
-                                <p>Aprende de forma intuitiva a usar la plataforma.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="p_feature_right">
-            <div class="p_feature_img">
-                <img src="img/provide-ds-img.png" alt="">
-            </div>
-        </div>
-    </section>
-    <!--================End Provide Feature Area =================-->
-
-
-    <!--================Dashboard Screenshot Area =================-->
-    <section class="dash_screen_area" id="screenshot">
+	<!-- Start of banner section
+		============================================= -->
+    <section id="banner-area" class="banner-area-section home-2">
         <div class="container">
-            <h3 class="single_title">Conoce Tracade.Me </h3>
-        </div>
-        <div class="dash_screen_slider owl-carousel">
-            <div class="item">
-                <img src="img/laptop-slider/slider-1.jpg" alt="">
-            </div>
-            <div class="item">
-                <img src="img/laptop-slider/slider-2.jpg" alt="">
-            </div>
-            <div class="item">
-                <img src="img/laptop-slider/slider-3.jpg" alt="">
-            </div>
-        </div>
+            <div class="row">
+                <div class="banner-area-content">
+                    <div class="banner-area-head">
+                        <h1 class="pb30">Registro de Habilidades</h1>
+                        <div  class="banner-text pb40">
+                            <span>Da seguimiento al progreso de tus alumnos. Registra los avances que hacen día a día</span>
+                        </div>
+                        <div class="banner-mock-up home-1 zooming">
+                            <img src="../public/img/mock-up/home.png" alt="img">
+                        </div>
+                    </div><!-- /banner-area-head -->
+                </div><!-- /banner-area-content -->
+            </div><!-- /row -->
+        </div><!-- /.container -->
     </section>
-    <!--================End Dashboard Screenshot Area =================-->
+    <!-- End of banner section
+        ============================================= -->
+    <!-- Start of features section
+        ============================================= -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="row section-content">
+                <div class="features-content">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="features-text-icon text-center">
+                                <div class="features-icon">
+                                    <i class="orange-gred ti-desktop"></i>
+                                </div>
+                                <!-- //icon -->
+                                <div class="features-text mt25">
+                                    <div class="features-text-title pb10">
+                                        <h3 class="deep-black">Registrate</h3>
+                                    </div>
+                                    <div class="features-text-dec">
+                                        <span>Selecciona uno de nuestros paquetes. Registrate en Tracade.Me e Inicia Sesión.</span>
+                                    </div>
+                                </div>
+                                <!-- //text -->
 
-    @endsection
+                            </div><!-- // features-text-icon -->
+                        </div>
+                        <!-- // col-sm-4 -->
+
+
+                        <div class="col-md-4">
+                            <div class="features-text-icon text-center">
+                                <div class="features-icon">
+                                    <i class="orange-gred ti-dashboard"></i>
+                                </div>
+                                <!-- //icon -->
+                                <div class="features-text mt25">
+                                    <div class="features-text-title pb10">
+                                        <h3 class="deep-black">Personaliza</h3>
+                                    </div>
+                                    <div class="features-text-dec">
+                                        <span>Personaliza tus tablas de acuerdo a la disciplina que impartes.</span>
+                                    </div>
+                                </div>
+                                <!-- //text -->
+
+                            </div><!-- // features-text-icon -->
+                        </div>
+                        <!-- // col-sm-4 -->
+
+                        <div class="col-md-4">
+                            <div class="features-text-icon text-center">
+                                <div class="features-icon">
+                                    <i class="orange-gred ti-settings"></i>
+                                </div>
+                                <!-- //icon -->
+                                <div class="features-text mt25">
+                                    <div class="features-text-title pb10">
+                                        <h3 class="deep-black">Da Seguimiento</h3>
+                                    </div>
+                                    <div class="features-text-dec">
+                                        <span>Registra el avance de tus alumnos y dales el seguimiento que necesitan.</span>
+                                    </div>
+                                </div>
+                                <!-- //text -->
+
+                            </div><!-- // features-text-icon -->
+                        </div>
+                        <!-- // col-sm-4 -->
+
+                    </div><!-- /section-row -->
+                </div><!-- /features-content -->
+            </div><!-- /row -->
+        </div><!-- /container -->
+    </section>
+    <!-- End of features section
+        ============================================= -->
+
+
+    <!-- End of testimonial section
+         ============================================= -->
+    <section id="testimonial" class="testimonial-section">
+        <div class="container">
+            <div class="row section-content">
+                <div class="testimonial-content">
+                    <div class="col-md-4">
+                        <div class="testimonial-name-designation">
+                            <div class="quate-icon">
+                                <span class="orange-gred ti-quote-left"></span>
+                            </div>
+                            <!-- //icon -->
+                            <div class="testimonial-text">
+                                <span>Desde que uso Tracade.Me, mis alumnos han progresado mucho más rápido que antes, ya que cada día quieren mejorar sus puntaje.</span>
+                            </div>
+                            <!-- //text -->
+                            <div class="testimonial-name-des  pt25">
+                                <div class="testimonial-pic">
+                                    <img src="../public/img/testimonial/testi-1.jpg" alt="img">
+                                </div>
+                                <!-- //pic -->
+                                <div class="client-designation pt20">
+                                    <span class="name deep-black">Tania Aguilar</span>
+                                    <span class="designation">Instructora de Pole Fitness</span>
+                                </div>
+                                <!-- //client-designation  -->
+                            </div>
+                            <!-- //name-dec -->
+                        </div><!-- /testimonial-name-designation -->
+                    </div>
+                    <!-- //col-sm-4 -->
+
+
+                    <div class="col-md-4">
+                        <div class="testimonial-name-designation">
+                            <div class="quate-icon">
+                                <span class="orange-gred ti-quote-left"></span>
+                            </div>
+                            <!-- //icon -->
+                            <div class="testimonial-text">
+                                <span>No hay nada igual a Tracade.Me, desde que lo uso puedo calificar y comentar cada nueva habilidad de mis alumnos.</span>
+                            </div>
+                            <!-- //text -->
+                            <div class="testimonial-name-des  pt25">
+                                <div class="testimonial-pic">
+                                    <img src="../public/img/testimonial/testi-3.jpg" alt="img">
+                                </div>
+                                <!-- //pic -->
+                                <div class="client-designation pt20">
+                                    <span class="name deep-black">Rosalía Pérez</span>
+                                    <span class="designation">Instructora de Telas Aéreas</span>
+                                </div>
+                                <!-- //client-designation  -->
+                            </div>
+                            <!-- //name-dec -->
+                        </div><!-- /testimonial-name-designation -->
+                    </div>
+                    <!-- //col-sm-4 -->
+
+
+
+                    <div class="col-md-4">
+                        <div class="testimonial-name-designation">
+                            <div class="quate-icon">
+                                <span class="orange-gred ti-quote-left"></span>
+                            </div>
+                            <!-- //icon -->
+                            <div class="testimonial-text">
+                                <span>Tracade.Me es la mejor plataforma para dar seguimiento a mis alumnos. Me permite ver mis estadísticas a fin de mes para ver como han progresado.</span>
+                            </div>
+                            <!-- //text -->
+                            <div class="testimonial-name-des  pt25">
+                                <div class="testimonial-pic">
+                                    <img src="../public/img/testimonial/testi-1.jpg" alt="img">
+                                </div>
+                                <!-- //pic -->
+                                <div class="client-designation pt20">
+                                    <span class="name deep-black">Selena Ramírez</span>
+                                    <span class="designation">Instructora de Pole Fitness</span>
+                                </div>
+                                <!-- //client-designation  -->
+                            </div>
+                            <!-- //name-dec -->
+                        </div><!-- /testimonial-name-designation -->
+                    </div>
+                    <!-- //col-sm-4 -->
+
+                </div>
+            </div><!-- /row -->
+        </div><!-- /container -->
+    </section>
+    <!-- End of testimonial section
+        ============================================= -->
+
+
+
+
+
+
+
+    <!-- Start of showcase section
+        ============================================= -->
+    <section id="showcase" class="showcase-section">
+        <div class="container">
+            <div class="row section-content">
+                <div class="showcase-content">
+                    <div class="section-title text-center pb50">
+                        <span class="title-text pink text-uppercase">CONÓCENOS</span>
+                        <h1 class="title deep-black pb40">Descubre Tracade.Me</h1>
+                    </div>
+                    <!-- //section-title -->
+                    <div class="showcase-slider">
+                        <div class="showcase-img">
+                            <img src="../public/img/showcase/show-1.jpg" alt="img">
+                        </div>
+                        <div class="showcase-img">
+                            <img src="../public/img/showcase/show-2.jpg" alt="img">
+                        </div>
+                        <div class="showcase-img">
+                            <img src="../public/img/showcase/show-3.jpg" alt="img">
+                        </div>
+                        <div class="showcase-img">
+                            <img src="../public/img/showcase/show-4.jpg" alt="img">
+                        </div>
+                        <div class="showcase-img">
+                            <img src="../public/img/showcase/show-1.jpg" alt="img">
+                        </div>
+                        <div class="showcase-img">
+                            <img src="../public/img/showcase/show-2.jpg" alt="img">
+                        </div>
+                        <div class="showcase-img">
+                            <img src="../public/img/showcase/show-3.jpg" alt="img">
+                        </div>
+                        <div class="showcase-img">
+                            <img src="../public/img/showcase/show-4.jpg" alt="img">
+                        </div>
+                        <div class="showcase-img">
+                            <img src="../public/img/showcase/show-1.jpg" alt="img">
+                        </div>
+                        <div class="showcase-img">
+                            <img src="../public/img/showcase/show-2.jpg" alt="img">
+                        </div>
+                        <div class="showcase-img">
+                            <img src="../public/img/showcase/show-3.jpg" alt="img">
+                        </div>
+                        <div class="showcase-img">
+                            <img src="../public/img/showcase/show-4.jpg" alt="img">
+                        </div>
+                    </div>
+                </div><!-- /showcase-content -->
+            </div><!-- /row -->
+        </div><!-- /container -->
+    </section>
+    <!-- End of showcase section
+        ============================================= -->
+
+    <!-- Start of download
+        ============================================= -->
+    <section id="download-area" class="download-section">
+        <div class="container">
+            <div class="row section-content">
+                <div class="download-area-content  text-center">
+                    <div class="download-number  pb20">
+                        <h2>¿Listo para llevar tu academia a otro nivel?</h2>
+                    </div>
+                    <div class="download-area-text  pb20">
+                        <span>Registrate y obtén una plataforma única.</span>
+                    </div>
+                    <div class="download-now pb40">
+                       <h3>VIVE LA EXPERIENCIA</h3>
+                    </div>
+                    <div class="download-store ul-li">
+                        <ul class="store-list">
+                            <li><div class="landy-content-button text-uppercase"><a href="{{asset('Precios')}}">ÚNETE YA</a></div></li>
+                            <li><div class="landy-content-button text-uppercase"><a href="{{asset('Nosotros')}}">SABER MÁS</a></div></li>
+                        </ul>
+                    </div>
+                </div>
+            </div><!--  /row -->
+        </div><!--  /container -->
+    </section>
+    <!-- End of  download
+        ============================================= -->
+
+
+@endsection
