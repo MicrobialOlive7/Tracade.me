@@ -94,7 +94,7 @@
                             <!-- Inicia Boton login -->
                             <div class="form-group row mb-5">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-primary" id="submit">
                                         {{ __('Login') }}
                                     </button>
                                 </div>
@@ -117,6 +117,94 @@
 <!--   Argon JS   -->
 <script src="../public/js/argon-dashboard.min.js?v=1.1.0"></script>
 <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+<!--<script>
+    $.ajaxSetup({
 
+        headers: {
+
+            //'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+
+        }
+
+    });
+
+
+
+    $("#submit").click(function(e){
+        e.preventDefault();
+
+        var password = $("input[name=password]").val();
+        var email = $("input[name=email]").val();
+
+        var data = new FormData();
+        data.append('email', email);
+        data.append('password', password);
+
+        $.ajax({
+
+            type:'POST',
+
+            url:'https://tracademe-clients.herokuapp.com/api/login',
+
+            data:data,
+
+            dataType: "json",
+
+            success:function(data){
+
+                alert(data.success);
+
+            },
+            error: function(data){
+                // Error...
+                var errors = $.parseJSON(data.responseText);
+
+                console.log(errors);
+
+                $.each(errors, function(index, value) {
+
+                });
+
+            }
+
+        });
+
+/*
+        $.ajax({
+            headers: {
+                'Content-Type': 'application/json',
+                'x-requested-with': 'XMLHttpRequest'
+            },
+            type: "POST",
+            url: "https://tracademe-clients.herokuapp.com/api/login",
+            data: {
+                'name':name,
+                'password':password,
+                'email':email
+            },
+            cache: false,
+            beforeSend: function (){
+                //modal.preloader();
+            },
+            success: function (result) {
+                //modal.close("-preloader");
+                console.log(result, 'success');
+
+            },
+            complete: function(){
+                console.log("ns parece");
+            },
+            error: function(result){
+                console.log(result, 'error');
+            }
+
+        });*/
+
+
+
+    });
+</script>-->
  </body>
 </html>
