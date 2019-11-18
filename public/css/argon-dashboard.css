@@ -3989,7 +3989,7 @@ input[type="button"].btn-block {
   text-align: center;
   white-space: nowrap;
   background-color: #fff;
-  border: 1px solid #cad1d7;
+  /* border: 1px solid #cad1d7; */
   border-radius: 0.375rem;
 }
 
@@ -13462,9 +13462,11 @@ button.bg-lighter:focus {
 }
 
 .bg-gradient-primary {
-    background: linear-gradient(45deg, #00b9ff 0, #006dff 100%) !important;
-    background: -moz-linear-gradient(45deg, #00b9ff 0, #006dff 100%) !important;
-    background: -ms-linear-gradient(45deg, #00b9ff 0, #006dff 100%) !important;
+    background: linear-gradient(65deg, #00b9ff 0,#336ff5 100%) !important;
+    background:
+    -moz-linear-gradient(45deg, #00b9ff 0, #006dff 100%) !important;
+    background:
+    -ms-linear-gradient(45deg, #00b9ff 0, #006dff 100%) !important;
 }
 
 .bg-gradient-secondary {
@@ -14691,7 +14693,7 @@ a.text-gray-dark:focus {
 }
 
 .text-light {
-  color: #ced4da !important;
+  color: #81868a !important;
 }
 
 a.text-light:hover,

@@ -44,6 +44,7 @@ Route::get('/Contacto', function (){
     return view('Corporativa.Contacto');
 });
 
+
 /**
  * Alumnos
  */
