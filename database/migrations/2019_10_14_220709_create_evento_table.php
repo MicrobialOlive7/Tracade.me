@@ -19,6 +19,8 @@ class CreateEventoTable extends Migration
             $table->string('eve_nombre');
             $table->dateTime('eve_fecha');
             $table->string('eve_descripcion', 255);
+            $table->string('api_id', 255);
+            $table->string('api_htmllink', 255);
 
             $table->unsignedBigInteger('gru_id');
             $table->foreign('gru_id')->references('id')->on('grupo');
