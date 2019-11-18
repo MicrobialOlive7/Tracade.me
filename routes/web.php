@@ -88,7 +88,7 @@ Route::get('/Contacto', function (){
 
 
     /** Habilidades **/
-    Route::get('/Habilidades', 'Habilidades\HabilidadesController@index');
+    Route::get('/Habilidades', 'Habilidades\HabilidadesController@index')->name('Habilidades');
     Route::get('/AgregarHabilidades', 'Habilidades\HabilidadesController@indexCrear');
 
     Route::get('/ModificarHabilidades/{hab_id}', 'Habilidades\HabilidadesController@indexModificar');
@@ -113,3 +113,4 @@ Route::get('/Contacto', function (){
 
     /**Habilidades**/
     Route::post('crear-habilidad', 'Habilidades\HabilidadesController@create')->name('crear-habilidad');
+    Route::get('borrar-habilidad/{id}', 'Habilidades\HabilidadesController@delete')->name('borrar-habilidad');
