@@ -65,6 +65,7 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                            <a class="dropdown-item" href="{{ route('agregar-alumnos', $grupo->id) }}">Agregar alumnos</a>
                                             <a class="dropdown-item" href="{{ route('modificar-grupo', $grupo->id) }}">Modificar</a>
                                             <a class="dropdown-item" href="{{route('eliminar-grupo', $grupo->id)}}">Eliminar</a>
                                         </div>

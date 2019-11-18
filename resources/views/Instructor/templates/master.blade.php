@@ -117,7 +117,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="{{ url('Grupos') }}">
+                    <a class="nav-link " href="{{ url('grupos') }}">
                         <i class="ni ni-bullet-list-67 text-pink"></i> Grupos
                     </a>
                 </li>
