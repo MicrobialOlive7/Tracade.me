@@ -117,7 +117,7 @@
 <!--   Argon JS   -->
 <script src="../public/js/argon-dashboard.min.js?v=1.1.0"></script>
 <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
-<!--<script>
+<script>
     $.ajaxSetup({
 
         headers: {
@@ -138,10 +138,8 @@
         var password = $("input[name=password]").val();
         var email = $("input[name=email]").val();
 
-        var data = new FormData();
-        data.append('email', email);
-        data.append('password', password);
-
+        var data = {'email': email, 'password': password};
+        console.log(data);
         $.ajax({
 
             type:'POST',
@@ -150,7 +148,6 @@
 
             data:data,
 
-            dataType: "json",
 
             success:function(data){
 
@@ -205,6 +202,6 @@
 
 
     });
-</script>-->
+</script>
  </body>
 </html>
