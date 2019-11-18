@@ -7,6 +7,7 @@ use Closure;
 use Exception;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Container\Container as ContainerContract;
+use Illuminate\Support\Arr;
 use LogicException;
 use ReflectionClass;
 use ReflectionException;
@@ -143,7 +144,7 @@ class Container implements ArrayAccess, ContainerContract
     {
         $aliases = [];
 
-        foreach (Util::arrayWrap($concrete) as $c) {
+        foreach (Arr::wrap($concrete) as $c) {
             $aliases[] = $this->getAlias($c);
         }
 

@@ -67,7 +67,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return "kugk";
 
         $alumno = Alumno::create([
             'alu_nombre' => $data['name'],
