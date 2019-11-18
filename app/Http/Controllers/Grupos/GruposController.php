@@ -7,13 +7,26 @@ use Illuminate\Http\Request;
 
 class GruposController extends Controller
 {
-
+    public function show(){
+        return view('instructor.CrearGrupos');
+    }
+    public function create(Request $request){
+        //return $request;
+        $grupo = new Grupo();
+        $grupo->gru_nombre = $request->gru_nombre;
+        $grupo->gr_dia = $request->gru_dia;
+        $grupo->gru_hora = "2000-01-01 ".$request->hora.":".$request->min.":00";
+        $grupo->dis_id = $request->dis_id;
+        $grupo->aul_id = 1;
+        $grupo->save();
+        return redirect()->route('grupos');
+    }
 
     public function index(){
 
-      $Grupos = Grupo::all()->toArray();
+      $Grupos = Grupo::all();
 
-      return view('Instructor.grupos',['Grupos' => $Grupos] );
+      return view('Instructor.grupos',compact('Grupos') );
 
     }
 
@@ -96,44 +109,6 @@ class GruposController extends Controller
 
     }
 
-    public function create(Request $request){
-
-      $gru_nombre = trim((string)$request->input('gru_nombre'));
-      $gru_horario = trim((string)$request->input('gru_horario'));
-      $dis_id = trim((string)$request->input('dis_id'));
-      $aul_id = trim((string)$request->input('aul_id'));
-
-      try{
-
-        $Grupo = new Grupo([
-          'gru_nombre' => $gru_nombre,
-          'gru_horario' => $gru_horario,
-          'dis_id' => $dis_id,
-          'aul_id' => $aul_id
-        ]);
-        $Grupo -> save();
-
-        $Response= [
-            'resultado' => $Grupo,
-            'estatus' => 1 ,
-            'mensaje'=> 'Grupo agregado exitosamente.'
-        ];
-
-      }catch(Exception $e){
-
-        $Response= [
-            'resultado' => $e,
-            'estatus' => 0 ,
-            'mensaje'=> 'Error'
-        ];
-
-
-      }
-
-      return $Response;
-
-
-    }
 
 
 }

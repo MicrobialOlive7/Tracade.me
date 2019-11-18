@@ -73,7 +73,9 @@ Route::get('/Contacto', function (){
     Route::get('eliminar-alumno/{id}', 'AlumnoController@delete')->name('eliminar-alumno');
 
     /** Grupos **/
-    Route::get('/Grupos', 'Grupos\GruposController@index');
+    Route::get('crear-grupo', 'Grupos\GruposController@show')->name('crear-grupo');
+    Route::post('crear-grupo-crear', 'Grupos\GruposController@create')->name('crear-grupo-crear');
+    Route::get('grupos', 'Grupos\GruposController@index')->name('grupos');
 
     Route::get('/AgregarGrupos', function (){
         return view('Instructor.CrearModGrupos', ['Grupo' => [],'Mod'=>'0']);
