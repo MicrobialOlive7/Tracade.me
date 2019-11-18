@@ -66,7 +66,7 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                             <a class="dropdown-item" href="{{ url('ModificarGrupos/'. $grupo['gru_id']) }}">Modificar</a>
-                                            <a class="dropdown-item" onclick="eliminarGrupo('{{$grupo['gru_nombre']}}','{{$grupo['gru_id']}}')">Eliminar</a>
+                                            <a class="dropdown-item" href="{{route('eliminar-grupo', $grupo->id)}}">Eliminar</a>
                                         </div>
                                     </div>
                                 </td>

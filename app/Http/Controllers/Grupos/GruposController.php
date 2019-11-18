@@ -22,6 +22,11 @@ class GruposController extends Controller
         return redirect()->route('grupos');
     }
 
+    public function delete($id){
+        Grupo::all()->find($id)->delete();
+        return redirect()->route('grupos');
+    }
+
     public function index(){
 
       $Grupos = Grupo::all();
@@ -44,7 +49,7 @@ class GruposController extends Controller
       return view('Instructor.CrearModGrupos', [ 'Grupo' => $GrupoInfo[0], 'Mod'=>'1', 'Horario' => [$dia, $hora_de, $min_de, $hora_a, $min_a] ]);
     }
 
-    public function delete(Request $request){
+    /*public function delete(Request $request){
       $gru_id = trim((string)$request->input('gru_id'));
 
       try{
@@ -69,7 +74,7 @@ class GruposController extends Controller
       return $Response;
 
 
-    }
+    }*/
 
     public function update(Request $request){
       $gru_nombre = trim((string)$request->input('gru_nombre'));
