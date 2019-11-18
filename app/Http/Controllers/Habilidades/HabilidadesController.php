@@ -46,8 +46,8 @@ class HabilidadesController extends Controller
       $Habilidad = Habilidad::find($hab_id);
       $HabReq = HabilidadAnterior::where('hab_id', $hab_id)->get();
       $CamposAd = CampoAdicional::where('hab_id', $hab_id)->get();
-      dd($CamposAd);
       $Mod = '1';
+      
         return view('Instructor.CrearModhabilidades', compact('CamposAd', 'Habilidad','Habilidades', 'HabReq', 'Mod'));
     }
 
