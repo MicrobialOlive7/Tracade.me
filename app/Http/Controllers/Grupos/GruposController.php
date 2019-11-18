@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Grupos;
+use App\Aula;
+use App\Disciplina;
 use App\Grupo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,7 +10,8 @@ use Illuminate\Http\Request;
 class GruposController extends Controller
 {
     public function show(){
-        return view('instructor.CrearGrupos');
+        $aulas = Aula::all();
+        return view('instructor.CrearGrupos', compact('aulas'));
     }
     public function create(Request $request){
         //return $request;
@@ -24,6 +27,24 @@ class GruposController extends Controller
 
     public function delete($id){
         Grupo::all()->find($id)->delete();
+        return redirect()->route('grupos');
+    }
+
+    public function showUpdate($id){
+        $grupo = Grupo::all()->find($id);
+        $aulas = Aula::all();
+        $disciplinas = Disciplina::all();
+        return view('instructor.ModGrupos', compact('grupo', 'aulas', 'disciplinas', 'id'));
+    }
+
+    public function update(Request $request, $id){
+        $grupo = Grupo::all()->find($id);
+        $grupo->gru_nombre = $request->gru_nombre;
+        $grupo->gr_dia = $request->gru_dia;
+        //$grupo->gru_hora = "2000-01-01 ".$request->hora.":".$request->min.":00";
+        $grupo->dis_id = $request->dis_id;
+        $grupo->aul_id = 1;
+        $grupo->save();
         return redirect()->route('grupos');
     }
 
@@ -76,7 +97,7 @@ class GruposController extends Controller
 
     }*/
 
-    public function update(Request $request){
+    /*public function update(Request $request){
       $gru_nombre = trim((string)$request->input('gru_nombre'));
       $gru_horario = trim((string)$request->input('gru_horario'));
       $dis_id = trim((string)$request->input('dis_id'));
@@ -113,7 +134,7 @@ class GruposController extends Controller
       return $Response;
 
     }
-
+*/
 
 
 }

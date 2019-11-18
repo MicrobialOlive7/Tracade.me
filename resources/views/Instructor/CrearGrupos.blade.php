@@ -66,8 +66,9 @@
                               <div class="input-group md-4">
                                   <select class="form-control" id="id_aula" name="aul_id">
                                       <option value="" selected >Aula</option>
-                                      <option value="1"> Aula01 </option>
-                                      <option value="2"> Aula02 </option>
+                                      @foreach($aulas as $aula)
+                                      <option value="{{$aula->id}}"> {{$aula->aul_salon}}</option>
+                                          @endforeach
                                   </select>
                               </div>
                           </div>
