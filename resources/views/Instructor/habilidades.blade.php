@@ -107,6 +107,8 @@ function  eliminarHabilidad(hab_nombre, hab_id){
   $("#delete_modal").modal().find('.message-text').empty();
   $("#delete_modal").modal().find('.message-text').append('¿Estás seguro de eliminar la habilidad ' + hab_nombre + '?');
   $("#delete_modal").modal().find('#borrar').val(hab_id);
+  $("#delete_modal").modal().find('#borrar').attr("href", "{{route('borrar-habilidad', '". hab_id ."')}}");
+
 }
 
 $("#borrar").click(function(){

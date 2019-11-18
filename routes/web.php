@@ -22,6 +22,8 @@
 
 Auth::routes();
 
+
+
 Route::get('/home', 'Corporativa\CorpController@index')->name('home');
 
 
