@@ -12,9 +12,8 @@ class EventoController extends Controller
     public function show(){
 
     }
-
-    public function getClient()
-    {
+    //PARA INICIALIZAR EL CLIENTE
+    public function getClient(){
         $client = new \Google_Client();
         $client->setApplicationName('Google Calendar API PHP Quickstart');
         $client->setScopes(\Google_Service_Calendar::CALENDAR_READONLY);
@@ -61,21 +60,24 @@ class EventoController extends Controller
         }
         return $client;
     }
-    public function quickstart(Request $request){
-        require 'C:/xampp/htdocs/Tracade.me/vendor/autoload.php';
-        /**
-         * Returns an authorized API client.
-         * @return Google_Client the authorized client object
-         */
+    //PARA MODIFICAR EVENTOS
+    public function crearEvento(){
+        $client = $this->getClient();
+        $service = new \Google_Service_Calendar($client);
 
-        $this->getClient();
+        $event = $service->events->get('1h5c74a7vccmvf9hl2omu6ajgk@group.calendar.google.com', 'eventId');
+    }
+
+    //PARA CREAR EVENTOS
+    public function quickstart($eve_nombre,$eve_fecha,$eve_descripcion, $gru_id){
+        require 'C:/xampp/htdocs/Tracade.me/vendor/autoload.php';
 
 // Get the API client and construct the service object.
         $client = $this->getClient();
         $service = new \Google_Service_Calendar($client);
 
 // Print the next 10 events on the user's calendar.
-        $calendarId = 'primary';
+        $calendarId = '1h5c74a7vccmvf9hl2omu6ajgk@group.calendar.google.com';
         $optParams = array(
             'maxResults' => 10,
             'orderBy' => 'startTime',
@@ -85,65 +87,50 @@ class EventoController extends Controller
         $results = $service->events->listEvents($calendarId, $optParams);
         $events = $results->getItems();
 
-// Refer to the PHP quickstart on how to setup the environment:
-// https://developers.google.com/calendar/quickstart/php
-// Change the scope to Google_Service_Calendar::CALENDAR and delete any stored
-// credentials.
+        list($fecha1,$fecha2) = explode(" ",$eve_fecha);
+        $fecha1 = str_replace("/","-",$fecha1);
+        //dd($hour);
+        //dd($fecha2);
 
         $event = new \Google_Service_Calendar_Event(array(
-            'summary' => 'Google I/O 2015',
-            'location' => '800 Howard St., San Francisco, CA 94103',
-            'description' => 'A chance to hear more about Google\'s developer products.',
+            'summary' => $eve_nombre,
+            'description' => $eve_descripcion,
             'start' => array(
-                'dateTime' => '2015-05-28T09:00:00-07:00',
-                'timeZone' => 'America/Los_Angeles',
+                'dateTime' => $fecha1.'T'.$fecha2.'-06:00',
+                'timeZone' => 'America/Mexico_City',
             ),
             'end' => array(
-                'dateTime' => '2015-05-28T17:00:00-07:00',
-                'timeZone' => 'America/Los_Angeles',
+                'dateTime' => $fecha1.'T'.$fecha2.'-06:00',
+                'timeZone' => 'America/Mexico_City',
             ),
             'recurrence' => array(
                 'RRULE:FREQ=DAILY;COUNT=1'
             ),
-            'attendees' => array(
-                array('email' => 'lpage@example.com'),
-                array('email' => 'sbrin@example.com'),
-            ),
-            'reminders' => array(
-                'useDefault' => FALSE,
-                'overrides' => array(
-                    array('method' => 'email', 'minutes' => 24 * 60),
-                    array('method' => 'popup', 'minutes' => 10),
-                ),
-            ),
         ));
 
-        $calendarId = 'primary';
+        $calendarId = '1h5c74a7vccmvf9hl2omu6ajgk@group.calendar.google.com';
         $event = $service->events->insert($calendarId, $event);
-        printf('Event created: %s\n', $event->htmlLink);
+        $eventoAPI = ["htmlLink" => $event->htmlLink, "id" => $event->id, "caledarId" => $calendarId];
+        //printf('Event created: %s\n', $event->htmlLink);
+        return $eventoAPI;
 
-        if (empty($events)) {
-            print "No se encontró ningún evento.\n";
-        } else {
-            print "Eventos siguientes:\n";
-            foreach ($events as $event) {
-                $start = $event->start->dateTime;
-                if (empty($start)) {
-                    $start = $event->start->date;
-                }
-                printf("%s (%s)\n", $event->getSummary(), $start);
-            }
-        }
     }
     public function create(Request $request){
-
         $evento = new Evento();
         $evento->eve_nombre = $request->name;
         $evento->eve_fecha = $request->fecha." ".$request->hora.":".$request->min.":00";
         $evento->eve_descripcion = $request->descripcion;
         $evento->gru_id = 1;
+
+        $eventoAPI = $this->quickstart($evento->eve_nombre,$evento->eve_fecha,$evento->eve_descripcion, $evento->gru_id);
+        $evento->api_htmllink = $eventoAPI->htmlLink;
+        $evento->api_id = $eventoAPI->id;
+
         $evento->save();
+        //return $eventoAPI;
         return redirect()->route('calendario');
+        // refresh a base de datos, guardar id y htmllink en base de datos
+        // editar evento con htmlLink
     }
 
     public function update(Request $request, $id){
