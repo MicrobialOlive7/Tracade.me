@@ -13,6 +13,6 @@ class Grupo extends Model
     protected $table = 'grupo';
 
     protected $fillable = [
-        'gru_nombre','gru_horario', 'aul_id', 'dis_id'
+        'gru_nombre','gr_dia','gru_hora', 'aul_id', 'dis_id'
     ];
 }

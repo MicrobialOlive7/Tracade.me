@@ -27,10 +27,25 @@
                                 class="form-control " id="hab_nombre"
 
                                @if($Mod=='1')
-                                data-id= "{{$Habilidad->hab_id}}" data-id_cad= "{{$CamposAd[0]['cad_id']}}" data-id-han="{{$HabReq}}"
+                                data-id= "{{$Habilidad->hab_id}}"
+
+                                @if({{$CamposAd}}  == null )
+                                data-id_cad= null
+                                @else
+                                data-id_cad= "{{$CamposAd->cad_id}}"
+                                @endif
+
+                                @if({{$HabReq}} == null)
+                                  data-id-han= null
+                                @else
+                                  data-id-han= "{{$HabReq->han_id}}"
+                                @endif
+
                               @else
                                 data-id = ''
-                              @endif placeholder="Nombre">
+                              @endif
+
+                              placeholder="Nombre" >
                             </div>
                         </div>
                         <div class="col-md-4">

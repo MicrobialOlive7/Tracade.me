@@ -12,7 +12,7 @@
                         <h3 class="mb-0">Grupos</h3>
                         <div class="col text-right">
                             <span class="btn-inner--icon">
-                                <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Agregar" href="{{ url('AgregarGrupos') }}">
+                                <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Agregar" href="{{ route('crear-grupo') }}">
                                     <i class="ni ni-fat-add" ></i>
                                 </a>
                             </span>
@@ -37,12 +37,12 @@
                             </tr>
                             </thead>
                             <tbody>
-                              @foreach($Grupos as $key => $value)
+                              @foreach($Grupos as $grupo)
                               <tr>
                                 <td> <input type="checkbox"></td>
-                                <th scope="row"> {{$value['gru_nombre']}}  </th>
-                                <th scope="row"> {{$value['gru_horario']}}  </th>
-                                <th scope="row"> 7:00am - 8:00am </th>
+                                <th scope="row"> {{$grupo->gru_nombre}}  </th>
+                                <th scope="row"> {{$grupo->gr_dia}}  </th>
+                                <th scope="row"> {{$grupo->gru_hora}} </th>
                                 <td>
                                     <div class="avatar-group">
                                         <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
@@ -65,8 +65,9 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="{{ url('ModificarGrupos/'. $value['gru_id']) }}">Modificar</a>
-                                            <a class="dropdown-item" onclick="eliminarGrupo('{{$value['gru_nombre']}}','{{$value['gru_id']}}')">Eliminar</a>
+                                            <a class="dropdown-item" href="{{ route('agregar-alumnos', $grupo->id) }}">Agregar alumnos</a>
+                                            <a class="dropdown-item" href="{{ route('modificar-grupo', $grupo->id) }}">Modificar</a>
+                                            <a class="dropdown-item" href="{{route('eliminar-grupo', $grupo->id)}}">Eliminar</a>
                                         </div>
                                     </div>
                                 </td>
