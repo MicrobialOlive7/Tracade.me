@@ -55,7 +55,7 @@
         <p class= "message-text"> </p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" id="borrar" data-dismiss="modal">Sí, eliminar grupo.</button>
+        <button type="button" class="btn btn-secondary" id="borrar" data-dismiss="modal">Sí, eliminar.</button>
 
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar.</button>
       </div>
