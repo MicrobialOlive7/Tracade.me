@@ -8,35 +8,22 @@ use App\CampoAdicional;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class HabilidadesController extends Controller
 {
     public function indexCrear(){
 
-      $Habilidades = Habilidad::all()->toArray();
-
-      return view('Instructor.CrearModHabilidades', [ 'Habilidades' => $Habilidades, 'Mod' => '0']);
+      $habilidades = Habilidad::all()->toArray();
+    //dd($habilidades);
+      return view('Instructor.CrearModHabilidades', [ 'Habilidades' => $habilidades, 'Mod' => '0']);
     }
 
     public function index(){
 
-        $Habilidades = Habilidad::all()->toArray();
-        $Disciplinas = Disciplina::all()->toArray();
+        $habilidades = Habilidad::all();
+        $disciplinas = Disciplina::all();
 
-
-
-        foreach($Habilidades as $key_hab => $value_hab){
-          array_push($Habilidades[$key_hab], 'dis_nombre');
-          foreach($Disciplinas as $key_dis => $value_dis){
-            if($value_dis['dis_id'] == $value_hab['dis_id']){
-              $Habilidades[$key_hab]['dis_nombre'] = $value_dis['dis_nombre'];
-            }
-          }
-        }
-
-
-        return view('Instructor.Habilidades', ['Habilidades' => $Habilidades]);
+        return view('Instructor.Habilidades', compact('habilidades', 'disciplinas'));
     }
 
     public function delete(Request $request){
@@ -55,11 +42,13 @@ class HabilidadesController extends Controller
     }
 
     public function indexModificar($hab_id){
-      $Habilidades = Habilidad::all()->toArray();
-      $Habilidad = Habilidad::where('hab_id', $hab_id)->get();
-      $HabReq = HabilidadAnterior::where('hab_id', $hab_id)->get()->toArray();
-      $CamposAd = CampoAdicional::where('hab_id', $hab_id)->get()->toArray();
-        return view('Instructor.CrearModhabilidades', ['CamposAd'=>$CamposAd,'Habilidad' => $Habilidad[0], 'Habilidades' => $Habilidades, 'HabReq' => $HabReq[0]['han_id'], 'Mod'=>'1']);
+      $Habilidades = Habilidad::all();
+      $Habilidad = Habilidad::find($hab_id);
+      $HabReq = HabilidadAnterior::where('hab_id', $hab_id)->get();
+      $CamposAd = CampoAdicional::where('hab_id', $hab_id)->get();
+      $Mod = '1';
+      
+        return view('Instructor.CrearModhabilidades', compact('CamposAd', 'Habilidad','Habilidades', 'HabReq', 'Mod'));
     }
 
     public function update (Request $request){
@@ -126,6 +115,7 @@ class HabilidadesController extends Controller
       $cad_nombre = $request->input('cad_nombre');
       $cad_contenido = $request->input('cad_contenido');
       $file_img = $request->file('hab_imagen');
+      $campos = $request->input('campos');
 
 
       try{
@@ -139,8 +129,7 @@ class HabilidadesController extends Controller
         $Habilidad -> save();
       //  $this->storeImage($file_img, $Habilidad->id);
 
-        $name = 'principal.jpg';
-        Storage::disk('local')->put('habilidades/'.$Habilidad->id.'/'.$name, $file_img);
+        Storage::disk('local')->put('habilidades/'.$Habilidad->id.'/',$file_img);
 
         $HabilidadAnterior = new HabilidadAnterior([
           'hab_id' => $Habilidad->id,
@@ -169,8 +158,6 @@ class HabilidadesController extends Controller
                 'hab_ant_id' => $han_id_habilidad_anterior
             ]);
             $HabilidadAnterior -> save();
-
-            $this->storeImage($request, $Habilidad->id);
 
             if($campos!=null){
                 foreach($campos as $key => $values){

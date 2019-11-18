@@ -86,7 +86,12 @@ Route::get('/Contacto', function (){
     Route::get('/Habilidades', 'Habilidades\HabilidadesController@index');
     Route::get('/AgregarHabilidades', 'Habilidades\HabilidadesController@indexCrear');
 
+
+    Route::post('/crear-habilidad', 'Habilidades\HabilidadesController@create');
+
+
     Route::get('/ModificarHabilidades/{hab_id}', 'Habilidades\HabilidadesController@indexModificar');
+    Route::get('borrar-habilidad/{id}', 'Habilidades\HabilidadesController@delete')->name('borrar-habilidad');
 
 /** Calendario **/
     Route::get('/Calendario', function (){
@@ -104,5 +109,3 @@ Route::get('/Contacto', function (){
     Route::post('crear-evento', 'EventoController@create')->name('crear-evento');
     Route::post('modificar-evento/{id}', 'EventoController@update')->name('modificar-evento');
     Route::post('eliminar-evento/{id}', 'EventoController@delete')->name('eliminar-evento');
-
-
