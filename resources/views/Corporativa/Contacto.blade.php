@@ -22,23 +22,24 @@
         ============================================= -->
 <!-- Start of contact section
     ============================================= -->
-<section id="contact" class="contact-section">
+<section id="contact" class="contact-section text-center">
         <div class="row section-content">
-            <div class="col-md-6">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
                 <div class="section-title text-left pb50">
                     <h1 class="title deep-black pb40"><Strong>Permanece en Contacto</Strong></h1>
                     <span class="title-dec"> Contactanos en nuestras redes sociales </span>
                     <br>
                     <ul class="icon">
-                    <li><a href="#"><span class="ti-facebook"></span><span class="title-dec"> Facebook </span></a></li>
-                    <li><a href="#"><span class="ti-twitter-alt"></span><span class="title-dec"> Twitter </span></a></li>
-                    <li><a href="#"><span class="ti-instagram"></span><span class="title-dec"> Instagram </span></a></li>
-                    <li><span class="ti-email"></span><span class="title-dec"> hola@tracade.me </span></li>
+                        <li><a href="#"><span class="ti-facebook"></span><span class="title-dec"> Facebook </span></a></li>
+                        <li><a href="#"><span class="ti-twitter-alt"></span><span class="title-dec"> Twitter </span></a></li>
+                        <li><a href="#"><span class="ti-instagram"></span><span class="title-dec"> Instagram </span></a></li>
+                        <li><span class="ti-email"></span><span class="title-dec"> hola@tracade.me </span></li>
                     </ul>
                 </div>
             </div>
             <!-- //section-title -->
-            <div class="col-md-5">
+            <div class="col-md-4 text-center">
                 <h1 class="title deep-black pb40"><strong>¡Envíanos un mensaje!</strong></h1>
                 <div class="comment-form">
                     <form id="contact_form" action="#" method="POST" enctype="multipart/form-data">
