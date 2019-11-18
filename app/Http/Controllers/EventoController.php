@@ -136,21 +136,22 @@ class EventoController extends Controller
         }
     }
     public function create(Request $request){
+
         $evento = new Evento();
-        $evento->eve_nombre = $request['name'];
-        $evento->eve_fecha = $request->fecha;
+        $evento->eve_nombre = $request->name;
+        $evento->eve_fecha = $request->fecha." ".$request->hora.":".$request->min.":00";
         $evento->eve_descripcion = $request->descripcion;
-        $evento->gru_id = $request->grupo;
+        $evento->gru_id = 1;
         $evento->save();
-        return $evento;
+        return redirect()->route('calendario');
     }
 
     public function update(Request $request, $id){
         $evento = Evento::all()->find($id);
-        $evento->eve_nombre = $request->nombre;
-        $evento->eve_fecha = $request->fecha;
+        $evento->eve_nombre = $request->name;
+        $evento->eve_fecha = $request->fecha." ".$request->hora.":".$request->min.":00";
         $evento->eve_descripcion = $request->descripcion;
-        $evento->gru_id = $request->grupo;
+        $evento->gru_id = 1;
         $evento->save();
         return $evento;
     }

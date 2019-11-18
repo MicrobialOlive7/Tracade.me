@@ -18,14 +18,14 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                 </div>
-                                <input class="form-control datepicker" placeholder="Seleccionar Fecha" type="text" value="Fecha">
+                                <input class="form-control datepicker" placeholder="Seleccionar Fecha" type="text" value="Fecha" name="fecha">
                             </div>
                         </div>
                     </div>
 
                 <!-- Inicia Campo Horario -->
                     <div class="col">
-                        <select type="ap" class="form-control" id="exampleFormControlInput1" >
+                        <select type="ap" class="form-control" id="exampleFormControlInput1" name="hora">
                             <option value="" disabled selected>Hora</option>
                             <option value="1" > 01 </option>
                             <option value="2" > 02 </option>
@@ -45,7 +45,7 @@
                     <div class="col-xs-1">:</div>
 
                     <div class="col">
-                        <input class="form-control" placeholder="Min" type="number" max="59" min="00">
+                        <input class="form-control" placeholder="Min" type="number" max="59" min="00" name="min">
                     </div>
                 </div>
                 <!-- Termina Campo Horario -->
@@ -57,14 +57,14 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                 </div>
-                                <input id="name" class="form-control" placeholder="Nombre del Evento" type="text">
+                                <input id="name" class="form-control" placeholder="Nombre del Evento" type="text" name="name">
                             </div>
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Descripción..."></textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" name="descripcion" rows="3" placeholder="Descripción..."></textarea>
                         </div>
                     </div>
                     <div class="col-sm"></div>

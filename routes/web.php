@@ -93,7 +93,7 @@ Route::get('/Contacto', function (){
 /** Calendario **/
     Route::get('/Calendario', function (){
             return view('Instructor.calendario');
-    });
+    })->name('calendario');
 
     Route::get('/AgregarEventos', function (){
         return view('Instructor.CrearModEventos');
