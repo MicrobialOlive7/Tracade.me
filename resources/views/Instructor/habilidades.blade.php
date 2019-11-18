@@ -39,19 +39,12 @@
                             <tbody>
 
 
-                              @foreach($habilidades as $key => $value)
+                              @foreach($Habilidades as $key => $value)
                               <tr>
                                 <td> <input type="checkbox"></td>
-                                <th scope="row"> {{$value->hab_nombre}}  </th>
-                                <th scope="row"> @if($value->hab_dificultad==1)
-                                                    Principiante
-                                                 @elseif($value->hab_dificultad==2)
-                                                    Intermedio
-                                                 @elseif($value->hab_dificultad==3)
-                                                    Avanzado
-                                                 @endif
-                              </th>
-                                <th scope="row"> {{$disciplinas->where('id', $value->id)->first()['dis_nombre']}} </th>
+                                <th scope="row"> {{$value['hab_nombre']}}  </th>
+                                <th scope="row"> {{$value['hab_dificultad']}} </th>
+                                <th scope="row"> {{$value['dis_nombre']}} </th>
                                 <th></th>
                                 <td class="text-right">
                                     <div class="dropdown">
@@ -59,8 +52,8 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="{{ url('ModificarHabilidades/'. $value->id) }}">Modificar</a>
-                                            <a class="dropdown-item" href="#" onclick="eliminarHabilidad('{{$value->hab_nombre}}','{{$value->id}}')" >Eliminar</a>
+                                            <a class="dropdown-item" href="{{ url('ModificarHabilidades/'. $value['hab_id']) }}">Modificar</a>
+                                            <a class="dropdown-item" href="#" onclick="eliminarHabilidad('{{$value['hab_nombre']}}','{{$value['hab_id']}}')" >Eliminar</a>
                                         </div>
                                     </div>
                                 </td>
@@ -115,9 +108,47 @@ function  eliminarHabilidad(hab_nombre, hab_id){
   $("#delete_modal").modal().find('.message-text').append('¿Estás seguro de eliminar la habilidad ' + hab_nombre + '?');
   $("#delete_modal").modal().find('#borrar').val(hab_id);
   $("#delete_modal").modal().find('#borrar').attr("href", "{{route('borrar-habilidad', '". hab_id ."')}}");
+
 }
 
+$("#borrar").click(function(){
+    var hab_id = $("#borrar").val();
 
+    var aDatos={
+      'hab_id' : hab_id
+    };
+
+    $.ajax({
+          headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+          type: "POST",
+          url: "{{ asset ('api/borrar-habilidad') }}",
+          data: aDatos,
+          cache: false,
+          dataType: "json",
+          beforeSend: function (){
+            //modal.preloader();
+          },
+          success: function (result) {
+            //modal.close("-preloader");
+            console.log(result.estatus===1);
+            if(result.estatus === 1){
+              console.log("Sacar modal y pasar a grupos");
+              window.location.href = "{{ asset('/Habilidades') }}";
+
+            }else{
+              console.log("Sacar modal error y pasar a grupos")
+              window.location.href = "{{ asset('/Habilidades') }}";
+            }
+          },
+          complete: function () {
+          },
+          error: function (result) {
+            console.log("errorsin");
+          }
+        });
+
+
+  });
 </script>
 
 @endsection

@@ -10,8 +10,7 @@
                 <h3 class="mb-0">Habilidades</h3>
             </div>
             <!-- Inicia Form -->
-            <form>
-              @csrf
+            <form >
                 <div class="container">
                     <div class="row justify-content-md-start">
                         <!-- Inicia Seccion Nombre, disciplina, dificultad-->
@@ -28,10 +27,10 @@
                                 class="form-control " id="hab_nombre"
 
                                @if($Mod=='1')
-                                data-id= "{{$Habilidad->hab_id}}" data-id_cad= "{{$CamposAd->id}}" data-id-han="{{$HabReq}}"
+                                data-id= "{{$Habilidad->hab_id}}" data-id_cad= "{{$CamposAd[0]['cad_id']}}" data-id-han="{{$HabReq}}"
                               @else
                                 data-id = ''
-                              @endif placeholder="Nombre" name="hab_nombre" required>
+                              @endif placeholder="Nombre">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -42,12 +41,12 @@
                                   @else
                                     value=""
                                   @endif
-                                  class="form-control" id="dis_id" required>
+                                  class="form-control" id="dis_id" >
                                     <option value="" disabled
                                     @if($Mod=='0')
                                      selected
                                     @endif
-                                    name="dis_id" >Disciplina</option>
+                                    >Disciplina</option>
                                     <option value="1" > Pole Fitness </option>
                                     <option value="3" > Telas Aereas </option>
                                 </select>
@@ -61,7 +60,7 @@
                                 @else
                                   value=""
                                 @endif
-                                class="form-control" id="hab_dificultad" name="hab_dificultad" required>
+                                class="form-control" id="hab_dificultad" >
                                     <option value="" disabled
                                     @if($Mod=='0')
                                     selected
@@ -84,7 +83,7 @@
                     <div class="row justify-content-md-start">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <textarea  maxlength="255" class="form-control" name="hab_descripcion" id="hab_descripcion" rows="3" placeholder="Descripción ..." required> @if($Mod=='1')
+                                <textarea class="form-control" id="hab_descripcion" rows="3" placeholder="Descripción ..."> @if($Mod=='1')
                                  {{$Habilidad->hab_descripcion}}
                                 @else
 
@@ -100,13 +99,13 @@
                                 @else
                                   value=""
                                 @endif
-                                class="form-control" id="hab_id" name="hab_id" required >
+                                class="form-control" id="hab_id" >
                                     <option value="" disabled
                                     @if($Mod=='0')
                                     selected
                                     @endif >Habilidad Requerida</option>
                                     @foreach($Habilidades as $key => $value)
-                                    <option value="{{$value['id']}}"> {{$value['hab_nombre']}} </option>
+                                    <option value="{{$value['hab_id']}}"> {{$value['hab_nombre']}} </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -128,12 +127,12 @@
                                     <div class="row justify-content-md-start">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <input value="{{$values['cad_nombre']}}" type="nombre" class="form-control" name="cad_nombre" id="cad_nombre" placeholder="Nombre campo" required>
+                                            <input value="{{$values['cad_nombre']}}" type="nombre" class="form-control" id="cad_nombre" placeholder="Nombre campo">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <input type="nombre" value="{{$values['cad_contenido']}}" class="form-control" name="cad_contenido" id="cad_contenido" placeholder="Contenido campo" required>
+                                            <input type="nombre" value="{{$values['cad_contenido']}}" class="form-control" id="cad_contenido" placeholder="Contenido campo">
                                         </div>
                                     </div>
                                   </div>
@@ -166,7 +165,7 @@
                     <div class="row justify-content-md-start">
                         <div class="col">
                             <div class="form-group">
-                                <input id="hab_imagen" type="file" name="hab_imagen" accept="image/*">
+                                <input id="hab_imagen" type="file" name="pic" accept="image/*">
 
                             </div>
                         </div>
@@ -179,22 +178,22 @@
                     <div class="row justify-content-md-center">
                         <div class="col-auto">
                             <div  class="col-md-offset-right-1">
-                              <div class="form-group">
-                                  <span class="btn-inner--icon">
-                                      @if($Mod==0)
-                                        <span class="btn-inner--icon">
-                                          <a id="btn-agregarHabilidad" class="btn btn-icon btn-2 btn-info btn-lg" role="button" title="Agregar"> Agregar </a>
-                                        </span>
-                                        @else
-                                        <span class="btn-inner--icon">
-                                            <a class="btn btn-icon btn-2 btn-info btn-lg" id="btn-modificarHabilidad" role="button" title="Agregar"> Modificar </a>
-                                        </span>
-                                      @endif
-                                  </span>
-                                  <span class="btn-inner--icon">
-                                       <a class="btn btn-icon btn-2 btn-danger btn-lg" role="button" title="Cancelar" href="{{ url('Alumnos') }}"> Cancelar </a>
-                                  </span>
-                              </div>
+                                <div class="form-group">
+                                    <span class="btn-inner--icon">
+                                        @if($Mod==0)
+                                          <span class="btn-inner--icon">
+                                            <a id="btn-agregarHabilidad" class="btn btn-icon btn-2 btn-info btn-lg" role="button" title="Agregar"> Agregar </a>
+                                          </span>
+                                          @else
+                                          <span class="btn-inner--icon">
+                                              <a class="btn btn-icon btn-2 btn-info btn-lg" id="btn-modificarHabilidad" role="button" title="Agregar"> Modificar </a>
+                                          </span>
+                                        @endif
+                                    </span>
+                                    <span class="btn-inner--icon">
+                                         <a class="btn btn-icon btn-2 btn-danger btn-lg" role="button" title="Cancelar" href="{{ url('Alumnos') }}"> Cancelar </a>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -212,7 +211,9 @@
 <script type="text/javascript">
 
 var campos=0;
+
 $("#añadirHabilidad").click(function(){
+
   var campo_adicional = '<div class="container">'+
                     '<div class="row justify-content-md-start">'+
                     '<div class="col-md-4">'+
@@ -229,11 +230,14 @@ $("#añadirHabilidad").click(function(){
                   '</div>';
   $("#campos_adicionales").append(campo_adicional);
   $("#remove").remove();
+
   campos=1;
 });
 
 $("#btn-modificarHabilidad").click(function(){
   var gru_id= document.getElementById("hab_nombre").dataset.id;
+
+
   var hab_nombre = $('#hab_nombre').val();
   var dis_id = $('#dis_id').val();
   var hab_dificultad =  $('#hab_dificultad').val();
@@ -249,12 +253,17 @@ $("#btn-modificarHabilidad").click(function(){
     var cad_nombre =  '';
     var cad_contenido =  '';
   }
+
   if(hab_nombre=="" || dis_id=='' || hab_dificultad =='' || hab_descripcion == '' || han_id_habilidad_anterior == ''  || hab_imagen==''  ){
+
     $("#warning_modal").modal().find('.modal-title').text('Error de registro.');
     $("#warning_modal").modal().find('.message-text').empty();
     $("#warning_modal").modal().find('.message-text').append('Todos los datos deben ser rellenados');
+
     return false;
   }
+
+
     var aDatos = new FormData();
     aDatos.append('hab_id' , hab_id);
     aDatos.append('hab_nombre' , hab_nombre);
@@ -267,6 +276,7 @@ $("#btn-modificarHabilidad").click(function(){
     aDatos.append('hab_imagen' , hab_imagen);
     aDatos.append('cad_id' , cad_id);
     aDatos.append('han_id' , han_id);
+
     $.ajax({
       async: true,
       headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
@@ -286,6 +296,7 @@ $("#btn-modificarHabilidad").click(function(){
             if(result.estatus === 1){
               console.log("Sacar modal y pasar a habilidades");
               window.location.href = "{{ asset('/Habilidades') }}";
+
             }else{
               console.log("Sacar modal error y pasar a grupos")
               window.location.href = "{{ asset('/Habilidades') }}";
@@ -298,6 +309,9 @@ $("#btn-modificarHabilidad").click(function(){
           }
         });
 });
+
+
+
 
 $("#btn-agregarHabilidad").click(function(){
   var hab_nombre = $('#hab_nombre').val();
@@ -313,13 +327,19 @@ $("#btn-agregarHabilidad").click(function(){
     var cad_nombre =  '';
     var cad_contenido =  '';
   }
+
   hab_imagen = hab_imagen.files[0];
-  if(hab_nombre == "" || dis_id== null || hab_dificultad == null || hab_descripcion == "" || han_id_habilidad_anterior == null  || hab_imagen ==  null){
+
+  if(hab_nombre==="" || dis_id=='' || hab_dificultad =='' || hab_descripcion == '' || han_id_habilidad_anterior == ''  || hab_imagen==''  ){
+
     $("#warning_modal").modal().find('.modal-title').text('Error de registro.');
     $("#warning_modal").modal().find('.message-text').empty();
     $("#warning_modal").modal().find('.message-text').append('Todos los datos deben ser rellenados');
+
     return false;
   }
+
+
   var aDatos = new FormData();
   aDatos.append('hab_nombre' , hab_nombre);
   aDatos.append('dis_id' , dis_id);
@@ -329,14 +349,12 @@ $("#btn-agregarHabilidad").click(function(){
   aDatos.append('cad_nombre' , cad_nombre);
   aDatos.append('cad_contenido' , cad_contenido);
   aDatos.append('hab_imagen' , hab_imagen);
-  aDatos.append('campos' , campos);
-  aDatos.append('_token',   $( "input[name='_token']" ).val());
-
 
   $.ajax({
     async: true,
+    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
     type: "POST",
-    url: "{{ asset('/crear-habilidad') }}",
+    url: "{{ asset ('api/crear-habilidad') }}",
     data: aDatos,
     contentType: false,
     processData: false,
@@ -350,6 +368,8 @@ $("#btn-agregarHabilidad").click(function(){
           console.log(result.estatus===1);
           if(result.estatus === 1){
             console.log("Sacar modal y pasar a habilidades");
+            window.location.href = "{{ asset('/Habilidades') }}";
+
           }else{
             console.log("Sacar modal error y pasar a grupos")
             window.location.href = "{{ asset('/Habilidades') }}";
@@ -361,7 +381,10 @@ $("#btn-agregarHabilidad").click(function(){
           console.log("errorsin");
         }
       });
+
+
 });
+
 
 
 </script>
