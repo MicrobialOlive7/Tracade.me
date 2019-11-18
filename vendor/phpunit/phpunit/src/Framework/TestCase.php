@@ -1957,16 +1957,22 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
         if ($this->prophet !== null) {
             try {
                 $this->prophet->checkPredictions();
-            } finally {
-                foreach ($this->prophet->getProphecies() as $objectProphecy) {
-                    foreach ($objectProphecy->getMethodProphecies() as $methodProphecies) {
-                        foreach ($methodProphecies as $methodProphecy) {
-                            \assert($methodProphecy instanceof MethodProphecy);
+            } catch (\Throwable $t) {
+                /* Intentionally left empty */
+            }
 
-                            $this->numAssertions += \count($methodProphecy->getCheckedPredictions());
-                        }
+            foreach ($this->prophet->getProphecies() as $objectProphecy) {
+                foreach ($objectProphecy->getMethodProphecies() as $methodProphecies) {
+                    foreach ($methodProphecies as $methodProphecy) {
+                        \assert($methodProphecy instanceof MethodProphecy);
+
+                        $this->numAssertions += \count($methodProphecy->getCheckedPredictions());
                     }
                 }
+            }
+
+            if (isset($t)) {
+                throw $t;
             }
         }
     }

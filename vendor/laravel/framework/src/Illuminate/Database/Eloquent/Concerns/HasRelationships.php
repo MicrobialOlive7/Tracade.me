@@ -673,7 +673,9 @@ trait HasRelationships
 
                 $this->$relation->touchOwners();
             } elseif ($this->$relation instanceof Collection) {
-                $this->$relation->each->touchOwners();
+                $this->$relation->each(function (Model $relation) {
+                    $relation->touchOwners();
+                });
             }
         }
     }

@@ -113,22 +113,16 @@ class FilesystemManager implements FactoryContract
     {
         $config = $this->getConfig($name);
 
-        if (empty($config['driver'])) {
-            throw new InvalidArgumentException("Disk [{$name}] does not have a configured driver.");
-        }
-
-        $name = $config['driver'];
-
-        if (isset($this->customCreators[$name])) {
+        if (isset($this->customCreators[$config['driver']])) {
             return $this->callCustomCreator($config);
         }
 
-        $driverMethod = 'create'.ucfirst($name).'Driver';
+        $driverMethod = 'create'.ucfirst($config['driver']).'Driver';
 
         if (method_exists($this, $driverMethod)) {
             return $this->{$driverMethod}($config);
         } else {
-            throw new InvalidArgumentException("Driver [{$name}] is not supported.");
+            throw new InvalidArgumentException("Driver [{$config['driver']}] is not supported.");
         }
     }
 
@@ -304,7 +298,7 @@ class FilesystemManager implements FactoryContract
      */
     protected function getConfig($name)
     {
-        return $this->app['config']["filesystems.disks.{$name}"] ?: [];
+        return $this->app['config']["filesystems.disks.{$name}"];
     }
 
     /**

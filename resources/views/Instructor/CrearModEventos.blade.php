@@ -9,8 +9,8 @@
                 <h3 class="mb-0">Eventos</h3>
             </div>
             <!-- Inicia Form -->
-            <form method="POST" action="{{route('crear-evento')}}">
-                @csrf
+            <form >
+
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -57,7 +57,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                 </div>
-                                <input id="name" class="form-control" placeholder="Nombre del Evento" type="text">
+                                <input class="form-control" placeholder="Nombre del Evento" type="text">
                             </div>
                         </div>
                     </div>
@@ -78,14 +78,10 @@
                             <div  class="col-md-offset-right-1">
                                 <div class="form-group">
                                     <span class="btn-inner--icon">
-                                        <button type="submit" class="btn btn-icon btn-2 btn-info btn-lg">
-                                            {{ __('Agregar') }}
-                                        </button>
+                                        <a class="btn btn-icon btn-2 btn-info btn-lg" role="button" title="Agregar" href="{{ url('Alumnos') }}"> Agregar </a>
                                     </span>
                                     <span class="btn-inner--icon">
-                                        <a class="btn btn-icon btn-2 btn-danger btn-lg" role="button" title="Cancelar" href="{{ url('/Calendario') }}">
-                                            {{ __('Cancelar') }}
-                                        </a>
+                                         <a class="btn btn-icon btn-2 btn-danger btn-lg" role="button" title="Cancelar" href="{{ url('Alumnos') }}"> Cancelar </a>
                                     </span>
                                 </div>
                             </div>

@@ -228,7 +228,11 @@ class Builder
         $columns = is_array($columns) ? $columns : func_get_args();
 
         foreach ($columns as $as => $column) {
-            if (is_string($as) && $this->isQueryable($column)) {
+            if (is_string($as) && (
+                $column instanceof self ||
+                $column instanceof EloquentBuilder ||
+                $column instanceof Closure
+            )) {
                 $this->selectSub($column, $as);
             } else {
                 $this->columns[] = $column;
@@ -331,8 +335,6 @@ class Builder
      *
      * @param  mixed  $query
      * @return array
-     *
-     * @throws \InvalidArgumentException
      */
     protected function parseSub($query)
     {
@@ -341,9 +343,7 @@ class Builder
         } elseif (is_string($query)) {
             return [$query, []];
         } else {
-            throw new InvalidArgumentException(
-                'A subquery must be a query builder instance, a Closure, or a string.'
-            );
+            throw new InvalidArgumentException;
         }
     }
 
@@ -358,7 +358,11 @@ class Builder
         $columns = is_array($column) ? $column : func_get_args();
 
         foreach ($columns as $as => $column) {
-            if (is_string($as) && $this->isQueryable($column)) {
+            if (is_string($as) && (
+                $column instanceof self ||
+                $column instanceof EloquentBuilder ||
+                $column instanceof Closure
+            )) {
                 if (is_null($this->columns)) {
                     $this->select($this->from.'.*');
                 }
@@ -399,7 +403,9 @@ class Builder
      */
     public function from($table, $as = null)
     {
-        if ($this->isQueryable($table)) {
+        if ($table instanceof self ||
+            $table instanceof EloquentBuilder ||
+            $table instanceof Closure) {
             return $this->fromSub($table, $as);
         }
 
@@ -884,7 +890,9 @@ class Builder
         // If the value is a query builder instance we will assume the developer wants to
         // look for any values that exists within this given query. So we will add the
         // query accordingly so that this query is properly executed when it is run.
-        if ($this->isQueryable($values)) {
+        if ($values instanceof self ||
+            $values instanceof EloquentBuilder ||
+            $values instanceof Closure) {
             [$query, $bindings] = $this->createSub($values);
 
             $values = [new Expression($query)];
@@ -1668,7 +1676,7 @@ class Builder
     /**
      * Add a "group by" clause to the query.
      *
-     * @param  array|string  ...$groups
+     * @param  array  ...$groups
      * @return $this
      */
     public function groupBy(...$groups)
@@ -1798,7 +1806,9 @@ class Builder
      */
     public function orderBy($column, $direction = 'asc')
     {
-        if ($this->isQueryable($column)) {
+        if ($column instanceof self ||
+            $column instanceof EloquentBuilder ||
+            $column instanceof Closure) {
             [$query, $bindings] = $this->createSub($column);
 
             $column = new Expression('('.$query.')');
@@ -2407,28 +2417,6 @@ class Builder
     }
 
     /**
-     * Execute the given callback if no rows exist for the current query.
-     *
-     * @param  \Closure $callback
-     * @return mixed
-     */
-    public function existsOr(Closure $callback)
-    {
-        return $this->exists() ? true : $callback();
-    }
-
-    /**
-     * Execute the given callback if rows exist for the current query.
-     *
-     * @param  \Closure $callback
-     * @return mixed
-     */
-    public function doesntExistOr(Closure $callback)
-    {
-        return $this->doesntExist() ? true : $callback();
-    }
-
-    /**
      * Retrieve the "count" result of the query.
      *
      * @param  string  $columns
@@ -2969,19 +2957,6 @@ class Builder
         $this->useWritePdo = true;
 
         return $this;
-    }
-
-    /**
-     * Determine if the value is a query builder instance or a Closure.
-     *
-     * @param  mixed  $value
-     * @return bool
-     */
-    protected function isQueryable($value)
-    {
-        return $value instanceof self ||
-               $value instanceof EloquentBuilder ||
-               $value instanceof Closure;
     }
 
     /**

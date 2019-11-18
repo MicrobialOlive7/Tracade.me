@@ -105,7 +105,7 @@ Route::get('/Contacto', function (){
     Route::get('/ModificarEventos', function (){
         return view('Instructor.CrearModEventos');
     });
-    Route::get('api-evento', 'EventoController@quickstart')->name('api-evento');
+
     Route::post('crear-evento', 'EventoController@create')->name('crear-evento');
     Route::post('modificar-evento/{id}', 'EventoController@update')->name('modificar-evento');
     Route::post('eliminar-evento/{id}', 'EventoController@delete')->name('eliminar-evento');
