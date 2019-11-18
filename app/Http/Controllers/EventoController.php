@@ -61,7 +61,9 @@ class EventoController extends Controller
         return $client;
     }
     //PARA MODIFICAR EVENTOS
+
     public function modevento(){
+
         $client = $this->getClient();
         $service = new \Google_Service_Calendar($client);
 
@@ -111,13 +113,13 @@ class EventoController extends Controller
         $calendarId = '1h5c74a7vccmvf9hl2omu6ajgk@group.calendar.google.com';
         $event = $service->events->insert($calendarId, $event);
 
-        $eventoAPI = ["htmlLink" => $event->htmlLink, "id" => $event->id, "calendarId" => $calendarId];
+
+        $eventoAPI = ["htmlLink" => $event->htmlLink, "id" => $event->id, "caledarId" => $calendarId];
         //printf('Event created: %s\n', $event->htmlLink);
         return $eventoAPI;
 
     }
     public function create(Request $request){
-
         $evento = new Evento();
         $evento->eve_nombre = $request->name;
         $evento->eve_fecha = $request->fecha." ".$request->hora.":".$request->min.":00";
@@ -126,12 +128,17 @@ class EventoController extends Controller
 
         $eventoAPI = $this->quickstart($evento->eve_nombre,$evento->eve_fecha,$evento->eve_descripcion, $evento->gru_id);
 
+
         $evento->api_htmllink = $eventoAPI["htmlLink"];
         $evento->api_id = $eventoAPI["id"];
 
+
         $evento->save();
+
         $this->quickstart($evento->eve_nombre,$evento->eve_fecha,$evento->eve_descripcion, $evento->gru_id);
        // return redirect()->route('calendario');
+
+
     }
 
     public function update(Request $request, $id){
