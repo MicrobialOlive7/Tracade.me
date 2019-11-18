@@ -113,10 +113,10 @@ class EventoController extends Controller
         $calendarId = '1h5c74a7vccmvf9hl2omu6ajgk@group.calendar.google.com';
         $event = $service->events->insert($calendarId, $event);
 
+
         $eventoAPI = ["htmlLink" => $event->htmlLink, "id" => $event->id, "caledarId" => $calendarId];
         //printf('Event created: %s\n', $event->htmlLink);
         return $eventoAPI;
-
 
     }
     public function create(Request $request){
@@ -127,8 +127,11 @@ class EventoController extends Controller
         $evento->gru_id = 1;
 
         $eventoAPI = $this->quickstart($evento->eve_nombre,$evento->eve_fecha,$evento->eve_descripcion, $evento->gru_id);
-        $evento->api_htmllink = $eventoAPI->htmlLink;
-        $evento->api_id = $eventoAPI->id;
+
+
+        $evento->api_htmllink = $eventoAPI["htmlLink"];
+        $evento->api_id = $eventoAPI["id"];
+
 
         $evento->save();
 
