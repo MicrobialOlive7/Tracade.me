@@ -8,7 +8,7 @@
                     <div class="card-header border-0">
                         <h3 class="mb-0">Alumnos</h3>
                     </div>
-                        <form method="POST" action="{{route('register')}}">
+                        <form method="POST" action="{{url('register')}}">
                             @csrf
                             <div class="row">
                                 <div class="col-md-2">
