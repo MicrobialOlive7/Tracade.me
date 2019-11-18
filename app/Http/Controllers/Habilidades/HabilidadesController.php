@@ -55,6 +55,7 @@ class HabilidadesController extends Controller
     }
 
     public function indexModificar($hab_id){
+
       $Habilidades = Habilidad::all();
       $Habilidad = Habilidad::find($hab_id);
       $HabReq = HabilidadAnterior::where('hab_id', $hab_id)->get();
@@ -62,6 +63,7 @@ class HabilidadesController extends Controller
       $Mod = '1';
       
         return view('Instructor.CrearModhabilidades', compact('CamposAd', 'Habilidad','Habilidades', 'HabReq', 'Mod'));
+
     }
 
     public function update (Request $request){
