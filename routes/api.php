@@ -21,5 +21,6 @@ Route::post('crear-grupo', 'Grupos\GruposController@create');
 Route::post('modificar-grupo', 'Grupos\GruposController@update');
 Route::post('borrar-grupo', 'Grupos\GruposController@delete');
 
-
+Route::post('crear-habilidad', 'Habilidades\HabilidadesController@create');
 Route::post('modificar-habilidad', 'Habilidades\HabilidadesController@update');
+Route::post('borrar-habilidad', 'Habilidades\HabilidadesController@delete');
