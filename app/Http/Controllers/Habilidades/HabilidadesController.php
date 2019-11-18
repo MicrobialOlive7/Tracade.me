@@ -55,11 +55,13 @@ class HabilidadesController extends Controller
     }
 
     public function indexModificar($hab_id){
-      $Habilidades = Habilidad::all()->toArray();
-      $Habilidad = Habilidad::where('hab_id', $hab_id)->get();
-      $HabReq = HabilidadAnterior::where('hab_id', $hab_id)->get()->toArray();
-      $CamposAd = CampoAdicional::where('hab_id', $hab_id)->get()->toArray();
-        return view('Instructor.CrearModhabilidades', ['CamposAd'=>$CamposAd,'Habilidad' => $Habilidad[0], 'Habilidades' => $Habilidades, 'HabReq' => $HabReq[0]['han_id'], 'Mod'=>'1']);
+      $Habilidades = Habilidad::all();
+      $Habilidad = Habilidad::find($hab_id);
+      $HabReq = HabilidadAnterior::where('hab_id', $hab_id)->get();
+      $CamposAd = CampoAdicional::where('hab_id', $hab_id)->get();
+      $Mod = '1';
+      
+        return view('Instructor.CrearModhabilidades', compact('CamposAd', 'Habilidad','Habilidades', 'HabReq', 'Mod'));
     }
 
     public function update (Request $request){
