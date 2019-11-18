@@ -40,7 +40,7 @@
                               @foreach($Grupos as $grupo)
                               <tr>
                                 <td> <input type="checkbox"></td>
-                                <th scope="row"> {{$grupo->gru_nombre}}  </th>
+                                <th scope="row"><a href="{{route('agregar-alumnos', $grupo->id)}}">{{$grupo->gru_nombre}} </a> </th>
                                 <th scope="row"> {{$grupo->gr_dia}}  </th>
                                 <th scope="row"> {{$grupo->gru_hora}} </th>
                                 <td>

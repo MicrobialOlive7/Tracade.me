@@ -9,6 +9,7 @@ use App\Grupo;
 use App\GrupoAlumno;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class GruposController extends Controller
 {
@@ -61,7 +62,16 @@ class GruposController extends Controller
         $dis_alu = DisciplinaAlumno::all();
         $grupo = Grupo::all()->find($id);
         $alumnosGrupo = GrupoAlumno::all()->where('gru_id', $id);
-        return view('Instructor.agregarAlumnos', compact('alumnos', 'disciplinas', 'dis_alu', 'id', 'grupo', 'alumnosGrupo'));
+        $alumnosNuevos = DB::table('alumno')
+            ->leftJoin('grupo_alumno', function($join)
+            {
+                $join->on('alumno.id', '=', 'grupo_alumno.alu_id')
+                    ->where('grupo_alumno.deleted_at', null);
+            })
+            ->where('grupo_alumno.alu_id',null)
+            ->select('alumno.*')
+            ->get();
+        return view('Instructor.agregarAlumnos', compact('alumnos', 'disciplinas', 'dis_alu', 'id', 'grupo', 'alumnosGrupo', 'alumnosNuevos'));
     }
 
     public function agregarAlumnos($id, $alu_id){
@@ -72,5 +82,10 @@ class GruposController extends Controller
         return redirect()->route('agregar-alumnos', $id);
     }
 
+
+    public function deleteAlumno($id, $gId){
+        GrupoAlumno::all()->find($id)->delete();
+        return redirect()->route('agregar-alumnos', $gId);
+    }
 
 }
