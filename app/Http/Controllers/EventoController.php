@@ -61,7 +61,7 @@ class EventoController extends Controller
         return $client;
     }
     //PARA MODIFICAR EVENTOS
-    public function update(){
+    public function modevento(){
         $client = $this->getClient();
         $service = new \Google_Service_Calendar($client);
 
@@ -110,7 +110,8 @@ class EventoController extends Controller
 
         $calendarId = '1h5c74a7vccmvf9hl2omu6ajgk@group.calendar.google.com';
         $event = $service->events->insert($calendarId, $event);
-        printf('Event created: %s\n', $event->htmlLink);
+        $id = $service->events->get($calendarId,"eventId");
+        printf('Event created: %s %s\n', $event->htmlLink,$id);
 
     }
     public function create(Request $request){
@@ -122,7 +123,7 @@ class EventoController extends Controller
         $evento->gru_id = 1;
         $evento->save();
         $this->quickstart($evento->eve_nombre,$evento->eve_fecha,$evento->eve_descripcion, $evento->gru_id);
-        return redirect()->route('calendario');
+       // return redirect()->route('calendario');
     }
 
     public function update(Request $request, $id){
