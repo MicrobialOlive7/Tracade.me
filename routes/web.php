@@ -111,3 +111,5 @@ Route::get('/Contacto', function (){
     Route::post('eliminar-evento/{id}', 'EventoController@delete')->name('eliminar-evento');
 
 
+    /**Habilidades**/
+    Route::post('crear-habilidad', 'Habilidades\HabilidadesController@create')->name('crear-habilidad');
