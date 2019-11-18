@@ -52,7 +52,7 @@
                                             </div>
                                         </div>
                                     </th>
-                                    <th scope="row"> {{$dis_alu->where('alu_id', $alumno->id)->first()['dis_id']}}</th>
+                                    <th scope="row"> {{$disciplinas->where('id', $dis_alu->where('alu_id', $alumno->id)->first()['dis_id'] )->first()->dis_nombre}}</th>
 
                                     <th scope="row" > <a href="{{ url('grupos') }}"> L78M </a>  </th>
                                     <th scope="row"> 10 </th>
@@ -70,7 +70,7 @@
                                         </div>
                                     </th>
                                 </tr>
-                                @endforeach
+                            @endforeach
 
                             </tbody>
                         </table>
@@ -104,6 +104,5 @@
             </div>
         </div>
     </div>
-        <!-- End of Table -->
+    <!-- End of Table -->
 @endsection
-
