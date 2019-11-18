@@ -19,7 +19,8 @@ class GruposController extends Controller
     }
     public function show(){
         $aulas = Aula::all();
-        return view('instructor.CrearGrupos', compact('aulas'));
+        $disciplinas = Disciplina::all();
+        return view('instructor.CrearGrupos', compact('aulas', 'disciplinas'));
     }
     public function create(Request $request){
         //return $request;
@@ -35,6 +36,10 @@ class GruposController extends Controller
 
     public function delete($id){
         Grupo::all()->find($id)->delete();
+        $alumnos = GrupoAlumno::all()->where('gru_id', $id);
+        foreach ($alumnos as $alumno){
+            $alumno->delete();
+        }
         return redirect()->route('grupos');
     }
 
