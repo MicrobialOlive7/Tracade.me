@@ -63,6 +63,7 @@ class GruposController extends Controller
 
     public function showAgregarAlumnos($id){
         $alumnos = Alumno::all();
+        return $alumnos;
         $disciplinas = Disciplina::all();
         $dis_alu = DisciplinaAlumno::all();
         $grupo = Grupo::all()->find($id);
