@@ -43,15 +43,15 @@ class InitSeeder extends Seeder
         factory(\App\Alumno::class, 3)->create();
         factory(\App\DisciplinaAlumno::class)->create([
             'alu_id' => 1,
-            'dis_id' => 1
+            'dis_id' => rand(1,2)
         ]);
         factory(\App\DisciplinaAlumno::class)->create([
             'alu_id' => 2,
-            'dis_id' => 1
+            'dis_id' => rand(1,2)
         ]);
         factory(\App\DisciplinaAlumno::class)->create([
             'alu_id' => 3,
-            'dis_id' => 2
+            'dis_id' => rand(1,2)
         ]);
 
 

@@ -11,6 +11,17 @@ class AlumnosTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Alumno::class, 10)->create();
+        $lastId = \App\Alumno::all()->last()->id;
+
+        for ($i = $lastId+1; $i < $lastId+11; $i++){
+            factory(\App\Alumno::class)->create([
+                'id' => $i
+            ]);
+            factory(\App\DisciplinaAlumno::class)->create([
+                'alu_id' => $i,
+                'dis_id' => rand(1,2)
+            ]);
+        }
+
     }
 }

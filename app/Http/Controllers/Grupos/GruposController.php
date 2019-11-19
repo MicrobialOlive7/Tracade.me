@@ -73,10 +73,11 @@ class GruposController extends Controller
             ->leftJoin('grupo_alumno', function($join)
             {
                 $join->on('alumno.id', '=', 'grupo_alumno.alu_id')
-                    ->where('grupo_alumno.deleted_at', null)
-                    ->where('alumno.deleted_at', null);
+                    ->where('grupo_alumno.deleted_at', null);
+
             })
             ->where('grupo_alumno.alu_id',null)
+            ->where('alumno.deleted_at', null)
             ->select('alumno.*')
             ->get();
         //$alumnosNuevos= array();
