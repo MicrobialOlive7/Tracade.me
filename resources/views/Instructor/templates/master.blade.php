@@ -31,6 +31,8 @@
     <link href="{{asset('../public/js/plugins/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet" />
     <!-- CSS Files -->
     <link href="{{asset('../public/css/argon-dashboard.css?v=1.1.0')}}" rel="stylesheet" />
+    <!-- themify-icon.css -->
+    <link rel="stylesheet" type="text/css" href="{{asset('css/themify-icons.css')}}">
 </head>
 
 <body class="">

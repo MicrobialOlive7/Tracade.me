@@ -50,6 +50,8 @@ Route::get('/Contacto', function (){
 /**
  * Alumnos
  */
+Route::get('habilidades-alumno/{id}', 'AlumnoController@habilidades')->name('habilidades-alumno');
+Route::get('evaluaciones', 'EvaluacionController@evaluaciones')->name('evaluaciones');
 
 /**
  * Instructor
@@ -127,3 +129,5 @@ Route::get('/Contacto', function (){
     Route::post('modificar-habilidad/{id}', 'Habilidades\HabilidadesController@update')->name('modificar-habilidad');
     Route::post('crear-habilidad', 'Habilidades\HabilidadesController@create')->name('crear-habilidad');
     Route::get('borrar-habilidad/{id}', 'Habilidades\HabilidadesController@delete')->name('borrar-habilidad');
+
+    Route::get('test/{id}', 'AlumnoController@test')->name('test');

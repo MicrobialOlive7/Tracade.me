@@ -5,11 +5,15 @@ namespace App\Http\Controllers;
 use App\Alumno;
 use App\Disciplina;
 use App\DisciplinaAlumno;
+use App\Evaluacion;
 use App\Grupo;
 use App\GrupoAlumno;
+use App\Habilidad;
 use Illuminate\Http\Request;
 use Illuminate\Queue\RedisQueue;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use LasseRafn\InitialAvatarGenerator\InitialAvatar;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class AlumnoController extends Controller
@@ -52,6 +56,29 @@ class AlumnoController extends Controller
             $grupo->delete();
         }
         return redirect()->route('alumnos');
+    }
+
+    protected function test(){
+        $avatar = new InitialAvatar();
+        $image = $avatar->name('Lasse Rafn')
+            ->length(2)
+            ->fontSize(0.5)
+            ->size(96) // 48 * 2
+            ->background('#8BC34A')
+            ->color('#fff')
+            ->generate()
+            ->stream('png', 100);
+        //$file_name = $image->filename;
+        //return $image;
+        Storage::disk('public')->putFileAs('alumnos/1', $image, 'asd.png' );
+    }
+
+    protected function habilidades($id){
+        $evaluaciones = Evaluacion::all();
+        $alumno = Alumno::all()->find($id);
+        $habilidades = Habilidad::all();
+        $disciplinas = Disciplina::all();
+        return view('Instructor.habilidades-alumno', compact('alumno', 'habilidades', 'disciplinas', 'evaluaciones'));
     }
 
 }
