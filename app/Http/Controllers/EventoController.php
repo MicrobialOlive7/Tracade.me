@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 
 use App\Evento;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Event;
+use function GuzzleHttp\Promise\all;
 
 class EventoController extends Controller
 {
@@ -62,12 +64,31 @@ class EventoController extends Controller
     }
     //PARA MODIFICAR EVENTOS
 
-    public function modevento(){
+    public function modevento($eve_nombre,$eve_fecha,$eve_descripcion, $gru_id,$id){
 
         $client = $this->getClient();
         $service = new \Google_Service_Calendar($client);
+        list($fecha1,$fecha2) = explode(" ",$eve_fecha);
+        $fecha1 = str_replace("/","-",$fecha1);
 
-        $event = $service->events->get('1h5c74a7vccmvf9hl2omu6ajgk@group.calendar.google.com', 'eventId');
+        $start = new \Google_Service_Calendar_EventDateTime();
+        $start -> setDateTime($fecha1.'T'.$fecha2.'-06:00');
+        $start -> setTimeZone('America/Mexico_City');
+
+        $evento = $service->events->get('1h5c74a7vccmvf9hl2omu6ajgk@group.calendar.google.com',$id);
+        $evento -> setSummary($eve_nombre);
+        $evento -> setDescription($eve_descripcion);
+        $evento -> setStart($start);
+        $evento -> setEnd($start);
+        $evento -> setStatus('confirmed');
+        $updatedEvent = $service->events->update('1h5c74a7vccmvf9hl2omu6ajgk@group.calendar.google.com',$id,$evento);
+    }
+
+    public function elimevento($id){
+
+        $client = $this->getClient();
+        $service = new \Google_Service_Calendar($client);
+        $service->events->delete('1h5c74a7vccmvf9hl2omu6ajgk@group.calendar.google.com',$id);
     }
 
     //PARA CREAR EVENTOS
@@ -77,17 +98,6 @@ class EventoController extends Controller
 // Get the API client and construct the service object.
         $client = $this->getClient();
         $service = new \Google_Service_Calendar($client);
-
-// Print the next 10 events on the user's calendar.
-        $calendarId = '1h5c74a7vccmvf9hl2omu6ajgk@group.calendar.google.com';
-        $optParams = array(
-            'maxResults' => 10,
-            'orderBy' => 'startTime',
-            'singleEvents' => true,
-            'timeMin' => "2019-01-01T22:20:17+01:00",
-        );
-        $results = $service->events->listEvents($calendarId, $optParams);
-        $events = $results->getItems();
 
         list($fecha1,$fecha2) = explode(" ",$eve_fecha);
         $fecha1 = str_replace("/","-",$fecha1);
@@ -113,7 +123,6 @@ class EventoController extends Controller
         $calendarId = '1h5c74a7vccmvf9hl2omu6ajgk@group.calendar.google.com';
         $event = $service->events->insert($calendarId, $event);
 
-
         $eventoAPI = ["htmlLink" => $event->htmlLink, "id" => $event->id, "caledarId" => $calendarId];
         //printf('Event created: %s\n', $event->htmlLink);
         return $eventoAPI;
@@ -134,26 +143,33 @@ class EventoController extends Controller
 
 
         $evento->save();
-
-        $this->quickstart($evento->eve_nombre,$evento->eve_fecha,$evento->eve_descripcion, $evento->gru_id);
-       // return redirect()->route('calendario');
-
-
+        return redirect()->route('calendario');
     }
 
-    public function update(Request $request, $id){
-        $evento = Evento::all()->find($id);
+    public function update(Request $request){
+        $evento = Evento::all()->find($request->id);
         $evento->eve_nombre = $request->name;
         $evento->eve_fecha = $request->fecha." ".$request->hora.":".$request->min.":00";
         $evento->eve_descripcion = $request->descripcion;
         $evento->gru_id = 1;
         $evento->save();
-        return $evento;
+        $this->modevento($evento->eve_nombre,$evento->eve_fecha,$evento->eve_descripcion, $evento->gru_id, $evento->api_id);
+        return redirect()->route('calendario');
     }
 
-    public function delete($id){
-        Evento::all()->find($id)->delete();
-        //return redirect()->route('alumnos');
+    public function ver(){
+        $eventos =  Evento::all();
+        return view('instructor.ModEventos', compact('eventos'));
+    }
+    public function verEliminar(){
+        $eventos =  Evento::all();
+        return view('instructor.EliminarEvento', compact('eventos'));
+    }
+    public function delete(Request $request){
+        $evento = Evento::all()->find($request->id);
+        $this->elimevento($evento->api_id);
+        $evento->delete();
+        return redirect()->route('calendario');
     }
 
 
