@@ -58,6 +58,7 @@ Route::get('/Contacto', function (){
         return view('instructor.TMP-pago');
     })->name('tmp-pago');
 
+    /**Dashboard**/
 
     /** Alumnos **/
     Route::get('/Alumnos', 'AlumnoController@show')->name('alumnos');
@@ -94,6 +95,7 @@ Route::get('/Contacto', function (){
     Route::get('/ModificarHabilidades/{hab_id}', 'Habilidades\HabilidadesController@indexModificar');
 
 /** Calendario **/
+
     Route::get('/Calendario', function (){
             return view('Instructor.calendario');
     })->name('calendario');
@@ -102,7 +104,6 @@ Route::get('/Contacto', function (){
         return view('Instructor.CrearModEventos');
     });
     Route::get('/ModificarEventos','EventoController@ver')->name('ModificarEventos');
-
     Route::get('/EliminarEventos','EventoController@verEliminar')->name('EliminarEventos');
 
     Route::get('api-evento', 'EventoController@quickstart')->name('api-evento');
