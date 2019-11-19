@@ -58,6 +58,7 @@ Route::get('/Contacto', function (){
         return view('instructor.TMP-pago');
     })->name('tmp-pago');
 
+    /**Dashboard**/
 
     /** Alumnos **/
     Route::get('/Alumnos', 'AlumnoController@show')->name('alumnos');
@@ -73,19 +74,29 @@ Route::get('/Contacto', function (){
     Route::get('eliminar-alumno/{id}', 'AlumnoController@delete')->name('eliminar-alumno');
 
     /** Grupos **/
+    // Vista de formulario de crear grupo
     Route::get('crear-grupo', 'Grupos\GruposController@show')->name('crear-grupo');
+    // Crea un grupo nuevo
     Route::post('crear-grupo-crear', 'Grupos\GruposController@create')->name('crear-grupo-crear');
 
+    // Visualizar una lista de todos los grupos existentes
     Route::get('grupos', 'Grupos\GruposController@index')->name('grupos');
 
+    //Eliminar un grupo
     Route::get('eliminar-grupo/{id}', 'Grupos\GruposController@delete')->name('eliminar-grupo');
 
+    // Vista de modificar grupo
     Route::get('modificar-grupo/{id}', 'Grupos\GruposController@showUpdate')->name('modificar-grupo');
+    // Modificar grupo
     Route::post('modificar-grupo-modificar/{id}', 'Grupos\GruposController@update')->name('modificar-grupo-modificar');
 
+    // Vista de agregar alumnos y contenido de cada grupo
     Route::get('agregar-alumnos/{id}', 'Grupos\GruposController@showAgregarAlumnos')->name('agregar-alumnos');
+    // Agregar un alumno a un grupo
     Route::get('agregar-alumnos-agregar/{id}/{alu_id}', 'Grupos\GruposController@agregarAlumnos')->name('agregar-alumnos-agregar');
 
+    // Elimina un alumno de un grupo
+    Route::get('quitar-alumno/{id}/{gId}', 'Grupos\GruposController@deleteAlumno')->name('quitar-alumno');
 
     /** Habilidades **/
     Route::get('/Habilidades', 'Habilidades\HabilidadesController@index')->name('Habilidades');
@@ -94,6 +105,7 @@ Route::get('/Contacto', function (){
     Route::get('/ModificarHabilidades/{hab_id}', 'Habilidades\HabilidadesController@indexModificar');
 
 /** Calendario **/
+
     Route::get('/Calendario', function (){
             return view('Instructor.calendario');
     })->name('calendario');
@@ -101,14 +113,13 @@ Route::get('/Contacto', function (){
     Route::get('/AgregarEventos', function (){
         return view('Instructor.CrearModEventos');
     });
+    Route::get('/ModificarEventos','EventoController@ver')->name('ModificarEventos');
+    Route::get('/EliminarEventos','EventoController@verEliminar')->name('EliminarEventos');
 
-    Route::get('/ModificarEventos', function (){
-        return view('Instructor.CrearModEventos');
-    });
     Route::get('api-evento', 'EventoController@quickstart')->name('api-evento');
     Route::post('crear-evento', 'EventoController@create')->name('crear-evento');
-    Route::post('modificar-evento/{id}', 'EventoController@update')->name('modificar-evento');
-    Route::post('eliminar-evento/{id}', 'EventoController@delete')->name('eliminar-evento');
+    Route::post('modificar-evento', 'EventoController@update')->name('modificar-evento');
+    Route::post('eliminar-evento', 'EventoController@delete')->name('eliminar-evento');
 
 
     /**Habilidades**/

@@ -1,4 +1,5 @@
 @extends('Instructor.templates.master')
+@section('gru-active', 'active')
 @extends('layouts.modal')
 @section('content')
     <!-- Header -->

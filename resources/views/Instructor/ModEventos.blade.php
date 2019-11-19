@@ -1,5 +1,4 @@
 @extends('Instructor.templates.master')
-@section('cal-active', 'active')
 @section('content')
     <!-- Header -->
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8"> </div>
@@ -10,9 +9,32 @@
                 <h3 class="mb-0">Eventos</h3>
             </div>
             <!-- Inicia Form -->
-            <form method="POST" action="{{route('crear-evento')}}">
+            <form method="POST" action="{{route('modificar-evento')}}">
                 @csrf
                 <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group mb-4">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                    </div>
+                                    <select onchange="" type="ap" class="form-control" id="exampleFormControlInput1" name="id">
+                                        <option value="" disabled selected>Evento a Modificar</option>
+                                        @foreach($eventos as $evento)
+                                            <option value="{{$evento -> id}}">{{$evento -> eve_nombre}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input class="form-control" id="exampleFormControlInput1" name="name" placeholder="Nombre">
+                        </div>
+                    </div>
+
                     <div class="col-md-6">
                         <div class="form-group">
                             <div class="input-group mb-4">
@@ -23,9 +45,8 @@
                             </div>
                         </div>
                     </div>
-
-                <!-- Inicia Campo Horario -->
-                    <div class="col">
+                    <!-- Inicia Campo Horario -->
+                    <div class="col-md-3">
                         <select type="ap" class="form-control" id="exampleFormControlInput1" name="hora">
                             <option value="" disabled selected>Hora</option>
                             <option value="1" > 01 </option>
@@ -43,30 +64,19 @@
                         </select>
                     </div>
 
-                    <div class="col-xs-1">:</div>
 
-                    <div class="col">
+                    <div class="col-md-3">
                         <input class="form-control" placeholder="Min" type="number" max="59" min="00" name="min">
                     </div>
-                </div>
                 <!-- Termina Campo Horario -->
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <div class="input-group mb-4">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                                </div>
-                                <input id="name" class="form-control" placeholder="Nombre del Evento" type="text" name="name">
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
                             <textarea class="form-control" id="exampleFormControlTextarea1" name="descripcion" rows="3" placeholder="Descripción..."></textarea>
                         </div>
+                    </div>
+
+
                     </div>
                     <div class="col-sm"></div>
                 </div>
