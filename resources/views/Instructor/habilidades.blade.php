@@ -53,8 +53,8 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="{{ url('ModificarHabilidades/'. $value['hab_id']) }}">Modificar</a>
-                                            <a class="dropdown-item" href="#" onclick="eliminarHabilidad('{{$value['hab_nombre']}}','{{$value['hab_id']}}')" >Eliminar</a>
+                                            <a class="dropdown-item" href="{{ url('ModificarHabilidades/'. $value['id']) }}">Modificar</a>
+                                            <a class="dropdown-item" href="#" onclick="eliminarHabilidad('{{$value['hab_nombre']}}','{{$value['id']}}')" >Eliminar</a>
                                         </div>
                                     </div>
                                 </td>
@@ -108,6 +108,7 @@ function  eliminarHabilidad(hab_nombre, hab_id){
   $("#delete_modal").modal().find('.message-text').empty();
   $("#delete_modal").modal().find('.message-text').append('¿Estás seguro de eliminar la habilidad ' + hab_nombre + '?');
   $("#delete_modal").modal().find('#borrar').val(hab_id);
+  $("#delete_modal").modal().find('#borrar').attr("href", "{{asset('borrar-habilidad')}}" + '/' + hab_id );
 
 }
 </script>

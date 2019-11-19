@@ -98,7 +98,7 @@ Route::get('/Contacto', function (){
     Route::get('quitar-alumno/{id}/{gId}', 'Grupos\GruposController@deleteAlumno')->name('quitar-alumno');
 
     /** Habilidades **/
-    Route::get('/Habilidades', 'Habilidades\HabilidadesController@index');
+    Route::get('/Habilidades', 'Habilidades\HabilidadesController@index')->name('Habilidades');
     Route::get('/AgregarHabilidades', 'Habilidades\HabilidadesController@indexCrear');
 
     Route::get('/ModificarHabilidades/{hab_id}', 'Habilidades\HabilidadesController@indexModificar');
@@ -111,15 +111,16 @@ Route::get('/Contacto', function (){
     Route::get('/AgregarEventos', function (){
         return view('Instructor.CrearModEventos');
     });
+    Route::get('/ModificarEventos','EventoController@ver')->name('ModificarEventos');
 
-    Route::get('/ModificarEventos', function (){
-        return view('Instructor.CrearModEventos');
-    });
+    Route::get('/EliminarEventos','EventoController@verEliminar')->name('EliminarEventos');
+
     Route::get('api-evento', 'EventoController@quickstart')->name('api-evento');
     Route::post('crear-evento', 'EventoController@create')->name('crear-evento');
-    Route::post('modificar-evento/{id}', 'EventoController@update')->name('modificar-evento');
-    Route::post('eliminar-evento/{id}', 'EventoController@delete')->name('eliminar-evento');
+    Route::post('modificar-evento', 'EventoController@update')->name('modificar-evento');
+    Route::post('eliminar-evento', 'EventoController@delete')->name('eliminar-evento');
 
 
     /**Habilidades**/
     Route::post('crear-habilidad', 'Habilidades\HabilidadesController@create')->name('crear-habilidad');
+    Route::get('borrar-habilidad/{id}', 'Habilidades\HabilidadesController@delete')->name('borrar-habilidad');

@@ -11,7 +11,7 @@
                 <h3 class="mb-0">Habilidades</h3>
             </div>
             <!-- Inicia Form -->
-            <form method='POST' action="{{route('crear-habilidad')}}">
+            <form method='POST' action="{{route('crear-habilidad')}}" enctype="multipart/form-data">
               @csrf
                 <div class="container">
                     <div class="row justify-content-md-start">
@@ -97,8 +97,7 @@
                     <div class="row justify-content-md-start">
                         <div class="col">
                             <div class="form-group">
-                                <input id="hab_imagen" type="file" name="hab_imagen" accept="image/*">
-
+                                <input type="file" id="hab_imagen" name="hab_imagen" accept="image/*">
                             </div>
                         </div>
                     </div>
