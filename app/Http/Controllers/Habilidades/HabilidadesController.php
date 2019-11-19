@@ -20,7 +20,7 @@ class HabilidadesController extends Controller
 
     public function index(){
 
-        $habilidades = Habilidad::all();
+        $habilidades = Habilidad::select('*')->paginate(5);
         $disciplinas = Disciplina::all();
 
         return view('Instructor.Habilidades', compact('habilidades', 'disciplinas'));
@@ -38,7 +38,7 @@ class HabilidadesController extends Controller
       $habilidades = Habilidad::all();
       $disciplinas = Disciplina::all();
 
-      return view('Instructor.Habilidades', compact('habilidades', 'disciplinas'));
+        return redirect()->route('Habilidades');
 
     }
 
