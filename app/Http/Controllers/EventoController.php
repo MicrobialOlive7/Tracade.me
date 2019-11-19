@@ -137,13 +137,12 @@ class EventoController extends Controller
 
         $eventoAPI = $this->quickstart($evento->eve_nombre,$evento->eve_fecha,$evento->eve_descripcion, $evento->gru_id);
 
-
         $evento->api_htmllink = $eventoAPI["htmlLink"];
         $evento->api_id = $eventoAPI["id"];
-
-
+        
         $evento->save();
         return redirect()->route('calendario');
+
     }
 
     public function update(Request $request){

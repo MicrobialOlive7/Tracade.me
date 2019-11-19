@@ -55,9 +55,16 @@
         <p class= "message-text"> </p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" id="borrar" data-dismiss="modal">Sí, eliminar grupo.</button>
-
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar.</button>
+        <span class="btn-inner--icon">
+          <a id="borrar" class="btn btn-icon btn-2 btn-info btn-lg" role="button" title="Eliminar." href="">
+              {{ __('Sí, eliminar') }}
+          </a>
+        </span>
+        <span class="btn-inner--icon">
+             <a class="btn btn-icon btn-2 btn-danger btn-lg" role="button" title="Cancelar" href="{{ url('/Habilidades') }}">
+                 {{ __('Cancelar') }}
+             </a>
+        </span>
       </div>
     </div>
   </div>

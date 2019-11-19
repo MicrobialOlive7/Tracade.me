@@ -26,31 +26,31 @@ class HabilidadesController extends Controller
         return view('Instructor.Habilidades', compact('habilidades', 'disciplinas'));
     }
 
-    public function delete(Request $request){
-      $hab_id = trim((string)$request->input('hab_id'));
+    public function delete($hab_id){
+      $Habilidad = Habilidad::find($hab_id)->delete();
 
-      $Habilidad = Habilidad::where('hab_id', $hab_id)->delete();
-
-      dd("dklfj");
       $HabReq = HabilidadAnterior::where('hab_id', $hab_id)
       ->where('hab_ant_id', $hab_id)
-      ->get();
-      $CamposAd = CampoAdicional::where('hab_id', $hab_id)->delete;
-      dd($HabReq->toarray());
-      dd($Habilidad);
+      ->delete();
+
+      $CamposAd = CampoAdicional::where('hab_id', $hab_id)->delete();
+
+      $habilidades = Habilidad::all();
+      $disciplinas = Disciplina::all();
+
+      return view('Instructor.Habilidades', compact('habilidades', 'disciplinas'));
 
     }
 
     public function indexModificar($hab_id){
 
-      $Habilidades = Habilidad::all();
       $Habilidad = Habilidad::find($hab_id);
-      $HabReq = HabilidadAnterior::where('hab_id', $hab_id)->get();
-      $CamposAd = CampoAdicional::where('hab_id', $hab_id)->get();
-      $Mod = '1';
+      $Habilidades = Habilidad::all();
+      $HabReq = HabilidadAnterior::where('hab_id', $hab_id)
+      ->first();
+      $CamposAd = CampoAdicional::where('hab_id', $hab_id)->get()->first();
       //dd($Habilidades,$Habilidad,$HabReq,$CamposAd);
-        return view('Instructor.Modhabilidades', compact('CamposAd', 'Habilidad','Habilidades', 'HabReq', 'Mod'));
-
+        return view('Instructor.Modhabilidades', compact('CamposAd', 'Habilidad','Habilidades', 'HabReq'));
     }
 
     public function update (Request $request){
@@ -108,7 +108,6 @@ class HabilidadesController extends Controller
 
 
     public function create(Request $request){
-
         $file_img = $request->file('hab_imagen');
         $cad_nombre = $request->input('cad_nombre');
         $cad_contenido = $request->input('cad_contenido');
@@ -117,11 +116,12 @@ class HabilidadesController extends Controller
         $habilidad->hab_nombre = $request->hab_nombre;
         $habilidad->dis_id = $request->dis_id;
         $habilidad->hab_dificultad = $request->hab_dificultad;
-        $habilidad->hab_descripcion = $request->hab_dificultad;
+        $habilidad->hab_descripcion = $request->hab_descripcion;
         $habilidad->save();
 
+        //$request->file('hab_imagen')->storeAs('local', 'nombrecito.png');
 
-        Storage::disk('local')->put('habilidades/'.$habilidad->id.'/', $file_img);
+        Storage::disk('local')->putFileAs('habilidades/'.$habilidad->id, $file_img, 'principal.'.$file_img->getClientOriginalExtension() );
 
         // if $request->habilidadAanterior
         //modificar $requests
@@ -138,8 +138,7 @@ class HabilidadesController extends Controller
             $campoAdicional->hab_id = $habilidad->id;
             $campoAdicional->save();
         }
-        return ["cadAdicional" => $campoAdicional, "habilidadAnt" => $habilidadAnt, "habilidad" => $habilidad];
-
+        return redirect()->route('Habilidades');
     }
 
 }
