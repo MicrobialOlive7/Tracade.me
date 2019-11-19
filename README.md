@@ -16,7 +16,12 @@ Para crer los registros base (disciplinas y aulas) asi como algunos registros in
 ```
 php artisan db:seed --class=InitSeeder
 ```
-
+### Registros de prueba
+#### Alumnos
+CCreación de 10 alumnos de prueba asignados a una discplina aleatoria:
+```
+php artisan db:seed --class=AlumnosTableSeeder
+```
 ## Controller dentro de carpetas
 Para crear controladores dentro de una carpeta dentro de la carpeta *Controller* se debe hacer lo siguiente>
 
