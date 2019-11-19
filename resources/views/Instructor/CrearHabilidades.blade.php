@@ -114,7 +114,7 @@
                                       </button>
                                   </span>
                                   <span class="btn-inner--icon">
-                                       <a class="btn btn-icon btn-2 btn-danger btn-lg" role="button" title="Cancelar" href="{{ url('/Alumnos') }}">
+                                       <a class="btn btn-icon btn-2 btn-danger btn-lg" role="button" title="Cancelar" href="{{ route('Habilidades') }}">
                                            {{ __('Cancelar') }}
                                        </a>
                                   </span>

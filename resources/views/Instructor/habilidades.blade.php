@@ -43,9 +43,26 @@
                               @foreach($habilidades as $key => $value)
                               <tr>
                                 <td> <input type="checkbox"></td>
-                                <th scope="row"> {{$value['hab_nombre']}}  </th>
-                                <th scope="row"> {{$value['hab_dificultad']}} </th>
-                                <th scope="row"> {{$value['dis_nombre']}} </th>
+                                  <th scope="row">
+                                      <div class="media align-items-center">
+                                          <a href="#" class="avatar rounded-circle mr-3">
+                                              <img alt="Image placeholder" src="{{asset('storage/habilidades/'.$value['id'].'/'.$value['hab_imagen'])}}">
+                                          </a>
+                                          <div class="media-body">
+                                              <span class="mb-0 text-sm">{{$value['hab_nombre']}}</span>
+                                          </div>
+                                      </div>
+                                  </th>
+                                <th scope="row">
+                                    @if($value['hab_dificultad'] == 1)
+                                        Principiante
+                                    @elseif($value['hab_dificultad'] == 2)
+                                        Intermedio
+                                    @else
+                                        Avanzado
+                                    @endif
+                                </th>
+                                <th scope="row"> {{$disciplinas->where('id',$value['dis_id'])->first()->dis_nombre}} </th>
                                 <th></th>
                                 <td class="text-right">
                                     <div class="dropdown">

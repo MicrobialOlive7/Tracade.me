@@ -20,7 +20,7 @@ class CreateHabilidadAnteriorTable extends Migration
             $table->unsignedBigInteger('hab_id');
             $table->foreign('hab_id')->references('id')->on('habilidad');
 
-            $table->unsignedBigInteger('hab_ant_id');
+            $table->unsignedBigInteger('hab_ant_id')->nullable();
             $table->foreign('hab_ant_id')->references('id')->on('habilidad');
 
             $table->timestamps();
