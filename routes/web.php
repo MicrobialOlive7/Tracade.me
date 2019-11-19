@@ -59,6 +59,7 @@ Route::get('/Contacto', function (){
     })->name('tmp-pago');
 
     /**Dashboard**/
+Route::get('/Inicio', 'LineController@index')->name('Inicio');
 
     /** Alumnos **/
     Route::get('/Alumnos', 'AlumnoController@show')->name('alumnos');
