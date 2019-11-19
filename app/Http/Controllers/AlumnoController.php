@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Alumno;
 use App\Disciplina;
 use App\DisciplinaAlumno;
+use App\GrupoAlumno;
 use Illuminate\Http\Request;
 use Illuminate\Queue\RedisQueue;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
@@ -40,6 +41,10 @@ class AlumnoController extends Controller
 
     public function delete($id){
         Alumno::all()->find($id)->delete();
+        $grupos = GrupoAlumno::all()->where('alu_id', $id);
+        foreach ($grupos as $grupo){
+            $grupo->delete();
+        }
         return redirect()->route('alumnos');
     }
 

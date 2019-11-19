@@ -1,4 +1,5 @@
 @extends('Instructor.templates.master')
+@section('cal-active', 'active')
 @section('content')
 
     <!-- Header -->

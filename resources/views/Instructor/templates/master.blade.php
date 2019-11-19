@@ -107,22 +107,22 @@
                 </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link "href="{{ url('Calendario') }}">
+                    <a class="nav-link @yield('cal-active') "href="{{ url('Calendario') }}">
                         <i class="ni ni-calendar-grid-58 text-blue"></i> Calendario
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="{{ url('Alumnos') }}">
+                    <a class="nav-link @yield('alu-active')"  href="{{ url('Alumnos') }}">
                         <i class="ni ni-single-02 text-purple"></i> Alumnos
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="{{ url('grupos') }}">
+                    <a class="nav-link @yield('gru-active')"  href="{{ url('grupos') }}">
                         <i class="ni ni-bullet-list-67 text-pink"></i> Grupos
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  active " href="{{ url('Habilidades') }}">
+                    <a class="nav-link  @yield('hab-active') " href="{{ url('Habilidades') }}">
                         <i class="ni ni-trophy text-red"></i> Habilidades
                     </a>
                 </li>

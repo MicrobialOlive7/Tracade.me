@@ -1,5 +1,6 @@
 @extends('Instructor.templates.master')
 @extends('layouts.modal')
+@section('gru-active', 'active')
 @section('content')
     <!-- Header -->
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8"> </div>
@@ -40,7 +41,7 @@
                               @foreach($Grupos as $grupo)
                               <tr>
                                 <td> <input type="checkbox"></td>
-                                <th scope="row"> {{$grupo->gru_nombre}}  </th>
+                                <th scope="row"><a href="{{route('agregar-alumnos', $grupo->id)}}">{{$grupo->gru_nombre}} </a> </th>
                                 <th scope="row"> {{$grupo->gr_dia}}  </th>
                                 <th scope="row"> {{$grupo->gru_hora}} </th>
                                 <td>
