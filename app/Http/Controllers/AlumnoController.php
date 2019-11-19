@@ -5,19 +5,25 @@ namespace App\Http\Controllers;
 use App\Alumno;
 use App\Disciplina;
 use App\DisciplinaAlumno;
+use App\Grupo;
 use App\GrupoAlumno;
 use Illuminate\Http\Request;
 use Illuminate\Queue\RedisQueue;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class AlumnoController extends Controller
 {
 
     public function show(){
-        $alumnos = Alumno::all();
+        //$alumnos = Alumno::all()->forPage(2, 10);
+        $alumnos = Alumno::select('*')->paginate(5);
+        //return $alumnos;
         $disciplinas = Disciplina::all();
         $dis_alu = DisciplinaAlumno::all();
-        return view('Instructor.alumnos', compact('alumnos', 'disciplinas', 'dis_alu'));
+        $grupos = Grupo::all();
+        $gru_alu = GrupoAlumno::all();
+        return view('Instructor.alumnos', compact('alumnos', 'disciplinas', 'dis_alu', 'grupos', 'gru_alu'));
     }
 
     public function showUpdate($id){

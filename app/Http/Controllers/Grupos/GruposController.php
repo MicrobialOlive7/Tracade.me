@@ -15,7 +15,7 @@ use function Sodium\add;
 class GruposController extends Controller
 {
     public function index(){
-        $Grupos = Grupo::all();
+        $Grupos = Grupo::select('*')->paginate(5);
         return view('Instructor.grupos',compact('Grupos') );
     }
     public function show(){
