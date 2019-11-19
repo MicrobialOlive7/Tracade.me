@@ -9,6 +9,7 @@ use App\Grupo;
 use App\GrupoAlumno;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class GruposController extends Controller
 {
@@ -18,7 +19,8 @@ class GruposController extends Controller
     }
     public function show(){
         $aulas = Aula::all();
-        return view('instructor.CrearGrupos', compact('aulas'));
+        $disciplinas = Disciplina::all();
+        return view('instructor.CrearGrupos', compact('aulas', 'disciplinas'));
     }
     public function create(Request $request){
         //return $request;
@@ -34,6 +36,10 @@ class GruposController extends Controller
 
     public function delete($id){
         Grupo::all()->find($id)->delete();
+        $alumnos = GrupoAlumno::all()->where('gru_id', $id);
+        foreach ($alumnos as $alumno){
+            $alumno->delete();
+        }
         return redirect()->route('grupos');
     }
 
@@ -57,11 +63,21 @@ class GruposController extends Controller
 
     public function showAgregarAlumnos($id){
         $alumnos = Alumno::all();
+        return $alumnos;
         $disciplinas = Disciplina::all();
         $dis_alu = DisciplinaAlumno::all();
         $grupo = Grupo::all()->find($id);
         $alumnosGrupo = GrupoAlumno::all()->where('gru_id', $id);
-        return view('Instructor.agregarAlumnos', compact('alumnos', 'disciplinas', 'dis_alu', 'id', 'grupo', 'alumnosGrupo'));
+        $alumnosNuevos = DB::table('alumno')
+            ->leftJoin('grupo_alumno', function($join)
+            {
+                $join->on('alumno.id', '=', 'grupo_alumno.alu_id')
+                    ->where('grupo_alumno.deleted_at', null);
+            })
+            ->where('grupo_alumno.alu_id',null)
+            ->select('alumno.*')
+            ->get();
+        return view('Instructor.agregarAlumnos', compact('alumnos', 'disciplinas', 'dis_alu', 'id', 'grupo', 'alumnosGrupo', 'alumnosNuevos'));
     }
 
     public function agregarAlumnos($id, $alu_id){
@@ -72,5 +88,10 @@ class GruposController extends Controller
         return redirect()->route('agregar-alumnos', $id);
     }
 
+
+    public function deleteAlumno($id, $gId){
+        GrupoAlumno::all()->find($id)->delete();
+        return redirect()->route('agregar-alumnos', $gId);
+    }
 
 }
