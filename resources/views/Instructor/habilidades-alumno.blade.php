@@ -41,7 +41,7 @@
                             <tbody>
 
 
-                              @foreach($habilidades as $key => $value)
+                              @foreach($hab_apr as $key => $value)
                               <tr>
                                 <td> <input type="checkbox"></td>
                                   <th scope="row">
@@ -55,15 +55,9 @@
                                       </div>
                                   </th>
                                 <th scope="row">
-                                    @if($value['hab_dificultad'] == 1)
-                                        Principiante
-                                    @elseif($value['hab_dificultad'] == 2)
-                                        Intermedio
-                                    @else
-                                        Avanzado
-                                    @endif
+                                    {{$evaluaciones->where('hab_id', $value['id'])->first()->eva_calificacion}}
                                 </th>
-                                <th scope="row"> {{$disciplinas->where('id',$value['dis_id'])->first()->dis_nombre}} </th>
+                                <th scope="row"> {{$evaluaciones->where('hab_id', $value['id'])->first()->eva_comentario}}</th>
                                 <th></th>
                                 <td class="text-right">
                                     <div class="dropdown">

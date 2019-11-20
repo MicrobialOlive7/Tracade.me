@@ -74,11 +74,19 @@ class AlumnoController extends Controller
     }
 
     protected function habilidades($id){
-        $evaluaciones = Evaluacion::all();
+        $evaluaciones = Evaluacion::select('*')->where('alu_id', $id)->orderBy('created_at', 'desc')->get();
+        //return $evaluaciones;
+        $ids = array();
+        foreach ($evaluaciones as $evaluacion){
+            array_push($ids, $evaluacion->hab_id);
+        }
+
         $alumno = Alumno::all()->find($id);
-        $habilidades = Habilidad::all();
+        $habilidades = Habilidad::all()->whereNotIn('id', $ids);
+        $hab_apr = Habilidad::all()->whereIn('id',$ids);
+
         $disciplinas = Disciplina::all();
-        return view('Instructor.habilidades-alumno', compact('alumno', 'habilidades', 'disciplinas', 'evaluaciones'));
+        return view('Instructor.habilidades-alumno', compact('alumno', 'habilidades', 'disciplinas', 'evaluaciones', 'hab_apr'));
     }
 
 }
