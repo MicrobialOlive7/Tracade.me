@@ -10,6 +10,7 @@ use App\GrupoAlumno;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use function Sodium\add;
 
 class GruposController extends Controller
 {
@@ -63,7 +64,7 @@ class GruposController extends Controller
 
     public function showAgregarAlumnos($id){
         $alumnos = Alumno::all();
-        return $alumnos;
+
         $disciplinas = Disciplina::all();
         $dis_alu = DisciplinaAlumno::all();
         $grupo = Grupo::all()->find($id);
@@ -73,10 +74,24 @@ class GruposController extends Controller
             {
                 $join->on('alumno.id', '=', 'grupo_alumno.alu_id')
                     ->where('grupo_alumno.deleted_at', null);
+
             })
             ->where('grupo_alumno.alu_id',null)
+            ->where('alumno.deleted_at', null)
             ->select('alumno.*')
             ->get();
+        //$alumnosNuevos= array();
+        //$test = array();
+        /*foreach ($alumnos as $alumno){
+            if(isem$alumnosGrupo->where('alu_id', $alumno->id)){
+                //return $alumnosGrupo->where('alu_id', $alumno->id);
+                array_push($test, $alumno);
+            }else{
+                array_push($alumnosNuevos, $alumno);
+            }
+        }*/
+        //return $test;
+        //return $alumnosNuevos;
         return view('Instructor.agregarAlumnos', compact('alumnos', 'disciplinas', 'dis_alu', 'id', 'grupo', 'alumnosGrupo', 'alumnosNuevos'));
     }
 
