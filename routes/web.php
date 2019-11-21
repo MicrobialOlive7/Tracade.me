@@ -51,7 +51,15 @@ Route::get('/Contacto', function (){
  * Alumnos
  */
 Route::get('habilidades-alumno/{id}', 'AlumnoController@habilidades')->name('habilidades-alumno');
-Route::get('evaluaciones', 'EvaluacionController@evaluaciones')->name('evaluaciones');
+Route::get('evaluaciones/{hab_id}/{alu_id}', 'EvaluacionController@evaluaciones')->name('evaluaciones');
+
+Route::get('evaluar/{hab_id}/{alu_id}', 'EvaluacionController@evaluar')->name('evaluar');
+Route::post('evaluar-alumno/{hab_id}/{alu_id}', 'EvaluacionController@crearEvaluacion')->name('evaluar-alumno');
+
+Route::get('modificar-evaluacion/{hab_id}/{alu_id}/{eva_id}', 'EvaluacionController@showUpdate')->name('modificar-evaluacion');
+Route::post('editar-evaluar-alumno/{id}/{hab_id}/{alu_id}', 'EvaluacionController@update')->name('editar-evaluar-alumno');
+Route::get('eliminar-evaluacion/{hab_id}/{alu_id}/{eva_id}', 'EvaluacionController@delete')->name('eliminar-evaluacion');
+
 
 /**
  * Instructor

@@ -3,6 +3,12 @@
 ## Documentación
 [Laravel](https://laravel.com/docs/6.x)
 
+### NOTA
+Cada que se haga pul o merge ejecutar el comando
+```
+php artisan storage:link
+```
+
 ### Base de datos
 
 #### Ejecutar migracion

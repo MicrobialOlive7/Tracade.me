@@ -10,10 +10,18 @@
             <div class="col">
                 <div class="card shadow">
                     <div class="card-header border-0">
-                        <h3 class="mb-0">Evaluaciones</strong></h3>
+                        <div class="media align-items-center">
+                            <a href="#" class="avatar rounded-circle mr-3">
+                                <img alt="Image placeholder" src="{{asset('storage/habilidades/'.$habilidad['id'].'/'.$habilidad['hab_imagen'])}}">
+                            </a>
+                            <div class="media-body">
+                                <h3 class="mb-0">{{$habilidad->hab_nombre}}</h3>
+                            </div>
+                        </div>
+
                         <div class="col text-right">
                             <span class="btn-inner--icon">
-                                <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Agregar" href="{{ url('AgregarHabilidades') }}">
+                                <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Agregar" href="{{ route('evaluar', [$habilidad->id, $alumno->id]) }}">
                                     <i class="ni ni-fat-add" ></i>
                                 </a>
                             </span>
@@ -31,10 +39,9 @@
 
                             <tr>
                                 <th scope="col"> <input type="checkbox"></th>
-                                <th scope="col">Nombre</th>
+                                <th scope="col">Fecha</th>
                                 <th scope="col">Calificacion</th>
                                 <th scope="col">Comentarios</th>
-                                <th></th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -45,22 +52,26 @@
                               <tr>
                                 <td> <input type="checkbox"></td>
                                   <th scope="row">
-                                      <div class="media align-items-center">
-                                          <a href="#" class="avatar rounded-circle mr-3">
-                                              <img alt="Image placeholder" src="">
-                                          </a>
-                                          <div class="media-body">
-
-                                          </div>
-                                      </div>
+                                      <span class="mb-0 text-sm">{{$evaluacion['created_at']}}</span>
                                   </th>
-                                <th scope="row">
-                                    @for($i = 0;$i < $evaluacion->eva_calificacion;$i++)
-                                        <i class="text-yellow ti-star"></i>
-                                        @endfor
-                                </th>
-                                <th scope="row"> {{$evaluacion->eva_comentario}} </th>
 
+                                <th scope="row">
+                                    @for($i = 0 ; $i < $evaluacion['eva_calificacion']; $i++)
+                                        <i class="text-yellow ti-star"></i>
+                                    @endfor
+                                </th>
+                                <th> {{$evaluacion['eva_comentario']}}</th>
+                                <td class="text-right">
+                                    <div class="dropdown">
+                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                            <a class="dropdown-item" href="{{route('modificar-evaluacion', [$habilidad->id, $alumno->id, $evaluacion->id])}}">Modificar</a>
+                                            <a class="dropdown-item" href="{{route('eliminar-evaluacion', [$habilidad->id, $alumno->id, $evaluacion->id])}}" onclick="" >Eliminar</a>
+                                        </div>
+                                    </div>
+                                </td>
                               </tr>
 
                               @endforeach
@@ -72,7 +83,6 @@
 
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -90,7 +100,7 @@ function  eliminarHabilidad(hab_nombre, hab_id){
   $("#delete_modal").modal().find('.message-text').empty();
   $("#delete_modal").modal().find('.message-text').append('¿Estás seguro de eliminar la habilidad ' + hab_nombre + '?');
   $("#delete_modal").modal().find('#borrar').val(hab_id);
-  $("#delete_modal").modal().find('#borrar').attr("href", "{{asset('borrar-habilidad')}}" + '/' + hab_id );
+  $("#delete_modal").modal().find('#borrar').attr("href", "" + '/' + hab_id );
 
 }
 </script>

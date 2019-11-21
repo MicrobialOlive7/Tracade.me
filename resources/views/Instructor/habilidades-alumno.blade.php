@@ -11,18 +11,7 @@
                 <div class="card shadow">
                     <div class="card-header border-0">
                         <h3 class="mb-0">Habilidades realizadas por <strong>{{$alumno->alu_nombre}}</strong></h3>
-                        <div class="col text-right">
-                            <span class="btn-inner--icon">
-                                <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Agregar" href="{{ url('AgregarHabilidades') }}">
-                                    <i class="ni ni-fat-add" ></i>
-                                </a>
-                            </span>
-                            <span class="btn-inner--icon">
-                                <a class="btn btn-icon btn-2 btn-danger btn-sm" role="button" title="Eliminación Masiva" href="{{ url('') }}">
-                                    <i class="ni ni-fat-remove" ></i>
-                                </a>
-                            </span>
-                        </div>
+
                     </div>
 
                     <div class="table-responsive">
@@ -34,8 +23,7 @@
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Calificacion</th>
                                 <th scope="col">Comentarios</th>
-                                <th></th>
-                                <th></th>
+
                             </tr>
                             </thead>
                             <tbody>
@@ -50,26 +38,21 @@
                                               <img alt="Image placeholder" src="{{asset('storage/habilidades/'.$value['id'].'/'.$value['hab_imagen'])}}">
                                           </a>
                                           <div class="media-body">
-                                              <span class="mb-0 text-sm">{{$value['hab_nombre']}}</span>
+                                              <a href="{{route('evaluaciones', [$value['id'], $alumno['id']])}}">
+                                                <span class="mb-0 text-sm">{{$value['hab_nombre']}}</span>
+                                              </a>
                                           </div>
                                       </div>
                                   </th>
                                 <th scope="row">
-                                    {{$evaluaciones->where('hab_id', $value['id'])->first()->eva_calificacion}}
+
+                                    @for($i = 0 ; $i < $evaluaciones->where('hab_id', $value['id'])->first()->eva_calificacion; $i++)
+                                        <i class="text-yellow ti-star"></i>
+                                    @endfor
+
                                 </th>
                                 <th scope="row"> {{$evaluaciones->where('hab_id', $value['id'])->first()->eva_comentario}}</th>
-                                <th></th>
-                                <td class="text-right">
-                                    <div class="dropdown">
-                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="{{ url('ModificarHabilidades/'. $value['id']) }}">Modificar</a>
-                                            <a class="dropdown-item" href="#" onclick="eliminarHabilidad('{{$value['hab_nombre']}}','{{$value['id']}}')" >Eliminar</a>
-                                        </div>
-                                    </div>
-                                </td>
+
                               </tr>
 
                               @endforeach
@@ -85,18 +68,7 @@
                 <div class="card shadow">
                     <div class="card-header border-0">
                         <h3 class="mb-0">Habilidades por realizar</h3>
-                        <div class="col text-right">
-                            <span class="btn-inner--icon">
-                                <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Agregar" href="{{ url('AgregarHabilidades') }}">
-                                    <i class="ni ni-fat-add" ></i>
-                                </a>
-                            </span>
-                            <span class="btn-inner--icon">
-                                <a class="btn btn-icon btn-2 btn-danger btn-sm" role="button" title="Eliminación Masiva" href="{{ url('') }}">
-                                    <i class="ni ni-fat-remove" ></i>
-                                </a>
-                            </span>
-                        </div>
+
                     </div>
 
                     <div class="table-responsive">
@@ -108,8 +80,7 @@
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Dificultad</th>
                                 <th scope="col">Disciplina</th>
-                                <th></th>
-                                <th></th>
+
                             </tr>
                             </thead>
                             <tbody>
@@ -123,9 +94,9 @@
                                             <a href="#" class="avatar rounded-circle mr-3">
                                                 <img alt="Image placeholder" src="{{asset('storage/habilidades/'.$value['id'].'/'.$value['hab_imagen'])}}">
                                             </a>
-                                            <div class="media-body">
+                                            <a href="{{route('evaluaciones', [$value['id'], $alumno['id']])}}">
                                                 <span class="mb-0 text-sm">{{$value['hab_nombre']}}</span>
-                                            </div>
+                                            </a>
                                         </div>
                                     </th>
                                     <th scope="row">
@@ -138,18 +109,7 @@
                                         @endif
                                     </th>
                                     <th scope="row"> {{$disciplinas->where('id',$value['dis_id'])->first()->dis_nombre}} </th>
-                                    <th></th>
-                                    <td class="text-right">
-                                        <div class="dropdown">
-                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item" href="{{ url('ModificarHabilidades/'. $value['id']) }}">Modificar</a>
-                                                <a class="dropdown-item" href="#" onclick="eliminarHabilidad('{{$value['hab_nombre']}}','{{$value['id']}}')" >Eliminar</a>
-                                            </div>
-                                        </div>
-                                    </td>
+
                                 </tr>
 
                             @endforeach
