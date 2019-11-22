@@ -9,7 +9,7 @@
                 <h3 class="mb-0">Eventos</h3>
             </div>
             <!-- Inicia Form -->
-            <form method="POST" action="{{route('eliminar-evento')}}">
+            <form method="POST" action="{{route('eventoDelete')}}">
                 @csrf
                 <div class="row ">
                     <div class="col-md-1"></div>

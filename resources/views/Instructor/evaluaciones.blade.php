@@ -68,7 +68,7 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                             <a class="dropdown-item" href="{{route('modificar-evaluacion', [$habilidad->id, $alumno->id, $evaluacion->id])}}">Modificar</a>
-                                            <a class="dropdown-item" href="{{route('eliminar-evaluacion', [$habilidad->id, $alumno->id, $evaluacion->id])}}" onclick="" >Eliminar</a>
+                                            <a class="dropdown-item" href="{{route('evaluacionDelete', [$habilidad->id, $alumno->id, $evaluacion->id])}}" onclick="" >Eliminar</a>
                                         </div>
                                     </div>
                                 </td>

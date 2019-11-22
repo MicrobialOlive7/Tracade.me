@@ -11,14 +11,14 @@ use Illuminate\Http\Request;
 
 class HabilidadesController extends Controller
 {
-    public function indexCrear(){
+    public function showCreate(){
 
       $habilidades = Habilidad::all();
     //dd($habilidades);
       return view('Instructor.CrearHabilidades', compact('habilidades'));
     }
 
-    public function index(){
+    public function read(){
 
         $habilidades = Habilidad::select('*')->paginate(5);
         $disciplinas = Disciplina::all();
@@ -42,7 +42,7 @@ class HabilidadesController extends Controller
 
     }
 
-    public function indexModificar($hab_id){
+    public function showUpdate($hab_id){
 
       $Habilidad = Habilidad::find($hab_id);
       $Habilidades = Habilidad::all();

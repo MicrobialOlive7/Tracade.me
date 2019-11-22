@@ -19,7 +19,7 @@ use Symfony\Component\HttpKernel\Event\RequestEvent;
 class AlumnoController extends Controller
 {
 
-    public function show(){
+    public function read(){
         //$alumnos = Alumno::all()->forPage(2, 10);
         $alumnos = Alumno::select('*')->paginate(5);
         //return $alumnos;

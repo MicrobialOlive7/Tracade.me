@@ -41,7 +41,7 @@
                                     <th scope="row"> {{$disciplinas->where('id', $dis_alu->where('alu_id', $alumnos->find($alumnoGrupo->alu_id)->id)->first()['dis_id'] )->first()->dis_nombre}}</th>
 
                                     <th class="text-right">
-                                        <a class="btn btn-icon btn-2 btn-danger btn-sm" role="button" title="Guardar" href="{{route('quitar-alumno', [$alumnoGrupo->id, $grupo->id])}}">
+                                        <a class="btn btn-icon btn-2 btn-danger btn-sm" role="button" title="Guardar" href="{{route('deleteAlumno', [$alumnoGrupo->id, $grupo->id])}}">
                                             <i class="ni ni-fat-remove" ></i>
                                         </a>
 
@@ -88,7 +88,7 @@
                                     </th>
                                     <th scope="row"> {{$disciplinas->where('id', $dis_alu->where('alu_id', $alumno->id)->first()['dis_id'] )->first()->dis_nombre}}</th>
                                     <th class="text-right">
-                                        <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Guardar" href="{{ route('agregar-alumnos-agregar', [$id, $alumno->id]) }}">
+                                        <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Guardar" href="{{ route('addAlumno', [$id, $alumno->id]) }}">
                                             <i class="ni ni-fat-add" ></i>
                                         </a>
                                     </th>

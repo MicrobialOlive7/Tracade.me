@@ -18,124 +18,205 @@
 |     dentro de esa carpeta
 | - Ruta: Carpeta\NombreController@funcion
 |
+|--------------------------------------------------------------------------
 **/
-
-Auth::routes();
-
-
-
-Route::get('/home', 'Corporativa\CorpController@index')->name('home');
 
 
 /**
- * Página Corporativa
- */
+|-------------------------------------------
+| Pagina corporativa
+|-------------------------------------------
+*/
+// Página de incio
 Route::get('/', function (){
     return view('Corporativa.index');
 });
+Route::get('/home', 'Corporativa\CorpController@index')->name('home');
 
+//Pagina de nosotros
 Route::get('/Nosotros', function (){
     return view('Corporativa.Nosotros');
 });
 
+//Pagina de precios
 Route::get('/Precios', function (){
     return view('Corporativa.Precios');
 });
 
+//Pagina de contacto
 Route::get('/Contacto', function (){
     return view('Corporativa.Contacto');
 });
 
+/**
+|-------------------------------------------
+| Autentificacion de Usuarios
+|-------------------------------------------
+ */
+/// Rutas de
+//- login
+// - Registro de alumnos
+// - Logout
+Auth::routes();
 
 /**
- * Alumnos
+|-------------------------------------------
+| Administrador - Usuario
+|-------------------------------------------
+|
+|--------------
+|---- Grupos
+|--------------
+*/
+/// Vista /// Visualizar una lista de todos los grupos existentes
+Route::get('grupos', 'Grupos\GruposController@read')->name('grupos');
+
+//--- Crear ---//
+// Vista
+Route::get('crear-grupo', 'Grupos\GruposController@showCreate')->name('crear-grupo');
+// Funcion
+Route::post('grupoCreate', 'Grupos\GruposController@create')->name('grupoCreate');
+
+//--- Modificar ---//
+// Vista
+Route::get('modificar-grupo/{id}', 'Grupos\GruposController@showUpdate')->name('modificar-grupo');
+// Funcion
+Route::post('grupoUpdate/{id}', 'Grupos\GruposController@update')->name('grupoUpdate');
+
+//--- Eliminar ---//
+/// Funcion
+Route::get('grupoDelete/{id}', 'Grupos\GruposController@delete')->name('grupoDelete');
+
+//--- Alumnos por grupo ---//
+// Vista // Visualizar alumnos dentro de grupo y disponibles para agregar
+         // Dentro de la misma vista se agregar y eliminan alumnos
+Route::get('agregar-alumnos/{id}', 'Grupos\GruposController@showAgregarAlumnos')->name('agregar-alumnos');
+/// Agregar
+// Funcion
+Route::get('addAlumno/{id}/{alu_id}', 'Grupos\GruposController@add')->name('addAlumno');
+// Eliminar
+// Funcion
+Route::get('deleteAlumno/{id}/{gId}', 'Grupos\GruposController@deleteAlumno')->name('deleteAlumno');
+
+
+/**
+|--------------
+|---- Alumnos
+|--------------
  */
+/// Vista /// Visualizar lista de todos los alumnos registrados
+Route::get('/alumnos', 'AlumnoController@read')->name('alumnos');
+
+//--- Modificar ---//
+// Vista
+Route::get('/ModificarAlumno/{id}', 'AlumnoController@showUpdate')->name('modificar-alumno-vista');
+// Funcion
+Route::post('modificar-alumno/{id}', 'AlumnoController@update')->name('modificar-alumno');
+
+//--- Eliminar ---//
+// Funcion
+Route::get('eliminar-alumno/{id}', 'AlumnoController@delete')->name('eliminar-alumno');
+
+/// Vista /// Visualizar todas las habilidades aprendidas por alumno
+/// visualziar las habilidades disponibles para aprender
 Route::get('habilidades-alumno/{id}', 'AlumnoController@habilidades')->name('habilidades-alumno');
-Route::get('evaluaciones/{hab_id}/{alu_id}', 'EvaluacionController@evaluaciones')->name('evaluaciones');
 
-Route::get('evaluar/{hab_id}/{alu_id}', 'EvaluacionController@evaluar')->name('evaluar');
-Route::post('evaluar-alumno/{hab_id}/{alu_id}', 'EvaluacionController@crearEvaluacion')->name('evaluar-alumno');
+/**
+|--------------
+|---- Habilidades
+|--------------
+ */
+// Vista // Visualizar lista de todas las habilidades
+Route::get('/habilidades', 'Habilidades\HabilidadesController@read')->name('Habilidades');
 
-Route::get('modificar-evaluacion/{hab_id}/{alu_id}/{eva_id}', 'EvaluacionController@showUpdate')->name('modificar-evaluacion');
-Route::post('editar-evaluar-alumno/{id}/{hab_id}/{alu_id}', 'EvaluacionController@update')->name('editar-evaluar-alumno');
-Route::get('eliminar-evaluacion/{hab_id}/{alu_id}/{eva_id}', 'EvaluacionController@delete')->name('eliminar-evaluacion');
+//--- Crear ---//
+// Vista
+Route::get('crear-habilidad', 'Habilidades\HabilidadesController@showCreate')->name('crear-habilidad');
+// Funcion
+Route::post('habilidadCreate', 'Habilidades\HabilidadesController@create')->name('habilidadCreate');
+
+//--- Modificar ---//
+// Vista
+Route::get('modificar-habilidad/{hab_id}', 'Habilidades\HabilidadesController@showUpdate')->name('modificar-habilidad');
+// Funcion
+Route::post('habilidadUpdate/{id}', 'Habilidades\HabilidadesController@update')->name('habilidadUpdate');
+
+//--- Eliminar ---//
+// Funcion
+Route::get('habilidadDelete/{id}', 'Habilidades\HabilidadesController@delete')->name('habilidadDelete');
 
 
 /**
- * Instructor
+|--------------
+|---- Evaluciones
+|--------------
  */
-    Route::get('tmp-pago', function (){
-        return view('instructor.TMP-pago');
-    })->name('tmp-pago');
+/// Vista /// Visualizar las evaluaciones por alumno por habilidad
+Route::get('evaluaciones/{hab_id}/{alu_id}', 'EvaluacionController@read')->name('evaluaciones');
 
-    /**Dashboard**/
+//--- Crear ---//
+// Vista
+Route::get('evaluar/{hab_id}/{alu_id}', 'EvaluacionController@showCreate')->name('evaluar');
+// Funcion
+Route::post('evaluacionCreate/{hab_id}/{alu_id}', 'EvaluacionController@create')->name('evaluacionCreate');
 
-    /** Alumnos **/
-    Route::get('/Alumnos', 'AlumnoController@show')->name('alumnos');
-    /*Route::get('/AgregarAlumno', function (){
-        return view('Instructor.CrearModAlumno');
-    });*/
-    //Route::get('/AgregarAlumno', 'Aut');
+//--- Modificar ---//
+// Vista
+Route::get('modificar-evaluacion/{hab_id}/{alu_id}/{eva_id}', 'EvaluacionController@showUpdate')->name('modificar-evaluacion');
+// Funcion
+Route::post('evaluacionUpdate/{id}/{hab_id}/{alu_id}', 'EvaluacionController@update')->name('evaluacionUpdate');
 
-    Route::get('/ModificarAlumno/{id}', 'AlumnoController@showUpdate')->name('modificar-alumno-vista');
-    Route::post('modificar-alumno/{id}', 'AlumnoController@update')->name('modificar-alumno');
-
-
-    Route::get('eliminar-alumno/{id}', 'AlumnoController@delete')->name('eliminar-alumno');
-
-    /** Grupos **/
-    // Vista de formulario de crear grupo
-    Route::get('crear-grupo', 'Grupos\GruposController@show')->name('crear-grupo');
-    // Crea un grupo nuevo
-    Route::post('crear-grupo-crear', 'Grupos\GruposController@create')->name('crear-grupo-crear');
-
-    // Visualizar una lista de todos los grupos existentes
-    Route::get('grupos', 'Grupos\GruposController@index')->name('grupos');
-
-    //Eliminar un grupo
-    Route::get('eliminar-grupo/{id}', 'Grupos\GruposController@delete')->name('eliminar-grupo');
-
-    // Vista de modificar grupo
-    Route::get('modificar-grupo/{id}', 'Grupos\GruposController@showUpdate')->name('modificar-grupo');
-    // Modificar grupo
-    Route::post('modificar-grupo-modificar/{id}', 'Grupos\GruposController@update')->name('modificar-grupo-modificar');
-
-    // Vista de agregar alumnos y contenido de cada grupo
-    Route::get('agregar-alumnos/{id}', 'Grupos\GruposController@showAgregarAlumnos')->name('agregar-alumnos');
-    // Agregar un alumno a un grupo
-    Route::get('agregar-alumnos-agregar/{id}/{alu_id}', 'Grupos\GruposController@agregarAlumnos')->name('agregar-alumnos-agregar');
-
-    // Elimina un alumno de un grupo
-    Route::get('quitar-alumno/{id}/{gId}', 'Grupos\GruposController@deleteAlumno')->name('quitar-alumno');
+//--- Eliminar ---//
+// Funcion
+Route::get('evaluacionDelete/{hab_id}/{alu_id}/{eva_id}', 'EvaluacionController@delete')->name('evaluacionDelete');
 
 
+/**
+|--------------
+|---- Eventos (Calendario)
+|--------------
+ */
 
-/** Calendario **/
+/// Vista /// Mostrar calendario con eventos
+Route::get('/calendario', function (){
+        return view('Instructor.calendario');
+})->name('calendario');
 
-    Route::get('/Calendario', function (){
-            return view('Instructor.calendario');
-    })->name('calendario');
+//--- Crear ---//
+// Vista
+Route::get('crear-evento', function (){
+    return view('Instructor.CrearEventos');
+})->name('crear-evento');
+// Funcion
+Route::post('eventoCreate', 'EventoController@create')->name('eventoCreate');
 
-    Route::get('/AgregarEventos', function (){
-        return view('Instructor.CrearModEventos');
-    });
-    Route::get('/ModificarEventos','EventoController@ver')->name('ModificarEventos');
-    Route::get('/EliminarEventos','EventoController@verEliminar')->name('EliminarEventos');
+//--- Modificar ---//
+// Vista
+Route::get('modificar-evento','EventoController@showUpdate')->name('modificar-evento');
+// Funcion
+Route::post('eventoUpdate', 'EventoController@update')->name('eventoUpdate');
 
-    Route::get('api-evento', 'EventoController@quickstart')->name('api-evento');
-    Route::post('crear-evento', 'EventoController@create')->name('crear-evento');
-    Route::post('modificar-evento', 'EventoController@update')->name('modificar-evento');
-    Route::post('eliminar-evento', 'EventoController@delete')->name('eliminar-evento');
+//--- Eliminar ---//
+// Vista
+Route::get('eliminar-evento','EventoController@showDelete')->name('eliminar-evento');
+// Funcion
+Route::post('eventoDelete', 'EventoController@delete')->name('eventoDelete');
+
+//--- API ---//
+Route::get('api-evento', 'EventoController@quickstart')->name('api-evento');
 
 
-    /**Habilidades**/
-    Route::get('/Habilidades', 'Habilidades\HabilidadesController@index')->name('Habilidades');
-    Route::get('/AgregarHabilidades', 'Habilidades\HabilidadesController@indexCrear');
+/**
+|--------------
+|---- Temporales
+|--------------
+ */
+// Prueba de paypal
+Route::get('tmp-pago', function (){
+    return view('instructor.TMP-pago');
+})->name('tmp-pago');
 
-    Route::get('/ModificarHabilidades/{hab_id}', 'Habilidades\HabilidadesController@indexModificar');
-
-    Route::post('modificar-habilidad/{id}', 'Habilidades\HabilidadesController@update')->name('modificar-habilidad');
-    Route::post('crear-habilidad', 'Habilidades\HabilidadesController@create')->name('crear-habilidad');
-    Route::get('borrar-habilidad/{id}', 'Habilidades\HabilidadesController@delete')->name('borrar-habilidad');
-
-    Route::get('test/{id}', 'AlumnoController@test')->name('test');
+/**
+|-------------------------------------------
+| Alumno - Usuario
+|-------------------------------------------*/

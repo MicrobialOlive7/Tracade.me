@@ -10,7 +10,7 @@
                 <h3 class="mb-0">Eventos</h3>
             </div>
             <!-- Inicia Form -->
-            <form method="POST" action="{{route('crear-evento')}}">
+            <form method="POST" action="{{route('eventoCreate')}}">
                 @csrf
                 <div class="row">
                     <div class="col-md-6">

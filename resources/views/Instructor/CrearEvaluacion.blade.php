@@ -11,7 +11,7 @@
                 <h3 class="mb-0">Evaluar <strong>{{$habilidad->hab_nombre}}</strong> de <strong>{{$alumno->alu_nombre}} {{$alumno->alu_apellido_paterno}}</strong></h3>
             </div>
             <!-- Inicia Form -->
-            <form method="POST" action="{{route('evaluar-alumno', [$habilidad->id, $alumno->id])}}">
+            <form method="POST" action="{{route('evaluacionCreate', [$habilidad->id, $alumno->id])}}">
                 @csrf
                 <div class="container">
                     <div class="row justify-content-md-center">

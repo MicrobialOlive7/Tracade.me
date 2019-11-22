@@ -11,7 +11,7 @@
                 <h3 class="mb-0">Habilidades</h3>
             </div>
             <!-- Inicia Form -->
-            <form method='POST' action="{{route('modificar-habilidad', $hab_id)}}" enctype="multipart/form-data">
+            <form method='POST' action="{{route('habilidadUpdate', $hab_id)}}" enctype="multipart/form-data">
               @csrf
                 <div class="container">
                     <div class="row justify-content-md-start">

@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class EvaluacionController extends Controller
 {
-    public function evaluaciones($hab_id, $alu_id){
+    public function read($hab_id, $alu_id){
         $evaluaciones = Evaluacion::select('*')
             ->where('alu_id', $alu_id)
             ->where('hab_id', $hab_id)
@@ -23,14 +23,14 @@ class EvaluacionController extends Controller
         return view('Instructor.evaluaciones', compact('evaluaciones', 'alumno', 'habilidad'));
     }
 
-    public function evaluar($hab_id, $alu_id){
+    public function showCreate($hab_id, $alu_id){
 
         $alumno = Alumno::all()->find($alu_id);
         $habilidad = Habilidad::all()->find($hab_id);
-        return view('Instructor.evaluar', compact('habilidad', 'alumno'));
+        return view('Instructor.CrearEvaluacion', compact('habilidad', 'alumno'));
     }
 
-    public function crearEvaluacion($hab_id, $alu_id, Request $request){
+    public function create($hab_id, $alu_id, Request $request){
 
         $evaluacion = new Evaluacion();
         $evaluacion->eva_comentario = $request->eva_comentario;
@@ -46,7 +46,7 @@ class EvaluacionController extends Controller
         $alumno = Alumno::all()->find($alu_id);
         $habilidad = Habilidad::all()->find($hab_id);
         $evaluacion = Evaluacion::all()->find($eva_id);
-        return view('Instructor.editar-evaluacion', compact('habilidad', 'alumno', 'evaluacion'));
+        return view('Instructor.ModEvaluacion', compact('habilidad', 'alumno', 'evaluacion'));
     }
 
     public function update($id, $hab_id, $alu_id, Request $request){

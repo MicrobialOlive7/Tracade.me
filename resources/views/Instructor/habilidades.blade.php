@@ -13,7 +13,7 @@
                         <h3 class="mb-0">Habilidades</h3>
                         <div class="col text-right">
                             <span class="btn-inner--icon">
-                                <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Agregar" href="{{ url('AgregarHabilidades') }}">
+                                <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Agregar" href="{{ route('crear-habilidad') }}">
                                     <i class="ni ni-fat-add" ></i>
                                 </a>
                             </span>
@@ -70,7 +70,7 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="{{ url('ModificarHabilidades/'. $value['id']) }}">Modificar</a>
+                                            <a class="dropdown-item" href="{{ route('modificar-habilidad', $value['id']) }}">Modificar</a>
                                             <a class="dropdown-item" href="#" onclick="eliminarHabilidad('{{$value['hab_nombre']}}','{{$value['id']}}')" >Eliminar</a>
                                         </div>
                                     </div>
@@ -103,7 +103,7 @@ function  eliminarHabilidad(hab_nombre, hab_id){
   $("#delete_modal").modal().find('.message-text').empty();
   $("#delete_modal").modal().find('.message-text').append('¿Estás seguro de eliminar la habilidad ' + hab_nombre + '?');
   $("#delete_modal").modal().find('#borrar').val(hab_id);
-  $("#delete_modal").modal().find('#borrar').attr("href", "{{asset('borrar-habilidad')}}" + '/' + hab_id );
+  $("#delete_modal").modal().find('#borrar').attr("href", "{{asset('habilidadDelete')}}" + '/' + hab_id );
 
 }
 </script>

@@ -11,7 +11,7 @@
                 <h3 class="mb-0">Grupos</h3>
             </div>
             <!-- Inicia Form -->
-            <form method="POST" action="{{route('modificar-grupo-modificar', $id)}}">
+            <form method="POST" action="{{route('grupoUpdate', $id)}}">
                 @csrf
                 <div class="container">
                     <div class="row justify-content-md-center">
