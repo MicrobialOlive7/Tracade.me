@@ -72,7 +72,17 @@ Route::get('/Inicio', 'LineController@index')->name('Inicio');
     Route::post('modificar-alumno/{id}', 'AlumnoController@update')->name('modificar-alumno');
 
 
+
     Route::get('eliminar-alumno/{id}', 'AlumnoController@delete')->name('eliminar-alumno');
+
+/**
+|--------------
+|---- Evaluaciones
+|--------------
+ */
+/// Vista /// Visualizar las evaluaciones por alumno por habilidad
+Route::get('evaluaciones/{hab_id}/{alu_id}', 'EvaluacionController@read')->name('evaluaciones');
+
 
     /** Grupos **/
     // Vista de formulario de crear grupo
@@ -117,12 +127,22 @@ Route::get('/Inicio', 'LineController@index')->name('Inicio');
     Route::get('/ModificarEventos','EventoController@ver')->name('ModificarEventos');
     Route::get('/EliminarEventos','EventoController@verEliminar')->name('EliminarEventos');
 
+
+
+
     Route::get('api-evento', 'EventoController@quickstart')->name('api-evento');
     Route::post('crear-evento', 'EventoController@create')->name('crear-evento');
     Route::post('modificar-evento', 'EventoController@update')->name('modificar-evento');
     Route::post('eliminar-evento', 'EventoController@delete')->name('eliminar-evento');
 
 
+
     /**Habilidades**/
     Route::post('crear-habilidad', 'Habilidades\HabilidadesController@create')->name('crear-habilidad');
     Route::get('borrar-habilidad/{id}', 'Habilidades\HabilidadesController@delete')->name('borrar-habilidad');
+
+/**
+|-------------------------------------------
+| Alumno - Usuario
+|-------------------------------------------*/
+
