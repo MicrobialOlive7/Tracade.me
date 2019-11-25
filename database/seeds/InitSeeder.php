@@ -54,10 +54,5 @@ class InitSeeder extends Seeder
             'dis_id' => rand(1,2)
         ]);
 
-
-
-
-
-
     }
 }

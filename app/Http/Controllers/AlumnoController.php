@@ -5,19 +5,29 @@ namespace App\Http\Controllers;
 use App\Alumno;
 use App\Disciplina;
 use App\DisciplinaAlumno;
+use App\Evaluacion;
+use App\Grupo;
 use App\GrupoAlumno;
+use App\Habilidad;
 use Illuminate\Http\Request;
 use Illuminate\Queue\RedisQueue;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use LasseRafn\InitialAvatarGenerator\InitialAvatar;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class AlumnoController extends Controller
 {
 
-    public function show(){
-        $alumnos = Alumno::all();
+    public function read(){
+        //$alumnos = Alumno::all()->forPage(2, 10);
+        $alumnos = Alumno::select('*')->paginate(5);
+        //return $alumnos;
         $disciplinas = Disciplina::all();
         $dis_alu = DisciplinaAlumno::all();
-        return view('Instructor.alumnos', compact('alumnos', 'disciplinas', 'dis_alu'));
+        $grupos = Grupo::all();
+        $gru_alu = GrupoAlumno::all();
+        return view('Instructor.alumnos', compact('alumnos', 'disciplinas', 'dis_alu', 'grupos', 'gru_alu'));
     }
 
     public function showUpdate($id){
@@ -46,6 +56,37 @@ class AlumnoController extends Controller
             $grupo->delete();
         }
         return redirect()->route('alumnos');
+    }
+
+    protected function test(){
+        $avatar = new InitialAvatar();
+        $image = $avatar->name('Lasse Rafn')
+            ->length(2)
+            ->fontSize(0.5)
+            ->size(96) // 48 * 2
+            ->background('#8BC34A')
+            ->color('#fff')
+            ->generate()
+            ->stream('png', 100);
+        //$file_name = $image->filename;
+        //return $image;
+        Storage::disk('public')->putFileAs('alumnos/1', $image, 'asd.png' );
+    }
+
+    protected function habilidades($id){
+        $evaluaciones = Evaluacion::select('*')->where('alu_id', $id)->orderBy('created_at', 'desc')->get();
+        //return $evaluaciones;
+        $ids = array();
+        foreach ($evaluaciones as $evaluacion){
+            array_push($ids, $evaluacion->hab_id);
+        }
+
+        $alumno = Alumno::all()->find($id);
+        $habilidades = Habilidad::all()->whereNotIn('id', $ids);
+        $hab_apr = Habilidad::all()->whereIn('id',$ids);
+
+        $disciplinas = Disciplina::all();
+        return view('Instructor.habilidades-alumno', compact('alumno', 'habilidades', 'disciplinas', 'evaluaciones', 'hab_apr'));
     }
 
 }

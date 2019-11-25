@@ -11,7 +11,7 @@
                 <h3 class="mb-0">Habilidades</h3>
             </div>
             <!-- Inicia Form -->
-            <form method='POST' action="{{route('crear-habilidad')}}" enctype="multipart/form-data">
+            <form method='POST' action="{{route('habilidadCreate')}}" enctype="multipart/form-data">
               @csrf
                 <div class="container">
                     <div class="row justify-content-md-start">
@@ -114,7 +114,7 @@
                                       </button>
                                   </span>
                                   <span class="btn-inner--icon">
-                                       <a class="btn btn-icon btn-2 btn-danger btn-lg" role="button" title="Cancelar" href="{{ url('/Alumnos') }}">
+                                       <a class="btn btn-icon btn-2 btn-danger btn-lg" role="button" title="Cancelar" href="{{ route('Habilidades') }}">
                                            {{ __('Cancelar') }}
                                        </a>
                                   </span>

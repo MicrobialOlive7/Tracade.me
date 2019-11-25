@@ -156,11 +156,11 @@ class EventoController extends Controller
         return redirect()->route('calendario');
     }
 
-    public function ver(){
+    public function showUpdate(){
         $eventos =  Evento::all();
         return view('instructor.ModEventos', compact('eventos'));
     }
-    public function verEliminar(){
+    public function showDelete(){
         $eventos =  Evento::all();
         return view('instructor.EliminarEvento', compact('eventos'));
     }

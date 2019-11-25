@@ -21,6 +21,8 @@ class CreateHabilidadTable extends Migration
             $table->string('hab_dificultad', 50);
             $table->string('hab_descripcion', 255);
 
+            $table->string('hab_imagen', 100);
+
             $table->unsignedBigInteger('dis_id');
             $table->foreign('dis_id')->references('id')->on('disciplina');
 

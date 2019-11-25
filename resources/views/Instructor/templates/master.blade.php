@@ -31,6 +31,8 @@
     <link href="{{asset('../public/js/plugins/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet" />
     <!-- CSS Files -->
     <link href="{{asset('../public/css/argon-dashboard.css?v=1.1.0')}}" rel="stylesheet" />
+    <!-- themify-icon.css -->
+    <link rel="stylesheet" type="text/css" href="{{asset('css/themify-icons.css')}}">
 </head>
 
 <body class="">
@@ -107,12 +109,12 @@
                 </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @yield('cal-active') "href="{{ url('Calendario') }}">
+                    <a class="nav-link @yield('cal-active') "href="{{ url('calendario') }}">
                         <i class="ni ni-calendar-grid-58 text-blue"></i> Calendario
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @yield('alu-active')"  href="{{ url('Alumnos') }}">
+                    <a class="nav-link @yield('alu-active')"  href="{{ url('alumnos') }}">
                         <i class="ni ni-single-02 text-purple"></i> Alumnos
                     </a>
                 </li>
@@ -122,7 +124,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  @yield('hab-active') " href="{{ url('Habilidades') }}">
+                    <a class="nav-link  @yield('hab-active') " href="{{ url('habilidades') }}">
                         <i class="ni ni-trophy text-red"></i> Habilidades
                     </a>
                 </li>

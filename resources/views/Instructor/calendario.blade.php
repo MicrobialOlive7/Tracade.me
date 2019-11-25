@@ -13,17 +13,17 @@
                         <h3 class="mb-0">Calendario</h3>
                         <div class="col text-right">
                             <span class="btn-inner--icon">
-                                <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Agregar" href="{{ url('AgregarEventos') }}">
+                                <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Agregar" href="{{ route('crear-evento') }}">
                                     <i class="ni ni-fat-add" ></i>
                                 </a>
                             </span>
                             <span class="btn-inner--icon">
-                                <a class="btn btn-icon btn-2 btn-default btn-sm" role="button" title="Modificar" href="{{ url('ModificarEventos') }}">
+                                <a class="btn btn-icon btn-2 btn-default btn-sm" role="button" title="Modificar" href="{{route('modificar-evento')}}">
                                     <i class="ni ni-bold-down" ></i>
                                 </a>
                             </span>
                             <span class="btn-inner--icon">
-                                <a class="btn btn-icon btn-2 btn-danger btn-sm" role="button" title="Eliminar" href="{{ url('EliminarEventos') }}">
+                                <a class="btn btn-icon btn-2 btn-danger btn-sm" role="button" title="Eliminar" href="{{route('eliminar-evento')}}">
                                     <i class="ni ni-fat-remove" ></i>
                                 </a>
                             </span>

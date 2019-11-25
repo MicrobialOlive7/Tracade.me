@@ -11,7 +11,7 @@
                 <h3 class="mb-0">Grupos</h3>
             </div>
             <!-- Inicia Form -->
-            <form method="POST" action="{{route('modificar-grupo-modificar', $id)}}">
+            <form method="POST" action="{{route('grupoUpdate', $id)}}">
                 @csrf
                 <div class="container">
                     <div class="row justify-content-md-center">
@@ -140,7 +140,7 @@
                                         </button>
                                     </span>
                                     <span class="btn-inner--icon">
-                                         <a class="btn btn-icon btn-2 btn-danger btn-lg" role="button" title="Cancelar" href="{{ url('/Alumnos') }}">
+                                         <a class="btn btn-icon btn-2 btn-danger btn-lg" role="button" title="Cancelar" href="{{ route('grupos') }}">
                                              {{ __('Cancelar') }}
                                          </a>
                                     </span>

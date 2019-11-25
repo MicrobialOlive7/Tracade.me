@@ -3,6 +3,12 @@
 ## Documentación
 [Laravel](https://laravel.com/docs/6.x)
 
+### NOTA
+Cada que se haga pul o merge ejecutar el comando
+```
+php artisan storage:link
+```
+
 ### Base de datos
 
 #### Ejecutar migracion
@@ -50,3 +56,28 @@ php artisan make:controller Carpeta\NombreController
  * registerController
  
  
+## Rutas
+Los nombres de las rutas y comentarios de cada una seran de la siguiente manera:
+**Comentarios**
+ ```
+/// Tipo de ruta /// Vista o Funcion
+ ```
+ 
+**Nombre**
+
+*Funciones*
+* Las funciones del CRUD se llaman como corresponda (**C**reate, **U**pdate, **R**ead, **D**elete)
+* Las funciones para las vistas del CRUD se llamaran: *showFuncion()*
+
+*Rutas*
+* Las rutas para las vistas se llamaran de la siguiente forma: *funcion-objeto*
+* Las rutas para las funciones post se llamaran de la siguiente forma: *objetoFuncion*
+
+*Ejemplo:*
+```
+//--- Modificar ---//
+// Vista
+Route::get('modificar-grupo/{id}', 'Grupos\GruposController@showUpdate')->name('modificar-grupo');
+// Funcion
+Route::post('grupoUpdate/{id}', 'Grupos\GruposController@update')->name('grupoUpdate');
+ ```

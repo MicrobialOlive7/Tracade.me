@@ -14,11 +14,11 @@ use function Sodium\add;
 
 class GruposController extends Controller
 {
-    public function index(){
-        $Grupos = Grupo::all();
+    public function read(){
+        $Grupos = Grupo::select('*')->paginate(5);
         return view('Instructor.grupos',compact('Grupos') );
     }
-    public function show(){
+    public function showCreate(){
         $aulas = Aula::all();
         $disciplinas = Disciplina::all();
         return view('instructor.CrearGrupos', compact('aulas', 'disciplinas'));
@@ -95,7 +95,7 @@ class GruposController extends Controller
         return view('Instructor.agregarAlumnos', compact('alumnos', 'disciplinas', 'dis_alu', 'id', 'grupo', 'alumnosGrupo', 'alumnosNuevos'));
     }
 
-    public function agregarAlumnos($id, $alu_id){
+    public function add($id, $alu_id){
         $grupoAlumno = new GrupoAlumno();
         $grupoAlumno->gru_id = $id;
         $grupoAlumno->alu_id = $alu_id;
