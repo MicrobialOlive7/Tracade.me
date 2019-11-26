@@ -92,20 +92,10 @@
                 </div>
             </div>
             <!-- Form -->
-            <form class="mt-4 mb-3 d-md-none">
-                <div class="input-group input-group-rounded input-group-merge">
-                    <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="Search" aria-label="Search">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <span class="fa fa-search"></span>
-                        </div>
-                    </div>
-                </div>
-            </form>
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li class="nav-item"  class="active">
-                <a class=" nav-link " href=" ../index.html"> <i class="ni ni-chart-pie-35 text-primary"></i> Inicio
+                <a class=" nav-link " href="{{ url('Inicio') }}"> <i class="ni ni-chart-pie-35 text-primary"></i> Inicio
                 </a>
                 </li>
                 <li class="nav-item">
@@ -154,14 +144,7 @@
 
             <!-- Form -->
             <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
-                <div class="form-group mb-0">
-                    <div class="input-group input-group-alternative">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-search"></i></span>
-                        </div>
-                        <input class="form-control" placeholder="Search" type="text">
-                    </div>
-                </div>
+
             </form>
             <!-- User -->
             <ul class="navbar-nav align-items-center d-none d-md-flex">
@@ -204,29 +187,7 @@
 
 <!-- Footer -->
     <footer class="footer">
-        <div class="row align-items-center ">
-            <div class="col-md-6">
-                <div class="copyright text-center text-xl-left text-muted">
-                    &copy; 2018 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-                    <li class="nav-item">
-                        <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+
     </footer>
 </div>
 </div>
@@ -245,7 +206,6 @@
         application: "argon-dashboard-free"
     });
 </script>
-
 @yield('js_content')
 
 </body>
