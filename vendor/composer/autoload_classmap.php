@@ -54,13 +54,10 @@ return array(
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\User' => $baseDir . '/app/User.php',
     'App\\Variacion' => $baseDir . '/app/Variacion.php',
-
     'AulasTableSeeder' => $baseDir . '/database/seeds/AulasTableSeeder.php',
-
     'Balping\\JsonRaw\\Encoder' => $vendorDir . '/balping/json-raw-encoder/src/Encoder.php',
     'Balping\\JsonRaw\\Raw' => $vendorDir . '/balping/json-raw-encoder/src/Raw.php',
     'Balping\\JsonRaw\\Replacer' => $vendorDir . '/balping/json-raw-encoder/src/Replacer.php',
-
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',
     'Carbon\\CarbonImmutable' => $vendorDir . '/nesbot/carbon/src/Carbon/CarbonImmutable.php',
     'Carbon\\CarbonInterface' => $vendorDir . '/nesbot/carbon/src/Carbon/CarbonInterface.php',

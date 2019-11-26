@@ -1,11 +1,11 @@
 @extends('Instructor.templates.master')
 @extends('layouts.modal')
 @section('content')
-<nav class="navbar navbar-top navbar-expand-md navbard-dark" id="navbar-main">
+    <!--<nav class="navbar navbar-top navbar-expand-md navbard-dark" id="navbar-main">
     <div class="container-fluid">
-        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block"> Inicio </a>
+            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block"> Inicio </a>
     </div>
-</nav>
+</nav> -->
 <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
 <div class="container-fluid">
     <div class="header-body">
