@@ -105,7 +105,7 @@
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li class="nav-item"  class="active">
-                <a class=" nav-link " href=" ../index.html"> <i class="ni ni-chart-pie-35 text-primary"></i> Inicio
+                <a class=" nav-link " href="{{ url('Inicio') }}"> <i class="ni ni-chart-pie-35 text-primary"></i> Inicio
                 </a>
                 </li>
                 <li class="nav-item">
@@ -245,7 +245,6 @@
         application: "argon-dashboard-free"
     });
 </script>
-
 @yield('js_content')
 
 </body>
