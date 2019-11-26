@@ -21,10 +21,7 @@ git clone https://github.com/MicrobialOlive7/Tracade.me.git
 Ó clonar el  proyecto desde GitHub Desktop
 
 ### Inicialización
-Para la creación de la base de datos, ejecutar el siguiente comando desde una terminal en la carpeta raiz de *tracade.me*:
- ```
-php artisan migrate
- ```
+*Todos los pasos siguientes eben de realizarse para la correcto funcionamiento de tracade.me
 
 #### Instalación de charts
 Para el correcto funcionamiento de las gráficas, ejecutar el siguiente comando:
@@ -49,6 +46,11 @@ php artisan db:seed --class=InitSeeder
 Creación de 10 alumnos de prueba asignados a una discplina aleatoria:
 ```
 php artisan db:seed --class=AlumnosTableSeeder
+```
+###### Habilidades
+Creación de 16 habilidades de prueba:
+```
+php artisan db:seed --class=HabilidadesTableSeeder
 ```
 
 ### Visualización de imagenes de habilidades
@@ -119,7 +121,14 @@ php artisan make:controller Carpeta\NombreController
  
  
 ## NOTAS
-Cada que se haga pull o merge ejecutar el comando
+**Cada que se haga pull o merge:**
+
++ Ejecutar el siguiente comando para la correcta visualizacion de las imagenes
 ```
 php artisan storage:link
 ```
+Este comando crea un enlace directo de la carpeta *storage* en */public* hacia la carpeta */storage/app* que es donde se almacenan
+las imágenes de las habilidades
+
++ Se recomienda inicializar la base de datos también.
+
