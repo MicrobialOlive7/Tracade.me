@@ -63,6 +63,15 @@ las imágenes de las habilidades
 
 **es probable que haya que eliminar la carpeta */storage* de public y volver a ejecutar*
 
+## Instalación en servidor
+**El servidor debe tener PHP 7.3*
+1. Comprimir el proyecto en un archivo .zip
+2. Crear una base de datos para el proyecto
+3. Crear un usuario para administrar la base de datos y asignarlo a la base de datos creada
+4. Cargar el archivo .zip al servidor
+5. Extraer los archivos
+6. Modificar el .env con los datos de la base de datos y el usuario
+
 ## Desarrollo de tracade.me
 ### Formato de Rutas
 Las rutas se crear en el archivo *web.php*
@@ -130,5 +139,8 @@ php artisan storage:link
 Este comando crea un enlace directo de la carpeta *storage* en */public* hacia la carpeta */storage/app* que es donde se almacenan
 las imágenes de las habilidades
 
-+ Se recomienda inicializar la base de datos también.
-
++ Se recomienda inicializar la base de datos también. Utilizar el siguiente comando para reiniciar la base de datos
+```
+php artisan migrate:refresh
+```
+Despues de esto, seguir los pasos para incializar la base de datos
