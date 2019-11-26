@@ -50,7 +50,7 @@ class HabilidadesController extends Controller
       ->first();
       $CamposAd = CampoAdicional::where('hab_id', $hab_id)->get()->first();
       //dd($Habilidades,$Habilidad,$HabReq,$CamposAd);
-        return view('Instructor.Modhabilidades', compact('CamposAd', 'Habilidad','Habilidades', 'HabReq', 'hab_id'));
+        return view('Instructor.ModHabilidades', compact('CamposAd', 'Habilidad','Habilidades', 'HabReq', 'hab_id'));
     }
 
     public function update (Request $request, $id){
