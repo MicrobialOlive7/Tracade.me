@@ -33,6 +33,6 @@ class LineController extends Controller
                 ->color("rgb(66, 135, 245)")
                 ->fill(false);
 
-        return view('instructor.dashboard', compact('chart'));
+        return view('Instructor.dashboard', compact('chart'));
     }
 }
