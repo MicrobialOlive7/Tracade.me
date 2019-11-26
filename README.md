@@ -26,10 +26,15 @@ Para la creación de la base de datos, ejecutar el siguiente comando desde una t
 php artisan migrate
  ```
 
+#### Instalación de charts
+Para el correcto funcionamiento de las gráficas, ejecutar el siguiente comando:
+ ```
+composer require consoletvs/charts:6.*
+ ```
 #### Base de datos
 
 ##### Ejecutar migración
-1. Crear base de datos *tracademe* 
+1. Crear base de datos con el nombre *tracademe* 
 2. Ejecutar comando
 ```
 php artisan migrate
@@ -41,41 +46,24 @@ php artisan db:seed --class=InitSeeder
 ```
 ##### Registros de prueba
 ###### Alumnos
-CCreación de 10 alumnos de prueba asignados a una discplina aleatoria:
+Creación de 10 alumnos de prueba asignados a una discplina aleatoria:
 ```
 php artisan db:seed --class=AlumnosTableSeeder
 ```
 
+### Visualización de imagenes de habilidades
+Ejecutar el siguiente comando para la correcta visualizacion de las imagenes
+```
+php artisan storage:link
+```
+Este comando crea un enlace directo de la carpeta *storage* en */public* hacia la carpeta */storage/app* que es donde se almacenan
+las imágenes de las habilidades
+
+**es probable que haya que eliminar la carpeta */storage* de public y volver a ejecutar*
+
 ## Desarrollo de tracade.me
-### Controller dentro de carpetas
-Para crear controladores dentro de una carpeta dentro de la carpeta *Controller* se debe hacer lo siguiente>
-
-1. Ejecutar  comando
-```
-php artisan make:controller Carpeta\NombreController
-```
-
-*Se debe crear con el comando para que laravel sepa que esta
-     dentro de esa carpeta*
-     
-2. Crear la ruta en *routes/web.php*
- ```
- Carpeta\NombreController@funcion
- ```
- 
- ### Default login
- editar *config>auth*
- 
-* providers 
-* passwords
-* guards
-    * web
-    * defaults
-        * passwords
- * registerController
- 
- 
-### Rutas
+### Formato de Rutas
+Las rutas se crear en el archivo *web.php*
 Los nombres de las rutas y comentarios de cada una seran de la siguiente manera:
 **Comentarios**
  ```
@@ -100,6 +88,33 @@ Route::get('modificar-grupo/{id}', 'Grupos\GruposController@showUpdate')->name('
 // Funcion
 Route::post('grupoUpdate/{id}', 'Grupos\GruposController@update')->name('grupoUpdate');
  ```
+
+### Crear controller dentro de carpetas
+Para crear controladores dentro de una carpeta dentro de la carpeta *Controller* se debe hacer lo siguiente>
+
+1. Ejecutar  comando
+```
+php artisan make:controller Carpeta\NombreController
+```
+
+*Se debe crear con el comando para que laravel sepa que esta
+     dentro de esa carpeta*
+     
+2. Crear la ruta en *routes/web.php*
+ ```
+ Carpeta\NombreController@funcion
+ ```
+ 
+### Regresar al login por defecto de laravel
+ editar *config>auth*
+ 
+* providers 
+* passwords
+* guards
+    * web
+    * defaults
+        * passwords
+ * registerController
  
  
  
