@@ -171,6 +171,16 @@ Route::get('eliminar-evento','EventoController@showDelete')->name('eliminar-even
 Route::post('eventoDelete', 'EventoController@delete')->name('eventoDelete');
 //--- API ---//
 Route::get('api-evento', 'EventoController@quickstart')->name('api-evento');
+
+/**
+|--------------
+|---- Perfil
+|--------------
+ */
+
+Route::get('mi-perfil', function (){
+    return view('instructor.perfil');
+})->name('mi-perfil');
 /**
 |--------------
 |---- Temporales
@@ -180,9 +190,9 @@ Route::get('api-evento', 'EventoController@quickstart')->name('api-evento');
 Route::get('tmp-pago', function (){
     return view('instructor.TMP-pago');
 })->name('tmp-pago');
+Route::get('/Inicio', 'LineController@index')->name('Inicio');
 /**
 |-------------------------------------------
 | Alumno - Usuario
 |-------------------------------------------*/
 
-Route::get('/Inicio', 'LineController@index')->name('Inicio');
