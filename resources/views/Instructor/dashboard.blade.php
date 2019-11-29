@@ -84,8 +84,8 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h6 class="text-uppercase text-light 1s-1 mb-1"> Habilidades / Tiempo </h6>
-                            <h2 class="mb-0"> Progreso de los Alumnos </h2>
+                            <h6 class="text-uppercase text-light 1s-1 mb-1"> Alumnos / Tiempo </h6>
+                            <h2 class="mb-0"> Alumnos Nuevos </h2>
                         </div>
                         <div class="col">
                             <ul class="nav nav-pills justify-content-end"> <!--Aqui van los botones mes semana -->
