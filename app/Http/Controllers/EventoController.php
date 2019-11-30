@@ -158,11 +158,11 @@ class EventoController extends Controller
 
     public function showUpdate(){
         $eventos =  Evento::all();
-        return view('instructor.ModEventos', compact('eventos'));
+        return view('Instructor.ModEventos', compact('eventos'));
     }
     public function showDelete(){
         $eventos =  Evento::all();
-        return view('instructor.EliminarEvento', compact('eventos'));
+        return view('Instructor.EliminarEvento', compact('eventos'));
     }
     public function delete(Request $request){
         $evento = Evento::all()->find($request->id);

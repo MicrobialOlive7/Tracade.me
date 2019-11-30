@@ -21,7 +21,7 @@ class GruposController extends Controller
     public function showCreate(){
         $aulas = Aula::all();
         $disciplinas = Disciplina::all();
-        return view('instructor.CrearGrupos', compact('aulas', 'disciplinas'));
+        return view('Instructor.CrearGrupos', compact('aulas', 'disciplinas'));
     }
     public function create(Request $request){
         //return $request;
@@ -48,7 +48,7 @@ class GruposController extends Controller
         $grupo = Grupo::all()->find($id);
         $aulas = Aula::all();
         $disciplinas = Disciplina::all();
-        return view('instructor.ModGrupos', compact('grupo', 'aulas', 'disciplinas', 'id'));
+        return view('Instructor.ModGrupos', compact('grupo', 'aulas', 'disciplinas', 'id'));
     }
 
     public function update(Request $request, $id){

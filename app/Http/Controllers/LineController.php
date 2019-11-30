@@ -37,6 +37,6 @@ class LineController extends Controller
                 ->color("#27B958")
                 ->backgroundColor("#27B958");
 
+
         return view('instructor.dashboard', compact('line','barras'));
-    }
-}
+
