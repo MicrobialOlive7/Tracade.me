@@ -95,7 +95,7 @@
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li class="nav-item"  class="active">
-                <a class=" nav-link " href="{{ url('Inicio') }}"> <i class="ni ni-chart-pie-35 text-primary"></i> Inicio
+                <a class=" nav-link " href="{{ url('inicio') }}"> <i class="ni ni-chart-pie-35 text-primary"></i> Inicio
                 </a>
                 </li>
                 <li class="nav-item">
@@ -124,7 +124,7 @@
             <!-- Navigation -->
             <ul class="navbar-nav mb-md-3">
                 <li class="nav-item">
-                    <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html">
+                    <a class="nav-link" href="{{ url('perfil') }}">
                         <i class="ni ni-circle-08"></i> Mi Perfil
                     </a>
                 </li>

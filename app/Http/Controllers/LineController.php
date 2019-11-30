@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Alumno;
+use App\Charts\Bar;
 use App\Charts\LineChart;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -11,11 +12,14 @@ use SebastianBergmann\Diff\Line;
 class LineController extends Controller
 {
     public function index(){
+        $line = new LineChart();
+        $line->labels(['One', 'Two', 'Three', 'Four']);
+        $line->dataset('My dataset', 'line', [1, 2, 3, 4]);
+        $line->dataset('My dataset 2', 'line', [4, 3, 2, 1]);
 
-
-        $chart = new LineChart();
-        $chart -> displayLegend(false);
-        $chart->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']);
+        $barras = new Bar();
+        $barras -> displayLegend(false);
+        $barras->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']);
         $enero = Alumno::all() -> whereBetween('created_at',[Carbon::now()->subYears(1).'-01-31',Carbon::now()->year.'-02-01']) -> count();
         $febrero = Alumno::all() -> whereBetween('created_at',[Carbon::now()->year.'-01-31',Carbon::now()->year.'-03-01']) -> count();
         $marzo = Alumno::all() -> whereBetween('created_at',[Carbon::now()->year.'-02-31',Carbon::now()->year.'-04-01']) -> count();
@@ -29,10 +33,10 @@ class LineController extends Controller
         $noviembre = Alumno::all() -> whereBetween('created_at',[Carbon::now()->year.'-10-31',Carbon::now()->year.'-12-01']) -> count();
         $diciembre = Alumno::all() -> whereBetween('created_at',[Carbon::now()->year.'-11-31',Carbon::now()->addYears(1).'-01-01']) -> count();
 
-        $chart->dataset('Progreso', 'line', [$enero, $febrero, $marzo,$abril,$mayo,$junio,$julio,$agosto,$septiembre,$octubre,$noviembre,$diciembre])
-                ->color("rgb(66, 135, 245)")
-                ->fill(false);
+        $barras->dataset('Progreso', 'bar', [$enero, $febrero, $marzo,$abril,$mayo,$junio,$julio,$agosto,$septiembre,$octubre,$noviembre,$diciembre])
+                ->color("#27B958")
+                ->backgroundColor("#27B958");
 
-        return view('Instructor.dashboard', compact('chart'));
-    }
-}
+
+        return view('instructor.dashboard', compact('line','barras'));
+

@@ -55,7 +55,13 @@ Auth::routes();
 |-------------------------------------------
 | Administrador - Usuario
 |-------------------------------------------
-|
+ */
+Route::get('/inicio', 'LineController@index')->name('inicio');
+
+Route::get('/perfil', function (){
+    return view('Instructor.perfil');
+})->name('perfil');
+/**
 |--------------
 |---- Grupos
 |--------------

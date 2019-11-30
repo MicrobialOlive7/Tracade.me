@@ -85,7 +85,7 @@
                     <div class="row align-items-center">
                         <div class="col">
                             <h6 class="text-uppercase text-light 1s-1 mb-1"> Habilidades / Tiempo </h6>
-                            <h2 class="mb-0"> Progreso de los Alumnos </h2>
+                            <h2 class="mb-0">Cantidad de Habilidades Aprendidas </h2>
                         </div>
                         <div class="col">
                             <ul class="nav nav-pills justify-content-end"> <!--Aqui van los botones mes semana -->
@@ -94,17 +94,38 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="chart">
-                        {!! $chart->container() !!}
+                    <div class="chart"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                        {!! $line->container() !!}
+
                     </div>
                 </div>
 
+            </div>
+        </div>
+        <div class="col-xl-4">
+            <div class="card shadow">
+                <div class="card-header bg-transparent">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h6 class="text-uppercase text-muted ls-1 mb-1">Alumnos / Tiempo</h6>
+                            <h2 class="mb-0">Cantidad de Alumnos</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!-- Chart -->
+                    <div class="chart"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                        {!! $barras->container() !!}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
-{!! $chart->script() !!}
+{!! $line->script() !!}
+{!! $barras->script() !!}
 @endsection
