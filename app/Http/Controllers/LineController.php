@@ -13,7 +13,9 @@ class LineController extends Controller
 {
     public function index(){
         $line = new LineChart();
-        $line->labels(['One', 'Two', 'Three', 'Four']);
+        $line -> displayLegens(false);
+        $line -> labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']);
+
         $line->dataset('My dataset', 'line', [1, 2, 3, 4]);
         $line->dataset('My dataset 2', 'line', [4, 3, 2, 1]);
 
