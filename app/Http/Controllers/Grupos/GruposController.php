@@ -16,7 +16,9 @@ class GruposController extends Controller
 {
     public function read(){
         $Grupos = Grupo::select('*')->paginate(5);
-        return view('Instructor.grupos',compact('Grupos') );
+        $alu_gru = GrupoAlumno::all();
+        $alumnos = Alumno::all();
+        return view('Instructor.grupos',compact('Grupos', 'alu_gru', 'alumnos') );
     }
     public function showCreate(){
         $aulas = Aula::all();
