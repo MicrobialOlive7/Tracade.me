@@ -79,7 +79,7 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                             <a class="dropdown-item" href="{{route('modificar-evaluacion', [$habilidad->id, $alumno->id, $evaluacion->id])}}">Modificar</a>
-                                            <a class="dropdown-item" href="{{route('evaluacionDelete', [$habilidad->id, $alumno->id, $evaluacion->id])}}" onclick="" >Eliminar</a>
+                                            <a class="dropdown-item" onclick="eliminarEvaluacion('{{$habilidad->id}}', '{{$alumno->id}}', '{{$evaluacion->id}}')" >Eliminar</a>
                                         </div>
                                     </div>
                                 </td>
@@ -105,13 +105,13 @@
 
 <script type="text/javascript">
 
-function  eliminarHabilidad(hab_nombre, hab_id){
+function  eliminarEvaluacion(hab_id, alu_id, eva_id){
 
-  $("#delete_modal").modal().find('.modal-title').text('Eliminar habilidad');
-  $("#delete_modal").modal().find('.message-text').empty();
-  $("#delete_modal").modal().find('.message-text').append('¿Estás seguro de eliminar la habilidad ' + hab_nombre + '?');
-  $("#delete_modal").modal().find('#borrar').val(hab_id);
-  $("#delete_modal").modal().find('#borrar').attr("href", "" + '/' + hab_id );
+  $("#eliminar_evaluacion").modal().find('.modal-title').text('Eliminar evaluación');
+  $("#eliminar_evaluacion").modal().find('.message-text').empty();
+  $("#eliminar_evaluacion").modal().find('.message-text').append('¿Estás seguro de eliminar esta evaluación?');
+  $("#eliminar_evaluacion").modal().find('#eliminar').val(hab_id);
+  $("#eliminar_evaluacion").modal().find('#eliminar').attr("href", "{{asset('evaluacionDelete')}}" + "/" + hab_id +"/"+ alu_id +"/"+ eva_id );
 
 }
 </script>
