@@ -34,21 +34,26 @@
                                 <td> <input type="checkbox"></td>
                                   <th scope="row">
                                       <div class="media align-items-center">
-                                          <a href="#" class="avatar rounded-circle mr-3">
+                                          <a class="avatar rounded-circle mr-3">
                                               <img alt="Image placeholder" src="{{asset('storage/habilidades/'.$value['id'].'/'.$value['hab_imagen'])}}">
                                           </a>
                                           <div class="media-body">
+                                              @if($evaluaciones->where('hab_id', $value['id'])->first()->eva_calificacion != 3)
                                               <a href="{{route('evaluaciones', [$value['id'], $alumno['id']])}}">
                                                 <span class="mb-0 text-sm">{{$value['hab_nombre']}}</span>
                                               </a>
+                                                  @else
+                                                  <span class="mb-0 text-sm">{{$value['hab_nombre']}}</span>
+                                              @endif
                                           </div>
                                       </div>
                                   </th>
                                 <th scope="row">
 
-                                    @for($i = 0 ; $i < $evaluaciones->where('hab_id', $value['id'])->first()->eva_calificacion; $i++)
-                                        <i class="text-yellow ti-star"></i>
-                                    @endfor
+                                        @for($i = 0 ; $i < $evaluaciones->where('hab_id', $value['id'])->first()->eva_calificacion; $i++)
+                                            <i class="text-yellow ti-star"></i>
+                                        @endfor
+
 
                                 </th>
                                 <th scope="row"> {{$evaluaciones->where('hab_id', $value['id'])->first()->eva_comentario}}</th>
@@ -94,6 +99,7 @@
                                             <a href="#" class="avatar rounded-circle mr-3">
                                                 <img alt="Image placeholder" src="{{asset('storage/habilidades/'.$value['id'].'/'.$value['hab_imagen'])}}">
                                             </a>
+
                                             <a href="{{route('evaluaciones', [$value['id'], $alumno['id']])}}">
                                                 <span class="mb-0 text-sm">{{$value['hab_nombre']}}</span>
                                             </a>
@@ -118,7 +124,7 @@
                         </table>
                     </div>
                     <div class="card-header border-0">
-
+                        {{ $habilidades->links() }}
                     </div>
                 </div>
             </div>

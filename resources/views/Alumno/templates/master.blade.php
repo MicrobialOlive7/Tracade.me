@@ -65,11 +65,23 @@
                         <i class="ni ni-single-02"></i>
                         <span>Mi Perfil</span>
                     </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="{{ url('login') }}" class="dropdown-item">
-                        <i class="ni ni-user-run"></i>
-                        <span>Cerrar Sesión</span>
-                    </a>
+
+
+                            @auth
+
+
+                                <div class="dropdown-divider"></div>
+                            <form method="POST" action="{{route('logout')}}">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <button type="submit">Logout</button>
+                            </form>
+
+                            @endauth
+
+
+
+
+
                 </div>
             </li>
         </ul>
@@ -94,27 +106,17 @@
             <!-- Form -->
             <!-- Navigation -->
             <ul class="navbar-nav">
-                <li class="nav-item"  class="active">
-                <a class=" nav-link " href="{{ url('Inicio') }}"> <i class="ni ni-chart-pie-35 text-primary"></i> Inicio
+                <li class="nav-item @yield('ini-active')">
+                <a class=" nav-link " href="{{ route('alumno-inicio') }}"> <i class="ni ni-chart-pie-35 text-primary"></i> Inicio
                 </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @yield('cal-active') "href="{{ url('calendario') }}">
+                    <a class="nav-link @yield('cal-active') " href="{{ route('alumno-calendario') }}">
                         <i class="ni ni-calendar-grid-58 text-blue"></i> Calendario
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @yield('alu-active')"  href="{{ url('alumnos') }}">
-                        <i class="ni ni-single-02 text-purple"></i> Alumnos
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link @yield('gru-active')"  href="{{ url('grupos') }}">
-                        <i class="ni ni-bullet-list-67 text-pink"></i> Grupos
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link  @yield('hab-active') " href="{{ url('habilidades') }}">
+                    <a class="nav-link  @yield('hab-active') " href="{{ route('alumno-habilidades') }}">
                         <i class="ni ni-trophy text-red"></i> Habilidades
                     </a>
                 </li>
@@ -154,10 +156,14 @@
                 <span class="avatar avatar-sm rounded-circle">
                   <img alt="Image placeholder" src="{{asset('../public/img/theme/team-4-800x800.jpg')}}">
                 </span>
+
+
+
+
                             <div class="media-body ml-2 d-none d-lg-block">
-                                <span class="mb-0 text-sm  font-weight-bold">Jessica Jones</span>
+                                <span class="mb-0 text-sm  font-weight-bold">{{Auth::user()->alu_nombre }} {{Auth::user()->alu_apellido_paterno}}</span>
                                 <br>
-                                <span class="mb-0 text-sm  font-weight-bold">Akross</span>
+                                <span class="mb-0 text-sm  font-weight-bold">Disciplina</span>
                             </div>
                         </div>
                     </a>
@@ -169,11 +175,22 @@
                             <i class="ni ni-single-02"></i>
                             <span>Mi Perfil</span>
                         </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="{{ url('login') }}" class="dropdown-item">
-                            <i class="ni ni-user-run"></i>
-                            <span>Cerrar Sesión</span>
-                        </a>
+
+                        @auth
+                            <div class="dropdown-divider"></div>
+                            <form method="POST" action="{{route('logout')}}" >
+
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <button type="submit">
+
+                                    <a class="dropdown-item">
+                                        <i class="ni ni-user-run"></i>
+                                        <span>Cerrar Sesissón</span>
+                                    </a>
+
+                                </button>
+                            </form>
+                        @endauth
                     </div>
                 </li>
             </ul>

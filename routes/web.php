@@ -202,3 +202,28 @@ Route::get('/Inicio', 'LineController@index')->name('Inicio');
 | Alumno - Usuario
 |-------------------------------------------*/
 
+/**
+|--------------
+|---- Habilidades
+|--------------
+ */
+// Vista // Visualizar lista de todas las habilidades
+Route::get('/alumno/habilidades', 'Alumno\HabilidadesController@read')->name('alumno-habilidades');
+
+/// Vista /// Visualizar las evaluaciones por alumno por habilidad
+Route::get('alumno/evaluaciones/{hab_id}', 'Alumno\EvaluacionController@read')->name('alumno-evaluaciones');
+
+/**
+|--------------
+|---- Calendario
+|--------------
+ */
+Route::get('/alumno/calendario', function (){
+    return view('Alumno.calendario');
+})->name('alumno-calendario')->middleware('auth');
+/**
+|--------------
+|---- Inicio
+|--------------
+ */
+Route::get('/alumno/inicio', 'Alumno\ChartsController@index')->name('alumno-inicio');

@@ -1,4 +1,4 @@
-@extends('Instructor.templates.master')
+@extends('Alumno.templates.master')
 @extends('layouts.modal')
 @section('hab-active', 'active')
 @section('content')
@@ -10,7 +10,7 @@
             <div class="col">
                 <div class="card shadow">
                     <div class="card-header border-0">
-                        <h3 class="mb-0">Habilidades</h3>
+                        <h3 class="mb-0"> Alumnos Habilidades</h3>
                         <div class="col text-right">
                             <span class="btn-inner--icon">
                                 <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Agregar" href="{{ route('crear-habilidad') }}">

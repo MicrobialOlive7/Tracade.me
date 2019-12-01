@@ -1,6 +1,8 @@
-@extends('Instructor.templates.master')
+@extends('Alumno.templates.master')
 @extends('layouts.modal')
+@section('ini-active', 'active')
 @section('content')
+
     <!--<nav class="navbar navbar-top navbar-expand-md navbard-dark" id="navbar-main">
     <div class="container-fluid">
             <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block"> Inicio </a>
@@ -95,7 +97,7 @@
                 </div>
                 <div class="card-body">
                     <div class="chart">
-                        {!! $chart->container() !!}
+                        {!! $barras->container() !!}
                     </div>
                 </div>
 
@@ -106,5 +108,6 @@
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
-{!! $chart->script() !!}
+{!! $line->script() !!}
+    {!! $barras->script() !!}
 @endsection

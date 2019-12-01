@@ -1,4 +1,4 @@
-@extends('Instructor.templates.master')
+@extends('Alumno.templates.master')
 @extends('layouts.modal')
 @section('hab-active', 'active')
 @section('content')
@@ -18,19 +18,6 @@
                                 <h3 class="mb-0">{{$habilidad->hab_nombre}}</h3>
                             </div>
                         </div>
-
-                        <div class="col text-right">
-                            <span class="btn-inner--icon">
-                                <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Agregar" href="{{ route('evaluar', [$habilidad->id, $alumno->id]) }}">
-                                    <i class="ni ni-fat-add" ></i>
-                                </a>
-                            </span>
-                            <span class="btn-inner--icon">
-                                <a class="btn btn-icon btn-2 btn-danger btn-sm" role="button" title="Eliminación Masiva" href="{{ url('') }}">
-                                    <i class="ni ni-fat-remove" ></i>
-                                </a>
-                            </span>
-                        </div>
                     </div>
 
                     <div class="table-responsive">
@@ -38,11 +25,10 @@
                             <thead class="thead-light">
 
                             <tr>
-                                <th scope="col"> <input type="checkbox"></th>
                                 <th scope="col">Fecha</th>
                                 <th scope="col">Calificacion</th>
                                 <th scope="col">Comentarios</th>
-                                <th></th>
+
                             </tr>
                             </thead>
                             <tbody>
@@ -50,7 +36,6 @@
 
                               @foreach($evaluaciones as $evaluacion)
                               <tr>
-                                <td> <input type="checkbox"></td>
                                   <th scope="row">
                                       <span class="mb-0 text-sm">{{$evaluacion['created_at']}}</span>
                                   </th>
@@ -61,17 +46,7 @@
                                     @endfor
                                 </th>
                                 <th> {{$evaluacion['eva_comentario']}}</th>
-                                <td class="text-right">
-                                    <div class="dropdown">
-                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="{{route('modificar-evaluacion', [$habilidad->id, $alumno->id, $evaluacion->id])}}">Modificar</a>
-                                            <a class="dropdown-item" href="{{route('evaluacionDelete', [$habilidad->id, $alumno->id, $evaluacion->id])}}" onclick="" >Eliminar</a>
-                                        </div>
-                                    </div>
-                                </td>
+
                               </tr>
 
                               @endforeach

@@ -1,4 +1,4 @@
-@extends('Instructor.templates.master')
+@extends('Alumno.templates.master')
 @extends('layouts.modal')
 @section('hab-active', 'active')
 @section('content')
@@ -19,7 +19,6 @@
                             <thead class="thead-light">
 
                             <tr>
-                                <th scope="col"> <input type="checkbox"></th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Calificacion</th>
                                 <th scope="col">Comentarios</th>
@@ -31,14 +30,14 @@
 
                               @foreach($hab_apr as $key => $value)
                               <tr>
-                                <td> <input type="checkbox"></td>
+
                                   <th scope="row">
                                       <div class="media align-items-center">
                                           <a href="#" class="avatar rounded-circle mr-3">
                                               <img alt="Image placeholder" src="{{asset('storage/habilidades/'.$value['id'].'/'.$value['hab_imagen'])}}">
                                           </a>
                                           <div class="media-body">
-                                              <a href="{{route('evaluaciones', [$value['id'], $alumno['id']])}}">
+                                              <a href="{{route('alumno-evaluaciones', $value['id'])}}">
                                                 <span class="mb-0 text-sm">{{$value['hab_nombre']}}</span>
                                               </a>
                                           </div>
@@ -76,7 +75,6 @@
                             <thead class="thead-light">
 
                             <tr>
-                                <th scope="col"> <input type="checkbox"></th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Dificultad</th>
                                 <th scope="col">Disciplina</th>
@@ -88,15 +86,12 @@
 
                             @foreach($habilidades as $key => $value)
                                 <tr>
-                                    <td> <input type="checkbox"></td>
                                     <th scope="row">
                                         <div class="media align-items-center">
-                                            <a href="#" class="avatar rounded-circle mr-3">
+                                            <a class="avatar rounded-circle mr-3">
                                                 <img alt="Image placeholder" src="{{asset('storage/habilidades/'.$value['id'].'/'.$value['hab_imagen'])}}">
                                             </a>
-                                            <a href="{{route('evaluaciones', [$value['id'], $alumno['id']])}}">
                                                 <span class="mb-0 text-sm">{{$value['hab_nombre']}}</span>
-                                            </a>
                                         </div>
                                     </th>
                                     <th scope="row">
