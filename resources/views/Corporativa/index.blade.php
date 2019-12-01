@@ -205,40 +205,40 @@
                     <!-- //section-title -->
                     <div class="showcase-slider">
                         <div class="showcase-img">
-                            <img src="../public/img/home/Calendario.png" alt="img">
+                            <img src="../public/img/home/login.png" alt="img">
                         </div>
                         <div class="showcase-img">
-                            <img src="../public/img/showcase/show-2.jpg" alt="img">
+                            <img src="../public/img/home/perfil.png" alt="img">
                         </div>
                         <div class="showcase-img">
-                            <img src="../public/img/showcase/show-3.jpg" alt="img">
+                            <img src="../public/img/home/inicio.png" alt="img">
                         </div>
                         <div class="showcase-img">
-                            <img src="../public/img/showcase/show-4.jpg" alt="img">
+                            <img src="../public/img/home/calendario.png" alt="img">
                         </div>
                         <div class="showcase-img">
-                            <img src="../public/img/showcase/show-1.jpg" alt="img">
+                            <img src="../public/img/home/alumnos.png" alt="img">
                         </div>
                         <div class="showcase-img">
-                            <img src="../public/img/showcase/show-2.jpg" alt="img">
+                            <img src="../public/img/home/grupos.png" alt="img">
                         </div>
                         <div class="showcase-img">
-                            <img src="../public/img/showcase/show-3.jpg" alt="img">
+                            <img src="../public/img/home/habilidades.png" alt="img">
                         </div>
                         <div class="showcase-img">
-                            <img src="../public/img/showcase/show-4.jpg" alt="img">
+                            <img src="../public/img/home/habilidades_eval.png" alt="img">
                         </div>
                         <div class="showcase-img">
-                            <img src="../public/img/showcase/show-1.jpg" alt="img">
+                            <img src="../public/img/home/evaluacion.png" alt="img">
                         </div>
                         <div class="showcase-img">
-                            <img src="../public/img/showcase/show-2.jpg" alt="img">
+                            <img src="../public/img/home/menu.png" alt="img">
                         </div>
                         <div class="showcase-img">
-                            <img src="../public/img/showcase/show-3.jpg" alt="img">
+                            <img src="../public/img/home/mod_el.png" alt="img">
                         </div>
                         <div class="showcase-img">
-                            <img src="../public/img/showcase/show-4.jpg" alt="img">
+                            <img src="../public/img/home/politicas.png" alt="img">
                         </div>
                     </div>
                 </div><!-- /showcase-content -->

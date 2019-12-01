@@ -32,12 +32,10 @@
                 <div class="about-section-content">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="about-left-img zooming">
-                                <img src="../public/img/mock-up/about.png" alt="img">
+                            <div class="zooming" style="padding-top:10rem">
+                                <img src="../public/img/nosotros/about.png" alt="img">
                             </div>
                         </div>
-                        <!-- //col-sm-6 -->
-
                         <div class="col-md-6">
                             <div class="about-section-text">
                                 <div class="section-title text-justify pb50">
@@ -138,7 +136,7 @@
 
                         <div class="col-sm-4">
                             <div class="extra-pic text-center">
-                                <img src="../public/img/mock-up/extra.png" alt="img">
+                                <img src="../public/img/nosotros/app-mobile.png" alt="img">
                             </div>
                         </div>
                         <!-- /col-sm-6 -->

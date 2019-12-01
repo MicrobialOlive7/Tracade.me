@@ -20,7 +20,7 @@
     <div class="container-fluid mt--7">
       <div class="row">
         <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
-          <div class="card card-profile shadow">
+          <div class="card card-profile shadow" >
             <div class="row justify-content-center">
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
@@ -30,7 +30,7 @@
                 </div>
               </div>
             </div>
-            <div class="card-body border-top pt-0 pt-md-9">
+            <div class="card-body border-top pt-8 pt-md-9"></div>
               <div class="text-center">
                 <h3>
                   Jessica Jones<span class="font-weight-light">, 27</span>
