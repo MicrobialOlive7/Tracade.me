@@ -11,7 +11,8 @@ $factory->define(\App\Evaluacion::class, function (Faker $faker) {
     $alumno = \App\Alumno::all()->random(1)->first();
     $dis_alu = \App\DisciplinaAlumno::all()->where('alu_id', $alumno->id)->first();
     $disciplina = \App\Disciplina::all()->where('id', $dis_alu->dis_id)->first();
-    $habilidad = Habilidad::all()->where('dis_id', $disciplina->id)->random(1)->first();
+    $habilidad = Habilidad::all()->where('dis_id', $dis_alu->dis_id)->random(1)->first();
+    //echo "//".$habilidad->dis_id." ".$habilidad->id." - ".$dis_alu->dis_id."//\n";
 
     return [
         'eva_comentario' => $faker->sentence(5),

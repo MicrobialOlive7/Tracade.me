@@ -27,7 +27,10 @@ class AlumnoController extends Controller
         $dis_alu = DisciplinaAlumno::all();
         $grupos = Grupo::all();
         $gru_alu = GrupoAlumno::all();
-        return view('Instructor.alumnos', compact('alumnos', 'disciplinas', 'dis_alu', 'grupos', 'gru_alu'));
+        $evaluaciones = Evaluacion::all();
+        $habilidades = Habilidad::all();
+        $habilidadesT = Evaluacion::where('eva_calificacion', 3)->orderBy('created_at','desc')->get();
+        return view('Instructor.alumnos', compact('alumnos', 'disciplinas', 'dis_alu', 'grupos', 'gru_alu', 'evaluaciones', 'habilidades', 'habilidadesT'));
     }
 
     public function showUpdate($id){

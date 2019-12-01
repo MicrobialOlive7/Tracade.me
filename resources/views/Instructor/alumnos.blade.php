@@ -35,7 +35,6 @@
                                 <th scope="col">Grupos</th>
                                 <th scope="col">Habilidades</th>
                                 <th scope="col">Última Habilidad Aprendida</th>
-                                <th scope="col">Próxima Habilidad</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -58,10 +57,13 @@
                                     <th scope="row"> {{$disciplinas->where('id', $dis_alu->where('alu_id', $alumno->id)->first()['dis_id'] )->first()->dis_nombre}}</th>
 
                                     <th scope="row" > <a href="{{ route('agregar-alumnos', intval($grupos->where('id', $gru_alu->where('alu_id', $alumno->id)->first()['gru_id'])->first()['id'])) }}"> {{$grupos->where('id', $gru_alu->where('alu_id', $alumno->id)->first()['gru_id'])->first()['gru_nombre']}} </a>  </th>
-                                    <th scope="row"> 10 </th>
-                                    <th scope="row"> <a href="#">Dangerous Brian </a> </th>
-                                    <th scope="row"> <a href="#"> Fallen Marley </a></th>
-                                    <th class="text-right">
+                                    <th scope="row"> {{ $habilidadesT->where('alu_id', $alumno->id)->count()}} </th>
+                                    @if($habilidadesT->where('alu_id', $alumno->id)->first())
+                                    <th scope="row"> <a href="#"> {{$habilidades->find($habilidadesT->where('alu_id', $alumno->id)->last()->hab_id)->hab_nombre}}</a> </th>
+                                    @else
+                                        <th></th>
+                                    @endif
+                                        <th class="text-right">
                                         <div class="dropdown">
                                             <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="fas fa-ellipsis-v"></i>
