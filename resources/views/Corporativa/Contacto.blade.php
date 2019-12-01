@@ -1,7 +1,6 @@
 @extends('Corporativa.templates.master')
 @section('content')
 
-
     <!-- Start of download
         ============================================= -->
     <section id="download-area" class="download-section">
@@ -42,18 +41,28 @@
             <div class="col-md-4 text-center">
                 <h1 class="title deep-black pb40"><strong>¡Envíanos un mensaje!</strong></h1>
                 <div class="comment-form">
-                    <form id="contact_form" action="#" method="POST" enctype="multipart/form-data">
+                    @if(Session::has('flash_message'))
+                    <div class="alert alert-success">{{Session::get('flash_message')}}</div>
+                    @endif
+                    <form id="contact_form" action="{{route('contactoCreate')}}" method="POST" enctype="multipart/form-data" >
+                        {{csrf_field()}}
                         <div class="contact-info-1">
-                            <input class="name  mr30" name="name" type="text" placeholder="Nombre*">
+                            <input class="name mr30" name="name" type="text" placeholder="Nombre*">
+                            @if($errors->has('name'))
+                            <small class="form-text invalid feedback">{{$errors->first('name')}}</small>
+                            @endif
                         </div>
                         <div class="contact-info-1">
                             <input class="email" name="email" type="text" placeholder="Correo Electrónico*">
-                        </div>
-                        <div class="contact-info-1">
-                            <input class="name" name="name" type="text" placeholder="Asunto">
+                            @if($errors->has('email'))
+                            <small class="form-text invalid feedback">{{$errors->first('email')}}</small>
+                            @endif
                         </div>
                         <div class="contact-info">
                             <textarea id="message" name="message" placeholder="Mensaje" rows="7" cols="30"></textarea>
+                            @if($errors->has('message'))
+                            <small class="form-text invalid feedback">{{$errors->first('message')}}</small>
+                            @endif
                         </div>
                         <div class="submit-btn text-center mt20">
                             <button type="submit" value="Submit">Enviar</button>

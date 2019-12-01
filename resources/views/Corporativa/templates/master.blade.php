@@ -29,9 +29,12 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
     <!-- responsive.css -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/responsive.css')}}">
-
+    <style>
+        .invalid-feedback{
+            display:block;
+        }
+    </style>
 </head>
-
 <body>
 <!-- Start of Header
     ============================================= -->
