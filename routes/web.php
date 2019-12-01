@@ -240,3 +240,7 @@ Route::get('/alumno/inicio', 'Alumno\ChartsController@index')->name('alumno-inic
 Route::get('alumno/perfil', function (){
     return view('Alumno.perfil');
 })->name('alumno-perfil');
+
+Route::post('alumno/updatePerfil', 'Alumno\AlumnoController@update')->name('perfilAlumnoUpdate');
+
+Route::get('test', 'AlumnoController@test')->name('test');

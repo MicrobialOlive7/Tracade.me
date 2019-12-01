@@ -3,7 +3,7 @@
 @section('hab-active', 'active')
 @section('content')
     <!-- Header -->
-    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8"> </div>
+    <div class="header bg-gradient-indigo pb-8 pt-5 pt-md-8"> </div>
     <div class="container-fluid mt--7">
         <!-- Table -->
         <div class="row">

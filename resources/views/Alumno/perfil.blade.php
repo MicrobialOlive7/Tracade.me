@@ -2,16 +2,15 @@
 @section('per-active', 'active')
 @section('content')
     <!-- Header -->
-    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(../assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 400px; background-image: url(../assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
         <!-- Mask -->
         <span class="mask bg-gradient-indigo opacity-8"></span>
         <!-- Header container -->
         <div class="container-fluid d-flex align-items-center">
             <div class="row">
-                <div class="col-lg-7 col-md-10">
-                    <h1 class="display-2 text-white">Hola, <Strong>Instructor</Strong></h1>
+                <div class="col-lg-12 col-md-10">
+                    <h1 class="display-2 text-white">Hola, <Strong>{{Auth::user()->alu_nombre}}</Strong></h1>
                     <p class="text-white mt-0 mb-5">Bienvenido a tu perfil.</p>
-                    <a href="#!" class="btn btn-default">Guardar Cambios</a>
                 </div>
             </div>
         </div>
@@ -33,20 +32,19 @@
                     <div class="card-body border-top pt-0 pt-md-9">
                         <div class="text-center">
                             <h3>
-                                Jessica Jones<span class="font-weight-light">, 27</span>
+                                {{Auth::user()->alu_nombre}} {{Auth::user()->alu_apellido_materno}}<span class="font-weight-light">, {{\Carbon\Carbon::parse(Auth::user()->alu_fecha_nacimiento)->age}}</span>
                             </h3>
                             <div class="h5 font-weight-300">
-                                <i class="ni location_pin mr-2"></i>Bucharest, Romania
+                                <i class="ni location_pin mr-2"></i>Akross
                             </div>
                             <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>Instructora
+                                <i class="ni business_briefcase-24 mr-2"></i>Disciplina
                             </div>
                             <div>
-                                <i class="ni education_hat mr-2"></i>Akross de Pole Fitness y Telas Aéreas
+                                <i class="ni education_hat mr-2"></i>Disciplinaa
                             </div>
-                            <hr class="my-4" />
-                            <p>Llevo 6 años como instructora de pole fitness y telas aéreas. He practicado pole fitness desde hace 9 años y telas aéreas desde hace 7 años.</p>
-                            <a href="#">Show more</a>
+                            <p>{{Auth::user()->alu_biografia}}</p>
+
                         </div>
                     </div>
                 </div>
@@ -61,20 +59,21 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form method="POST" action="{{route('perfilAlumnoUpdate')}}">
+                            @csrf
                             <h6 class="heading-small text-muted mb-4">Información del Usuario</h6>
                             <div class="pl-lg-4">
                                 <div class="row">
-                                    <div class="col-lg-6">a
+                                    <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-email">Correo Electrónico</label>
-                                            <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="ejemplo@ejemplo.com">
+                                            <input type="email" id="input-email" name="email" class="form-control form-control-alternative" value="{{Auth::user()->email}}" disabled>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-username">Contraseña</label>
-                                            <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="ej.ejemplo">
+                                            <input type="password" id="input-username" name="password" class="form-control form-control-alternative">
                                         </div>
                                     </div>
                                 </div>
@@ -82,52 +81,19 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-first-name">Nombre</label>
-                                            <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="Nombre">
+                                            <input type="text" id="input-first-name" name="nombre" value="{{Auth::user()->alu_nombre}}" class="form-control form-control-alternative" disabled>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-last-name">Apellido Paterno</label>
-                                            <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="Apellido Paterno">
+                                            <input type="text" id="input-last-name" class="form-control form-control-alternative" name="apellido_paterno" value="{{Auth::user()->alu_apellido_paterno}}" disabled>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-last-name">Apellido Materno</label>
-                                            <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="Apellido Materno">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr class="my-4" />
-                            <!-- Address -->
-                            <h6 class="heading-small text-muted mb-4">Contact information</h6>
-                            <div class="pl-lg-4">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="form-control-label" for="input-address">Address</label>
-                                            <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label class="form-control-label" for="input-city">City</label>
-                                            <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="New York">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label class="form-control-label" for="input-country">Country</label>
-                                            <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Country" value="United States">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label class="form-control-label" for="input-country">Postal code</label>
-                                            <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="Postal code">
+                                            <input type="text" id="input-last-name" class="form-control form-control-alternative" name="apellido_materno" value="{{Auth::user()->alu_apellido_materno}}" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -137,9 +103,11 @@
                             <h6 class="heading-small text-muted mb-4">Sobre Mí</h6>
                             <div class="pl-lg-4">
                                 <div class="form-group">
-                                    <label>Sobre Mí</label>
-                                    <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">Cuéntanos algo sobre ti....</textarea>
+                                    <label>Bio</label>
+                                    <textarea rows="4" class="form-control form-control-alternative" name="bio">{{Auth::user()->alu_biografia}}</textarea>
                                 </div>
+
+                                <button type="submit" class="btn btn-dribbble">Guardar Cambios</button>
                             </div>
                         </form>
                     </div>

@@ -68,6 +68,7 @@ class AlumnoController extends Controller
             ->color('#fff')
             ->generate()
             ->stream('png', 100);
+        return $image->stream('png', 100);
         //$file_name = $image->filename;
         //return $image;
         Storage::disk('public')->putFileAs('alumnos/1', $image, 'asd.png' );
