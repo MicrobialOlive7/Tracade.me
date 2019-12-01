@@ -60,7 +60,7 @@
                         </table>
                     </div>
                     <div class="card-header border-0">
-
+                        {{ $hab_apr->links() }}
                     </div>
                 </div>
                 <br>
@@ -73,7 +73,6 @@
                     <div class="table-responsive">
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
-
                             <tr>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Dificultad</th>
@@ -82,8 +81,6 @@
                             </tr>
                             </thead>
                             <tbody>
-
-
                             @foreach($habilidades as $key => $value)
                                 <tr>
                                     <th scope="row">
@@ -113,7 +110,7 @@
                         </table>
                     </div>
                     <div class="card-header border-0">
-
+                        {{ $habilidades->links() }}
                     </div>
                 </div>
             </div>
