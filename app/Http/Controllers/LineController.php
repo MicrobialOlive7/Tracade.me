@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Alumno;
 use App\Charts\Bar;
 use App\Charts\LineChart;
+use App\Charts\pie;
 use App\Evaluacion;
 use App\Habilidad;
 use Carbon\Carbon;
@@ -145,7 +146,16 @@ class LineController extends Controller
             ->color("#27B958")
             ->backgroundColor("#27B958");
 
+        #GRAFICA PIE HABILIDADES/DISCIPLINA
+        $disciplinas = new pie();
+        $disciplinas->displayLegend(true);
+        $disciplinas->labels(['Pole Fitness', 'Telas Aéreas']);
 
-        return view('instructor.dashboard', compact('pole', 'barras','alumnos','habilidadesPF','habilidadesTA','telas'));
+        $polef =DB::table('evaluacion')->join('habilidad', 'hab_id', '=', 'habilidad.id') -> wherein('eva_calificacion', [3]) ->  wherein('dis_id', [1]) -> get() ->count();
+        $telasa =DB::table('evaluacion')->join('habilidad', 'hab_id', '=', 'habilidad.id')-> wherein('eva_calificacion', [3]) ->  wherein('dis_id', [2]) -> get() ->count();
+
+        $disciplinas->dataset('Disciplina', 'pie', [$polef,$telasa])
+            ->Backgroundcolor(["#2748B9","#F3A410","#D3227B"]);
+        return view('instructor.dashboard', compact('pole', 'disciplinas','barras','alumnos','habilidadesPF','habilidadesTA','telas'));
     }
 }
