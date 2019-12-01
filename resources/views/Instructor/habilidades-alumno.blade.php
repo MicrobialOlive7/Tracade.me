@@ -38,13 +38,11 @@
                                               <img alt="Image placeholder" src="{{asset('storage/habilidades/'.$value['id'].'/'.$value['hab_imagen'])}}">
                                           </a>
                                           <div class="media-body">
-                                              @if($evaluaciones->where('hab_id', $value['id'])->first()->eva_calificacion != 3)
+
                                               <a href="{{route('evaluaciones', [$value['id'], $alumno['id']])}}">
                                                 <span class="mb-0 text-sm">{{$value['hab_nombre']}}</span>
                                               </a>
-                                                  @else
-                                                  <span class="mb-0 text-sm">{{$value['hab_nombre']}}</span>
-                                              @endif
+
                                           </div>
                                       </div>
                                   </th>

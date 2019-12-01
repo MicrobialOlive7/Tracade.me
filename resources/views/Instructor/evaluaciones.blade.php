@@ -18,7 +18,7 @@
                                 <h3 class="mb-0">{{$habilidad->hab_nombre}}</h3>
                             </div>
                         </div>
-
+                        @if(!$evaluaciones->where('hab_id', $habilidad->id)->where('eva_calificacion',3)->count())
                         <div class="col text-right">
                             <span class="btn-inner--icon">
                                 <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Agregar" href="{{ route('evaluar', [$habilidad->id, $alumno->id]) }}">
@@ -31,6 +31,7 @@
                                 </a>
                             </span>
                         </div>
+                            @endif
                     </div>
 
                     <div class="table-responsive">
