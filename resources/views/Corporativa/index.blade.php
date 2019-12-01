@@ -12,7 +12,7 @@
                             <span>Da seguimiento al progreso de tus alumnos. Registra los avances que hacen día a día</span>
                         </div>
                         <div class="banner-mock-up home-1 zooming">
-                            <img src="../public/img/mock-up/home.png" alt="img">
+                            <img src="../public/img/home/dashboard.png" alt="img">
                         </div>
                     </div><!-- /banner-area-head -->
                 </div><!-- /banner-area-content -->
@@ -205,7 +205,7 @@
                     <!-- //section-title -->
                     <div class="showcase-slider">
                         <div class="showcase-img">
-                            <img src="../public/img/showcase/show-1.jpg" alt="img">
+                            <img src="../public/img/home/Calendario.png" alt="img">
                         </div>
                         <div class="showcase-img">
                             <img src="../public/img/showcase/show-2.jpg" alt="img">

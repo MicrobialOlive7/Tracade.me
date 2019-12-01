@@ -155,7 +155,7 @@ class LineController extends Controller
         $telasa =DB::table('evaluacion')->join('habilidad', 'hab_id', '=', 'habilidad.id')-> wherein('eva_calificacion', [3]) ->  wherein('dis_id', [2]) -> get() ->count();
 
         $disciplinas->dataset('Disciplina', 'pie', [$polef,$telasa])
-            ->Backgroundcolor(["#2748B9","#F3A410","#D3227B"]);
+            ->Backgroundcolor(["#36AAE8","#E83669","#D3227B"]);
         return view('instructor.dashboard', compact('pole', 'disciplinas','barras','alumnos','habilidadesPF','habilidadesTA','telas'));
     }
 }
