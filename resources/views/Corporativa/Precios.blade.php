@@ -36,8 +36,8 @@
                             <div class="landy-pricing text-center ul-li">
                                 <div class="header-pricing">
                                     <div class="pricing-price">
-                                        <h3 class="content-price pink pb10"> $950/mes</h3>
-                                        <span class="content-duration text-uppercase pb10">Suscripción Semestral</span>
+                                        <h3 class="content-price pink pb10"> $400</h3>
+                                        <span class="content-duration text-uppercase pb10">Pago Mensual</span>
                                     </div>
                                     <div class="content-title mt10">
                                         <div class="deep-black text-uppercase">ESTÁNDAR</div>
@@ -46,14 +46,10 @@
                                 <!-- //header-pricing -->
                                 <div class="pricing-plan-list  pt35 pb40">
                                     <ul class="landy-pricing-content-desc">
-                                        <li>exercitation ullamco laborii
-                                        </li>
-                                        <li>commodo consequat
-                                        </li>
-                                        <li>aute reprehenderit voluptate
-                                        </li>
-                                        <li>cillum doloreftu fgjhr
-                                        </li>
+                                        <li>Capacidad de hasta 50 alumnos. </li>
+                                        <li>Capacitación a director de academia. </li>
+                                        <li>Soporte técnico de por vida.</li>
+                                        <li style="color: deeppink"><strong>El plan se contrata por un mínimo de 6 meses.</strong></li>
                                     </ul>
                                 </div>
                                 <!-- // pricing-plan-list -->
@@ -73,7 +69,7 @@
                                 <div class="header-pricing">
                                     <div class="pricing-price">
                                         <br>
-                                        <span class="content-duration text-uppercase pb10">ELIGE UN PLAN</span>
+                                        <span class="content-duration text-uppercase pb10">DISEÑA TU PLAN</span>
                                     </div>
                                     <div class="content-title mt10">
                                         <div class="deep-black text-uppercase">PERSONALIZADO</div>
@@ -82,14 +78,12 @@
                                 <!-- //header-pricing -->
                                 <div class="pricing-plan-list  pt35 pb40">
                                     <ul class="landy-pricing-content-desc">
-                                        <li>exercitation ullamco laborii
-                                        </li>
-                                        <li>commodo consequat
-                                        </li>
-                                        <li>aute reprehenderit voluptate
-                                        </li>
-                                        <li>cillum doloreftu fgjhr
-                                        </li>
+                                        <li>Capacidad de alumnos adaptada a tu academia.</li>
+                                        <li>Capacitación a director de academia. </li>
+                                        <li>Capacitación a todos los instructores. </li>
+                                        <li>Soporte técnico de por vida.</li>
+                                        <li>Precios que se adaptan a ti. </li>
+                                        <li style="color: deeppink"><strong>El plan se contrata por un mínimo de 6 meses.</strong></li>
                                     </ul>
                                 </div>
                                 <!-- // pricing-plan-list -->
@@ -106,8 +100,8 @@
                             <div class="landy-pricing text-center ul-li">
                                 <div class="header-pricing">
                                     <div class="pricing-price">
-                                        <h3 class="content-price pink pb10">$2,000/mes</h3>
-                                        <span class="content-duration text-uppercase pb10">Suscripción Semestral</span>
+                                        <h3 class="content-price pink pb10">$800</h3>
+                                        <span class="content-duration text-uppercase pb10">Pago Mensual</span>
                                     </div>
                                     <div class="content-title mt10">
                                         <div class="deep-black text-uppercase">SUPREMO</div>
@@ -116,14 +110,11 @@
                                 <!-- //header-pricing -->
                                 <div class="pricing-plan-list  pt35 pb40">
                                     <ul class="landy-pricing-content-desc">
-                                        <li>exercitation ullamco laborii
-                                        </li>
-                                        <li>commodo consequat
-                                        </li>
-                                        <li>aute reprehenderit voluptate
-                                        </li>
-                                        <li>cillum doloreftu fgjhr
-                                        </li>
+                                        <li>Capacidad de hasta 100 alumnos. </li>
+                                        <li>Capacitación a director de academia. </li>
+                                        <li>Capacitación de hasta 5 instructores. </li>
+                                        <li>Soporte técnico de por vida.</li>
+                                    <li style="color: deeppink"><strong>El plan se contrata por un mínimo de 6 meses.</strong></li>
                                     </ul>
                                 </div>
                                 <!-- // pricing-plan-list -->
