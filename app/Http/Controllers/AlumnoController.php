@@ -21,7 +21,7 @@ class AlumnoController extends Controller
 
     public function read(){
         //$alumnos = Alumno::all()->forPage(2, 10);
-        $alumnos = Alumno::select('*')->paginate(5);
+        $alumnos = Alumno::select('*')->paginate(10);
         //return $alumnos;
         $disciplinas = Disciplina::all();
         $dis_alu = DisciplinaAlumno::all();
@@ -88,6 +88,20 @@ class AlumnoController extends Controller
             array_push($ids, $evaluacion->hab_id);
         }
         return view('Instructor.habilidades-alumno', compact('alumno', 'habilidades', 'disciplinas', 'evaluaciones', 'hab_apr'));
+    }
+
+    public function multipleDelte(Request $request){
+
+
+        foreach ($request->borrar as $borrar){
+            Alumno::all()->find($borrar)->delete();
+            $grupos = GrupoAlumno::all()->where('alu_id', $borrar);
+            foreach ($grupos as $grupo){
+                $grupo->delete();
+            }
+
+        }
+        return redirect()->route('alumnos');
     }
 
 }

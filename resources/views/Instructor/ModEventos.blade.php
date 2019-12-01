@@ -12,22 +12,19 @@
             <form method="POST" action="{{route('eventoUpdate')}}">
                 @csrf
                 <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="input-group mb-4">
 
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="input-group mb-4">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                                    </div>
-                                    <select onchange="" type="ap" class="form-control" id="exampleFormControlInput1" name="id">
-                                        <option value="" disabled selected>Evento a Modificar</option>
-                                        @foreach($eventos as $evento)
-                                            <option value="{{$evento -> id}}">{{$evento -> eve_nombre}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                                <select onchange="" type="ap" class="form-control" id="exampleFormControlInput1" name="id"required>
+                                    <option value="" disabled selected>Evento a Modificar</option>
+                                    @foreach($eventos as $evento)
+                                        <option value="{{$evento -> id}}">{{$evento -> eve_nombre}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
+                    </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
@@ -35,18 +32,15 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <div class="input-group mb-4">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-                                </div>
                                 <input class="form-control datepicker" placeholder="Seleccionar Fecha" type="text" value="Fecha" name="fecha">
                             </div>
                         </div>
                     </div>
                     <!-- Inicia Campo Horario -->
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <select type="ap" class="form-control" id="exampleFormControlInput1" name="hora">
                             <option value="" disabled selected>Hora</option>
                             <option value="1" > 01 </option>
@@ -64,23 +58,28 @@
                         </select>
                     </div>
 
-
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <input class="form-control" placeholder="Min" type="number" max="59" min="00" name="min">
+                    </div>
+
+                    <div class="col-md-4">
+                        <select class="form-control" id="grupo" name="grupo">
+                            <option value="" selected>Grupo</option>
+                            @foreach($grupos as $grupo)
+                                <option value="{{$grupo->id}}" > {{$grupo->gru_nombre}} </option>
+                            @endforeach
+                        </select>
                     </div>
                 <!-- Termina Campo Horario -->
 
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="form-group">
                             <textarea class="form-control" id="exampleFormControlTextarea1" name="descripcion" rows="3" placeholder="Descripción..."></textarea>
                         </div>
                     </div>
 
-
-                    </div>
                     <div class="col-sm"></div>
                 </div>
-
 
                 <!-- Inician Botones de Guardado -->
                 <div class="container">
@@ -94,7 +93,7 @@
                                         </button>
                                     </span>
                                     <span class="btn-inner--icon">
-                                        <a class="btn btn-icon btn-2 btn-danger btn-lg" role="button" title="Cancelar" href="{{ url('/Calendario') }}">
+                                        <a class="btn btn-icon btn-2 btn-danger btn-lg" role="button" title="Cancelar" href="{{ route('calendario') }}">
                                             {{ __('Cancelar') }}
                                         </a>
                                     </span>

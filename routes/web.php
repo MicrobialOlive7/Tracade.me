@@ -110,6 +110,10 @@ Route::get('eliminar-alumno/{id}', 'AlumnoController@delete')->name('eliminar-al
 /// Vista /// Visualizar todas las habilidades aprendidas por alumno
 /// visualziar las habilidades disponibles para aprender
 Route::get('habilidades-alumno/{id}', 'AlumnoController@habilidades')->name('habilidades-alumno');
+
+/// Funcion /// Eliminar multiples alumnos
+Route::post('eliminar-alumnos', 'AlumnoController@multipleDelte')->name('alumnosDelete');
+
 /**
 |--------------
 |---- Habilidades
@@ -161,9 +165,7 @@ Route::get('/calendario', function (){
 })->name('calendario');
 //--- Crear ---//
 // Vista
-Route::get('crear-evento', function (){
-    return view('Instructor.CrearEventos');
-})->name('crear-evento');
+Route::get('crear-evento', 'EventoController@show')->name('crear-evento');
 // Funcion
 Route::post('eventoCreate', 'EventoController@create')->name('eventoCreate');
 //--- Modificar ---//
