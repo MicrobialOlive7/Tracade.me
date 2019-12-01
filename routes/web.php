@@ -189,6 +189,14 @@ Route::get('mi-perfil', function (){
 })->name('mi-perfil');
 /**
 |--------------
+|---- Politicas
+|--------------
+ */
+Route::get('/politicas', function (){
+    return view('instructor.politicas');
+})->name('politicas');
+/**
+|--------------
 |---- Temporales
 |--------------
  */
@@ -227,3 +235,11 @@ Route::get('/alumno/calendario', function (){
 |--------------
  */
 Route::get('/alumno/inicio', 'Alumno\ChartsController@index')->name('alumno-inicio');
+/**
+|--------------
+|---- Politicas
+|--------------
+ */
+Route::get('/alumno/politicas', function (){
+    return view('alumno.politicas');
+})->name('politicas');

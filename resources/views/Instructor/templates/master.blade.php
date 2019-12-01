@@ -129,7 +129,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html">
+                    <a class="nav-link" href="{{ url('politicas') }}">
                         <i class="ni ni-single-copy-04"></i> Políticas
                     </a>
                 </li>
