@@ -8,7 +8,18 @@
         <!-- Header End -->
         <div class="card shadow">
             <div class="card-header border-0">
-                <h3 class="mb-0">Evaluar <strong>{{$habilidad->hab_nombre}}</strong> de <strong>{{$alumno->alu_nombre}} {{$alumno->alu_apellido_paterno}}</strong></h3>
+                <div class="mb-4">
+                    <span class="mb-0 text-pink" style="font-size: 16px">{{$alumno->alu_nombre}} {{$alumno->alu_apellido_paterno}}</span>
+                </div>
+
+                <div class="media align-items-center">
+                    <a href="#" class="avatar rounded-circle mr-3">
+                        <img alt="Image placeholder" src="{{asset('storage/habilidades/'.$habilidad['id'].'/'.$habilidad['hab_imagen'])}}">
+                    </a>
+                    <div class="media-body">
+                        <h3 class="mb-0">{{$habilidad->hab_nombre}}</h3><p>Registro de evaluaciones</p>
+                    </div>
+                </div>
             </div>
             <!-- Inicia Form -->
             <form method="POST" action="{{route('evaluacionCreate', [$habilidad->id, $alumno->id])}}">
@@ -16,12 +27,6 @@
                 <div class="container">
                     <div class="row justify-content-md-center">
                         <!-- Inicia Seccion comentarios y calificacion -->
-
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="eva_comentario" name="eva_comentario" value="" placeholder="Comentarios" required>
-                            </div>
-                        </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <div class="input-group md-4">
@@ -34,6 +39,12 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="eva_comentario" name="eva_comentario" value="" placeholder="Comentarios" required>
+                            </div>
+                        </div>
+
 
                     </div>
                 </div>
@@ -51,7 +62,7 @@
                                         </button>
                                     </span>
                                     <span class="btn-inner--icon">
-                                         <a class="btn btn-icon btn-2 btn-danger btn-lg" role="button" title="Cancelar" href="{{ route('grupos') }}">
+                                         <a class="btn btn-icon btn-2 btn-danger btn-lg" role="button" title="Cancelar" href="{{ route('evaluaciones', [$habilidad->id, $alumno->id]) }}">
                                              {{ __('Cancelar') }}
                                          </a>
                                     </span>

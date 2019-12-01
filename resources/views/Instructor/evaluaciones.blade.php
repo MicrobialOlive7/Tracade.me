@@ -1,6 +1,6 @@
 @extends('Instructor.templates.master')
 @extends('layouts.modal')
-@section('hab-active', 'active')
+@section('alu-active', 'active')
 @section('content')
     <!-- Header -->
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8"> </div>
@@ -10,28 +10,38 @@
             <div class="col">
                 <div class="card shadow">
                     <div class="card-header border-0">
+
+                        <div class="mb-4">
+                            <a href="{{route('habilidades-alumno', $alumno->id)}}">
+                                <i class="text-pink ti-back-left" style="font-size: 16px"></i>
+                                <span class="mb-0 " style="font-size: 16px">{{$alumno->alu_nombre}} {{$alumno->alu_apellido_paterno}}</span>
+                            </a>
+                        </div>
+
                         <div class="media align-items-center">
                             <a href="#" class="avatar rounded-circle mr-3">
                                 <img alt="Image placeholder" src="{{asset('storage/habilidades/'.$habilidad['id'].'/'.$habilidad['hab_imagen'])}}">
                             </a>
                             <div class="media-body">
-                                <h3 class="mb-0">{{$habilidad->hab_nombre}}</h3>
+                                <h3 class="mb-0">{{$habilidad->hab_nombre}}</h3><p>Registro de evaluaciones</p>
                             </div>
                         </div>
-                        @if(!$evaluaciones->where('hab_id', $habilidad->id)->where('eva_calificacion',3)->count())
+
+
                         <div class="col text-right">
+                            @if(!$evaluaciones->where('hab_id', $habilidad->id)->where('eva_calificacion',3)->count())
                             <span class="btn-inner--icon">
                                 <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Agregar" href="{{ route('evaluar', [$habilidad->id, $alumno->id]) }}">
                                     <i class="ni ni-fat-add" ></i>
                                 </a>
                             </span>
+                            @endif
                             <span class="btn-inner--icon">
                                 <a class="btn btn-icon btn-2 btn-danger btn-sm" role="button" title="Eliminación Masiva" href="{{ url('') }}">
                                     <i class="ni ni-fat-remove" ></i>
                                 </a>
                             </span>
                         </div>
-                            @endif
                     </div>
 
                     <div class="table-responsive">
