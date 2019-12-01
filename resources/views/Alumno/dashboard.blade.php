@@ -1,6 +1,8 @@
-@extends('Instructor.templates.master')
+@extends('Alumno.templates.master')
 @extends('layouts.modal')
+@section('ini-active', 'active')
 @section('content')
+
     <!--<nav class="navbar navbar-top navbar-expand-md navbard-dark" id="navbar-main">
     <div class="container-fluid">
             <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block"> Inicio </a>
@@ -15,11 +17,11 @@
                     <div  class="card-body">
                         <div class="row">
                             <div class="col">
-                                <h5 class="cad-title text-uppercase text-muted mb-0">Numero de alumnos</h5>
+                                <h5 class="cad-title text-uppercase text-muted mb-0">Nuevos Alumnos</h5>
                                 <!--Aqui va el PHP -->
-                                <span class="h2 font-weight-bold mb-0"> {{$alumnos}} ALUMNOS </span>
+                                <span class="h2 font-weight-bold mb-0"> # ALUMNOS </span>
                                 <p class="mt-3 mb-0 text-muted text-sm text-center">
-                                    <span class="text-nowrap"> Total de alumnos registrados </span>
+                                    <span class="text-nowrap"> En el último mes</span>
                                 </p>
                             </div>
                             <div class="col-auto">
@@ -36,11 +38,11 @@
                     <div  class="card-body">
                         <div class="row">
                             <div class="col">
-                                <h5 class="cad-title text-uppercase text-muted mb-0">Pole Fitness</h5>
+                                <h5 class="cad-title text-uppercase text-muted mb-0">Habilidades Aprendidas</h5>
                                 <!--Aqui va el PHP -->
-                                <span class="h2 font-weight-bold mb-0"> {{$habilidadesPF}} HABILIDADES </span>
+                                <span class="h2 font-weight-bold mb-0"> {{$habilidadesT}} HABILIDADES</span>
                                 <p class="mt-3 mb-0 text-muted text-sm text-center">
-                                    <span class="text-nowrap"> Número total de habilidades</span>
+                                    <span class="text-nowrap">  Total de Habilidades Aprendidas </span>
                                 </p>
                             </div>
                             <div class="col-auto">
@@ -57,11 +59,11 @@
                     <div  class="card-body">
                         <div class="row">
                             <div class="col">
-                                <h5 class="cad-title text-uppercase text-muted mb-0">Telas Aéreas</h5>
+                                <h5 class="cad-title text-uppercase text-muted mb-0">Eventos</h5>
                                 <!--Aqui va el PHP -->
-                                <span class="h2 font-weight-bold mb-0"> {{$habilidadesTA}} HABILIDADES </span>
+                                <span class="h2 font-weight-bold mb-0"> # EVENTOS </span>
                                 <p class="mt-3 mb-0 text-muted text-sm text-center">
-                                    <span class="text-nowrap"> Número total de habilidades</span>
+                                    <span class="text-nowrap"> En el último mes</span>
                                 </p>
                             </div>
                             <div class="col-auto">
@@ -78,95 +80,56 @@
 </div>
 </div>
 <div class="container-fluid mt--7">
-    <div class="row mb-5">
-        <div class="col-xl-6 mb-5 mb-xl-0">
-            <div class="card shadow">
-                <div class="card-header border-0">
-                    <div class="row align-items-center">
-                        <div class="col">
-                            <h6 class="text-uppercase text-light 1s-1 mb-1"> Número de Habilidades Evaluadas</h6>
-                            <h2 class="mb-0"> Pole Fitness </h2>
-                        </div>
-                        <div class="col">
-                            <ul class="nav nav-pills justify-content-end"> <!--Aqui van los botones mes semana -->
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="chart"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                        {!! $pole->container() !!}
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-6 mb-5 mb-xl-0">
-            <div class="card shadow">
-                <div class="card-header border-0">
-                    <div class="row align-items-center">
-                        <div class="col">
-                            <h6 class="text-uppercase text-light 1s-1 mb-1">Número de Habilidades Evaluadas</h6>
-                            <h2 class="mb-0"> Telas Aéreas </h2>
-                        </div>
-                        <div class="col">
-                            <ul class="nav nav-pills justify-content-end"> <!--Aqui van los botones mes semana -->
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="chart"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                        {!! $telas->container() !!}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="row">
         <div class="col-xl-8 mb-5 mb-xl-0">
             <div class="card shadow">
-                <div class="card-header bg-transparent">
+                <div class="card-header border-0">
                     <div class="row align-items-center">
+                        <div>
+                            <h6 class="text-uppercase text-light 1s-1 mb-1">   Habilidades / Tiempo </h6>
+                            <h2 class=> Progreso de los alumnos  </h2>
+                        </div>
                         <div class="col">
-                            <h6 class="text-uppercase text-muted ls-1 mb-1">Alumnos / Tiempo</h6>
-                            <h2 class="mb-0">Cantidad de alumnos nuevos</h2>
+                            <ul class="nav nav-pills justify-content-end"> <!--Aqui van los botones mes semana -->
+                            </ul>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <!-- Chart -->
-                    <div class="chart"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                        {!! $barras->container() !!}
+                    <div class="chart">
+                        {!! $habilidades->container() !!}
                     </div>
                 </div>
+
             </div>
         </div>
         <div class="col-xl-4 mb-5 mb-xl-0">
             <div class="card shadow">
-                <div class="card-header bg-transparent">
+                <div class="card-header border-0">
                     <div class="row align-items-center">
+                        <div>
+                            <h6 class="text-uppercase text-light 1s-1 mb-1"> Habilidades / Dificultad </h6>
+                            <h2> Habilidades aprendidas por dificultad  </h2>
+                        </div>
                         <div class="col">
-                            <h6 class="text-uppercase text-muted ls-1 mb-1">Habilidades / Disciplina</h6>
-                            <h2 class="mb-0">Habilidades aprendidas por disciplina</h2>
+                            <ul class="nav nav-pills justify-content-end"> <!--Aqui van los botones mes semana -->
+                            </ul>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <!-- Chart -->
-                    <div class="chart"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                        {!! $disciplinas->container() !!}
+                    <div class="chart">
+                        {!! $clasificacion->container() !!}
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
 </div>
 
 
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
-{!! $pole->script() !!}
-{!! $telas->script() !!}
-{!! $barras->script() !!}
-{!! $disciplinas->script() !!}
+{!! $habilidades->script() !!}
+    {!! $clasificacion->script() !!}
 @endsection

@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * CAMBIAR LOGIN POR DASHBOARD DE ESTUDIANTE E INSTRUCTOR
      */
-    protected $redirectTo = '/Alumnos';
+    protected $redirectTo = '/inicio';
 
     /**
      * Create a new controller instance.

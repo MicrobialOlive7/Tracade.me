@@ -16107,10 +16107,15 @@ textarea[resize="horizontal"] {
   height: 3rem;
 }
 
+.icor{
+    color:white;
+}
+
 .icon i,
 .icon svg {
   font-size: 2.25rem;
 }
+
 
 .icon+.icon-text {
   padding-left: 1rem;
