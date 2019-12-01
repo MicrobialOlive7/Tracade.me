@@ -16,9 +16,6 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <div class="input-group mb-4">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-                                </div>
                                 <input class="form-control datepicker" placeholder="Seleccionar Fecha" type="text" value="Fecha" name="fecha">
                             </div>
                         </div>
@@ -52,18 +49,30 @@
                 <!-- Termina Campo Horario -->
 
                 <div class="row">
+
+
                     <div class="col-md-6">
                         <div class="form-group">
                             <div class="input-group mb-4">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                                </div>
                                 <input id="name" class="form-control" placeholder="Nombre del Evento" type="text" name="name">
                             </div>
                         </div>
                     </div>
 
                     <div class="col-md-6">
+                        <select class="form-control" id="grupo" name="grupo" required>
+                            <option value="" selected>Grupo</option>
+                            @foreach($grupos as $grupo)
+                                <option value="{{$grupo->id}}" > {{$grupo->gru_nombre}} </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12">
                         <div class="form-group">
                             <textarea class="form-control" id="exampleFormControlTextarea1" name="descripcion" rows="3" placeholder="Descripción..."></textarea>
                         </div>

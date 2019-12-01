@@ -8,8 +8,11 @@
         <div class="row">
             <div class="col">
                 <div class="card shadow">
+
                     <div class="card-header border-0">
                         <h3 class="mb-0">Alumnos</h3>
+                        <form action="{{route('alumnosDelete')}}" method="POST">
+                            @csrf
                         <div class="col text-right">
                             <span class="btn-inner--icon">
                                 <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Guardar" href="{{ route('register') }}">
@@ -17,9 +20,9 @@
                                 </a>
                             </span>
                             <span class="btn-inner--icon">
-                                <a class="btn btn-icon btn-2 btn-danger btn-sm" role="button" title="Eliminación Masiva" href="{{ url('') }}">
+                                <button type="submit" class="btn btn-icon btn-2 btn-danger btn-sm">
                                     <i class="ni ni-fat-remove" ></i>
-                                </a>
+                                </button>
                             </span>
                         </div>
                     </div>
@@ -29,7 +32,7 @@
                             <thead class="thead-light">
 
                             <tr>
-                                <th scope="col"> <input type="checkbox"></th>
+                                <th scope="col"> <input type="checkbox" id="borrarTodo" name="borrarTodo"></th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Disciplina</th>
                                 <th scope="col">Grupos</th>
@@ -41,7 +44,7 @@
                             <tbody>
                             @foreach($alumnos as $alumno)
                                 <tr>
-                                    <td> <input type="checkbox"></td>
+                                    <td> <input type="checkbox" name="borrar[]" value="{{$alumno->id}}"></td>
                                     <th scope="row">
                                         <div class="media align-items-center">
                                             <a href="{{route('habilidades-alumno', $alumno['id'])}}" class="avatar rounded-circle mr-3">
@@ -80,7 +83,7 @@
                             </tbody>
                         </table>
                     </div>
-
+                    </form>
                     <div class="card-header border-0">
                             {{ $alumnos->links() }}
                     </div>
@@ -89,4 +92,10 @@
         </div>
     </div>
     <!-- End of Table -->
+    <script>
+        $('#borrarTodo').click(function() {
+            var c = this.checked;
+            $(':checkbox').prop('checked',c);
+        });
+    </script>
 @endsection

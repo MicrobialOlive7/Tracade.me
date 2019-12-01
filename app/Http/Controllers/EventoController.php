@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Evento;
+use App\Grupo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Event;
 use function GuzzleHttp\Promise\all;
@@ -12,7 +13,8 @@ class EventoController extends Controller
 {
 
     public function show(){
-
+        $grupos = Grupo::all();
+        return view('Instructor.CrearEventos', compact('grupos'));
     }
     //PARA INICIALIZAR EL CLIENTE
     public function getClient(){
@@ -133,9 +135,10 @@ class EventoController extends Controller
         $evento->eve_nombre = $request->name;
         $evento->eve_fecha = $request->fecha." ".$request->hora.":".$request->min.":00";
         $evento->eve_descripcion = $request->descripcion;
-        $evento->gru_id = 1;
-
-        $eventoAPI = $this->quickstart($evento->eve_nombre,$evento->eve_fecha,$evento->eve_descripcion, $evento->gru_id);
+        $evento->gru_id = $request->grupo;
+        $grupo = Grupo::all()->find($request->grupo);
+        $descripcion = "Grupo: ".$grupo->gru_nombre."\n".$evento->eve_descripcion;
+        $eventoAPI = $this->quickstart($evento->eve_nombre,$evento->eve_fecha,$descripcion, $evento->gru_id);
 
         $evento->api_htmllink = $eventoAPI["htmlLink"];
         $evento->api_id = $eventoAPI["id"];
@@ -147,18 +150,33 @@ class EventoController extends Controller
 
     public function update(Request $request){
         $evento = Evento::all()->find($request->id);
-        $evento->eve_nombre = $request->name;
-        $evento->eve_fecha = $request->fecha." ".$request->hora.":".$request->min.":00";
-        $evento->eve_descripcion = $request->descripcion;
-        $evento->gru_id = 1;
+        if(isset($request->name)) {
+            $evento->eve_nombre = $request->name;
+        }
+        if(isset($request->fecha) && isset($request->min)){
+            $evento->eve_fecha = $request->fecha." ".$request->hora.":".$request->min.":00";
+        }
+
+        if(isset($request->eve_descripcion)){
+            $evento->eve_descripcion = $request->grupo;
+        }
+        if($request->grupo != ""){
+            $evento->gru_id = $request->grupo;
+            $grupo = Grupo::all()->find($request->grupo);
+            $descripcion = "Grupo: ".$grupo->gru_nombre."\n".$evento->eve_descripcion;
+        }
+        else{
+            $descripcion = $evento->gru_descripcion;
+        }
         $evento->save();
-        $this->modevento($evento->eve_nombre,$evento->eve_fecha,$evento->eve_descripcion, $evento->gru_id, $evento->api_id);
+        $this->modevento($evento->eve_nombre,$evento->eve_fecha,$descripcion, $evento->gru_id, $evento->api_id);
         return redirect()->route('calendario');
     }
 
     public function showUpdate(){
         $eventos =  Evento::all();
-        return view('Instructor.ModEventos', compact('eventos'));
+        $grupos = Grupo::all();
+        return view('Instructor.ModEventos', compact('eventos','grupos'));
     }
     public function showDelete(){
         $eventos =  Evento::all();

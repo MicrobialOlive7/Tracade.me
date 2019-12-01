@@ -1,5 +1,6 @@
 @extends('Instructor.templates.master')
 @extends('layouts.modal')
+@section('ini-active', 'active')
 @section('content')
     <!--<nav class="navbar navbar-top navbar-expand-md navbard-dark" id="navbar-main">
     <div class="container-fluid">
