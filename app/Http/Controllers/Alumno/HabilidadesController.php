@@ -31,10 +31,18 @@ class HabilidadesController extends Controller
         $disciplina = DisciplinaAlumno::all()->where('alu_id', $id)->first();
 
         $alumno = Alumno::all()->find($id);
-        $habilidades = Habilidad::all()->whereNotIn('id', $ids)->whereIn('dis_id', $disciplina->dis_id);
-        $hab_apr = Habilidad::all()->whereIn('id',$ids);
+        $habilidades = Habilidad::select('*')
+            ->whereNotIn('id', $ids)
+            ->where('dis_id', $disciplina->dis_id)
+            ->paginate(5,['*'], 'disponibles');
+        $hab_apr = Habilidad::whereIn('id',$ids)->paginate(5,['*'], 'habilidades');
 
         $disciplinas = Disciplina::all();
+
+        $eva_3 = Evaluacion::all()->where('eva_calificacion', 3);
+        foreach ($eva_3 as $evaluacion){
+            array_push($ids, $evaluacion->hab_id);
+        }
         return view('Alumno.habilidades-alumno', compact('alumno', 'habilidades', 'disciplinas', 'evaluaciones', 'hab_apr'));
 
 

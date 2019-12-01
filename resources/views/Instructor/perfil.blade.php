@@ -65,7 +65,7 @@
                 <h6 class="heading-small text-muted mb-4">Información del Usuario</h6>
                 <div class="pl-lg-4">
                   <div class="row">
-                      <div class="col-lg-6">
+                      <div class="col-lg-6">a
                           <div class="form-group">
                               <label class="form-control-label" for="input-email">Correo Electrónico</label>
                               <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="ejemplo@ejemplo.com">

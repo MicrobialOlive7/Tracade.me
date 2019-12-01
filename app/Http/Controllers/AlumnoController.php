@@ -27,7 +27,10 @@ class AlumnoController extends Controller
         $dis_alu = DisciplinaAlumno::all();
         $grupos = Grupo::all();
         $gru_alu = GrupoAlumno::all();
-        return view('Instructor.alumnos', compact('alumnos', 'disciplinas', 'dis_alu', 'grupos', 'gru_alu'));
+        $evaluaciones = Evaluacion::all();
+        $habilidades = Habilidad::all();
+        $habilidadesT = Evaluacion::where('eva_calificacion', 3)->orderBy('created_at','desc')->get();
+        return view('Instructor.alumnos', compact('alumnos', 'disciplinas', 'dis_alu', 'grupos', 'gru_alu', 'evaluaciones', 'habilidades', 'habilidadesT'));
     }
 
     public function showUpdate($id){
@@ -58,20 +61,7 @@ class AlumnoController extends Controller
         return redirect()->route('alumnos');
     }
 
-    protected function test(){
-        $avatar = new InitialAvatar();
-        $image = $avatar->name('Lasse Rafn')
-            ->length(2)
-            ->fontSize(0.5)
-            ->size(96) // 48 * 2
-            ->background('#8BC34A')
-            ->color('#fff')
-            ->generate()
-            ->stream('png', 100);
-        //$file_name = $image->filename;
-        //return $image;
-        Storage::disk('public')->putFileAs('alumnos/1', $image, 'asd.png' );
-    }
+
 
     protected function habilidades($id){
         $evaluaciones = Evaluacion::select('*')->where('alu_id', $id)->orderBy('created_at', 'desc')->get();
@@ -84,20 +74,19 @@ class AlumnoController extends Controller
         $disciplina = DisciplinaAlumno::all()->where('alu_id', $id)->first();
 
         $alumno = Alumno::all()->find($id);
+        $hab_apr = Habilidad::select('*')->whereIn('id',$ids)->paginate(5,['*'], 'habilidades');
         $habilidades = Habilidad::select('*')
                         ->whereNotIn('id', $ids)
                         ->where('dis_id', $disciplina->dis_id)
-                        ->paginate(5);
-        $hab_apr = Habilidad::all()->whereIn('id',$ids);
+                        ->paginate(5,['*'], 'disponibles');
+
 
         $disciplinas = Disciplina::all();
 
         $eva_3 = Evaluacion::all()->where('eva_calificacion', 3);
-        foreach ($eva_3 as $evaluacion){
+        foreach ($eva_3 as $evaluacion) {
             array_push($ids, $evaluacion->hab_id);
         }
-        $hab_aprendidas = Habilidad::all()->whereIn('id', $ids);
-        //return $hab_aprendidas;
         return view('Instructor.habilidades-alumno', compact('alumno', 'habilidades', 'disciplinas', 'evaluaciones', 'hab_apr'));
     }
 
