@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use LasseRafn\InitialAvatarGenerator\InitialAvatar;
 
 class InitSeeder extends Seeder
 {
@@ -42,7 +43,8 @@ class InitSeeder extends Seeder
          */
 
         for ($i = 1; $i < 11; $i++){
-            factory(\App\Alumno::class)->create([
+
+            $alumno = factory(\App\Alumno::class)->create([
                 'id' => $i,
                 'created_at' => \Carbon\Carbon::createFromDate(null, rand(1,12), rand(1, 28))
             ]);
@@ -50,6 +52,8 @@ class InitSeeder extends Seeder
                 'alu_id' => $i,
                 'dis_id' => rand(1,2)
             ]);
+
+            $this->generateImage($alumno);
         }
 
         /**
@@ -192,5 +196,27 @@ class InitSeeder extends Seeder
 
     public function seedAlumno(){
 
+    }
+
+    protected function generateImage($alumno){
+        $avatar = new InitialAvatar();
+        if (!file_exists(storage_path('app\public\alumnos\\'.$alumno->id))) {
+            mkdir(storage_path('app\public\alumnos\\'.$alumno->id));
+        }
+
+        $image = $avatar->name($alumno->alu_nombre." ".$alumno->alu_apellido_paterno)
+            ->length(2)
+            ->fontSize(0.5)
+            ->size(450)
+            ->background($this->rand_color())
+            ->color('#fff')
+            ->generate();
+        $image->save(storage_path('app\public\alumnos\\'.$alumno->id.'\perfil.png'));
+    }
+
+    function rand_color() {
+        $colors = array('#EA4C89', '#49C6E5', '#8965E0', '#FFD166', '#06D6A0');
+        $index = array_rand($colors);
+        return $colors[$index];
     }
 }

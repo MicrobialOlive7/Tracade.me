@@ -53,7 +53,7 @@
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
-                <img alt="Image placeholder" src="{{asset('../public/img/theme/team-1-800x800.jpg')}}">
+                <img alt="Image placeholder" src="{{asset('storage/alumnos/'.Auth::user()->id.'/perfil.png')}}">
               </span>
                     </div>
                 </a>
@@ -61,7 +61,7 @@
                     <div class=" dropdown-header noti-title">
                         <h6 class="text-overflow m-0">¡Bienvenido!</h6>
                     </div>
-                    <a href="./examples/profile.html" class="dropdown-item">
+                    <a href="{{route('alumno-perfil')}}" class="dropdown-item">
                         <i class="ni ni-single-02"></i>
                         <span>Mi Perfil</span>
                     </a>
@@ -126,12 +126,12 @@
             <!-- Navigation -->
             <ul class="navbar-nav mb-md-3">
                 <li class="nav-item">
-                    <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html">
+                    <a class="nav-link @yield('per-active')" href="{{route('alumno-perfil')}}">
                         <i class="ni ni-circle-08"></i> Mi Perfil
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html">
+                    <a class="nav-link"  href="{{ url('alumno/politicas') }}">
                         <i class="ni ni-single-copy-04"></i> Políticas
                     </a>
                 </li>
@@ -154,7 +154,7 @@
                     <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media align-items-center">
                 <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="{{asset('../public/img/theme/team-4-800x800.jpg')}}">
+                  <img alt="Image placeholder" src="{{asset('storage/alumnos/'.Auth::user()->id.'/perfil.png')}}">
                 </span>
 
 
@@ -171,7 +171,7 @@
                         <div class=" dropdown-header noti-title">
                             <h6 class="text-overflow m-0">¡Bienvenido!</h6>
                         </div>
-                        <a href="../examples/profile.html" class="dropdown-item">
+                        <a href="{{route('alumno-perfil')}}" class="dropdown-item">
                             <i class="ni ni-single-02"></i>
                             <span>Mi Perfil</span>
                         </a>

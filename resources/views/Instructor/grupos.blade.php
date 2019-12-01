@@ -46,18 +46,23 @@
                                 <th scope="row"> {{$grupo->gru_hora}} </th>
                                 <td>
                                     <div class="avatar-group">
-                                        <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                                            <img alt="Image placeholder" src="../public/img/theme/team-1-800x800.jpg" class="rounded-circle">
-                                        </a>
-                                        <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Romina Hadid">
-                                            <img alt="Image placeholder" src="../public/img/theme/team-2-800x800.jpg" class="rounded-circle">
-                                        </a>
-                                        <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Alexander Smith">
-                                            <img alt="Image placeholder" src="../public/img/theme/team-3-800x800.jpg" class="rounded-circle">
-                                        </a>
-                                        <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Jessica Doe">
-                                            <img alt="Image placeholder" src="../public/img/theme/team-4-800x800.jpg" class="rounded-circle">
-                                        </a>
+                                        @php ($i = 0)
+                                        @if($alu_gru->where('gru_id', $grupo->id)->count() != 0)
+                                       
+                                            @foreach($alu_gru->where('gru_id', $grupo->id) as $alumno)
+                                                <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="{{$alumnos->find($alumno->alu_id)->alu_nombre}} {{$alumnos->find($alumno->alu_id)->alu_apellido_paterno}}">
+                                                    <img alt="Image placeholder" src="{{asset('storage/alumnos/'.$alumno->alu_id.'/perfil.png')}}" class="rounded-circle">
+                                                </a>
+                                                @if($i++ == 3)
+                                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="">
+                                                        <img alt="Image placeholder" src="{{asset('storage/mas.png')}}" class="rounded-circle">
+                                                    </a>
+                                                    @break
+                                                @endif
+                                            @endforeach
+                                        @endif
+
+
                                     </div>
                                 </td>
                                 <td class="text-right">

@@ -79,13 +79,34 @@ class RegisterController extends Controller
             'alu_biografia' => "",
             'password' => Hash::make($data['password']),
         ]);
-
+        $this->generateImage($alumno);
         $dis_alu = DiciplinaAlumno::create([
             'alu_id' => $alumno->id,
             'dis_id' => $data['disciplina']
         ]);
 
         return $alumno;
+    }
+
+    protected function generateImage($alumno){
+        $avatar = new InitialAvatar();
+        if (!file_exists(storage_path('app\public\alumnos\\'.$alumno->id))) {
+            mkdir(storage_path('app\public\alumnos\\'.$alumno->id));
+        }
+        $image = $avatar->name($alumno->alu_nombre." ".$alumno->alu_apellido_paterno)
+            ->length(2)
+            ->fontSize(0.5)
+            ->size(450) // 48 * 2
+                //            ->background('#EA4C89')
+            ->background($this->rand_color())
+            ->color('#fff')
+            ->generate();
+        $image->save(storage_path('app\public\alumnos\\'.$alumno->id.'\perfil.png'));
+    }
+    function rand_color() {
+        $colors = array('#EA4C89', '#49C6E5', '#8965E0', '#FFD166', '#06D6A0');
+        $index = array_rand($colors);
+        return $colors[$index];
     }
 
 
