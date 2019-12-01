@@ -42,6 +42,7 @@ Para crer los registros base (disciplinas y aulas) asi como algunos registros in
 php artisan db:seed --class=InitSeeder
 ```
 ##### Registros de prueba
+Si se desean agregar mas registros ademas de los ya generados, se pueden ejecutar los seeders correspondientes:
 ###### Alumnos
 Creación de 10 alumnos de prueba asignados a una discplina aleatoria:
 ```
@@ -51,6 +52,12 @@ php artisan db:seed --class=AlumnosTableSeeder
 Creación de 16 habilidades de prueba:
 ```
 php artisan db:seed --class=HabilidadesTableSeeder
+```
+
+###### Evaluaciones
+Creación de 50 evaluaciones de prueba:
+```
+php artisan db:seed --class=EvaluacionTableSeeder
 ```
 
 ### Visualización de imagenes de habilidades

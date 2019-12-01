@@ -15,7 +15,8 @@ class AlumnosTableSeeder extends Seeder
 
         for ($i = $lastId+1; $i < $lastId+11; $i++){
             factory(\App\Alumno::class)->create([
-                'id' => $i
+                'id' => $i,
+                'created_at' => \Carbon\Carbon::createFromDate(null, rand(1,12), rand(1, 28))
             ]);
             factory(\App\DisciplinaAlumno::class)->create([
                 'alu_id' => $i,
