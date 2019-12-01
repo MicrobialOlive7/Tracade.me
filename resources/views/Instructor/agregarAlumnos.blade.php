@@ -35,7 +35,9 @@
                                                 <img alt="Image placeholder" src="{{asset('storage/alumnos/'.$alumnoGrupo->alu_id.'/perfil.png')}}">
                                             </a>
                                             <div class="media-body">
-                                                <span class="mb-0 text-sm">{{$alumnos->find($alumnoGrupo->alu_id)->alu_nombre}} {{$alumnos->find($alumnoGrupo->alu_id)->alu_apellido_paterno}} {{$alumnos->find($alumnoGrupo->alu_id)->alu_apellido_materno}}</span>
+                                                <a href="{{route('habilidades-alumno', $alumnos->find($alumnoGrupo->alu_id)->id)}}">
+                                                    <span class="mb-0 text-sm">{{$alumnos->find($alumnoGrupo->alu_id)->alu_nombre}} {{$alumnos->find($alumnoGrupo->alu_id)->alu_apellido_paterno}} {{$alumnos->find($alumnoGrupo->alu_id)->alu_apellido_materno}}</span>
+                                                </a>
                                             </div>
                                         </div>
                                     </th>
