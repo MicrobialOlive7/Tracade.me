@@ -61,7 +61,7 @@
                     <div class=" dropdown-header noti-title">
                         <h6 class="text-overflow m-0">¡Bienvenido!</h6>
                     </div>
-                    <a href="./examples/profile.html" class="dropdown-item">
+                    <a href="{{route('alumno-perfil')}}" class="dropdown-item">
                         <i class="ni ni-single-02"></i>
                         <span>Mi Perfil</span>
                     </a>
@@ -126,7 +126,7 @@
             <!-- Navigation -->
             <ul class="navbar-nav mb-md-3">
                 <li class="nav-item">
-                    <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html">
+                    <a class="nav-link @yield('per-active')" href="{{route('alumno-perfil')}}">
                         <i class="ni ni-circle-08"></i> Mi Perfil
                     </a>
                 </li>
@@ -171,7 +171,7 @@
                         <div class=" dropdown-header noti-title">
                             <h6 class="text-overflow m-0">¡Bienvenido!</h6>
                         </div>
-                        <a href="../examples/profile.html" class="dropdown-item">
+                        <a href="{{route('alumno-perfil')}}" class="dropdown-item">
                             <i class="ni ni-single-02"></i>
                             <span>Mi Perfil</span>
                         </a>
