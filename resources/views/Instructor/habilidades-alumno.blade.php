@@ -66,7 +66,7 @@
                         </table>
                     </div>
                     <div class="card-header border-0">
-
+                        {{ $hab_apr->links() }}
                     </div>
                 </div>
                 <br>

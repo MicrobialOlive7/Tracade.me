@@ -205,6 +205,9 @@ Route::get('tmp-pago', function (){
     return view('instructor.TMP-pago');
 })->name('tmp-pago');
 Route::get('/Inicio', 'LineController@index')->name('Inicio');
+
+
+
 /**
 |-------------------------------------------
 | Alumno - Usuario
@@ -235,6 +238,7 @@ Route::get('/alumno/calendario', function (){
 |--------------
  */
 Route::get('/alumno/inicio', 'Alumno\ChartsController@index')->name('alumno-inicio');
+
 /**
 |--------------
 |---- Politicas
@@ -243,3 +247,19 @@ Route::get('/alumno/inicio', 'Alumno\ChartsController@index')->name('alumno-inic
 Route::get('/alumno/politicas', function (){
     return view('alumno.politicas');
 })->name('politicas');
+
+
+/**
+|--------------
+|---- Perfil
+|--------------
+ */
+
+Route::get('alumno/perfil', function (){
+    return view('Alumno.perfil');
+})->name('alumno-perfil');
+
+Route::post('alumno/updatePerfil', 'Alumno\AlumnoController@update')->name('perfilAlumnoUpdate');
+
+Route::get('test', 'AlumnoController@test')->name('test');
+

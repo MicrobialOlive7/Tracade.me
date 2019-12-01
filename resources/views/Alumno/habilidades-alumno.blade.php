@@ -3,7 +3,7 @@
 @section('hab-active', 'active')
 @section('content')
     <!-- Header -->
-    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8"> </div>
+    <div class="header bg-gradient-indigo pb-8 pt-5 pt-md-8"> </div>
     <div class="container-fluid mt--7">
         <!-- Table -->
         <div class="row">
@@ -60,7 +60,7 @@
                         </table>
                     </div>
                     <div class="card-header border-0">
-
+                        {{ $hab_apr->links() }}
                     </div>
                 </div>
                 <br>
@@ -73,7 +73,6 @@
                     <div class="table-responsive">
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
-
                             <tr>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Dificultad</th>
@@ -82,8 +81,6 @@
                             </tr>
                             </thead>
                             <tbody>
-
-
                             @foreach($habilidades as $key => $value)
                                 <tr>
                                     <th scope="row">
@@ -113,7 +110,7 @@
                         </table>
                     </div>
                     <div class="card-header border-0">
-
+                        {{ $habilidades->links() }}
                     </div>
                 </div>
             </div>
