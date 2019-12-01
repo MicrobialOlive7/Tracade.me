@@ -70,7 +70,7 @@ class GruposController extends Controller
         $disciplinas = Disciplina::all();
         $dis_alu = DisciplinaAlumno::all();
         $grupo = Grupo::all()->find($id);
-        $alumnosGrupo = GrupoAlumno::all()->where('gru_id', $id);
+        $alumnosGrupo = GrupoAlumno::select('*')->where('gru_id', $id)->paginate(5,['+'], 'alumnos');
         $alumnosNuevos = DB::table('alumno')
             ->leftJoin('grupo_alumno', function($join)
             {
@@ -81,19 +81,7 @@ class GruposController extends Controller
             ->where('grupo_alumno.alu_id',null)
             ->where('alumno.deleted_at', null)
             ->select('alumno.*')
-            ->get();
-        //$alumnosNuevos= array();
-        //$test = array();
-        /*foreach ($alumnos as $alumno){
-            if(isem$alumnosGrupo->where('alu_id', $alumno->id)){
-                //return $alumnosGrupo->where('alu_id', $alumno->id);
-                array_push($test, $alumno);
-            }else{
-                array_push($alumnosNuevos, $alumno);
-            }
-        }*/
-        //return $test;
-        //return $alumnosNuevos;
+            ->paginate(5,['+'], 'disponibles');
         return view('Instructor.agregarAlumnos', compact('alumnos', 'disciplinas', 'dis_alu', 'id', 'grupo', 'alumnosGrupo', 'alumnosNuevos'));
     }
 

@@ -54,7 +54,7 @@
                                 </div>
                                 <!-- // pricing-plan-list -->
                                 <div class="landy-content-button text-uppercase">
-                                    <a href="#">UNIRME AHORA</a>
+                                    <a href="#">CONTRATAR AHORA</a>
                                 </div>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                                 </div>
                                 <!-- // pricing-plan-list -->
                                 <div class="landy-content-button text-uppercase">
-                                    <a href="#">UNIRME AHORA</a>
+                                    <a href="#">CONTRATAR AHORA</a>
                                 </div>
                             </div>
                         </div>
@@ -119,7 +119,7 @@
                                 </div>
                                 <!-- // pricing-plan-list -->
                                 <div class="landy-content-button text-uppercase">
-                                    <a href="#">UNIRME AHORA</a>
+                                    <a href="#">CONTRATAR AHORA</a>
                                 </div>
                             </div>
                         </div>

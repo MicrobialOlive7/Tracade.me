@@ -38,9 +38,10 @@ Route::get('/Precios', function (){
     return view('Corporativa.Precios');
 });
 //Pagina de contacto
-Route::get('/Contacto', function (){
-    return view('Corporativa.Contacto');
-});
+//Desplieg la view
+Route::get('/Contacto', 'Corporativa\ContactController@create')->name('contacto');
+//Funcion de contact
+Route::post('/Contacto', 'Corporativa\ContactController@store') ->name('contactoCreate');
 /**
 |-------------------------------------------
 | Autentificacion de Usuarios
