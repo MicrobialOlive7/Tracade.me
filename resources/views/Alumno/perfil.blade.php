@@ -24,7 +24,7 @@
                         <div class="col-lg-3 order-lg-2">
                             <div class="card-profile-image">
                                 <a href="#">
-                                    <img src="../public/img/theme/team-4-800x800.jpg" class="rounded-circle">
+                                    <img src="{{asset('storage/alumnos/'.Auth::user()->id.'/perfil.png')}}" class="rounded-circle">
                                 </a>
                             </div>
                         </div>
@@ -43,6 +43,8 @@
                             <div>
                                 <i class="ni education_hat mr-2"></i>Disciplinaa
                             </div>
+
+                            <hr class="my-4" />
                             <p>{{Auth::user()->alu_biografia}}</p>
 
                         </div>

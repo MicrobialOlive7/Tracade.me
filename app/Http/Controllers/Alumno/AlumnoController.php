@@ -19,7 +19,7 @@ class AlumnoController extends Controller
         $alumno->alu_biografia = $request['bio'];
         $alumno->save();
 
-        return $alumno;
+        return redirect()->route('alumno-perfil');
 
 
     }

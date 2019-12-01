@@ -58,21 +58,7 @@ class AlumnoController extends Controller
         return redirect()->route('alumnos');
     }
 
-    protected function test(){
-        $avatar = new InitialAvatar();
-        $image = $avatar->name('Lasse Rafn')
-            ->length(2)
-            ->fontSize(0.5)
-            ->size(96) // 48 * 2
-            ->background('#8BC34A')
-            ->color('#fff')
-            ->generate()
-            ->stream('png', 100);
-        return $image->stream('png', 100);
-        //$file_name = $image->filename;
-        //return $image;
-        Storage::disk('public')->putFileAs('alumnos/1', $image, 'asd.png' );
-    }
+
 
     protected function habilidades($id){
         $evaluaciones = Evaluacion::select('*')->where('alu_id', $id)->orderBy('created_at', 'desc')->get();

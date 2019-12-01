@@ -46,7 +46,7 @@
                                     <th scope="row">
                                         <div class="media align-items-center">
                                             <a href="{{route('habilidades-alumno', $alumno['id'])}}" class="avatar rounded-circle mr-3">
-                                                <img alt="Image placeholder" src="../public/img/theme/team-2-800x800.jpg">
+                                                <img alt="Image placeholder" src="{{asset('storage/alumnos/'.$alumno->id.'/perfil.png')}}">
                                             </a>
                                             <div class="media-body">
                                                 <a href="{{route('habilidades-alumno', $alumno['id'])}}">
