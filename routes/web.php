@@ -44,6 +44,22 @@ Route::get('/Contacto', 'Corporativa\ContactController@create')->name('contacto'
 Route::post('/Contacto', 'Corporativa\ContactController@store') ->name('contactoCreate');
 /**
 |-------------------------------------------
+| Registro de Usuarios
+|-------------------------------------------
+ */
+Route::get('/RegistroUsuarios', function (){
+    return view('Corporativa.RegistroUsuarios');
+});
+/**
+|-------------------------------------------
+| Resumen de Compra
+|-------------------------------------------
+ */
+Route::get('/Compra', function (){
+    return view('Corporativa.ResumenCompra');
+});
+/**
+|-------------------------------------------
 | Autentificacion de Usuarios
 |-------------------------------------------
  */
