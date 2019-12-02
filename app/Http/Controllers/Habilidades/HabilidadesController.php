@@ -26,6 +26,13 @@ class HabilidadesController extends Controller
         return view('Instructor.habilidades', compact('habilidades', 'disciplinas'));
     }
 
+
+    public function detailread(){
+
+        return view('Instructor.detalle_hab');
+
+    }
+
     public function delete($hab_id){
       $Habilidad = Habilidad::find($hab_id)->delete();
 

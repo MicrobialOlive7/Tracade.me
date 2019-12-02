@@ -44,7 +44,7 @@
         </button>
         <!-- Brand -->
         <a class="navbar-brand pt-0" href="{{ url('') }}">
-            <img src="{{asset('../public/img/dash-logo.png')}}" class="navbar-brand-img" alt="...">
+            <img src="{{asset('../public/img/dash-logo.png')}}" class="navbar-brand-img" style="width: 100%;" alt="...">
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">

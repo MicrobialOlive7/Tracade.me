@@ -130,6 +130,9 @@ Route::post('habilidadUpdate/{id}', 'Habilidades\HabilidadesController@update')-
 //--- Eliminar ---//
 // Funcion
 Route::get('habilidadDelete/{id}', 'Habilidades\HabilidadesController@delete')->name('habilidadDelete');
+
+// Vista // Visualizar detalle de la habilidad
+Route::get('/detalleHabilidad', 'Habilidades\HabilidadesController@detailread')->name('detalle-Habilidad');
 /**
 |--------------
 |---- Evaluciones
