@@ -141,8 +141,7 @@
 </footer>
 <!-- End of footer section
     ============================================= -->
-
-
+<script src="https://www.paypal.com/sdk/js?client-id=SB_CLIENT_ID"></script>
 <!--  Js Library -->
 <script type="text/javascript" src="{{asset('js/jquery-2.1.4.min.js')}}"></script>
 <!-- Include  for bootstrap -->
