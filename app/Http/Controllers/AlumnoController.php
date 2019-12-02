@@ -91,8 +91,6 @@ class AlumnoController extends Controller
     }
 
     public function multipleDelte(Request $request){
-
-
         foreach ($request->borrar as $borrar){
             Alumno::all()->find($borrar)->delete();
             $grupos = GrupoAlumno::all()->where('alu_id', $borrar);

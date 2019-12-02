@@ -208,6 +208,13 @@
         application: "argon-dashboard-free"
     });
 </script>
+
+<script>
+    $('#borrarTodo').click(function() {
+        var c = this.checked;
+        $(':checkbox').prop('checked',c);
+    });
+</script>
 @yield('js_content')
 
 </body>

@@ -8,9 +8,11 @@
         <!-- Table -->
         <div class="row">
             <div class="col">
-                <div class="card shadow">
+                <form action="{{route('habilidadesDelete')}}" class="card shadow" method="POST">
+                    @csrf
                     <div class="card-header border-0">
                         <h3 class="mb-0">Habilidades</h3>
+
                         <div class="col text-right">
                             <span class="btn-inner--icon">
                                 <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Agregar" href="{{ route('crear-habilidad') }}">
@@ -18,9 +20,9 @@
                                 </a>
                             </span>
                             <span class="btn-inner--icon">
-                                <a class="btn btn-icon btn-2 btn-danger btn-sm" role="button" title="Eliminación Masiva" href="{{ url('') }}">
+                                <button type="submit" class="btn btn-icon btn-2 btn-danger btn-sm">
                                     <i class="ni ni-fat-remove" ></i>
-                                </a>
+                                </button>
                             </span>
                         </div>
                     </div>
@@ -29,7 +31,7 @@
                             <thead class="thead-light">
 
                             <tr>
-                                <th scope="col"> <input type="checkbox"></th>
+                                <th scope="col"> <input type="checkbox" id="borrarTodo" name="borrarTodo"></th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Dificultad</th>
                                 <th scope="col">Disciplina</th>
@@ -42,7 +44,7 @@
 
                               @foreach($habilidades as $key => $value)
                               <tr>
-                                <td> <input type="checkbox"></td>
+                                  <td><input type="checkbox" name="borrar[]" value="{{$value->id}}"></td>
                                   <th scope="row">
                                       <div class="media align-items-center">
                                           <a href="#" class="avatar rounded-circle mr-3">
@@ -82,6 +84,7 @@
                             </tbody>
                         </table>
                     </div>
+                    </form>
                     <div class="card-header border-0">
                         {{ $habilidades->links() }}
                     </div>

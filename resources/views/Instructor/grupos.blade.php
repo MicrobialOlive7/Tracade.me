@@ -8,19 +8,20 @@
         <!-- Table -->
         <div class="row">
             <div class="col">
-                <div class="card shadow">
                     <div class="card-header border-0">
                         <h3 class="mb-0">Grupos</h3>
+                        <form action="{{route('gruposDelete')}}" method="POST">
+                            @csrf
                         <div class="col text-right">
                             <span class="btn-inner--icon">
-                                <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Agregar" href="{{ route('crear-grupo') }}">
+                                <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Agregar" href="{{route('crear-grupo')}}">
                                     <i class="ni ni-fat-add" ></i>
                                 </a>
                             </span>
                             <span class="btn-inner--icon">
-                                <a class="btn btn-icon btn-2 btn-danger btn-sm" role="button" title="Eliminación Masiva" href="{{ url('') }}">
+                                <button type="submit" class="btn btn-icon btn-2 btn-danger btn-sm">
                                     <i class="ni ni-fat-remove" ></i>
-                                </a>
+                                </button>
                             </span>
                         </div>
                     </div>
@@ -29,7 +30,7 @@
                             <thead class="thead-light">
 
                             <tr>
-                                <th scope="col"> <input type="checkbox"></th>
+                                <th scope="col"> <input type="checkbox" id="borrarTodo" name="borrarTodo"></th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Día</th>
                                 <th scope="col">Horario</th>
@@ -40,7 +41,7 @@
                             <tbody>
                               @foreach($Grupos as $grupo)
                               <tr>
-                                <td> <input type="checkbox"></td>
+                                  <td> <input type="checkbox" name="borrar[]" value="{{$grupo->id}}"></td>
                                 <th scope="row"><a href="{{route('agregar-alumnos', $grupo->id)}}">{{$grupo->gru_nombre}} </a> </th>
                                 <th scope="row"> {{$grupo->gr_dia}}  </th>
                                 <th scope="row"> {{$grupo->gru_hora}} </th>
@@ -83,6 +84,7 @@
                          </tbody>
                         </table>
                     </div>
+                    </form>
                     <div class="card-header border-0">
                         {{ $Grupos->links() }}
                     </div>

@@ -92,6 +92,8 @@ Route::get('addAlumno/{id}/{alu_id}', 'Grupos\GruposController@add')->name('addA
 // Eliminar
 // Funcion
 Route::get('deleteAlumno/{id}/{gId}', 'Grupos\GruposController@deleteAlumno')->name('deleteAlumno');
+/// Funcion /// Eliminar multiples alumnos
+Route::post('eliminar-grupos', 'Grupos\GruposController@multipleDelte')->name('gruposDelete');
 /**
 |--------------
 |---- Alumnos
@@ -134,6 +136,9 @@ Route::post('habilidadUpdate/{id}', 'Habilidades\HabilidadesController@update')-
 //--- Eliminar ---//
 // Funcion
 Route::get('habilidadDelete/{id}', 'Habilidades\HabilidadesController@delete')->name('habilidadDelete');
+
+/// Funcion /// Eliminar multiples habilidades
+Route::post('eliminar-habilidades', 'Habilidades\HabilidadesController@multipleDelte')->name('habilidadesDelete');
 /**
 |--------------
 |---- Evaluciones
@@ -154,6 +159,9 @@ Route::post('evaluacionUpdate/{id}/{hab_id}/{alu_id}', 'EvaluacionController@upd
 //--- Eliminar ---//
 // Funcion
 Route::get('evaluacionDelete/{hab_id}/{alu_id}/{eva_id}', 'EvaluacionController@delete')->name('evaluacionDelete');
+
+/// Funcion /// Eliminar multiples evaluaciones
+Route::post('eliminar-habilidades/{hab_id}/{alu_id}', 'EvaluacionController@multipleDelte')->name('evaluacionesDelete');
 /**
 |--------------
 |---- Eventos (Calendario)

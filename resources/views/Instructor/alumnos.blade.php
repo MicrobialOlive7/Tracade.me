@@ -44,7 +44,7 @@
                             <tbody>
                             @foreach($alumnos as $alumno)
                                 <tr>
-                                    <td> <input type="checkbox" name="borrar[]" value="{{$alumno->id}}"></td>
+                                    <td><input type="checkbox" name="borrar[]" value="{{$alumno->id}}"></td>
                                     <th scope="row">
                                         <div class="media align-items-center">
                                             <a href="{{route('habilidades-alumno', $alumno['id'])}}" class="avatar rounded-circle mr-3">
@@ -61,8 +61,8 @@
 
                                     <th scope="row" > <a href="{{ route('agregar-alumnos', intval($grupos->where('id', $gru_alu->where('alu_id', $alumno->id)->first()['gru_id'])->first()['id'])) }}"> {{$grupos->where('id', $gru_alu->where('alu_id', $alumno->id)->first()['gru_id'])->first()['gru_nombre']}} </a>  </th>
                                     <th scope="row"> {{ $habilidadesT->where('alu_id', $alumno->id)->count()}} </th>
-                                    @if($habilidadesT->where('alu_id', $alumno->id)->first())
-                                    <th scope="row"> <a href="#"> {{$habilidades->find($habilidadesT->where('alu_id', $alumno->id)->last()->hab_id)->hab_nombre}}</a> </th>
+                                    @if($habilidadesT->where('alu_id', $alumno->id)->count() != 0)
+                                        <th scope="row"><a href="#"> {{($habilidades->where('id',$habilidadesT->where('alu_id', $alumno->id)->last()->hab_id)->last()->hab_nombre)}}</a> </th>
                                     @else
                                         <th></th>
                                     @endif
@@ -92,10 +92,5 @@
         </div>
     </div>
     <!-- End of Table -->
-    <script>
-        $('#borrarTodo').click(function() {
-            var c = this.checked;
-            $(':checkbox').prop('checked',c);
-        });
-    </script>
+
 @endsection
