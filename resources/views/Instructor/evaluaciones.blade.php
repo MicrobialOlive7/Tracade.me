@@ -8,7 +8,10 @@
         <!-- Table -->
         <div class="row">
             <div class="col">
+                <form action="{{route('evaluacionesDelete', [$habilidad->id, $alumno->id])}}" method="POST">
+                    @csrf
                 <div class="card shadow">
+
                     <div class="card-header border-0">
 
                         <div class="mb-4">
@@ -36,10 +39,10 @@
                                 </a>
                             </span>
                             @endif
-                            <span class="btn-inner--icon">
-                                <a class="btn btn-icon btn-2 btn-danger btn-sm" role="button" title="Eliminación Masiva" href="{{ url('') }}">
+                                <span class="btn-inner--icon">
+                                <button type="submit" class="btn btn-icon btn-2 btn-danger btn-sm">
                                     <i class="ni ni-fat-remove" ></i>
-                                </a>
+                                </button>
                             </span>
                         </div>
                     </div>
@@ -49,7 +52,7 @@
                             <thead class="thead-light">
 
                             <tr>
-                                <th scope="col"> <input type="checkbox"></th>
+                                <th scope="col"> <input type="checkbox" id="borrarTodo" name="borrarTodo"></th>
                                 <th scope="col">Fecha</th>
                                 <th scope="col">Calificacion</th>
                                 <th scope="col">Comentarios</th>
@@ -61,7 +64,7 @@
 
                               @foreach($evaluaciones as $evaluacion)
                               <tr>
-                                <td> <input type="checkbox"></td>
+                                  <td><input type="checkbox" name="borrar[]" value="{{$evaluacion->id}}"></td>
                                   <th scope="row">
                                       <span class="mb-0 text-sm">{{$evaluacion['created_at']}}</span>
                                   </th>
@@ -90,9 +93,10 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="card-header border-0">
-
-                    </div>
+                    </form>
+                <div class="card-header border-0">
+                    {{ $evaluaciones->links() }}
+                </div>
                 </div>
             </div>
         </div>

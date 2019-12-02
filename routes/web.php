@@ -92,6 +92,8 @@ Route::get('addAlumno/{id}/{alu_id}', 'Grupos\GruposController@add')->name('addA
 // Eliminar
 // Funcion
 Route::get('deleteAlumno/{id}/{gId}', 'Grupos\GruposController@deleteAlumno')->name('deleteAlumno');
+/// Funcion /// Eliminar multiples alumnos
+Route::post('eliminar-grupos', 'Grupos\GruposController@multipleDelte')->name('gruposDelete');
 /**
 |--------------
 |---- Alumnos
@@ -110,6 +112,10 @@ Route::get('eliminar-alumno/{id}', 'AlumnoController@delete')->name('eliminar-al
 /// Vista /// Visualizar todas las habilidades aprendidas por alumno
 /// visualziar las habilidades disponibles para aprender
 Route::get('habilidades-alumno/{id}', 'AlumnoController@habilidades')->name('habilidades-alumno');
+
+/// Funcion /// Eliminar multiples alumnos
+Route::post('eliminar-alumnos', 'AlumnoController@multipleDelte')->name('alumnosDelete');
+
 /**
 |--------------
 |---- Habilidades
@@ -130,6 +136,14 @@ Route::post('habilidadUpdate/{id}', 'Habilidades\HabilidadesController@update')-
 //--- Eliminar ---//
 // Funcion
 Route::get('habilidadDelete/{id}', 'Habilidades\HabilidadesController@delete')->name('habilidadDelete');
+
+
+/// Funcion /// Eliminar multiples habilidades
+Route::post('eliminar-habilidades', 'Habilidades\HabilidadesController@multipleDelte')->name('habilidadesDelete');
+
+// Vista // Visualizar detalle de la habilidad
+Route::get('/detalleHabilidad', 'Habilidades\HabilidadesController@detailread')->name('detalle-Habilidad');
+
 /**
 |--------------
 |---- Evaluciones
@@ -150,6 +164,9 @@ Route::post('evaluacionUpdate/{id}/{hab_id}/{alu_id}', 'EvaluacionController@upd
 //--- Eliminar ---//
 // Funcion
 Route::get('evaluacionDelete/{hab_id}/{alu_id}/{eva_id}', 'EvaluacionController@delete')->name('evaluacionDelete');
+
+/// Funcion /// Eliminar multiples evaluaciones
+Route::post('eliminar-habilidades/{hab_id}/{alu_id}', 'EvaluacionController@multipleDelte')->name('evaluacionesDelete');
 /**
 |--------------
 |---- Eventos (Calendario)
@@ -161,9 +178,7 @@ Route::get('/calendario', function (){
 })->name('calendario');
 //--- Crear ---//
 // Vista
-Route::get('crear-evento', function (){
-    return view('Instructor.CrearEventos');
-})->name('crear-evento');
+Route::get('crear-evento', 'EventoController@show')->name('crear-evento');
 // Funcion
 Route::post('eventoCreate', 'EventoController@create')->name('eventoCreate');
 //--- Modificar ---//

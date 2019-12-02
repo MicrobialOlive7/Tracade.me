@@ -18,8 +18,8 @@
                                 </a>
                             </span>
                             <span class="btn-inner--icon">
-                                <a class="btn btn-icon btn-2 btn-default btn-sm" role="button" title="Modificar" href="{{route('modificar-evento')}}">
-                                    <i class="ni ni-bold-down" ></i>
+                                <a class="btn btn-icon btn-2 btn-success btn-sm" role="button" title="Modificar" href="{{route('modificar-evento')}}">
+                                    <i class="ni ni-ruler-pencil" ></i>
                                 </a>
                             </span>
                             <span class="btn-inner--icon">

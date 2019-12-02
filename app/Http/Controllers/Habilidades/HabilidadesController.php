@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\Habilidades;
+use App\Alumno;
+use App\Evaluacion;
+use App\GrupoAlumno;
 use App\Habilidad;
 use App\HabilidadAnterior;
 use App\Disciplina;
@@ -20,24 +23,32 @@ class HabilidadesController extends Controller
 
     public function read(){
 
-        $habilidades = Habilidad::select('*')->paginate(5);
+        $habilidades = Habilidad::select('*')->paginate(10);
         $disciplinas = Disciplina::all();
 
         return view('Instructor.habilidades', compact('habilidades', 'disciplinas'));
     }
 
+
+    public function detailread(){
+
+        return view('Instructor.detalle_hab');
+
+    }
+
     public function delete($hab_id){
-      $Habilidad = Habilidad::find($hab_id)->delete();
+        $Habilidad = Habilidad::find($hab_id)->delete();
 
-      $HabReq = HabilidadAnterior::where('hab_id', $hab_id)
-      ->where('hab_ant_id', $hab_id)
-      ->delete();
+        $HabReq = HabilidadAnterior::where('hab_id', $hab_id)
+        ->where('hab_ant_id', $hab_id)
+        ->delete();
 
-      $CamposAd = CampoAdicional::where('hab_id', $hab_id)->delete();
+        $CamposAd = CampoAdicional::where('hab_id', $hab_id)->delete();
 
-      $habilidades = Habilidad::all();
-      $disciplinas = Disciplina::all();
+        $habilidades = Habilidad::all();
+        $disciplinas = Disciplina::all();
 
+        Evaluacion::all()->where('hab_id', $hab_id)->delete();
         return redirect()->route('Habilidades');
 
     }
@@ -132,6 +143,24 @@ class HabilidadesController extends Controller
             $campoAdicional->hab_id = $habilidad->id;
             $campoAdicional->save();
         }
+        return redirect()->route('Habilidades');
+    }
+
+    public function multipleDelte(Request $request){
+        foreach ($request->borrar as $borrar){
+
+            Habilidad::all()->find($borrar)->delete();
+            HabilidadAnterior::where('hab_id', $borrar)
+                ->where('hab_ant_id', $borrar)
+                ->delete();
+            CampoAdicional::where('hab_id', $borrar)->delete();
+            $eva = Evaluacion::where('hab_id', $borrar)->get();
+            foreach ($eva as $e){
+                $e->delete();
+            }
+        }
+
+
         return redirect()->route('Habilidades');
     }
 

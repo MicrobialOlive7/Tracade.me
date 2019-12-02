@@ -33,6 +33,8 @@
     <link href="{{asset('../public/css/argon-dashboard.css?v=1.1.0')}}" rel="stylesheet" />
     <!-- themify-icon.css -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/themify-icons.css')}}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body class="">
@@ -44,7 +46,7 @@
         </button>
         <!-- Brand -->
         <a class="navbar-brand pt-0" href="{{ url('') }}">
-            <img src="{{asset('../public/img/dash-logo.png')}}" class="navbar-brand-img" alt="...">
+            <img src="{{asset('../public/img/dash-logo.png')}}" class="navbar-brand-img" style="width: 100%;" alt="...">
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
@@ -94,12 +96,12 @@
             <!-- Form -->
             <!-- Navigation -->
             <ul class="navbar-nav">
-                <li class="nav-item"  class="active">
-                <a class=" nav-link " href="{{ url('inicio') }}"> <i class="ni ni-chart-pie-35 text-primary"></i> Inicio
+                <li class="nav-item">
+                <a class=" nav-link @yield('ini-active')" href="{{ url('inicio') }}"> <i class="ni ni-chart-pie-35 text-primary"></i> Inicio
                 </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @yield('cal-active') "href="{{ url('calendario') }}">
+                    <a class="nav-link @yield('cal-active')" href="{{ url('calendario') }}">
                         <i class="ni ni-calendar-grid-58 text-blue"></i> Calendario
                     </a>
                 </li>
@@ -204,6 +206,13 @@
     TrackJS.install({
         token: "ee6fab19c5a04ac1a32a645abde4613a",
         application: "argon-dashboard-free"
+    });
+</script>
+
+<script>
+    $('#borrarTodo').click(function() {
+        var c = this.checked;
+        $(':checkbox').prop('checked',c);
     });
 </script>
 @yield('js_content')

@@ -99,4 +99,16 @@ class GruposController extends Controller
         return redirect()->route('agregar-alumnos', $gId);
     }
 
+
+    public function multipleDelte(Request $request){
+        foreach ($request->borrar as $borrar){
+            Grupo::all()->find($borrar)->delete();
+            $alumnos = GrupoAlumno::all()->where('gru_id', $borrar);
+            foreach ($alumnos as $alumno){
+                $alumno->delete();
+            }
+        }
+        return redirect()->route('grupos');
+    }
+
 }
