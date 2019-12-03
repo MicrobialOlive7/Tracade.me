@@ -1,4 +1,4 @@
-@extends('Instructor.templates.master')
+@extends('Alumno.templates.master')
 @extends('layouts.modal')
 @section('hab-active', 'active')
 @section('content')
@@ -8,7 +8,7 @@
         <!-- Table -->
         <div class="row mb-5">
             <div class="col-xl-5 col-lg-6">
-                <div class="card shadow mb-5">
+                <div class="card shadow mb-3">
                     <div class="card-header border-0">
                         <h3 class="mb-0">Detalle de <strong>{{$habilidad->hab_nombre}}</strong></h3>
                         <th scope="row">
@@ -86,7 +86,7 @@
                 </div>
             </div>
             <div class="col-xl-7 col-lg-6">
-                <div class="card-shadow ">
+                <div class="card shadow mb-3">
                     <div class="card-header border-0">
                         <div class="row">
                             <div class="col">
@@ -94,7 +94,7 @@
                                     <span class="h2 font-weight-bold mb-0"> Video </span>
                                 </p>
                                 <p class="mt-3 mb-0 text-muted text-sm text-center">
-                                    <video width="100%" height="auto" preload="auto" controls loop muted autoplay>
+                                    <video width="94%" height="auto" preload="auto" controls loop muted autoplay>
                                         <source src="{{asset('storage/habilidades/'.$habilidad->id.'/'.$habilidad->hab_video)}}" type="video/mp4"></video>
                                 </p>
                             </div>
@@ -105,8 +105,32 @@
         </div>
         <div class="row">
             <div class="col-xl-5 col-lg-6">
-                <div class="card shadow mb-5">
+                <div class="card shadow mb-3 ">
                     <div class="card-header border-0">
+                        <div class="row">
+                            <div class="col">
+                                <p class="mt-3 mb-0  text-sm text-left">
+                                    <span class="h2 font-weight-bold mb-0"> Foto </span>
+                                </p>
+                                <p class="text-center mt-3 mb-0 text-muted">
+                                    <img class="carousel__image col-7" src="{{asset('storage/habilidades/'.$habilidad->id.'/principal.jpg')}}" alt="costos">
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-7 col-lg-6">
+                <div class="card shadow mb-3">
+                    <div class="card-header border-0">
+                        <div class="text-right">
+                            <span class="btn-inner--icon">
+                                <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Agregar" href="{{ route('crear-nota') }}">
+                                    <i class="ni ni-fat-add" ></i>
+                                </a>
+                            </span>
+                        </div>
                         <h3 class="mb-0"> Mis notas</h3>
                         <div class="row">
                             <div class="col">
@@ -119,7 +143,7 @@
                 </div>
                 @if($evaluation== null)
                 @else
-                <div class="card shadow mb-5">
+                <div class="card shadow mb-3">
                     <div class="card-header border-0">
                         <h3 class="mb-0"> Registro de Evaluaciones</h3>
                         <div class="row">
@@ -163,23 +187,6 @@
                     </div>
                 </div>
                     @endif
-            </div>
-            <div class="col-xl-7 col-lg-6">
-                <div class="card shadow ">
-                    <div class="card-header border-0">
-                        <div class="row">
-                            <div class="col">
-                                <p class="mt-3 mb-0  text-sm text-left">
-                                    <span class="h2 font-weight-bold mb-0"> Foto </span>
-                                </p>
-                                <p class="text-center mt-3 mb-0 text-muted">
-                                    <img class="carousel__image col-7" src="{{asset('storage/habilidades/'.$habilidad->id.'/principal.jpg')}}" alt="costos">
-                                </p>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
