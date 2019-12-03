@@ -77,6 +77,8 @@ class RegisterController extends Controller
             'alu_apellido_materno' => $data['ap_mat'],
             'alu_fecha_nacimiento' => $data['fecha'],
             'alu_biografia' => "",
+            'aca_id' => 1,
+            'tipo_usuario' => $data['usuario'],
             'password' => Hash::make($data['password']),
         ]);
         $this->generateImage($alumno);

@@ -18,8 +18,12 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            
-            return redirect('/inicio');
+            if(Auth::user()->tipo_usuario == 'admin'){
+                return redirect('/inicio');
+            }
+            else{
+                return redirect('/alumno/inicio');
+            }
         }
 
         return $next($request);

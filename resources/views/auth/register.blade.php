@@ -9,8 +9,9 @@
             <div class="card-header border-0">
                 <h3 class="mb-0">Agregar alumnos</h3>
             </div>
-            <form method="POST" action="{{route('register')}}">
+            <form method="POST" action="{{route('alumnoCreate')}}">
                 @csrf
+                <input value="alumno" name="usuario" type="hidden">
                 <div class="row">
                     <div class="col-md-2">
                         <div class="custom-control custom-checkbox mb-3">

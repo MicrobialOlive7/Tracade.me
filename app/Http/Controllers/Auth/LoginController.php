@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use http\Env\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -28,7 +29,8 @@ class LoginController extends Controller
      *
      * CAMBIAR LOGIN POR DASHBOARD DE ESTUDIANTE E INSTRUCTOR
      */
-    protected $redirectTo = '/inicio';
+
+    protected $redirectTo = '/alumno/inicio';
 
     /**
      * Create a new controller instance.
@@ -38,5 +40,18 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+
+    }
+
+    protected function authenticated() {
+        if (Auth::check()) {
+            if(Auth::user()->tipo_usuario == 'admin'){
+                return redirect('/inicio');
+            }
+            else{
+                return redirect('/alumno/inicio');
+            }
+        }
+
     }
 }

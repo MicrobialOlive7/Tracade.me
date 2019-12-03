@@ -214,7 +214,31 @@ class InitSeeder extends Seeder
 
         //administrador
         factory(\App\Alumno::class)->create([
-            'tipo_usuario' => 'admin'
+            'alu_nombre' => 'Admin',
+            'tipo_usuario' => 'admin',
+            'email' => 'admin@tracade.me',
+            'password' => bcrypt('admin'),
+        ]);
+
+        factory(\App\Alumno::class)->create([
+            'alu_nombre' => 'Alumno',
+            'tipo_usuario' => 'alumno',
+            'email' => 'alumno@tracade.me',
+            'password' => bcrypt('alumno'),
+        ]);
+
+        factory(\App\Plan::class)->create([
+            'pla_nombre' => 'Estandar',
+            'pla_tipo_plan' => 'fijo',
+            'pla_precio' => 400,
+            'pla_numero_alumnos' => 50,
+        ]);
+
+        factory(\App\Plan::class)->create([
+            'pla_nombre' => 'Supremo',
+            'pla_tipo_plan' => 'fijo',
+            'pla_precio' => 800,
+            'pla_numero_alumnos' => 100,
         ]);
     }
 

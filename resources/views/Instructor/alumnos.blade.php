@@ -15,7 +15,7 @@
                             @csrf
                         <div class="col text-right">
                             <span class="btn-inner--icon">
-                                <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Guardar" href="{{ route('register') }}">
+                                <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Guardar" href="{{ route('crear-alumno') }}">
                                     <i class="ni ni-fat-add" ></i>
                                 </a>
                             </span>

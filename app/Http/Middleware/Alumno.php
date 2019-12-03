@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 
-class Admin
+class Alumno
 {
     protected $auth;
     public function __construct(Guard $auth)
@@ -21,13 +21,12 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-
-        if($this->auth->user()->tipo_usuario== 'admin')
+        if($this->auth->user()->tipo_usuario== 'alumno')
         {
             return $next($request);
         }
         else{
-            abort(403, "No tienes Acceso a esta pagina");
+            abort(404);
         }
     }
 }
