@@ -8,6 +8,7 @@ use App\Habilidad;
 use App\HabilidadAnterior;
 use App\Disciplina;
 use App\CampoAdicional;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -30,9 +31,14 @@ class HabilidadesController extends Controller
     }
 
 
-    public function detailread(){
+    public function detailread($id){
 
-        return view('Instructor.detalle_hab');
+        $habilidad = Habilidad::all()->find($id);
+        $hab_anterior = DB::table('habilidad_anterior')->join('habilidad', 'hab_id', '=', 'habilidad.id') -> get() -> first();
+        $evaluacion = DB::table('habilidad')->join('evaluacion', 'habilidad.id', '=', 'hab_id') -> where('alu_id', $id) -> orderBy('evaluacion.created_at','desc')->get() -> first();
+
+        return view('Instructor.detalle_hab', compact('habilidad', 'hab_anterior','evaluacion'));
+
 
     }
 
@@ -115,18 +121,25 @@ class HabilidadesController extends Controller
         $cad_contenido = $request->input('cad_contenido');
         $file_name = 'principal.'.$file_img->getClientOriginalExtension();
 
+        $file_video = $request->file('video');
+        $name = $_FILES['video']['name'];
+        $videoname = explode(".", $name);
+
+        $filename =$videoname[0].'.'.$file_video->getClientOriginalExtension();
+
+
         $habilidad = new Habilidad();
         $habilidad->hab_nombre = $request->hab_nombre;
         $habilidad->dis_id = $request->dis_id;
         $habilidad->hab_dificultad = $request->hab_dificultad;
         $habilidad->hab_descripcion = $request->hab_descripcion;
         $habilidad->hab_imagen = $file_name;
+        $habilidad->video = $filename;
         $habilidad->save();
 
         //$request->file('hab_imagen')->storeAs('local', 'nombrecito.png');
-
-
         Storage::disk('public')->putFileAs('habilidades/'.$habilidad->id, $file_img, $file_name );
+        Storage::disk('public')->putFileAs('habilidades/'.$habilidad->id, $file_video, $filename);
 
         // if $request->habilidadAanterior
         //modificar $requests

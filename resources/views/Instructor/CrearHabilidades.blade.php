@@ -101,8 +101,16 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- Inician Botones de Guardado -->
+
+                    <div class="container">
+                        <div class="row justify-content-md-start">
+                            <div class="col">
+                                <div class="form-group">
+                                    <input type="file" id="video" name="video" accept="video/*">
+                                </div>
+                            </div>
+                        </div>
+                    </div>                <!-- Inician Botones de Guardado -->
                 <div class="container">
                     <div class="row justify-content-md-center">
                         <div class="col-auto">
