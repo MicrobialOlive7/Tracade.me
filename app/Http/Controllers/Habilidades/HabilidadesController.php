@@ -37,20 +37,36 @@ class HabilidadesController extends Controller
     }
 
     public function delete($hab_id){
-        $Habilidad = Habilidad::find($hab_id)->delete();
+        try{
 
-        $HabReq = HabilidadAnterior::where('hab_id', $hab_id)
-        ->where('hab_ant_id', $hab_id)
-        ->delete();
+          $Habilidad = Habilidad::where('id',$hab_id)->delete();
 
-        $CamposAd = CampoAdicional::where('hab_id', $hab_id)->delete();
+          $HabReq = HabilidadAnterior::where('hab_id', $hab_id)
+          ->where('hab_ant_id', $hab_id)->first();
+          if($HabReq != null){
 
-        $habilidades = Habilidad::all();
-        $disciplinas = Disciplina::all();
+            $HabReq = HabilidadAnterior::where('hab_id', $hab_id)
+            ->where('hab_ant_id', $hab_id)->delete();
+          }
 
-        Evaluacion::all()->where('hab_id', $hab_id)->delete();
-        return redirect()->route('Habilidades');
 
+          $CamposAd = CampoAdicional::where('hab_id', $hab_id)->first();
+          if($CamposAd != null){
+              $CamposAd = CampoAdicional::where('hab_id', $hab_id)->first()->delete();
+          }
+
+          $evaluaciones = Evaluacion::all()->where('hab_id', $hab_id);
+          if(count($evaluaciones) > 0){
+            $evaluaciones = Evaluacion::where('hab_id', $hab_id)->delete();
+          }
+
+          $habilidades = Habilidad::all();
+          $disciplinas = Disciplina::all();
+
+          return redirect()->route('Habilidades')->with('success_delete_msg', 'Se ha eliminado la habilidad con éxito');
+        }catch(\Throwable $ex){
+          return redirect()->route('Habilidades')->with('error_delete_msg', 'Hubo un error al eliminar la habilidad.');
+        }
     }
 
     public function showUpdate($hab_id){
@@ -66,6 +82,13 @@ class HabilidadesController extends Controller
 
     public function update (Request $request, $id){
 
+        $this->validate($request,[
+            'hab_nombre' => 'required',
+            'dis_id' => 'required',
+            'hab_descripcion' => 'required',
+            'hab_dificultad' => 'required'
+        ]);
+
         $file_img = $request->file('hab_imagen');
         $cad_nombre = $request->input('cad_nombre');
         $cad_contenido = $request->input('cad_contenido');
@@ -78,6 +101,7 @@ class HabilidadesController extends Controller
         $habilidad->dis_id = $request->dis_id;
         $habilidad->hab_dificultad = $request->hab_dificultad;
         $habilidad->hab_descripcion = $request->hab_descripcion;
+
         if ($file_img!=null) {
             Storage::disk('public')->putFileAs('habilidades/'.$habilidad->id, $file_img, $file_name );
             $habilidad->hab_imagen = $file_name;
@@ -86,30 +110,78 @@ class HabilidadesController extends Controller
 
         //$request->file('hab_imagen')->storeAs('local', 'nombrecito.png');
 
-
-
-
         // if $request->habilidadAanterior
-        //modificar $requests
-        $habilidadAnt = HabilidadAnterior::all()->where('hab_id', $id)->first();
-        $habilidadAnt->hab_id = $habilidad->id;
-        $habilidadAnt->hab_ant_id = $request->hab_id;
-        $habilidadAnt->save();
 
-        if($cad_nombre!=null){
-            //modificar $requests
-            $campoAdicional = CampoAdicional::all()->where('hab_id', $id)->first();;
-            $campoAdicional->cad_nombre = $cad_nombre;
-            $campoAdicional->cad_contenido = $cad_contenido;
-            $campoAdicional->hab_id = $habilidad->id;
-            $campoAdicional->save();
+        if($request->hab_id == ""){
+          //Quitar hab hab_ant_id
+          //No hacer nada
+          $habilidadAnt = HabilidadAnterior::all()->where('hab_id', $id)->first();
+          if($habilidadAnt != null){
+              $habilidadAnt = HabilidadAnterior::where('hab_id', $id)->first()->delete();
+          }
+        }else{
+
+          $habilidadAnt = HabilidadAnterior::all()->where('hab_id', $id)->first();
+
+          if($habilidadAnt != null){
+            //Cambiar
+            $habilidadAnt->hab_id = $habilidad->id;
+            $habilidadAnt->hab_ant_id = $request->hab_id;
+            $habilidadAnt->save();
+
+          }else{
+          //dar de alta
+            $newHabilidadAnt = new HabilidadAnterior();
+            $newHabilidadAnt->hab_id = $habilidad->id;
+            $newHabilidadAnt->hab_ant_id = $request->hab_id;
+            $newHabilidadAnt->save();
+          }
         }
-        return redirect()->route('Habilidades');
+
+
+        if($cad_nombre == ""){
+            //modificar $requests
+            $campoAdicional = CampoAdicional::all()->where('hab_id', $id)->first();
+
+            if($campoAdicional != null){
+              $campoAdicional->delete();
+            }
+        }else{
+
+            $campoAdicional = CampoAdicional::all()->where('hab_id', $id)->first();
+            if($campoAdicional != null){
+
+              $campoAdicional->cad_nombre = $cad_nombre;
+              $campoAdicional->cad_contenido = $cad_contenido;
+              $campoAdicional->hab_id = $habilidad->id;
+              $campoAdicional->save();
+
+            }else{
+
+              $newCampoAdicional = new CampoAdicional();
+              $newCampoAdicional->cad_nombre = $cad_nombre;
+              $newCampoAdicional->cad_contenido = $cad_contenido;
+              $newCampoAdicional->hab_id = $habilidad->id;
+              $newCampoAdicional->save();
+
+            }
+        }
+
+        return redirect()->route('Habilidades')->with('flash_message', 'Habilidad modificada con éxito.');
 
     }
 
 
     public function create(Request $request){
+
+        $this->validate($request,[
+            'hab_nombre' => 'required',
+            'dis_id' => 'required',
+            'hab_descripcion' => 'required',
+            'hab_imagen' => 'required',
+            'hab_dificultad' => 'required'
+        ]);
+
         $file_img = $request->file('hab_imagen');
         $cad_nombre = $request->input('cad_nombre');
         $cad_contenido = $request->input('cad_contenido');
@@ -130,12 +202,16 @@ class HabilidadesController extends Controller
 
         // if $request->habilidadAanterior
         //modificar $requests
-        $habilidadAnt = new HabilidadAnterior();
-        $habilidadAnt->hab_id = $habilidad->id;
-        $habilidadAnt->hab_ant_id = $request->hab_id;
-        $habilidadAnt->save();
 
-        if($cad_nombre!=null){
+        if( $request->hab_id != ""){
+          $habilidadAnt = new HabilidadAnterior();
+          $habilidadAnt->hab_id = $habilidad->id;
+          $habilidadAnt->hab_ant_id = $request->hab_id;
+          $habilidadAnt->save();
+        }
+
+
+        if($cad_nombre!= ""){
             //modificar $requests
             $campoAdicional = new CampoAdicional();
             $campoAdicional->cad_nombre = $cad_nombre;
@@ -143,25 +219,30 @@ class HabilidadesController extends Controller
             $campoAdicional->hab_id = $habilidad->id;
             $campoAdicional->save();
         }
-        return redirect()->route('Habilidades');
+
+        return redirect()->route('Habilidades')->with('flash_message', 'Se ha creado la habilidad con éxito');
     }
 
     public function multipleDelte(Request $request){
-        foreach ($request->borrar as $borrar){
 
-            Habilidad::all()->find($borrar)->delete();
-            HabilidadAnterior::where('hab_id', $borrar)
-                ->where('hab_ant_id', $borrar)
-                ->delete();
-            CampoAdicional::where('hab_id', $borrar)->delete();
-            $eva = Evaluacion::where('hab_id', $borrar)->get();
-            foreach ($eva as $e){
-                $e->delete();
-            }
+        try{
+            foreach ($request->borrar as $borrar){
+
+                Habilidad::all()->find($borrar)->delete();
+                HabilidadAnterior::where('hab_id', $borrar)
+                    ->where('hab_ant_id', $borrar)
+                    ->delete();
+                CampoAdicional::where('hab_id', $borrar)->delete();
+                $eva = Evaluacion::where('hab_id', $borrar)->get();
+                foreach ($eva as $e){
+                    $e->delete();
+                }
+              }
+              return redirect()->route('Habilidades')->with('select_success', 'Habilidades eliminadas con éxito.');
+
+        }catch(\Throwable $ex){
+          return redirect()->route('Habilidades')->with('select_error', 'Hubo un error, asegúrate de seleccionar al menos una habilidad .');
         }
-
-
-        return redirect()->route('Habilidades');
     }
 
 }
