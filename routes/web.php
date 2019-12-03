@@ -129,6 +129,7 @@ Route::get('eliminar-alumno/{id}', 'AlumnoController@delete')->name('eliminar-al
 /// visualziar las habilidades disponibles para aprender
 Route::get('habilidades-alumno/{id}', 'AlumnoController@habilidades')->name('habilidades-alumno');
 
+
 /// Funcion /// Eliminar multiples alumnos
 Route::post('eliminar-alumnos', 'AlumnoController@multipleDelte')->name('alumnosDelete');
 
@@ -158,7 +159,7 @@ Route::get('habilidadDelete/{id}', 'Habilidades\HabilidadesController@delete')->
 Route::post('eliminar-habilidades', 'Habilidades\HabilidadesController@multipleDelte')->name('habilidadesDelete');
 
 // Vista // Visualizar detalle de la habilidad
-Route::get('/detalleHabilidad', 'Habilidades\HabilidadesController@detailread')->name('detalle-Habilidad');
+Route::get('/detalleHabilidad/{id}', 'Habilidades\HabilidadesController@detailread')->name('detalle-Habilidad');
 
 /**
 |--------------
@@ -255,6 +256,9 @@ Route::get('/alumno/habilidades', 'Alumno\HabilidadesController@read')->name('al
 
 /// Vista /// Visualizar las evaluaciones por alumno por habilidad
 Route::get('alumno/evaluaciones/{hab_id}', 'Alumno\EvaluacionController@read')->name('alumno-evaluaciones');
+
+// Vista // Visualizar detalle de la habilidad
+Route::get('/alumno/detalleHabilidad/{id}', 'Alumno\HabilidadesController@detailread')->name('alumno-detalle');
 
 /**
 |--------------
