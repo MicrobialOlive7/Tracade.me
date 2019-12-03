@@ -24,7 +24,9 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <select type="ap" name="dis_id" class="form-control" id="dis_id" >
+
+                                <select value="{{old('dis_id')}}" type="ap" name="dis_id" class="form-control" id="dis_id" >
+
                                     <option value="" disabled selected> Disciplina</option>
                                     <option value="1" > Pole Fitness </option>
                                     <option value="2" > Telas Aereas </option>
@@ -81,7 +83,6 @@
                 <!-- Boton para añadir campos adicionales -->
                 <div class="container row" id="remove">
                   <div class="col-md-12 text-left">
-
                       <span class="btn-inner--icon">
                           <a class="btn btn-icon btn-2 btn-outline-info btn-LG" id="añadirHabilidad"role="button" title="AnadirCampo" >
                               <i class="ni ni-fat-add" ></i>
