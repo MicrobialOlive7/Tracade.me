@@ -123,13 +123,13 @@
       </div>
       <div class="modal-footer">
         <span class="btn-inner--icon">
-          <a id="borrar" class="btn btn-icon btn-2 btn-info btn-lg" role="button" title="Eliminar." href="">
+          <button id="borrar" class="btn btn-icon btn-2 btn-info btn-lg" role="button" title="Eliminar." href="">
               {{ __('Sí, eliminar') }}
-          </a>
+          </button>
         </span>
         <span class="btn-inner--icon">
-             <a class="btn btn-icon btn-2 btn-danger btn-lg" role="button" title="Cancelar" href="{{ url('/Habilidades') }}">
-                 {{ __('Cancelar') }}
+            <button type="button" class="btn btn-secondary" data-dismiss="modal"> {{ __('Cancelar') }}</button>
+
              </a>
         </span>
       </div>
