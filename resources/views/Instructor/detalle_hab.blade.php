@@ -37,7 +37,6 @@
                                 </p>
 
                                 @endif
-
                                 <p class="mt-3 mb-0 text-muted text-md text-left">
                                     <span class="h4">Dificultad</span>
                                 </p>
@@ -75,7 +74,7 @@
                                 <p class="mt-3 mb-0 text-muted text-sm text-center">
                                     <video width="100%" height="auto" preload="auto" controls loop muted autoplay>
                              <source src="{{asset('storage/habilidades/'.$habilidad->id.'/'.$habilidad->hab_video)}}" type="video/mp4">
-             
+
                                     </video>
                                 </p>
                             </div>

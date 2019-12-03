@@ -42,12 +42,17 @@
                                 <p class="mt-3 mb-0  text-sm text-left">
                                     <span class="h2 font-weight-bold mb-0">  Detalles de Habilidad </span>
                                 </p>
-                                <p class="mt-3 mb-0 text-muted text-md text-left">
-                                    <span class="h4">Habilidad Anterior</span>
-                                </p>
-                                <p class="mt-3 mb-0 text-muted text-md text-left">
-                                    <span class="text-gray-dark">{{$hab_anterior->hab_nombre}}</span>
-                                </p>
+                                @if($hab_anterior== null)
+                                @else
+                                    <p class="mt-3 mb-0 text-muted text-md text-left">
+                                        <span class="h4">Habilidad Anterior</span>
+                                    </p>
+                                    <p class="mt-3 mb-0 text-muted text-md text-left">
+                                        <span class="text-gray-dark">{{$hab_anterior->hab_nombre}}</span>
+
+                                    </p>
+
+                                @endif
                                 <p class="mt-3 mb-0 text-muted text-md text-left">
                                     <span class="h4">Dificultad</span>
                                 </p>
@@ -116,7 +121,7 @@
                                     <span class="h2 font-weight-bold mb-0"> Foto </span>
                                 </p>
                                 <p class="text-center mt-3 mb-0 text-muted">
-                                    <img class="carousel__image col-7" src="{{asset('storage/habilidades/'.$habilidad->id.'/'.$habilidad->video)}}" alt="costos">
+                                    <img class="carousel__image col-7" src="{{asset('storage/habilidades/'.$habilidad->id.'/principal.jpg')}}" alt="costos">
                                 </p>
 
                             </div>
