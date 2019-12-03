@@ -13,18 +13,24 @@
                         <h3 class="mb-0">Detalle de <strong>{{$habilidad->hab_nombre}}</strong></h3>
                         <th scope="row">
                             <div class="text-center">
+                                @if($evaluation== null)
+                                @else
+                                <p class="mt-3 mb-0  text-sm text-center">
+                                    <span class="h2 font-weight-bold mb-0"> Calificación más reciente </span>
+                                </p>
                                 <div class=" icon-shape">
-                                    @if ($evaluacion->eva_calificacion == 1)
+                                    @if ($evaluation->eva_calificacion == 1)
                                         <i style="font-size: 2.5rem" class=" text-yellow fas fa-star"></i>
-                                    @elseif ($evaluacion->eva_calificacion == 2)
+                                    @elseif ($evaluation->eva_calificacion == 2)
                                         <i style="font-size: 2.5rem" class="text-yellow fas fa-star "></i>
                                         <i style="font-size: 2.5rem" class="text-yellow fas fa-star"></i>
-                                    @elseif ($evaluacion->eva_calificacion == 3)
+                                    @elseif ($evaluation->eva_calificacion == 3)
                                         <i style="font-size: 2.5rem" class="text-yellow fas fa-star "></i>
                                         <i style="font-size: 2.5rem" class="text-yellow fas fa-star"></i>
                                         <i style="font-size: 2.5rem" class="text-yellow fas fa-star "></i>
                                     @endif
                                 </div>
+                                @endif
                             </div>
                         </th>
                         <div class="row">
@@ -111,6 +117,52 @@
                         </div>
                     </div>
                 </div>
+                @if($evaluation== null)
+                @else
+                <div class="card shadow mb-5">
+                    <div class="card-header border-0">
+                        <h3 class="mb-0"> Registro de Evaluaciones</h3>
+                        <div class="row">
+                            <div class="col">
+                                <p class="mt-3 mb-0 text-muted text-md text-center">
+                                <div class="table-responsive">
+                                    <table class="table align-items-center table-flush">
+                                        <thead class="thead-light">
+
+                                        <tr>
+                                            <th scope="col">Fecha</th>
+                                            <th scope="col">Calificacion</th>
+                                            <th scope="col">Comentarios</th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($evaluaciones as $evaluacion)
+                                            <tr>
+                                                <th scope="row">
+                                                    <span class="mb-0 text-sm">{{$evaluacion['created_at']}}</span>
+                                                </th>
+
+                                                <th scope="row">
+                                                    @for($i = 0 ; $i < $evaluacion['eva_calificacion']; $i++)
+                                                        <i class="text-yellow ti-star"></i>
+                                                    @endfor
+                                                </th>
+                                                <th> {{$evaluacion['eva_comentario']}}</th>
+
+                                            </tr>
+
+                                        @endforeach
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    @endif
             </div>
             <div class="col-xl-7 col-lg-6">
                 <div class="card shadow ">
