@@ -264,10 +264,10 @@ Route::get('/alumno/detalleHabilidad/{id}', 'Alumno\HabilidadesController@detail
 Route::post('notasCreate', 'Alumno\notasController@create')->name('notasCreate');
 
 // Funcion // Modificar notas de habilidad
-Route::post('notasModify', 'Alumno\notasController@modify')->name('notasCreate');
+Route::post('notasModify', 'Alumno\notasController@modify')->name('notasModify');
 
 // Funcion // Eliminar notas de habilidad
-Route::post('notasDelete', 'Alumno\notasController@delete')->name('notasCreate');
+Route::post('notasDelete', 'Alumno\notasController@delete')->name('notasDelete');
 
 /**
 |--------------
