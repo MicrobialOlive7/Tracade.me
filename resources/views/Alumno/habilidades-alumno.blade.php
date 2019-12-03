@@ -88,7 +88,9 @@
                                             <a class="avatar rounded-circle mr-3">
                                                 <img alt="Image placeholder" src="{{asset('storage/habilidades/'.$value['id'].'/'.$value['hab_imagen'])}}">
                                             </a>
+                                            <a href="{{route('alumno-detalle', $value['id'])}}">
                                                 <span class="mb-0 text-sm">{{$value['hab_nombre']}}</span>
+                                            </a>
                                         </div>
                                     </th>
                                     <th scope="row">
