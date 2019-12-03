@@ -68,7 +68,7 @@
                                 </p>
                                 <p class="mt-3 mb-0 text-muted text-sm text-center">
                                     <video width="100%" height="auto" preload="auto" controls loop muted autoplay>
-                                        <source src="{{asset('storage/habilidades/'.$habilidad->id.'/'.$habilidad->video)}}" type="video/mov">
+                                        <source src="{{asset('storage/habilidades/'.$habilidad->id.'/'.$habilidad->hab_video)}}" type="video/mov">
                                     </video>
                                 </p>
                             </div>
