@@ -63,6 +63,7 @@ class InitSeeder extends Seeder
         factory(\App\Habilidad::class)->create([
             'hab_nombre' => 'Allegra',
             'hab_imagen' => 'principal.jpg',
+            'hab_video' => 'Allegra_v.mov',
             'dis_id' => $poleId,
             'created_at' => now(),
             'updated_at' => now(),
@@ -71,6 +72,7 @@ class InitSeeder extends Seeder
         factory(\App\Habilidad::class)->create([
             'hab_nombre' => 'Boomerang',
             'hab_imagen' => 'principal.jpg',
+            'hab_video' => 'Bandera_V.mov',
             'dis_id' => $poleId,
             'created_at' => now(),
             'updated_at' => now(),
@@ -79,6 +81,7 @@ class InitSeeder extends Seeder
         factory(\App\Habilidad::class)->create([
             'hab_nombre' => 'Cocoon',
             'hab_imagen' => 'principal.jpg',
+            'hab_video' => 'Cocoon_V.mov',
             'dis_id' => $poleId,
             'created_at' => now(),
             'updated_at' => now(),
@@ -88,6 +91,7 @@ class InitSeeder extends Seeder
         factory(\App\Habilidad::class)->create([
             'hab_nombre' => 'Inversion Basica',
             'hab_imagen' => 'principal.jpg',
+            'hab_video' => 'Inversion_Basica_V.mov',
             'dis_id' => $poleId,
             'created_at' => now(),
             'updated_at' => now(),
@@ -95,6 +99,7 @@ class InitSeeder extends Seeder
         factory(\App\Habilidad::class)->create([
             'hab_nombre' => 'Marley',
             'hab_imagen' => 'principal.jpg',
+            'hab_video' => 'Marley_V.mov',
             'dis_id' => $poleId,
             'created_at' => now(),
             'updated_at' => now(),
@@ -102,6 +107,7 @@ class InitSeeder extends Seeder
         factory(\App\Habilidad::class)->create([
             'hab_nombre' => 'Media Mariposa',
             'hab_imagen' => 'principal.jpg',
+            'hab_video' => 'Media_Mariposa_V.mov',
             'dis_id' => $poleId,
             'created_at' => now(),
             'updated_at' => now(),
@@ -109,6 +115,7 @@ class InitSeeder extends Seeder
         factory(\App\Habilidad::class)->create([
             'hab_nombre' => 'Teddy',
             'hab_imagen' => 'principal.jpg',
+            'hab_video' => 'Teddy_V.mov',
             'dis_id' => $poleId,
             'created_at' => now(),
             'updated_at' => now(),
@@ -116,6 +123,7 @@ class InitSeeder extends Seeder
         factory(\App\Habilidad::class)->create([
             'hab_nombre' => 'Toothbrush',
             'hab_imagen' => 'principal.jpg',
+            'hab_video' => 'Toothbrush_V.mov',
             'dis_id' => $poleId,
             'created_at' => now(),
             'updated_at' => now(),
@@ -129,6 +137,7 @@ class InitSeeder extends Seeder
         factory(\App\Habilidad::class)->create([
             'hab_nombre' => 'Bandera',
             'hab_imagen' => 'principal.jpg',
+            'hab_video' => 'Bandera_V.mov',
             'dis_id' => $TelasId,
             'created_at' => now(),
             'updated_at' => now(),
@@ -137,6 +146,7 @@ class InitSeeder extends Seeder
         factory(\App\Habilidad::class)->create([
             'hab_nombre' => 'Catcher',
             'hab_imagen' => 'principal.jpg',
+            'hab_video' => 'Catcher_V.mov',
             'dis_id' => $TelasId,
             'created_at' => now(),
             'updated_at' => now(),
@@ -145,6 +155,7 @@ class InitSeeder extends Seeder
         factory(\App\Habilidad::class)->create([
             'hab_nombre' => 'Curly Wurly',
             'hab_imagen' => 'principal.jpg',
+            'hab_video' => 'Curly_Wurly_V.mov',
             'dis_id' => $TelasId,
             'created_at' => now(),
             'updated_at' => now(),
@@ -154,6 +165,7 @@ class InitSeeder extends Seeder
         factory(\App\Habilidad::class)->create([
             'hab_nombre' => 'Dislocado',
             'hab_imagen' => 'principal.jpg',
+            'hab_video' => 'Dislocado_V.mov',
             'dis_id' => $TelasId,
             'created_at' => now(),
             'updated_at' => now(),
@@ -161,6 +173,7 @@ class InitSeeder extends Seeder
         factory(\App\Habilidad::class)->create([
             'hab_nombre' => 'Estrella',
             'hab_imagen' => 'principal.jpg',
+            'hab_video' => 'Estrella_V.mov',
             'dis_id' => $TelasId,
             'created_at' => now(),
             'updated_at' => now(),
@@ -168,6 +181,7 @@ class InitSeeder extends Seeder
         factory(\App\Habilidad::class)->create([
             'hab_nombre' => 'Monkey',
             'hab_imagen' => 'principal.jpg',
+            'hab_video' => 'Monkey_V.mov',
             'dis_id' => $TelasId,
             'created_at' => now(),
             'updated_at' => now(),
@@ -175,6 +189,7 @@ class InitSeeder extends Seeder
         factory(\App\Habilidad::class)->create([
             'hab_nombre' => 'Split Balance',
             'hab_imagen' => 'principal.jpg',
+            'hab_video' => 'Split_Balance_V.mov',
             'dis_id' => $TelasId,
             'created_at' => now(),
             'updated_at' => now(),
@@ -182,6 +197,7 @@ class InitSeeder extends Seeder
         factory(\App\Habilidad::class)->create([
             'hab_nombre' => 'Sylph',
             'hab_imagen' => 'principal.jpg',
+            'hab_video' => 'Sylph_V.mov',
             'dis_id' => $TelasId,
             'created_at' => now(),
             'updated_at' => now(),
