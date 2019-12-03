@@ -116,7 +116,7 @@ Route::post('eliminar-grupos', 'Grupos\GruposController@multipleDelte')->name('g
 |--------------
  */
 /// Vista /// Visualizar lista de todos los alumnos registrados
-Route::get('/alumnos', 'AlumnoController@read')->name('alumnos');
+Route::get('/alumnos', 'AlumnoController@read')->name('alumnos')->middleware('auth','admin');
 //--- Modificar ---//
 // Vista
 Route::get('/ModificarAlumno/{id}', 'AlumnoController@showUpdate')->name('modificar-alumno-vista');

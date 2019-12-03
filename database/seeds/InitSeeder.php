@@ -12,6 +12,9 @@ class InitSeeder extends Seeder
      */
     public function run()
     {
+        factory(\App\Plan::class)->create();
+        factory(\App\Academia::class)->create();
+
         /**
          * Creacion de las dos disciplinas principales
          */
@@ -208,6 +211,11 @@ class InitSeeder extends Seeder
          */
 
         factory(\App\Evaluacion::class, 100)->create();
+
+        //administrador
+        factory(\App\Alumno::class)->create([
+            'tipo_usuario' => 'admin'
+        ]);
     }
 
     public function seedAlumno(){

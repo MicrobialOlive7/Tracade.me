@@ -3,9 +3,15 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Contracts\Auth\Guard;
 
 class Admin
 {
+    protected $auth;
+    public function __construct(Guard $auth)
+    {
+        $this -> auth = $auth;
+    }
     /**
      * Handle an incoming request.
      *
@@ -15,6 +21,12 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if($this->auth->user()->tipo_usuario== 'admmin')
+        {
+            return $next($request);
+        }
+        else{
+            abort(403, "No tienes Acceso a esta pagina");
+        }
     }
 }

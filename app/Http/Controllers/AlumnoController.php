@@ -21,7 +21,9 @@ class AlumnoController extends Controller
 
     public function read(){
         //$alumnos = Alumno::all()->forPage(2, 10);
-        $alumnos = Alumno::select('*')->paginate(10);
+        $alumnos = Alumno::select('*')
+            ->where('tipo_usuario', 'alumno')
+            ->paginate(10);
         //return $alumnos;
         $disciplinas = Disciplina::all();
         $dis_alu = DisciplinaAlumno::all();
