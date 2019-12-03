@@ -260,6 +260,15 @@ Route::get('alumno/evaluaciones/{hab_id}', 'Alumno\EvaluacionController@read')->
 // Vista // Visualizar detalle de la habilidad
 Route::get('/alumno/detalleHabilidad/{id}', 'Alumno\HabilidadesController@detailread')->name('alumno-detalle');
 
+// Funcion // Crear notas de habilidad
+Route::post('notasCreate', 'Alumno\notasController@create')->name('notasCreate');
+
+// Funcion // Modificar notas de habilidad
+Route::post('notasModify', 'Alumno\notasController@modify')->name('notasModify');
+
+// Funcion // Eliminar notas de habilidad
+Route::post('notasDelete', 'Alumno\notasController@delete')->name('notasDelete');
+
 /**
 |--------------
 |---- Calendario
