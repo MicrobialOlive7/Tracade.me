@@ -44,6 +44,22 @@ Route::get('/Contacto', 'Corporativa\ContactController@create')->name('contacto'
 Route::post('/Contacto', 'Corporativa\ContactController@store') ->name('contactoCreate');
 /**
 |-------------------------------------------
+| Registro de Usuarios
+|-------------------------------------------
+ */
+Route::get('/RegistroUsuarios', function (){
+    return view('Corporativa.RegistroUsuarios');
+});
+/**
+|-------------------------------------------
+| Resumen de Compra
+|-------------------------------------------
+ */
+Route::get('/Compra', function (){
+    return view('Corporativa.ResumenCompra');
+});
+/**
+|-------------------------------------------
 | Autentificacion de Usuarios
 |-------------------------------------------
  */
@@ -137,8 +153,13 @@ Route::post('habilidadUpdate/{id}', 'Habilidades\HabilidadesController@update')-
 // Funcion
 Route::get('habilidadDelete/{id}', 'Habilidades\HabilidadesController@delete')->name('habilidadDelete');
 
+
 /// Funcion /// Eliminar multiples habilidades
 Route::post('eliminar-habilidades', 'Habilidades\HabilidadesController@multipleDelte')->name('habilidadesDelete');
+
+// Vista // Visualizar detalle de la habilidad
+Route::get('/detalleHabilidad', 'Habilidades\HabilidadesController@detailread')->name('detalle-Habilidad');
+
 /**
 |--------------
 |---- Evaluciones

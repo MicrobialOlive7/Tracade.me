@@ -231,7 +231,19 @@ figure {
 img {
   vertical-align: middle;
   border-style: none;
-  /* width: 100%; */
+}
+
+.five-star-line {
+    height: 30px;
+    background-image: url("../public/img/5-star-rating.png");
+    background-repeat: repeat-x;
+    background-position: center;
+    background-color: transparent;
+    border: none;
+    width: 50%;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 svg {
@@ -337,6 +349,79 @@ legend {
   white-space: normal;
 }
 
+.carousel{
+    position:relative;
+    height: 20rem;
+    width:60%;
+    margin: 0 auto;
+}
+
+.carousel__image{
+    width:100%;
+    height: 20rem;
+    /* object-fit: cover; */
+}
+
+.carousel__track-container{
+    background: lightgreen;
+    padding: 10px;
+    height: 100%;
+    position:relative;
+}
+
+.carousel__track{
+    padding: 0;
+    margin: 0;
+    list-style:none;
+}
+
+.carousel__slide{
+    position: absolute;
+    top:0;
+    botton:0;
+    width:100%;
+}
+
+.carousel__button{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 200px;
+    background: transparent;
+    border:0;
+    cursor: pointer;
+}
+
+.carousel__button--left{
+    left: -40px;
+}
+
+.carousel__button--right{
+    right: -40px;
+}
+.carousel__button img{
+    width: 12px;
+}
+
+.carousel__nav{
+background: pink;
+    display:flex;
+    justify-content:center;
+    padding:10px 0;
+}
+
+.carousel__indicator{
+    border:0;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    background: rgba(0,0,0,.3);
+    margin:0 12px;
+}
+
+.carousel__indicator.current-slide{
+    background: rgba(0,0,0,.75);
+}
 progress {
   vertical-align: baseline;
 }
