@@ -251,6 +251,7 @@ Route::get('/Inicio', 'LineController@index')->name('Inicio');
 |---- Habilidades
 |--------------
  */
+
 // Vista // Visualizar lista de todas las habilidades
 Route::get('/alumno/habilidades', 'Alumno\HabilidadesController@read')->name('alumno-habilidades');
 

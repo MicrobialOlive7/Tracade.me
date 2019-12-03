@@ -124,24 +124,66 @@
             <div class="col-xl-7 col-lg-6">
                 <div class="card shadow mb-3">
                     <div class="card-header border-0">
-                        <div class="text-right">
-                            <span class="btn-inner--icon">
-                                <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Agregar" href="{{ route('crear-nota') }}">
-                                    <i class="ni ni-fat-add" ></i>
-                                </a>
-                            </span>
-                        </div>
                         <h3 class="mb-0"> Mis notas</h3>
                         <div class="row">
                             <div class="col">
-                                <p class="mt-3 mb-0 text-muted text-md text-center">
-                                    <span class="text-gray-dark">DESCRIPCION.</span>
+                                @if($notas->first() == null)
+                                @else
+                                        <div class="table-responsive">
+                                            <table class="table align-items-center table-flush">
+                                                <thead class="thead-light">
+                                                <tr>
+                                                    <th scope="col">Fecha</th>
+                                                    <th scope="col">Comentarios</th>
+                                                    <th class="text-right"></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach($notas as $nota)
+                                                    <tr>
+                                                        <th scope="row">
+                                                            <span class="mb-0 text-sm">{{$nota['created_at']}}</span>
+                                                        </th>
+
+                                                        <th scope="row">
+                                                            @for($i = 0 ; $i < $nota['not_nota']; $i++)
+                                                                <i class="text-yellow ti-star"></i>
+                                                            @endfor
+                                                        </th>
+                                                        <th class="text-right">
+                                                            <div class="dropdown">
+                                                                <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    <i class="fas fa-ellipsis-v"></i>
+                                                                </a>
+                                                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                                    <a class="dropdown-item" href="#">Modificar</a>
+                                                                    <a class="dropdown-item" href="#">Eliminar</a>
+                                                                </div>
+                                                            </div>
+                                                        </th>
+                                                    </tr>
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                @endif
+                                <form method="post" action="{{route('notasCreate')}}">
+                                    {{ csrf_field() }}
+                                <p class="mt-3 mb-4 text-muted text-md text-center">
+                                    <textarea rows="4" class="form-control form-control-alternative" name="nota"></textarea>
                                 </p>
+                                    <input type="hidden"  name="id" >
+                                <div class="text-center">
+                                    <span class="btn-inner--icon">
+                                          <button type="submit" class="btn btn-icon btn-2 btn-info btn-sm">Agregar</button>
+                                     </span>
+                                </div>
+                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
-                @if($evaluation== null)
+                @if($evaluation == null)
                 @else
                 <div class="card shadow mb-3">
                     <div class="card-header border-0">
