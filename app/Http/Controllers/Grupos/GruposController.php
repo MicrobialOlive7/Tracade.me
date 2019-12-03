@@ -16,7 +16,9 @@ class GruposController extends Controller
 {
     public function read(){
         $Grupos = Grupo::select('*')->paginate(5);
-        return view('Instructor.grupos',compact('Grupos') );
+        $alu_gru = GrupoAlumno::all();
+        $alumnos = Alumno::all();
+        return view('Instructor.grupos',compact('Grupos', 'alu_gru', 'alumnos') );
     }
     public function showCreate(){
         $aulas = Aula::all();
@@ -68,7 +70,7 @@ class GruposController extends Controller
         $disciplinas = Disciplina::all();
         $dis_alu = DisciplinaAlumno::all();
         $grupo = Grupo::all()->find($id);
-        $alumnosGrupo = GrupoAlumno::all()->where('gru_id', $id);
+        $alumnosGrupo = GrupoAlumno::select('*')->where('gru_id', $id)->paginate(5,['+'], 'alumnos');
         $alumnosNuevos = DB::table('alumno')
             ->leftJoin('grupo_alumno', function($join)
             {
@@ -79,19 +81,7 @@ class GruposController extends Controller
             ->where('grupo_alumno.alu_id',null)
             ->where('alumno.deleted_at', null)
             ->select('alumno.*')
-            ->get();
-        //$alumnosNuevos= array();
-        //$test = array();
-        /*foreach ($alumnos as $alumno){
-            if(isem$alumnosGrupo->where('alu_id', $alumno->id)){
-                //return $alumnosGrupo->where('alu_id', $alumno->id);
-                array_push($test, $alumno);
-            }else{
-                array_push($alumnosNuevos, $alumno);
-            }
-        }*/
-        //return $test;
-        //return $alumnosNuevos;
+            ->paginate(5,['+'], 'disponibles');
         return view('Instructor.agregarAlumnos', compact('alumnos', 'disciplinas', 'dis_alu', 'id', 'grupo', 'alumnosGrupo', 'alumnosNuevos'));
     }
 
@@ -107,6 +97,18 @@ class GruposController extends Controller
     public function deleteAlumno($id, $gId){
         GrupoAlumno::all()->find($id)->delete();
         return redirect()->route('agregar-alumnos', $gId);
+    }
+
+
+    public function multipleDelte(Request $request){
+        foreach ($request->borrar as $borrar){
+            Grupo::all()->find($borrar)->delete();
+            $alumnos = GrupoAlumno::all()->where('gru_id', $borrar);
+            foreach ($alumnos as $alumno){
+                $alumno->delete();
+            }
+        }
+        return redirect()->route('grupos');
     }
 
 }

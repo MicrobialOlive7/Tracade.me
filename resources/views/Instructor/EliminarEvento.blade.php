@@ -13,10 +13,10 @@
                 @csrf
                 <div class="row ">
                     <div class="col-md-1"></div>
-                    <div class="col-md-10 ">
+                    <div class="col-md-12">
                         <div class="form-group">
                             <div class="input-group mb-3">
-                                <select onchange="" type="ap" class="form-control" id="exampleFormControlInput1" name="id">
+                                <select onchange="" type="ap" class="form-control" id="exampleFormControlInput1" name="id" required>
                                     <option value="" disabled selected>Evento a Eliminar</option>
                                     @foreach($eventos as $evento)
                                         <option value="{{$evento -> id}}">{{$evento -> eve_nombre}}</option>
@@ -34,16 +34,16 @@
                 <div class="col-auto">
                     <div  class="col-md-offset-right-1">
                         <div class="form-group">
-                                    <span class="btn-inner--icon">
-                                        <button type="submit" class="btn btn-icon btn-2 btn-info btn-lg">
-                                            {{ __('Eliminar') }}
-                                        </button>
-                                    </span>
                             <span class="btn-inner--icon">
-                                        <a class="btn btn-icon btn-2 btn-danger btn-lg" role="button" title="Cancelar" href="{{ url('/Calendario') }}">
-                                            {{ __('Cancelar') }}
-                                        </a>
-                                    </span>
+                                <button type="submit" class="btn btn-icon btn-2 btn-info btn-lg">
+                                    {{ __('Eliminar') }}
+                                </button>
+                            </span>
+                            <span class="btn-inner--icon">
+                                <a class="btn btn-icon btn-2 btn-danger btn-lg" role="button" title="Cancelar" href="{{ route('calendario') }}">
+                                    {{ __('Cancelar') }}
+                                </a>
+                            </span>
                         </div>
                     </div>
                 </div>

@@ -24,6 +24,7 @@ class ContactController extends Controller
             $mail->from($request->email, $request->name);
             $mail -> to('fer.peruyero@gmail.com')-> subject('Mensaje de Contacto');
        });
+
        return redirect()->back()->with('flash_message','Gracias por Contactarnos. Nos pondremos en contacto contigo lo más pronto posible.');
     }
 }

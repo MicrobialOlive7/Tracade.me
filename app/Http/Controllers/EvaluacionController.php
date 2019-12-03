@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Alumno;
 use App\Disciplina;
 use App\Evaluacion;
+use App\GrupoAlumno;
 use App\Habilidad;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class EvaluacionController extends Controller
             ->where('alu_id', $alu_id)
             ->where('hab_id', $hab_id)
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->paginate(10);
 
         $alumno = Alumno::all()->find($alu_id);
         $habilidad = Habilidad::all()->find($hab_id);
@@ -61,6 +62,13 @@ class EvaluacionController extends Controller
     public function delete($hab_id, $alu_id, $id){
         Evaluacion::all()->find($id)->delete();
 
+        return redirect()->route('evaluaciones', [$hab_id, $alu_id]);
+    }
+
+    public function multipleDelte(Request $request, $hab_id, $alu_id){
+        foreach ($request->borrar as $borrar){
+            Evaluacion::all()->find($borrar)->delete();
+        }
         return redirect()->route('evaluaciones', [$hab_id, $alu_id]);
     }
 }

@@ -49,7 +49,7 @@
                                               <img alt="Image placeholder" src="{{asset('storage/habilidades/'.$value['id'].'/'.$value['hab_imagen'])}}">
                                           </a>
                                           <div class="media-body">
-                                              <span class="mb-0 text-sm">{{$value['hab_nombre']}}</span>
+                                                  <span class="mb-0 text-sm">{{$value['hab_nombre']}}</span>
                                           </div>
                                       </div>
                                   </th>

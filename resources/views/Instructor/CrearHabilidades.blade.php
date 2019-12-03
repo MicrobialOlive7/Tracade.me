@@ -9,7 +9,11 @@
         <div class="card shadow">
             <div class="card-header border-0">
                 <h3 class="mb-0">Habilidades</h3>
-            </div>
+                @if($errors->any())
+                <div class="alert alert-danger" role="alert">
+                    <strong>Ups!</strong> Hay errores en tu registro, verifica todos los campos.
+                </div>
+                @endif
             <!-- Inicia Form -->
             <form method='POST' action="{{route('habilidadCreate')}}" enctype="multipart/form-data">
               @csrf
@@ -19,12 +23,11 @@
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input type="nombre" class="form-control " id="hab_nombre" placeholder="Nombre" name="hab_nombre" >
+                                <input type="nombre" value ="{{old('hab_nombre')}}" class="form-control " id="hab_nombre" placeholder="Nombre" name="hab_nombre" >
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-
                                 <select value="{{old('dis_id')}}" type="ap" name="dis_id" class="form-control" id="dis_id" >
 
                                     <option value="" disabled selected> Disciplina</option>
@@ -35,7 +38,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <select type="ap" name="hab_dificultad" class="form-control" id="hab_dificultad" >
+                                <select type="ap" value="{{old('hab_dificultad')}}" name="hab_dificultad" class="form-control" id="hab_dificultad" >
                                     <option value="" disabled selected>Dificultad</option>
                                     <option value="1" > Principiante </option>
                                     <option value="2" > Intermedio </option>
@@ -54,13 +57,13 @@
                     <div class="row justify-content-md-start">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <textarea class="form-control" name="hab_descripcion" id="hab_descripcion" rows="3" placeholder="Descripción ..."> </textarea>
+                                <textarea class="form-control" name="hab_descripcion" id="hab_descripcion" rows="3" placeholder="Descripción ..."> {{old('hab_descripcion')}} </textarea>
                             </div>
                         </div>
                         <!-- Inicia Seccion Habilidades requeridas -->
                         <div class="col-md-6">
                             <div class="form-group">
-                                <select type="ap" class="form-control" id="hab_id" name="hab_id" >
+                                <select type="ap" value="{{old('hab_id')}}" class="form-control" id="hab_id" name="hab_id" >
                                     <option value="" disabled selected> Habilidad Requerida</option>
                                     <option value=""> Sin habilidad</option>
                                     @foreach($habilidades as $key => $value)
@@ -102,8 +105,16 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- Inician Botones de Guardado -->
+
+                    <div class="container">
+                        <div class="row justify-content-md-start">
+                            <div class="col">
+                                <div class="form-group">
+                                    <input type="file" id="video" name="video" accept="video/*">
+                                </div>
+                            </div>
+                        </div>
+                    </div>                <!-- Inician Botones de Guardado -->
                 <div class="container">
                     <div class="row justify-content-md-center">
                         <div class="col-auto">

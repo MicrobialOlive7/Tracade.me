@@ -9,6 +9,12 @@
         <div class="card shadow">
             <div class="card-header border-0">
                 <h3 class="mb-0">Habilidades</h3>
+                @if($errors->any())
+                <div class="alert alert-danger" role="alert">
+                    <strong>Ups!</strong> Hay un error en el registro, verificar los datos.
+                </div>
+                @endif
+
             </div>
             <!-- Inicia Form -->
             <form method='POST' action="{{route('habilidadUpdate', $hab_id)}}" enctype="multipart/form-data">
@@ -58,7 +64,7 @@
                         <!-- Inicia Seccion Habilidades requeridas -->
                         <div class="col-md-6">
                             <div class="form-group">
-                                <select value="{{$HabReq->hab_ant_id}}" type="ap" class="form-control" id="hab_id" name="hab_id" >
+                                <select @if($HabReq == null) value="" @else value="{{$HabReq->hab_ant_id}}" @endif type="ap" class="form-control" id="hab_id" name="hab_id" >
                                     <option value="" disabled > Habilidad Requerida</option>
                                     <option value=""> Sin habilidad</option>
                                     @foreach($Habilidades as $key => $value)
@@ -80,7 +86,7 @@
 
                 @if($CamposAd == null)
                 <div id="campos_adicionales">
-                <div>
+                </div>
                 <div class="container row" id="remove">
                   <div class="col-md-12 text-left">
 
@@ -122,6 +128,7 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- Inician Botones de Guardado -->
                 <div class="container">
                     <div class="row justify-content-md-center">

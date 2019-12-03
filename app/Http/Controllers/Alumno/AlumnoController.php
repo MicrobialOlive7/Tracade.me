@@ -20,7 +20,5 @@ class AlumnoController extends Controller
         $alumno->save();
 
         return redirect()->route('alumno-perfil');
-
-
     }
 }

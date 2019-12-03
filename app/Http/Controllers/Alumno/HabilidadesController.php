@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HabilidadesController extends Controller
 {
@@ -48,6 +49,14 @@ class HabilidadesController extends Controller
 
     }
 
+    public function detailread($id){
+
+        $habilidad = Habilidad::all()->find($id);
+        $hab_anterior = DB::table('habilidad_anterior')->join('habilidad', 'hab_id', '=', 'habilidad.id') -> get() -> first();
+        $evaluacion = DB::table('habilidad')->join('evaluacion', 'habilidad.id', '=', 'hab_id') -> where('alu_id', $id) -> orderBy('evaluacion.created_at','desc')->get() -> first();
+
+        return view('Alumno.detalle_hab', compact('habilidad', 'hab_anterior','evaluacion'));
+    }
 
 
 

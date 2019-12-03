@@ -1,6 +1,6 @@
 @extends('Instructor.templates.master')
 @extends('layouts.modal')
-@section('hab-active', 'active')
+@section('alu-active', 'active')
 @section('content')
     <!-- Header -->
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8"> </div>
@@ -10,8 +10,14 @@
             <div class="col">
                 <div class="card shadow">
                     <div class="card-header border-0">
-                        <h3 class="mb-0">Habilidades realizadas por <strong>{{$alumno->alu_nombre}}</strong></h3>
-
+                        <div class="media align-items-center">
+                            <a href="#" class="avatar rounded-circle mr-3">
+                                <img alt="Image placeholder" src="{{asset('storage/alumnos/'.$alumno->id.'/perfil.png')}}">
+                            </a>
+                            <div class="media-body">
+                                <h3 class="mb-0">{{$alumno->alu_nombre}}</h3><p>Habilidades en practica</p>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="table-responsive">
@@ -38,13 +44,11 @@
                                               <img alt="Image placeholder" src="{{asset('storage/habilidades/'.$value['id'].'/'.$value['hab_imagen'])}}">
                                           </a>
                                           <div class="media-body">
-                                              @if($evaluaciones->where('hab_id', $value['id'])->first()->eva_calificacion != 3)
+
                                               <a href="{{route('evaluaciones', [$value['id'], $alumno['id']])}}">
                                                 <span class="mb-0 text-sm">{{$value['hab_nombre']}}</span>
                                               </a>
-                                                  @else
-                                                  <span class="mb-0 text-sm">{{$value['hab_nombre']}}</span>
-                                              @endif
+
                                           </div>
                                       </div>
                                   </th>

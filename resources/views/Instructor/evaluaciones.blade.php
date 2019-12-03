@@ -1,6 +1,6 @@
 @extends('Instructor.templates.master')
 @extends('layouts.modal')
-@section('hab-active', 'active')
+@section('alu-active', 'active')
 @section('content')
     <!-- Header -->
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8"> </div>
@@ -8,27 +8,41 @@
         <!-- Table -->
         <div class="row">
             <div class="col">
+                <form action="{{route('evaluacionesDelete', [$habilidad->id, $alumno->id])}}" method="POST">
+                    @csrf
                 <div class="card shadow">
+
                     <div class="card-header border-0">
+
+                        <div class="mb-4">
+                            <a href="{{route('habilidades-alumno', $alumno->id)}}">
+                                <i class="text-pink ti-back-left" style="font-size: 16px"></i>
+                                <span class="mb-0 " style="font-size: 16px">{{$alumno->alu_nombre}} {{$alumno->alu_apellido_paterno}}</span>
+                            </a>
+                        </div>
+
                         <div class="media align-items-center">
                             <a href="#" class="avatar rounded-circle mr-3">
                                 <img alt="Image placeholder" src="{{asset('storage/habilidades/'.$habilidad['id'].'/'.$habilidad['hab_imagen'])}}">
                             </a>
                             <div class="media-body">
-                                <h3 class="mb-0">{{$habilidad->hab_nombre}}</h3>
+                                <h3 class="mb-0">{{$habilidad->hab_nombre}}</h3><p>Registro de evaluaciones</p>
                             </div>
                         </div>
 
+
                         <div class="col text-right">
+                            @if(!$evaluaciones->where('hab_id', $habilidad->id)->where('eva_calificacion',3)->count())
                             <span class="btn-inner--icon">
                                 <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Agregar" href="{{ route('evaluar', [$habilidad->id, $alumno->id]) }}">
                                     <i class="ni ni-fat-add" ></i>
                                 </a>
                             </span>
-                            <span class="btn-inner--icon">
-                                <a class="btn btn-icon btn-2 btn-danger btn-sm" role="button" title="Eliminación Masiva" href="{{ url('') }}">
+                            @endif
+                                <span class="btn-inner--icon">
+                                <button type="submit" class="btn btn-icon btn-2 btn-danger btn-sm">
                                     <i class="ni ni-fat-remove" ></i>
-                                </a>
+                                </button>
                             </span>
                         </div>
                     </div>
@@ -38,7 +52,7 @@
                             <thead class="thead-light">
 
                             <tr>
-                                <th scope="col"> <input type="checkbox"></th>
+                                <th scope="col"> <input type="checkbox" id="borrarTodo" name="borrarTodo"></th>
                                 <th scope="col">Fecha</th>
                                 <th scope="col">Calificacion</th>
                                 <th scope="col">Comentarios</th>
@@ -50,7 +64,7 @@
 
                               @foreach($evaluaciones as $evaluacion)
                               <tr>
-                                <td> <input type="checkbox"></td>
+                                  <td><input type="checkbox" name="borrar[]" value="{{$evaluacion->id}}"></td>
                                   <th scope="row">
                                       <span class="mb-0 text-sm">{{$evaluacion['created_at']}}</span>
                                   </th>
@@ -68,7 +82,7 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                             <a class="dropdown-item" href="{{route('modificar-evaluacion', [$habilidad->id, $alumno->id, $evaluacion->id])}}">Modificar</a>
-                                            <a class="dropdown-item" href="{{route('evaluacionDelete', [$habilidad->id, $alumno->id, $evaluacion->id])}}" onclick="" >Eliminar</a>
+                                            <a class="dropdown-item" onclick="eliminarEvaluacion('{{$habilidad->id}}', '{{$alumno->id}}', '{{$evaluacion->id}}')" >Eliminar</a>
                                         </div>
                                     </div>
                                 </td>
@@ -79,9 +93,10 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="card-header border-0">
-
-                    </div>
+                    </form>
+                <div class="card-header border-0">
+                    {{ $evaluaciones->links() }}
+                </div>
                 </div>
             </div>
         </div>
@@ -94,13 +109,13 @@
 
 <script type="text/javascript">
 
-function  eliminarHabilidad(hab_nombre, hab_id){
+function  eliminarEvaluacion(hab_id, alu_id, eva_id){
 
-  $("#delete_modal").modal().find('.modal-title').text('Eliminar habilidad');
-  $("#delete_modal").modal().find('.message-text').empty();
-  $("#delete_modal").modal().find('.message-text').append('¿Estás seguro de eliminar la habilidad ' + hab_nombre + '?');
-  $("#delete_modal").modal().find('#borrar').val(hab_id);
-  $("#delete_modal").modal().find('#borrar').attr("href", "" + '/' + hab_id );
+  $("#eliminar_evaluacion").modal().find('.modal-title').text('Eliminar evaluación');
+  $("#eliminar_evaluacion").modal().find('.message-text').empty();
+  $("#eliminar_evaluacion").modal().find('.message-text').append('¿Estás seguro de eliminar esta evaluación?');
+  $("#eliminar_evaluacion").modal().find('#eliminar').val(hab_id);
+  $("#eliminar_evaluacion").modal().find('#eliminar').attr("href", "{{asset('evaluacionDelete')}}" + "/" + hab_id +"/"+ alu_id +"/"+ eva_id );
 
 }
 </script>
