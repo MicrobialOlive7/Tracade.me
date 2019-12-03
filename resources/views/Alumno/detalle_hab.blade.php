@@ -117,7 +117,7 @@
                                     <span class="h2 font-weight-bold mb-0"> Foto </span>
                                 </p>
                                 <p class="text-center mt-3 mb-0 text-muted">
-                                    <img class="carousel__image col-7" src="{{asset('storage/habilidades/'.$habilidad->id.'/'.$habilidad->hab_video)}}" alt="costos">
+                                    <img class="carousel__image col-7" src="{{asset('storage/habilidades/'.$habilidad->id.'/'.$habilidad->video)}}" alt="costos">
                                 </p>
 
                             </div>

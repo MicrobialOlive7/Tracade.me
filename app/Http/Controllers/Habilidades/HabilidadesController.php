@@ -193,8 +193,8 @@ class HabilidadesController extends Controller
         $cad_contenido = $request->input('cad_contenido');
         $file_name = 'principal.'.$file_img->getClientOriginalExtension();
 
-        $file_video = $request->file('hab_video');
-        $name = $_FILES['hab_video']['name'];
+        $file_video = $request->file('video');
+        $name = $_FILES['video']['name'];
         $videoname = explode(".", $name);
 
         $filename =$videoname[0].'.'.$file_video->getClientOriginalExtension();
@@ -206,7 +206,7 @@ class HabilidadesController extends Controller
         $habilidad->hab_dificultad = $request->hab_dificultad;
         $habilidad->hab_descripcion = $request->hab_descripcion;
         $habilidad->hab_imagen = $file_name;
-        $habilidad->hab_video = $filename;
+        $habilidad->video = $filename;
         $habilidad->save();
 
         //$request->file('hab_imagen')->storeAs('local', 'nombrecito.png');
