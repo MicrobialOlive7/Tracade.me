@@ -9,6 +9,11 @@
         <div class="card shadow">
             <div class="card-header border-0">
                 <h3 class="mb-0">Grupos</h3>
+                @if($errors->any())
+                <div class="alert alert-danger" role="alert">
+                    <strong>Ups!</strong> Hay errores en tu registro, verifica todos los campos.
+                </div>
+                @endif
             </div>
          <!-- Inicia Form -->
             <form method="POST" action="{{route('grupoCreate')}}">
@@ -19,13 +24,13 @@
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="gru_nombre" name="gru_nombre" value="" placeholder="Nombre" required>
+                                <input type="text" class="form-control" id="gru_nombre" name="gru_nombre" value="{{old('gru_nombre')}}" placeholder="Nombre" required>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <div class="input-group md-4">
-                                    <select class="form-control" id="gru_dia" name="gru_dia" required>
+                                    <select class="form-control" value="{{old('gru_dia')}}" id="gru_dia" name="gru_dia" required>
                                         <option value="" selected>Día</option>
                                         <option value="Lunes"> Lunes </option>
                                         <option value="Martes"> Martes </option>
@@ -40,7 +45,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <div class="input-group md-4">
-                                    <select class="form-control" id="id_disciplina" name="dis_id" required>
+                                    <select class="form-control" id="dis_id" name="dis_id" value="{{old('dis_id')}}" required>
                                         <option value="" selected>Disciplina</option>
                                         @foreach($disciplinas as $disciplina)
                                             <option value="{{$disciplina->id}}"> {{$disciplina->dis_nombre}} </option>
@@ -64,7 +69,7 @@
                         <div class="col-md-5">
                             <div class="form-group">
                                 <div class="input-group md-4">
-                                    <select class="form-control" id="id_aula" name="aul_id">
+                                    <select class="form-control" value="{{old('aul_id')}}" id="aul_id" name="aul_id" required>
                                         <option value="" selected >Aula</option>
                                         @foreach($aulas as $aula)
                                             <option value="{{$aula->id}}"> {{$aula->aul_salon}}</option>
@@ -76,7 +81,7 @@
 
 
                         <div class="col-auto">
-                            <select class="form-control" id="hora" name="hora" required>
+                            <select class="form-control" value="{{old('gru_hora')}}" id="gru_hora" name="gru_hora" required>
                                 <option value="" selected>Hora</option>
                                 <option value="01" > 01 </option>
                                 <option value="02" > 02 </option>
@@ -96,7 +101,7 @@
                         <div class="col-xs-1">:</div>
 
                         <div class="col-auto">
-                            <input class="form-control" id="gru_minutos_de" placeholder="Min" type="number" max="59" min="00" name="min" required>
+                            <input class="form-control" id="gru_min" value="{{old('gru_min')}}" placeholder="Min" type="number" max="59" min="00" name="gru_min" required>
                         </div>
 
 

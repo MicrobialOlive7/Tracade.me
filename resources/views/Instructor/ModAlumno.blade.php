@@ -8,6 +8,11 @@
         <div class="card shadow">
             <div class="card-header border-0">
                 <h3 class="mb-0">Alumnos</h3>
+                @if($errors->any())
+                <div class="alert alert-danger" role="alert">
+                    <strong>Ups!</strong> Hay errores en tu registro, verifica todos los campos.
+                </div>
+                @endif
             </div>
             <form method="POST" action="{{route('modificar-alumno', $id)}}">
                 @csrf

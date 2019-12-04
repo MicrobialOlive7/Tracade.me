@@ -127,11 +127,11 @@ function  eliminarHabilidad(hab_nombre, hab_id){
 }
 
 function eliminarHabilidades(){
-  $("#delete_modal").modal().find('.modal-title').text('Eliminar habilidades');
-  $("#delete_modal").modal().find('.message-text').empty();
-  $("#delete_modal").modal().find('.message-text').append('¿Estás seguro de eliminar las habilidades seleccionadas?');
-  $("#delete_modal").modal().find('#borrar').val();
-  $("#delete_modal").modal().find('#borrar').attr("onclick", "$('#masivo').submit()" );
+  $("#delete_masivo_modal").modal().find('.modal-title').text('Eliminar habilidades');
+  $("#delete_masivo_modal").modal().find('.message-text').empty();
+  $("#delete_masivo_modal").modal().find('.message-text').append('¿Estás seguro de eliminar las habilidades seleccionadas?');
+  $("#delete_masivo_modal").modal().find('#borrar').val();
+  $("#delete_masivo_modal").modal().find('#borrar').attr("onclick", "$('#masivo').submit()" );
 }
 </script>
 

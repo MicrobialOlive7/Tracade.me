@@ -41,6 +41,19 @@ class AlumnoController extends Controller
     }
 
     public function update(Request $request, $id){
+
+
+      try{
+
+
+        $this->validate($request,[
+            'name' => 'required',
+            'email' => 'required',
+            'alu_apellido_paterno' => 'required',
+            'alu_apellido_materno' => 'required',
+            'alu_fecha_nacimiento' => 'required'
+        ]);
+
         $alumno = Alumno::all()->find($id);
         $alumno->alu_nombre = $request['name'];
         $alumno->email = $request['email'];
@@ -49,16 +62,29 @@ class AlumnoController extends Controller
         $alumno->alu_fecha_nacimiento = $request['alu_fecha_nacimiento'];
         $alumno->save();
 
-        return redirect()->route('alumnos');
+        return redirect()->route('alumnos')->with('flash_message', 'Alumno actualizado con éxito.');
+
+      }catch(\Throwable $ex){
+        dd($ex);
+        return redirect()->route('alumnos')->with('error_message', 'Hubo un error al actualizar el alumno, intenta más tarde.');
+      }
+
     }
 
     public function delete($id){
+
+      try{
+
         Alumno::all()->find($id)->delete();
         $grupos = GrupoAlumno::all()->where('alu_id', $id);
         foreach ($grupos as $grupo){
             $grupo->delete();
         }
-        return redirect()->route('alumnos');
+          return redirect()->route('alumnos')->with('flash_message', 'Alumno eliminado con éxito.');
+      }catch(\Throwable $ex){
+        return redirect()->route('alumnos')->with('error_message', 'Hubo un error, inténtalo más tarde.');
+      }
+
     }
 
 
@@ -91,6 +117,9 @@ class AlumnoController extends Controller
     }
 
     public function multipleDelte(Request $request){
+
+      try{
+
         foreach ($request->borrar as $borrar){
             Alumno::all()->find($borrar)->delete();
             $grupos = GrupoAlumno::all()->where('alu_id', $borrar);
@@ -99,7 +128,16 @@ class AlumnoController extends Controller
             }
 
         }
-        return redirect()->route('alumnos');
+
+        return redirect()->route('alumnos')->with('flash_message', 'Alumnos eliminados con éxito');
+
+      }catch(\Throwable $ex){
+
+        return redirect()->route('alumnos')->with('error_message', 'Hubo un error, asegúrate de seleccionar al menos un alumno.');
+
+      }
+
+
     }
 
 }

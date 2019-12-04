@@ -9,6 +9,11 @@
         <div class="card shadow">
             <div class="card-header border-0">
                 <h3 class="mb-0">Evaluar <strong>{{$habilidad->hab_nombre}}</strong> de <strong>{{$alumno->alu_nombre}} {{$alumno->alu_apellido_paterno}}</strong></h3>
+                @if($errors->any())
+                <div class="alert alert-danger" role="alert">
+                    <strong>Ups!</strong> Hay errores en tu registro, verifica todos los campos.
+                </div>
+                @endif
             </div>
             <!-- Inicia Form -->
             <form method="POST" action="{{route('evaluacionUpdate', [$evaluacion->id, $habilidad->id, $alumno->id])}}">
@@ -66,4 +71,3 @@
         </div>
     </div>
 @endsection
-

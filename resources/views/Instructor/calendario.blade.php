@@ -11,6 +11,11 @@
                 <div class="card shadow">
                     <div class="card-header border-0">
                         <h3 class="mb-0">Calendario</h3>
+                        @if(Session::has('flash_message'))
+                        <div class="alert alert-success">{{Session::get('flash_message')}}</div>
+                        @elseif(Session::has('error_message'))
+                        <div class="alert alert-danger">{{Session::get('error_message')}}</div>
+                        @endif
                         <div class="col text-right">
                             <span class="btn-inner--icon">
                                 <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Agregar" href="{{ route('crear-evento') }}">
@@ -35,4 +40,3 @@
     </div>
     </div>
 @endsection
-
