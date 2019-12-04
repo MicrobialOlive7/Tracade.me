@@ -88,7 +88,7 @@
                                 </div>
                                 <!-- // pricing-plan-list -->
                                 <div class="landy-content-button text-uppercase">
-                                    <a href="#">CONTRATAR AHORA</a>
+                                    <a href="{{route('compra')}}">CONTRATAR AHORA</a>
                                 </div>
                             </div>
                         </div>

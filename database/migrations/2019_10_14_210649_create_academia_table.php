@@ -21,7 +21,7 @@ class CreateAcademiaTable extends Migration
             $table->date('aca_fecha_corte');
             $table->decimal('aca_adeudo');
 
-            $table->unsignedBigInteger('pla_id');
+            $table->unsignedBigInteger('pla_id')->nullable();
             $table->foreign('pla_id')->references('id')->on('plan');
 
             $table->timestamps();

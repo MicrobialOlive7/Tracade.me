@@ -36,7 +36,7 @@ Route::get('/Nosotros', function (){
 //Pagina de precios
 Route::get('/Precios', function (){
     return view('Corporativa.Precios');
-});
+})->name('precios');
 //Pagina de contacto
 //Desplieg la view
 Route::get('/Contacto', 'Corporativa\ContactController@create')->name('contacto');
@@ -47,15 +47,14 @@ Route::post('/Contacto', 'Corporativa\ContactController@store') ->name('contacto
 | Registro de Usuarios
 |-------------------------------------------
  */
-Route::get('/RegistroUsuarios', function (){
-    return view('Corporativa.RegistroUsuarios');
-});
+// Auth routes
 /**
 |-------------------------------------------
 | Resumen de Compra
 |-------------------------------------------
  */
-Route::get('compra/{planID}', 'PagoController@show')->name('compra');
+Route::get('compra/{planID?}', 'PagoController@show')->name('compra')->middleware('auth', 'admin');
+Route::get('plan-contratado/{planID}/{acaID}', 'PagoController@register')->name('plan-contratado');
 /**
 |-------------------------------------------
 | Autentificacion de Usuarios

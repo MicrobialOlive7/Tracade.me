@@ -12,7 +12,26 @@ class InitSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Plan::class)->create();
+        factory(\App\Plan::class)->create([
+            'pla_nombre' => 'Estandar',
+            'pla_tipo_plan' => 'fijo',
+            'pla_precio' => 400,
+            'pla_numero_alumnos' => 50,
+            'pla_descripcion' => 'Capacidad de hasta 50 alumnos.
+                Capacitación a director de academia.
+                Soporte técnico de por vida.'
+        ]);
+
+        factory(\App\Plan::class)->create([
+            'pla_nombre' => 'Supremo',
+            'pla_tipo_plan' => 'fijo',
+            'pla_precio' => 800,
+            'pla_numero_alumnos' => 100,
+            'pla_descripcion' => 'Capacidad de hasta 100 alumnos.
+                Capacitación a director de academia.
+                Capacitación de hasta 5 instructores.
+                Soporte técnico de por vida.'
+        ]);
         factory(\App\Academia::class)->create();
 
         /**
@@ -227,19 +246,7 @@ class InitSeeder extends Seeder
             'password' => bcrypt('alumno'),
         ]);
 
-        factory(\App\Plan::class)->create([
-            'pla_nombre' => 'Estandar',
-            'pla_tipo_plan' => 'fijo',
-            'pla_precio' => 400,
-            'pla_numero_alumnos' => 50,
-        ]);
 
-        factory(\App\Plan::class)->create([
-            'pla_nombre' => 'Supremo',
-            'pla_tipo_plan' => 'fijo',
-            'pla_precio' => 800,
-            'pla_numero_alumnos' => 100,
-        ]);
     }
 
     public function seedAlumno(){

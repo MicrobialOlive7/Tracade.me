@@ -93,6 +93,9 @@
 
                             <!-- Inicia Boton login -->
                             <div class="form-group row mb-5">
+                                <div class="row justify-content-center, mb-3">
+                                    <p class="text-lead text-light">No tienes cuenta? <a href="{{route('register')}}">Unete</a></p>
+                                </div>
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary" id="submit">
                                         {{ __('Login') }}
