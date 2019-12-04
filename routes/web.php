@@ -301,9 +301,7 @@ Route::get('/alumno/politicas', function (){
 |--------------
  */
 
-Route::get('alumno/perfil', function (){
-    return view('Alumno.perfil');
-})->name('alumno-perfil')->middleware('auth', 'alumno');
+Route::get('alumno/perfil', 'Alumno\AlumnoController@showPerfil')->name('alumno-perfil')->middleware('auth', 'alumno');
 
 Route::post('alumno/updatePerfil', 'Alumno\AlumnoController@update')->name('perfilAlumnoUpdate')->middleware('auth', 'alumno');
 

@@ -35,7 +35,7 @@ class HabilidadesController extends Controller
 
         $habilidad = Habilidad::all()->find($id);
         //$hab_anterior = DB::table('habilidad_anterior')->join('habilidad', 'hab_id', '=', 'habilidad.id') -> get() -> first();
-        
+
         if(HabilidadAnterior::all()->where('hab_id', $id)->count() != 0)
             $hab_anterior = Habilidad::all()->where('id', HabilidadAnterior::all()->where('hab_id', $id)->first()->hab_ant_id)->first();
         else

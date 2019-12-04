@@ -41,7 +41,7 @@
                                 <i class="ni business_briefcase-24 mr-2"></i>Disciplina
                             </div>
                             <div>
-                                <i class="ni education_hat mr-2"></i>Disciplinaa
+                                <i class="ni education_hat mr-2"></i>{{$disciplina->dis_nombre}}
                             </div>
 
                             <hr class="my-4" />
