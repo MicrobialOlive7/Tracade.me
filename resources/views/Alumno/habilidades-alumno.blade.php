@@ -26,8 +26,6 @@
                             </tr>
                             </thead>
                             <tbody>
-
-
                               @foreach($hab_apr as $key => $value)
                               <tr>
 
@@ -37,8 +35,8 @@
                                               <img alt="Image placeholder" src="{{asset('storage/habilidades/'.$value['id'].'/'.$value['hab_imagen'])}}">
                                           </a>
                                           <div class="media-body">
-                                              <a href="{{route('alumno-evaluaciones', $value['id'])}}">
-                                                <span class="mb-0 text-sm">{{$value['hab_nombre']}}</span>
+                                              <a href="{{route('alumno-detalle', $value['id'])}}">
+                                                  <span class="mb-0 text-sm">{{$value['hab_nombre']}}</span>
                                               </a>
                                           </div>
                                       </div>
