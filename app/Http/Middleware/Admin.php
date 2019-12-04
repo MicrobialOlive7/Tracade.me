@@ -23,10 +23,10 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        $academia = Academia::all()->where('id', Auth::user()->aca_id)->first();
 
         if($this->auth->user()->tipo_usuario == 'admin')
         {
+            $academia = Academia::all()->where('id', Auth::user()->aca_id)->first();
             //return $next($request);
 
             switch ($academia->aca_status ){

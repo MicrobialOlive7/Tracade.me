@@ -55,6 +55,7 @@ Route::post('/Contacto', 'Corporativa\ContactController@store') ->name('contacto
  */
 Route::get('compra/{planID?}', 'PagoController@show')->name('compra')->middleware('auth', 'admin');
 Route::get('plan-contratado/{planID}/{acaID}', 'PagoController@register')->name('plan-contratado');
+Route::get('crear-plan/{acaID}/{precio}', 'PagoController@create')->name('planCreate');
 /**
 |-------------------------------------------
 | Autentificacion de Usuarios
@@ -72,9 +73,9 @@ Auth::routes();
  */
 Route::get('/inicio', 'LineController@index')->name('inicio')->middleware('auth', 'admin');
 
-Route::get('/perfil', function (){
-    return view('Instructor.perfil');
-})->name('perfil')->middleware('auth', 'admin');
+Route::get('/perfil', 'AdministradorController@showPerfil')->name('perfil')->middleware('auth', 'admin');
+
+Route::post('adminUpdate', 'AdministradorController@update')->name('adminUpdate');
 /**
 |--------------
 |---- Grupos

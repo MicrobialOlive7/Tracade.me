@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use LasseRafn\InitialAvatarGenerator\InitialAvatar;
+use Psy\Input\CodeArgument;
 
 class RegisterController extends Controller
 {
@@ -72,11 +73,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $corte15 = Carbon::create(null, null, 15);
+        $corte1 = Carbon::create(null, null, 1);
+        if($corte15->diffInDays(Carbon::now()) < $corte1->diffInDays(Carbon::now()))
+            $corte = $corte15;
+        else
+            $corte = $corte1;
 
         $academia = Academia::create([
             'aca_nombre' => $data['academia'],
             'aca_status' => 'creada',
-            'aca_fecha_corte' => Carbon::now(),
+            'aca_fecha_corte' => $corte,
             'aca_num_alumnos' => 0,
             'aca_adeudo' => 0.00,
         ]);

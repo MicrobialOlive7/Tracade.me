@@ -7,6 +7,7 @@ use App\Pago;
 use App\Plan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PagoController extends Controller
 {
@@ -32,8 +33,19 @@ class PagoController extends Controller
 
         $academia = Academia::all()->find($acaID);
         $academia->aca_status = 'activa';
+        $academia->pla_id = $planID;
         $academia->save();
         return redirect()->route('inicio');
 
+    }
+
+    public function create($acaID, $precio){
+        $pago = new Pago([
+            'pag_fecha' => Carbon::now(),
+            'pag_cantidad' => $precio,
+            'aca_id' => $acaID,
+        ]);
+        $pago->save();
+        return redirect()->route('perfil');
     }
 }

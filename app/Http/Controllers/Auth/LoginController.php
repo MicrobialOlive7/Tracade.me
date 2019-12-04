@@ -47,9 +47,8 @@ class LoginController extends Controller
 
     protected function authenticated() {
         if (Auth::check()) {
-            $academia = Academia::all()->where('id', Auth::user()->aca_id)->first();
             if(Auth::user()->tipo_usuario == 'admin'){
-
+                $academia = Academia::all()->where('id', Auth::user()->aca_id)->first();
                 switch ($academia->aca_status ){
                     case "activa":
                         return redirect('/inicio');
