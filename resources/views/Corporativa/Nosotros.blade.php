@@ -9,7 +9,7 @@
             <div class="row section-content">
                 <div class="how-to-install-content">
                     <div class="title-install text-center pb60">
-                        <h2>Cómo usar Tracade.Me</h2>
+                        <h2>Sobre Nosotros</h2>
                     </div>
                     <!-- // title-install -->
                     <!-- // install-play -->
