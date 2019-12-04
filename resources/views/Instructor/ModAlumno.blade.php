@@ -17,20 +17,6 @@
             <form method="POST" action="{{route('modificar-alumno', $id)}}">
                 @csrf
                 <div class="row">
-                    <div class="col-md-2">
-                        <div class="custom-control custom-checkbox mb-3">
-                            <input class="custom-control-input" value="1" name="disciplina" id="customCheck1" type="checkbox">
-                            <label class="custom-control-label" for="customCheck1">Pole Fitness</label>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="custom-control custom-checkbox mb-3">
-                            <input class="custom-control-input" value="2" name="disciplina" id="customCheck2" type="checkbox">
-                            <label class="custom-control-label" for="customCheck2">Telas Aéreas</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
                     <div class="col-sm">
                         <div class="form-group">
                             <input type="text" name="name" class="form-control" id="name" placeholder="Nombre" value="{{$alumno->alu_nombre}}" required>

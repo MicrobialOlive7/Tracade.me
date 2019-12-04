@@ -185,54 +185,61 @@ class HabilidadesController extends Controller
             'dis_id' => 'required',
             'hab_descripcion' => 'required',
             'hab_imagen' => 'required',
-            'hab_dificultad' => 'required'
+            'hab_dificultad' => 'required',
+            'hab_video' => 'required'
         ]);
-
-        $file_img = $request->file('hab_imagen');
-        $cad_nombre = $request->input('cad_nombre');
-        $cad_contenido = $request->input('cad_contenido');
-        $file_name = 'principal.'.$file_img->getClientOriginalExtension();
-
-
-        $file_video = $request->file('video');
-        $name = $_FILES['video']['name'];
-        $videoname = explode(".", $name);
-        $filename =$videoname[0].'.'.$file_video->getClientOriginalExtension();
-
-        $habilidad = new Habilidad();
-        $habilidad->hab_nombre = $request->hab_nombre;
-        $habilidad->dis_id = $request->dis_id;
-        $habilidad->hab_dificultad = $request->hab_dificultad;
-        $habilidad->hab_descripcion = $request->hab_descripcion;
-        $habilidad->hab_imagen = $file_name;
-        $habilidad->hab_video = $filename;
-        $habilidad->save();
+        try{
+          $file_img = $request->file('hab_imagen');
+          $cad_nombre = $request->input('cad_nombre');
+          $cad_contenido = $request->input('cad_contenido');
+          $file_name = 'principal.'.$file_img->getClientOriginalExtension();
 
 
-        Storage::disk('public')->putFileAs('habilidades/'.$habilidad->id, $file_img, $file_name );
-        Storage::disk('public')->putFileAs('habilidades/'.$habilidad->id, $file_video, $filename);
+          $file_video = $request->file('video');
+          $name = $_FILES['video']['name'];
+          $videoname = explode(".", $name);
+          $filename =$videoname[0].'.'.$file_video->getClientOriginalExtension();
 
-        // if $request->habilidadAanterior
-        //modificar $requests
+          $habilidad = new Habilidad();
+          $habilidad->hab_nombre = $request->hab_nombre;
+          $habilidad->dis_id = $request->dis_id;
+          $habilidad->hab_dificultad = $request->hab_dificultad;
+          $habilidad->hab_descripcion = $request->hab_descripcion;
+          $habilidad->hab_imagen = $file_name;
+          $habilidad->hab_video = $filename;
+          $habilidad->save();
 
-        if( $request->hab_id != ""){
-          $habilidadAnt = new HabilidadAnterior();
-          $habilidadAnt->hab_id = $habilidad->id;
-          $habilidadAnt->hab_ant_id = $request->hab_id;
-          $habilidadAnt->save();
+
+          Storage::disk('public')->putFileAs('habilidades/'.$habilidad->id, $file_img, $file_name );
+          Storage::disk('public')->putFileAs('habilidades/'.$habilidad->id, $file_video, $filename);
+
+          // if $request->habilidadAanterior
+          //modificar $requests
+
+          if( $request->hab_id != ""){
+            $habilidadAnt = new HabilidadAnterior();
+            $habilidadAnt->hab_id = $habilidad->id;
+            $habilidadAnt->hab_ant_id = $request->hab_id;
+            $habilidadAnt->save();
+          }
+
+
+          if($cad_nombre!= ""){
+              //modificar $requests
+              $campoAdicional = new CampoAdicional();
+              $campoAdicional->cad_nombre = $cad_nombre;
+              $campoAdicional->cad_contenido = $cad_contenido;
+              $campoAdicional->hab_id = $habilidad->id;
+              $campoAdicional->save();
+          }
+
+          return redirect()->route('Habilidades')->with('flash_message', 'Se ha creado la habilidad con éxito');
+
+        }catch(\Throwable $ex){
+          return redirect()->route('Habilidades')->with('error_message', 'Hubo un error intentalo más tarde.');
+
         }
 
-
-        if($cad_nombre!= ""){
-            //modificar $requests
-            $campoAdicional = new CampoAdicional();
-            $campoAdicional->cad_nombre = $cad_nombre;
-            $campoAdicional->cad_contenido = $cad_contenido;
-            $campoAdicional->hab_id = $habilidad->id;
-            $campoAdicional->save();
-        }
-
-        return redirect()->route('Habilidades')->with('flash_message', 'Se ha creado la habilidad con éxito');
     }
 
     public function multipleDelte(Request $request){
