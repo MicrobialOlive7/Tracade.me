@@ -35,10 +35,13 @@ class HabilidadesController extends Controller
 
         $habilidad = Habilidad::all()->find($id);
         //$hab_anterior = DB::table('habilidad_anterior')->join('habilidad', 'hab_id', '=', 'habilidad.id') -> get() -> first();
-        if(HabilidadAnterior::all()->count() != 0)
+        
+        if(HabilidadAnterior::all()->where('hab_id', $id)->count() != 0)
             $hab_anterior = Habilidad::all()->where('id', HabilidadAnterior::all()->where('hab_id', $id)->first()->hab_ant_id)->first();
         else
             $hab_anterior = [];
+
+
         $evaluacion = DB::table('habilidad')->join('evaluacion', 'habilidad.id', '=', 'hab_id') -> where('alu_id', $id) -> orderBy('evaluacion.created_at','desc')->get() -> first();
         $campo_ad = CampoAdicional::all()->where('hab_id', $id)->first();
         return view('Instructor.detalle_hab', compact('habilidad', 'hab_anterior','evaluacion', 'campo_ad'));
