@@ -135,7 +135,16 @@ php artisan make:controller Carpeta\NombreController
         * passwords
  * registerController
   
- 
+### Migraciones [doc](https://laravel.com/docs/6.x/migrations)
+Las migraciones nos sirven para definir la base de datos y crearla con la ejecucion de un comando
+#### crear
+ ```
+ php artisan make:migration create_nombre_tabla_migration
+ ```
+ #### Ejecutar
+  ```
+ php artisan migrate
+ ```
 ## NOTAS
 **Cada que se haga pull o merge:**
 
