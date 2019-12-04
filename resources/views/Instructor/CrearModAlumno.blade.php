@@ -18,15 +18,10 @@
                 @csrf
                 <div class="row">
                     <div class="col-md-2">
-                        <div class="custom-control custom-checkbox mb-3">
-                            <input class="custom-control-input" value="1" name="disciplina" id="customCheck1" type="checkbox">
-                            <label class="custom-control-label" for="customCheck1">Pole Fitness</label>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="custom-control custom-checkbox mb-3">
-                            <input class="custom-control-input" value="2" name="disciplina" id="customCheck2" type="checkbox">
-                            <label class="custom-control-label" for="customCheck2">Telas Aéreas</label>
+                        <div class="custom-control custom-checkbox mb-3" id="dis_id">
+
+                          <input type="radio" name="dis_id" value="1" required> Pole Fitness<br>
+                          <input type="radio" name="dis_id" value="2"> Telas Aéreas<br>
                         </div>
                     </div>
                 </div>
