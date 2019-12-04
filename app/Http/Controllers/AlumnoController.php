@@ -23,24 +23,40 @@ class AlumnoController extends Controller
     protected function create(Request $data)
     {
 
-        $alumno = Alumno::create([
-            'alu_nombre' => $data['name'],
-            'email' => $data['email'],
-            'alu_apellido_paterno' => $data['alu_apellido_paterno'],
-            'alu_apellido_materno' => $data['alu_apellido_materno'],
-            'alu_fecha_nacimiento' => $data['alu_fecha_nacimiento'],
-            'alu_biografia' => "",
-            'aca_id' => 1,
-            'tipo_usuario' => 'alumno',
-            'password' => Hash::make($data['password']),
-        ]);
-        $this->generateImage($alumno);
-        $dis_alu = DiciplinaAlumno::create([
-            'alu_id' => $alumno->id,
-            'dis_id' => $data['disciplina']
-        ]);
+      $this->validate($data, [
+        'name'=>'required',
+        'email'=>'required|email',
+        'alu_apellido_paterno'=>'required',
+        'alu_apellido_materno'=>'required',
+        'password'=>'required',
+        'dis_id'=>'required'
+      ]);
 
-        return redirect()->route('alumnos');
+      try{
+          $alumno = Alumno::create([
+              'alu_nombre' => $data['name'],
+              'email' => $data['email'],
+              'alu_apellido_paterno' => $data['alu_apellido_paterno'],
+              'alu_apellido_materno' => $data['alu_apellido_materno'],
+              'alu_fecha_nacimiento' => $data['alu_fecha_nacimiento'],
+              'alu_biografia' => "",
+              'aca_id' => 1,
+              'tipo_usuario' => 'alumno',
+              'password' => Hash::make($data['password']),
+          ]);
+          $dis_alu = DiciplinaAlumno::create([
+              'alu_id' => $alumno->id,
+              'dis_id' => $data['dis_id']
+          ]);
+          $this->generateImage($alumno);
+
+          return redirect()->route('alumnos')->with('flash_message', 'Alumno creado con éxito');
+
+      }catch(\Throwable $ex){
+          return redirect()->route('alumnos')->with('error_message', 'Hubo un error, inténtalo más tarde');
+      }
+
+
     }
     protected function generateImage($alumno){
         $avatar = new InitialAvatar();
@@ -115,7 +131,6 @@ class AlumnoController extends Controller
         return redirect()->route('alumnos')->with('flash_message', 'Alumno actualizado con éxito.');
 
       }catch(\Throwable $ex){
-        dd($ex);
         return redirect()->route('alumnos')->with('error_message', 'Hubo un error al actualizar el alumno, intenta más tarde.');
       }
 

@@ -9,12 +9,9 @@
             <div class="row section-content">
                 <div class="how-to-install-content">
                     <div class="title-install text-center pb60">
-                        <h2>Cómo usar Tracade.Me</h2>
+                        <h2>Sobre Nosotros</h2>
                     </div>
                     <!-- // title-install -->
-                    <div class="install-play text-center">
-                        <a class="popup-with-zoom-anim" href="https://www.youtube.com/watch?v=Rlc1FnJiPaI"><span class="orange-gred ti-control-forward"></span></a>
-                    </div>
                     <!-- // install-play -->
                 </div>
             </div><!-- /row -->
