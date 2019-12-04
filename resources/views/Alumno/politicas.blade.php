@@ -6,7 +6,7 @@
             <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block"> Inicio </a>
     </div>
 </nav> -->
-    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+    <div class="header bg-gradient-indigo pb-8 pt-5 pt-md-8">
         <div class="container-fluid">
             <div class="header-body">
                 <div class="row">
