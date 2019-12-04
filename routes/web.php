@@ -265,11 +265,8 @@ Route::get('/alumno/detalleHabilidad/{id}', 'Alumno\HabilidadesController@detail
 
 Route::post('notasCreate/{hab_id}/{alu_id}', 'Alumno\notasController@create')->name('notasCreate')->middleware('auth', 'alumno');
 
-// Funcion // Modificar notas de habilidad
-Route::post('notasModify', 'Alumno\notasController@modify')->name('notasModify')->middleware('auth', 'alumno');
-
 // Funcion // Eliminar notas de habilidad
-Route::post('notasDelete', 'Alumno\notasController@delete')->name('notasDelete')->middleware('auth', 'alumno');
+Route::get('notasDelete/{id}/{alu_id}', 'Alumno\notasController@delete')->name('notasDelete')->middleware('auth', 'alumno');
 
 /**
 |--------------

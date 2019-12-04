@@ -7,6 +7,7 @@ use App\Nota;
 use App\Notas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Collection;
 
 class NotasController extends Controller
 {
@@ -16,8 +17,6 @@ class NotasController extends Controller
             'nota' => 'required'
         ]);
         try{
-
-
             $nota = new Nota();
             $nota-> not_nota = $request -> nota;
             $nota-> hab_id = $hab_id;
@@ -29,18 +28,14 @@ class NotasController extends Controller
         }
 
     }
-    public function modify($id){
+    public function delete($id,$alu_id){
 
         try{
-            $nota = Nota::find($id);
-            $notas = Nota::all();
-            return redirect()->route('alumno-detalle', $nota,$notas)->with('flash_message', 'Se ha creado la habilidad con éxito');
-        }catch (\Throwable $ex){
-            return redirect()->route('alumno-detalle', $nota,$notas)->with('error_message', 'Hubo un error, intentalo más tarde');
+           $del= Nota::find($id)->delete();
+
+            return redirect()->route('alumno-detalle',$alu_id)->with('flash_message', 'Nota eliminada con éxito.');
+        }catch(\Throwable $ex){
+            return redirect()->route('alumno-detalle',$alu_id)->with('error_message', 'Hubo un error, inténtalo más tarde.');
         }
-
     }
-
-
-
 }
