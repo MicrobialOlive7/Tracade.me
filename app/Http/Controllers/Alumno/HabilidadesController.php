@@ -56,14 +56,15 @@ class HabilidadesController extends Controller
             ->where('hab_id', $id)
             ->orderBy('created_at', 'desc')
             ->get();
-
        // $habilidad = Habilidad::all()->find($hab_id);
         $habilidad = Habilidad::all()->find($id);
         $hab_anterior = DB::table('habilidad_anterior')->join('habilidad', 'hab_id', '=', 'habilidad.id') -> get() -> first();
         $evaluation = DB::table('habilidad')->join('evaluacion', 'habilidad.id', '=', 'hab_id') -> where('hab_id', $id) -> where('alu_id', $alu_id) -> orderBy('evaluacion.created_at','desc')->get() -> first();
         $notas = DB::table('nota') -> where('hab_id', $id) -> where('alu_id', $alu_id) -> orderBy('created_at','desc')->get();
 
-        return view('Alumno.detalle_hab', compact('habilidad', 'hab_anterior','evaluation','evaluaciones','notas'));
+
+
+        return view('Alumno.detalle_hab', compact('habilidad', 'hab_anterior','evaluation','evaluaciones','notas','alu_id'));
     }
 
 
