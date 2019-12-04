@@ -25,7 +25,7 @@
                             <thead class="thead-light">
 
                             <tr>
-                                <th scope="col"> <input type="checkbox"></th>
+                                <th></th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Calificacion</th>
                                 <th scope="col">Comentarios</th>
@@ -37,7 +37,7 @@
 
                               @foreach($hab_apr as $key => $value)
                               <tr>
-                                <td> <input type="checkbox"></td>
+                                  <th></th>
                                   <th scope="row">
                                       <div class="media align-items-center">
                                           <a class="avatar rounded-circle mr-3">
@@ -85,7 +85,7 @@
                             <thead class="thead-light">
 
                             <tr>
-                                <th scope="col"> <input type="checkbox"></th>
+                                <th></th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Dificultad</th>
                                 <th scope="col">Disciplina</th>
@@ -97,7 +97,7 @@
 
                             @foreach($habilidades as $key => $value)
                                 <tr>
-                                    <td> <input type="checkbox"></td>
+                                    <th></th>
                                     <th scope="row">
                                         <div class="media align-items-center">
                                             <a href="#" class="avatar rounded-circle mr-3">

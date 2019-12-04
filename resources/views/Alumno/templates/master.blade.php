@@ -96,8 +96,8 @@
             <!-- Form -->
             <!-- Navigation -->
             <ul class="navbar-nav">
-                <li class="nav-item @yield('ini-active')">
-                <a class=" nav-link " href="{{ route('alumno-inicio') }}"> <i class="ni ni-chart-pie-35 text-primary"></i> Inicio
+                <li class="nav-item">
+                <a class=" nav-link @yield('ini-active')" href="{{ route('alumno-inicio') }}"> <i class="ni ni-chart-pie-35 text-primary"></i> Inicio
                 </a>
                 </li>
                 <li class="nav-item">
@@ -148,8 +148,6 @@
                         </span>
                         <div class="media-body ml-2 d-none d-lg-block">
                             <span class="mb-0 text-sm  font-weight-bold">{{Auth::user()->alu_nombre }} {{Auth::user()->alu_apellido_paterno}}</span>
-                            <br>
-                            <span class="mb-0 text-sm  font-weight-bold">Disciplina</span>
                         </div>
                     </div>
                     </a>

@@ -45,7 +45,7 @@
                             <input class="email" name="password" type="password" placeholder="Contraseña*">
                         </div>
                         <div class="contact-info-1">
-                            <input class="email" name="fecha_nac" type="datetime-local" placeholder="Fecha de Nacimiento*">
+                            <input class="email" name="fecha_nac" type="date" placeholder="Fecha de Nacimiento*">
                         </div>
                         <div class="contact-info-1">
                             <input class="email" name="academia" type="text" placeholder="Nombre de la Academia*">
