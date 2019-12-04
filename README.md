@@ -37,7 +37,7 @@ composer require consoletvs/charts:6.*
 php artisan migrate
 ```
 ##### Inicializar base
-Para crer los registros base (disciplinas y aulas) asi como algunos registros iniciales de grupos y alumnos ejecutar el siguiente comando:
+Para crer los registros base (disciplinas y aulas) asi como algunos registros iniciales de grupos, alumnos y evaluaciones ejecutar el siguiente comando:
 ```
 php artisan db:seed --class=InitSeeder
 ```
@@ -68,16 +68,17 @@ php artisan storage:link
 Este comando crea un enlace directo de la carpeta *storage* en */public* hacia la carpeta */storage/app* que es donde se almacenan
 las imágenes de las habilidades
 
-**es probable que haya que eliminar la carpeta */storage* de public y volver a ejecutar*
+**Algunas veces será nececsario eliminar la carpeta public/storage y comprobar que los archivos de habilidades inciales (carpetas del 1 al 16) se encuentren en storage/app/public/habilidades para despues volver a ejecutar el comando*
 
 ## Instalación en servidor
 **El servidor debe tener PHP 7.3*
 1. Comprimir el proyecto en un archivo .zip
 2. Crear una base de datos para el proyecto
 3. Crear un usuario para administrar la base de datos y asignarlo a la base de datos creada
+4. Importar la base de datos que tenemos en local (es importante que se haya reiniciado la base antes de exportarla)
 4. Cargar el archivo .zip al servidor
 5. Extraer los archivos
-6. Modificar el .env con los datos de la base de datos y el usuario
+6. Modificar el .env con los datos de la base de datos y el usuario y cargarla al servidor, reemplazando el anterior archivo
 
 ## Desarrollo de tracade.me
 ### Formato de Rutas
@@ -133,8 +134,7 @@ php artisan make:controller Carpeta\NombreController
     * defaults
         * passwords
  * registerController
- 
- 
+  
  
 ## NOTAS
 **Cada que se haga pull o merge:**
