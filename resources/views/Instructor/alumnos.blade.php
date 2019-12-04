@@ -9,13 +9,12 @@
         <div class="row">
             <div class="col">
                 <div class="card shadow">
-
                     <div class="card-header border-0">
                         <h3 class="mb-0">Alumnos</h3>
                         @if(Session::has('flash_message'))
                         <div class="alert alert-success">{{Session::get('flash_message')}}</div>
                         @elseif(Session::has('error_message'))
-                        <div class="alert alert-success">{{Session::get('error_message')}}</div>
+                        <div class="alert alert-danger">{{Session::get('error_message')}}</div>
                         @elseif(Session::has('success_delete_msg'))
                         <div class="alert alert-success">{{Session::get('success_delete_msg')}}</div>
                         @elseif(Session::has('error_delete_msg'))

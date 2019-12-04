@@ -11,21 +11,21 @@
                     <div class="card-header border-0">
                         <h3 class="mb-0">Grupos</h3>
                         @if(Session::has('flash_message'))
-                        <div class="alert alert-success">1{{Session::get('flash_message')}}</div>
+                        <div class="alert alert-success">{{Session::get('flash_message')}}</div>
                         @elseif(Session::has('error_message'))
-                        <div class="alert alert-danger">2{{Session::get('error_message')}}</div>
+                        <div class="alert alert-danger">{{Session::get('error_message')}}</div>
                         @elseif(Session::has('error_delete_msg'))
-                        <div class="alert alert-danger">3{{Session::get('error_delete_msg')}}</div>
+                        <div class="alert alert-danger">{{Session::get('error_delete_msg')}}</div>
                         @elseif($errors->any())
                         <div class="alert alert-danger" role="alert">
                             <strong>Ups!</strong> Ha habido un error, inténtalo más tarde.
                         </div>
                         @elseif(Session::has('select_error'))
-                        <div class="alert alert-danger">4{{Session::get('select_error')}}</div>
+                        <div class="alert alert-danger">{{Session::get('select_error')}}</div>
                         @elseif(Session::has('select_success'))
-                        <div class="alert alert-success">5{{Session::get('select_success')}}</div>
+                        <div class="alert alert-success">{{Session::get('select_success')}}</div>
                         @endif
-                        <div action="{{route('gruposDelete')}}" method="POST" id="masivo">
+                        <form action="{{route('gruposDelete')}}" method="POST" id="masivo">
                             @csrf
                             <div class="col text-right">
                                 <span class="btn-inner--icon">
@@ -39,7 +39,7 @@
                                     </a>
                                 </span>
                             </div>
-                        </div>
+                        
                     </div>
                     <div class="card body">
                     <div class="table-responsive">
