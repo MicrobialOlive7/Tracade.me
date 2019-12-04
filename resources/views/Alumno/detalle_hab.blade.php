@@ -125,6 +125,11 @@
                 <div class="card shadow mb-3">
                     <div class="card-header border-0">
                         <h3 class="mb-0"> Mis notas</h3>
+                        @if(Session::has('flash_message'))
+                            <div class="alert alert-success">{{Session::get('flash_message')}}</div>
+                        @elseif(Session::has('error_message'))
+                            <div class="alert alert-danger">{{Session::get('error_message')}}</div>
+                        @endif
                         <div class="row">
                             <div class="col">
                                 @if($notas->first() == null)
@@ -142,13 +147,11 @@
                                                 @foreach($notas as $nota)
                                                     <tr>
                                                         <th scope="row">
-                                                            <span class="mb-0 text-sm">{{$nota['created_at']}}</span>
+                                                            <span class="mb-0 text-sm">{{$nota->created_at}}</span>
                                                         </th>
 
                                                         <th scope="row">
-                                                            @for($i = 0 ; $i < $nota['not_nota']; $i++)
-                                                                <i class="text-yellow ti-star"></i>
-                                                            @endfor
+                                                                <span class="mb-0 text-sm">{{$nota->not_nota}}</span>
                                                         </th>
                                                         <th class="text-right">
                                                             <div class="dropdown">
@@ -156,7 +159,7 @@
                                                                     <i class="fas fa-ellipsis-v"></i>
                                                                 </a>
                                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                                    <a class="dropdown-item" href="#">Modificar</a>
+                                                                    <a class="dropdown-item" href="{{ route('notasModify', [$nota->id]) }}">Modificar</a>
                                                                     <a class="dropdown-item" href="#">Eliminar</a>
                                                                 </div>
                                                             </div>
@@ -167,12 +170,11 @@
                                             </table>
                                         </div>
                                 @endif
-                                <form method="post" action="{{route('notasCreate')}}">
+                                <form method="post" action="{{route('notasCreate', [$habilidad->id, $alu_id])}}">
                                     {{ csrf_field() }}
                                 <p class="mt-3 mb-4 text-muted text-md text-center">
                                     <textarea rows="4" class="form-control form-control-alternative" name="nota"></textarea>
                                 </p>
-                                    <input type="hidden"  name="id" >
                                 <div class="text-center">
                                     <span class="btn-inner--icon">
                                           <button type="submit" class="btn btn-icon btn-2 btn-info btn-sm">Agregar</button>
