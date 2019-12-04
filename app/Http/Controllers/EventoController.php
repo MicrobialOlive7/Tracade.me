@@ -21,7 +21,7 @@ class EventoController extends Controller
         $client = new \Google_Client();
         $client->setApplicationName('Google Calendar API PHP Quickstart');
         $client->setScopes(\Google_Service_Calendar::CALENDAR_READONLY);
-        $client->setAuthConfig('C:/xampp/htdocs/Tracade.me/Tracade.me/credentials.json');
+        $client->setAuthConfig('C:/xampp/htdocs/Tracade.me/credentials.json');
         $client->setAccessType('offline');
         $client->setPrompt('select_account consent');
 
@@ -29,7 +29,7 @@ class EventoController extends Controller
         // The file token.json stores the user's access and refresh tokens, and is
         // created automatically when the authorization flow completes for the first
         // time.
-        $tokenPath = 'C:/xampp/htdocs/Tracade.me/Tracade.me/token.json';
+        $tokenPath = 'C:/xampp/htdocs/Tracade.me/token.json';
         if (file_exists($tokenPath)) {
             $accessToken = json_decode(file_get_contents($tokenPath), true);
             $client->setAccessToken($accessToken);
@@ -95,7 +95,7 @@ class EventoController extends Controller
 
     //PARA CREAR EVENTOS
     public function quickstart($eve_nombre,$eve_fecha,$eve_descripcion, $gru_id){
-        require 'C:/xampp/htdocs/Tracade.me/Tracade.me/vendor/autoload.php';
+        require 'C:/xampp/htdocs/Tracade.me/vendor/autoload.php';
 
 // Get the API client and construct the service object.
         $client = $this->getClient();
