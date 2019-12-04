@@ -10,6 +10,11 @@
             <div class="card-header border-0">
                 <div class="mb-4">
                     <span class="mb-0 text-pink" style="font-size: 16px">{{$alumno->alu_nombre}} {{$alumno->alu_apellido_paterno}}</span>
+                    @if($errors->any())
+                    <div class="alert alert-danger" role="alert">
+                        <strong>Ups!</strong> Hay errores en tu registro, verifica todos los campos.
+                    </div>
+                    @endif
                 </div>
 
                 <div class="media align-items-center">
@@ -18,6 +23,7 @@
                     </a>
                     <div class="media-body">
                         <h3 class="mb-0">{{$habilidad->hab_nombre}}</h3><p>Registro de evaluaciones</p>
+
                     </div>
                 </div>
             </div>
@@ -77,4 +83,3 @@
         </div>
     </div>
 @endsection
-

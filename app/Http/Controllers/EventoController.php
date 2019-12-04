@@ -21,7 +21,7 @@ class EventoController extends Controller
         $client = new \Google_Client();
         $client->setApplicationName('Google Calendar API PHP Quickstart');
         $client->setScopes(\Google_Service_Calendar::CALENDAR_READONLY);
-        $client->setAuthConfig('C:/xampp/htdocs/Tracade.me/credentials.json');
+        $client->setAuthConfig('C:/xampp/htdocs/Tracade.me/Tracade.me/credentials.json');
         $client->setAccessType('offline');
         $client->setPrompt('select_account consent');
 
@@ -29,7 +29,7 @@ class EventoController extends Controller
         // The file token.json stores the user's access and refresh tokens, and is
         // created automatically when the authorization flow completes for the first
         // time.
-        $tokenPath = 'C:/xampp/htdocs/Tracade.me/token.json';
+        $tokenPath = 'C:/xampp/htdocs/Tracade.me/Tracade.me/token.json';
         if (file_exists($tokenPath)) {
             $accessToken = json_decode(file_get_contents($tokenPath), true);
             $client->setAccessToken($accessToken);
@@ -95,7 +95,7 @@ class EventoController extends Controller
 
     //PARA CREAR EVENTOS
     public function quickstart($eve_nombre,$eve_fecha,$eve_descripcion, $gru_id){
-        require 'C:/xampp/htdocs/Tracade.me/vendor/autoload.php';
+        require 'C:/xampp/htdocs/Tracade.me/Tracade.me/vendor/autoload.php';
 
 // Get the API client and construct the service object.
         $client = $this->getClient();
@@ -131,6 +131,19 @@ class EventoController extends Controller
 
     }
     public function create(Request $request){
+
+
+              $this->validate($request,[
+                  'name' => 'required',
+                  'hora' => 'required',
+                  'min' => 'required',
+                  'descripcion' => 'required',
+                  'fecha' => 'required'
+              ]);
+
+      try{
+
+
         $evento = new Evento();
         $evento->eve_nombre = $request->name;
         $evento->eve_fecha = $request->fecha." ".$request->hora.":".$request->min.":00";
@@ -142,13 +155,23 @@ class EventoController extends Controller
 
         $evento->api_htmllink = $eventoAPI["htmlLink"];
         $evento->api_id = $eventoAPI["id"];
-        
+
         $evento->save();
-        return redirect()->route('calendario');
+
+        return redirect()->route('calendario')->with('flash_message', 'Evento creado con éxito');
+
+      }catch(\Throwable $ex){
+
+        return redirect()->route('calendario')->with('error_message', 'Hubo un error, inténtalo más tarde.');
+      }
+
 
     }
 
     public function update(Request $request){
+
+      try{
+
         $evento = Evento::all()->find($request->id);
         if(isset($request->name)) {
             $evento->eve_nombre = $request->name;
@@ -170,7 +193,13 @@ class EventoController extends Controller
         }
         $evento->save();
         $this->modevento($evento->eve_nombre,$evento->eve_fecha,$descripcion, $evento->gru_id, $evento->api_id);
-        return redirect()->route('calendario');
+        return redirect()->route('calendario')->with('flash_message','Evento modificado con éxito.');
+
+      }catch(\Throwable $ex){
+        return redirect()->route('calendario')->with('error_message','Hubo un error, inténtalo más tarde.');
+
+      }
+
     }
 
     public function showUpdate(){
@@ -183,10 +212,15 @@ class EventoController extends Controller
         return view('Instructor.EliminarEvento', compact('eventos'));
     }
     public function delete(Request $request){
+      try{
         $evento = Evento::all()->find($request->id);
         $this->elimevento($evento->api_id);
         $evento->delete();
-        return redirect()->route('calendario');
+        return redirect()->route('calendario')->with('flash_message','Evento eliminado con éxito.');
+      }catch(\Throwable $ex){
+        return redirect()->route('calendario')->with('error_message', 'Hubo un error, inténtalo más tarde');        
+      }
+
     }
 
 

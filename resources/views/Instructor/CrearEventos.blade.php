@@ -8,6 +8,11 @@
         <div class="card shadow">
             <div class="card-header border-0">
                 <h3 class="mb-0">Eventos</h3>
+                @if($errors->any())
+                <div class="alert alert-danger" role="alert">
+                    <strong>Ups!</strong> Hay errores en tu registro, verifica todos los campos.
+                </div>
+                @endif
             </div>
             <!-- Inicia Form -->
             <form method="POST" action="{{route('eventoCreate')}}">
@@ -23,7 +28,7 @@
 
                 <!-- Inicia Campo Horario -->
                     <div class="col">
-                        <select type="ap" class="form-control" id="exampleFormControlInput1" name="hora">
+                        <select type="ap" class="form-control" id="hora" name="hora">
                             <option value="" disabled selected>Hora</option>
                             <option value="1" > 01 </option>
                             <option value="2" > 02 </option>

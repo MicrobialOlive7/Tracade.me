@@ -69,6 +69,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+//hacer try para evitar error de correos duplicados
 
         $alumno = Alumno::create([
             'alu_nombre' => $data['name'],
@@ -85,7 +86,7 @@ class RegisterController extends Controller
             'dis_id' => $data['disciplina']
         ]);
 
-        return $alumno;
+      return redirect()->route('alumnos')->with('flash_message', 'Alumno creado con éxito.');
     }
 
     protected function generateImage($alumno){

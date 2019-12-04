@@ -237,7 +237,6 @@ class HabilidadesController extends Controller
     }
 
     public function multipleDelte(Request $request){
-
         try{
             foreach ($request->borrar as $borrar){
 
@@ -254,6 +253,7 @@ class HabilidadesController extends Controller
               return redirect()->route('Habilidades')->with('select_success', 'Habilidades eliminadas con éxito.');
 
         }catch(\Throwable $ex){
+
           return redirect()->route('Habilidades')->with('select_error', 'Hubo un error, asegúrate de seleccionar al menos una habilidad .');
         }
     }

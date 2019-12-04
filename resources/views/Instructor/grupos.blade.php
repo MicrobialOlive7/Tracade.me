@@ -10,7 +10,22 @@
             <div class="col">
                     <div class="card-header border-0">
                         <h3 class="mb-0">Grupos</h3>
-                        <form action="{{route('gruposDelete')}}" method="POST">
+                        @if(Session::has('flash_message'))
+                        <div class="alert alert-success">1{{Session::get('flash_message')}}</div>
+                        @elseif(Session::has('error_message'))
+                        <div class="alert alert-danger">2{{Session::get('error_message')}}</div>
+                        @elseif(Session::has('error_delete_msg'))
+                        <div class="alert alert-danger">3{{Session::get('error_delete_msg')}}</div>
+                        @elseif($errors->any())
+                        <div class="alert alert-danger" role="alert">
+                            <strong>Ups!</strong> Ha habido un error, inténtalo más tarde.
+                        </div>
+                        @elseif(Session::has('select_error'))
+                        <div class="alert alert-danger">4{{Session::get('select_error')}}</div>
+                        @elseif(Session::has('select_success'))
+                        <div class="alert alert-success">5{{Session::get('select_success')}}</div>
+                        @endif
+                        <form action="{{route('gruposDelete')}}" method="POST" id="masivo">
                             @csrf
                         <div class="col text-right">
                             <span class="btn-inner--icon">
@@ -19,9 +34,9 @@
                                 </a>
                             </span>
                             <span class="btn-inner--icon">
-                                <button type="submit" class="btn btn-icon btn-2 btn-danger btn-sm">
+                                <a role="button" onclick="eliminarGrupos()" class="btn btn-icon btn-2 btn-danger btn-sm">
                                     <i class="ni ni-fat-remove" ></i>
-                                </button>
+                                </a>
                             </span>
                         </div>
                     </div>
@@ -43,7 +58,7 @@
                               <tr>
                                   <td> <input type="checkbox" name="borrar[]" value="{{$grupo->id}}"></td>
                                 <th scope="row"><a href="{{route('agregar-alumnos', $grupo->id)}}">{{$grupo->gru_nombre}} </a> </th>
-                                <th scope="row"> {{$grupo->gr_dia}}  </th>
+                                <th scope="row"> {{$grupo->gru_dia}}  </th>
                                 <th scope="row"> {{$grupo->gru_hora}} </th>
                                 <td>
                                     <div class="avatar-group">
@@ -109,5 +124,12 @@ function  eliminarGrupo(gru_nombre, gru_id){
   $("#delete_modal").modal().find('#borrar').attr("href", "{{asset('grupoDelete')}}" + '/' + gru_id );
 }
 
+function eliminarGrupos(){
+  $("#delete_masivo_modal").modal().find('.modal-title').text('Eliminar grupos');
+  $("#delete_masivo_modal").modal().find('.message-text').empty();
+  $("#delete_masivo_modal").modal().find('.message-text').append('¿Estás seguro de eliminar los grupos seleccionados?');
+  $("#delete_masivo_modal").modal().find('#borrar').val();
+  $("#delete_masivo_modal").modal().find('#borrar').attr("onclick", "$('#masivo').submit()" );
+}
 </script>
 @endsection

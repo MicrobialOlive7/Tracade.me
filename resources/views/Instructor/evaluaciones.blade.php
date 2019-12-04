@@ -8,7 +8,7 @@
         <!-- Table -->
         <div class="row">
             <div class="col">
-                <form action="{{route('evaluacionesDelete', [$habilidad->id, $alumno->id])}}" method="POST">
+                <form action="{{route('evaluacionesDelete', [$habilidad->id, $alumno->id])}}"  id="masivo" method="POST">
                     @csrf
                 <div class="card shadow">
 
@@ -40,13 +40,27 @@
                             </span>
                             @endif
                                 <span class="btn-inner--icon">
-                                <button type="submit" class="btn btn-icon btn-2 btn-danger btn-sm">
+                                <a role="button" onclick="eliminarEvaluaciones()" class="btn btn-icon btn-2 btn-danger btn-sm">
                                     <i class="ni ni-fat-remove" ></i>
-                                </button>
+                                </a>
                             </span>
                         </div>
                     </div>
-
+                    @if(Session::has('flash_message'))
+                    <div class="alert alert-success">{{Session::get('flash_message')}}</div>
+                    @elseif(Session::has('success_delete_msg'))
+                    <div class="alert alert-success">{{Session::get('success_delete_msg')}}</div>
+                    @elseif(Session::has('error_delete_msg'))
+                    <div class="alert alert-danger">{{Session::get('error_delete_msg')}}</div>
+                    @elseif($errors->any())
+                    <div class="alert alert-danger" role="alert">
+                        <strong>Ups!</strong> Ha habido un error, inténtalo más tarde.
+                    </div>
+                    @elseif(Session::has('select_error'))
+                    <div class="alert alert-danger">{{Session::get('select_error')}}</div>
+                    @elseif(Session::has('select_success'))
+                    <div class="alert alert-success">{{Session::get('select_success')}}</div>
+                    @endif
                     <div class="table-responsive">
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
@@ -116,6 +130,14 @@ function  eliminarEvaluacion(hab_id, alu_id, eva_id){
   $("#eliminar_evaluacion").modal().find('.message-text').append('¿Estás seguro de eliminar esta evaluación?');
   $("#eliminar_evaluacion").modal().find('#eliminar').val(hab_id);
   $("#eliminar_evaluacion").modal().find('#eliminar').attr("href", "{{asset('evaluacionDelete')}}" + "/" + hab_id +"/"+ alu_id +"/"+ eva_id );
+
+}
+function  eliminarEvaluaciones(){
+
+  $("#delete_masivo_modal").modal().find('.modal-title').text('Eliminar evaluaciones');
+  $("#delete_masivo_modal").modal().find('.message-text').empty();
+  $("#delete_masivo_modal").modal().find('.message-text').append('¿Estás seguro de eliminar las evaluaciones seleccionadas?');
+  $("#delete_masivo_modal").modal().find('#borrar').attr("onclick", "$('#masivo').submit()" );
 
 }
 </script>

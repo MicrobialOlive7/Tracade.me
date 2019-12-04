@@ -27,23 +27,52 @@ class GruposController extends Controller
     }
     public function create(Request $request){
         //return $request;
-        $grupo = new Grupo();
-        $grupo->gru_nombre = $request->gru_nombre;
-        $grupo->gr_dia = $request->gru_dia;
-        $grupo->gru_hora = "2000-01-01 ".$request->hora.":".$request->min.":00";
-        $grupo->dis_id = $request->dis_id;
-        $grupo->aul_id = 1;
-        $grupo->save();
-        return redirect()->route('grupos');
+
+        try{
+          $this->validate($request,[
+              'gru_nombre' => 'required',
+              'gru_dia' => 'required',
+              'gru_hora' => 'required',
+              'dis_id'=>'required',
+              'aul_id' => 'required'
+          ]);
+
+          $grupo = new Grupo();
+          $grupo->gru_nombre = $request->gru_nombre;
+          $grupo->gr_dia = $request->gru_dia;
+          $grupo->gru_hora = "2000-01-01 ".$request->gru_hora.":".$request->gru_min.":00";
+          $grupo->dis_id = $request->dis_id;
+          $grupo->aul_id = 1;
+          $grupo->save();
+
+          return redirect()->route('grupos')->with('flash_message', 'Grupo creado con éxito.');
+
+        }catch(\Throwable $ex){
+          return redirect()->route('grupos')->with('error_message', 'Hubo un error con la creación del grupo, inténtalo más tarde.');
+
+        }
+
+
     }
 
     public function delete($id){
+      try{
+
         Grupo::all()->find($id)->delete();
         $alumnos = GrupoAlumno::all()->where('gru_id', $id);
         foreach ($alumnos as $alumno){
             $alumno->delete();
         }
-        return redirect()->route('grupos');
+
+        return redirect()->route('grupos')->with('flash_message', 'Grupo eliminado con éxito');
+
+      }catch(\Throwable $ex){
+        return redirect()->route('grupos')->with('error_message', 'Hubo un error al eliminar el grupo');
+
+      }
+
+
+
     }
 
     public function showUpdate($id){
@@ -54,6 +83,17 @@ class GruposController extends Controller
     }
 
     public function update(Request $request, $id){
+
+      try{
+
+        $this->validate($request,[
+            'gru_nombre' => 'required',
+            'gru_dia' => 'required',
+            'gru_hora' => 'required',
+            'dis_id'=>'required',
+            'aul_id' => 'required'
+        ]);
+
         $grupo = Grupo::all()->find($id);
         $grupo->gru_nombre = $request->gru_nombre;
         $grupo->gr_dia = $request->gru_dia;
@@ -61,7 +101,15 @@ class GruposController extends Controller
         $grupo->dis_id = $request->dis_id;
         $grupo->aul_id = 1;
         $grupo->save();
-        return redirect()->route('grupos');
+        return redirect()->route('grupos')->with('flash_message', 'Grupo modificado con éxito.');
+
+      }catch(\Throwable $ex){
+
+        return redirect()->route('grupos')->with('error_message', 'Hubo un error, inténtalo más tarde.');
+
+      }
+
+
     }
 
     public function showAgregarAlumnos($id){
@@ -101,6 +149,8 @@ class GruposController extends Controller
 
 
     public function multipleDelte(Request $request){
+
+      try{
         foreach ($request->borrar as $borrar){
             Grupo::all()->find($borrar)->delete();
             $alumnos = GrupoAlumno::all()->where('gru_id', $borrar);
@@ -108,7 +158,11 @@ class GruposController extends Controller
                 $alumno->delete();
             }
         }
-        return redirect()->route('grupos');
+
+        return redirect()->route('grupos')->with('flash_message', 'Grupos eliminados con éxito.');
+      }catch(\Exception $ex){
+        return redirect()->route('grupos')->with('error_message', 'Hubo un error, asegurate de seleccionar grupos.');
+      }
     }
 
 }
