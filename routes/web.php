@@ -294,7 +294,7 @@ Route::get('/alumno/inicio', 'Alumno\ChartsController@index')->name('alumno-inic
 Route::get('/alumno/politicas', function (){
 
     return view('alumno.politicas');
-})->name('politicas')->middleware('auth', 'alumno');
+})->name('alumno-politicas')->middleware('auth', 'alumno');
 
 
 

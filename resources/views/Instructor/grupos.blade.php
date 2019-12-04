@@ -25,21 +25,23 @@
                         @elseif(Session::has('select_success'))
                         <div class="alert alert-success">5{{Session::get('select_success')}}</div>
                         @endif
-                        <form action="{{route('gruposDelete')}}" method="POST" id="masivo">
+                        <div action="{{route('gruposDelete')}}" method="POST" id="masivo">
                             @csrf
-                        <div class="col text-right">
-                            <span class="btn-inner--icon">
-                                <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Agregar" href="{{route('crear-grupo')}}">
-                                    <i class="ni ni-fat-add" ></i>
-                                </a>
-                            </span>
-                            <span class="btn-inner--icon">
-                                <a role="button" onclick="eliminarGrupos()" class="btn btn-icon btn-2 btn-danger btn-sm">
-                                    <i class="ni ni-fat-remove" ></i>
-                                </a>
-                            </span>
+                            <div class="col text-right">
+                                <span class="btn-inner--icon">
+                                    <a class="btn btn-icon btn-2 btn-info btn-sm" role="button" title="Agregar" href="{{route('crear-grupo')}}">
+                                        <i class="ni ni-fat-add" ></i>
+                                    </a>
+                                </span>
+                                <span class="btn-inner--icon">
+                                    <a role="button" onclick="eliminarGrupos()" class="btn btn-icon btn-2 btn-danger btn-sm">
+                                        <i class="ni ni-fat-remove" ></i>
+                                    </a>
+                                </span>
+                            </div>
                         </div>
                     </div>
+                    <div class="card body">
                     <div class="table-responsive">
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
@@ -99,6 +101,7 @@
                          </tbody>
                         </table>
                     </div>
+                            </div>
                     </form>
                     <div class="card-header border-0">
                         {{ $Grupos->links() }}
