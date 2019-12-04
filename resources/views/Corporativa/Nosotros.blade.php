@@ -12,9 +12,6 @@
                         <h2>Cómo usar Tracade.Me</h2>
                     </div>
                     <!-- // title-install -->
-                    <div class="install-play text-center">
-                        <a class="popup-with-zoom-anim" href="https://www.youtube.com/watch?v=Rlc1FnJiPaI"><span class="orange-gred ti-control-forward"></span></a>
-                    </div>
                     <!-- // install-play -->
                 </div>
             </div><!-- /row -->
