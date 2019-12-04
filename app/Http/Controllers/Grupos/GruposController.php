@@ -17,7 +17,7 @@ class GruposController extends Controller
     public function read(){
         $Grupos = Grupo::select('*')->paginate(5);
         $alu_gru = GrupoAlumno::all();
-        $alumnos = Alumno::all();
+        $alumnos = Alumno::all()->where('tipo_usuario', 'alumno');
         return view('Instructor.grupos',compact('Grupos', 'alu_gru', 'alumnos') );
     }
     public function showCreate(){
@@ -113,8 +113,7 @@ class GruposController extends Controller
     }
 
     public function showAgregarAlumnos($id){
-        $alumnos = Alumno::all()->where('tipo_alumno', 'alumno');
-
+        $alumnos = Alumno::all()->where('tipo_usuario', 'alumno');
         $disciplinas = Disciplina::all();
         $dis_alu = DisciplinaAlumno::all();
         $grupo = Grupo::all()->find($id);

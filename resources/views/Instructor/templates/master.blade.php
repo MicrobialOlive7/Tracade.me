@@ -160,8 +160,6 @@
                             </span>
                             <div class="media-body ml-2 d-none d-lg-block">
                                 <span class="mb-0 text-sm  font-weight-bold">{{Auth::user()->alu_nombre }} {{Auth::user()->alu_apellido_paterno}}</span>
-                                <br>
-                                <span class="mb-0 text-sm  font-weight-bold">Disciplina</span>
                             </div>
                         </div>
                     </a>

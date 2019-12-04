@@ -96,25 +96,24 @@
 
                 </div>
                 <!-- Termianr botón para añadir campos adicionales -->
-
+                <br>
                 <div class="container">
                     <div class="row justify-content-md-start">
                         <div class="col">
+                            <label class="text-default font-weight-700"> Imagen</label>
                             <div class="form-group">
                                 <input type="file" id="hab_imagen" name="hab_imagen" accept="image/*">
                             </div>
                         </div>
-                    </div>
-
-                    <div class="container">
-                        <div class="row justify-content-md-start">
-                            <div class="col">
-                                <div class="form-group">
-                                    <input type="file" id="video" name="video" accept="video/*">
-                                </div>
+                        <div class="col">
+                            <label class="text-default font-weight-700"> Video</label>
+                            <div class="form-group">
+                                <input type="file" id="video" name="video" accept="video/*">
                             </div>
                         </div>
-                    </div>                <!-- Inician Botones de Guardado -->
+                    </div>
+
+                             <!-- Inician Botones de Guardado -->
                 <div class="container">
                     <div class="row justify-content-md-center">
                         <div class="col-auto">

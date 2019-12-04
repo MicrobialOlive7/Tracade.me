@@ -60,7 +60,7 @@
                               <tr>
                                   <td> <input type="checkbox" name="borrar[]" value="{{$grupo->id}}"></td>
                                 <th scope="row"><a href="{{route('agregar-alumnos', $grupo->id)}}">{{$grupo->gru_nombre}} </a> </th>
-                                <th scope="row"> {{$grupo->gru_dia}}  </th>
+                                <th scope="row"> {{$grupo->gr_dia}}  </th>
                                 <th scope="row"> {{$grupo->gru_hora}} </th>
                                 <td>
                                     <div class="avatar-group">

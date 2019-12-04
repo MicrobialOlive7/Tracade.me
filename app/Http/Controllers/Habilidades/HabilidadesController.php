@@ -208,7 +208,7 @@ class HabilidadesController extends Controller
         $habilidad->hab_video = $filename;
         $habilidad->save();
 
-        //$request->file('hab_imagen')->storeAs('local', 'nombrecito.png');
+
         Storage::disk('public')->putFileAs('habilidades/'.$habilidad->id, $file_img, $file_name );
         Storage::disk('public')->putFileAs('habilidades/'.$habilidad->id, $file_video, $filename);
 
