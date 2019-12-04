@@ -105,7 +105,7 @@ class RegisterController extends Controller
         $this->generateImage($alumno);
 
 
-      return redirect()->route('alumnos')->with('flash_message', 'Alumno creado con éxito.');
+        return $alumno;
     }
 
     protected function generateImage($alumno){

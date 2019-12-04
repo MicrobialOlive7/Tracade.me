@@ -14,7 +14,7 @@
                 </div>
                 @endif
             </div>
-            <form method="POST" action="{{route('register')}}">
+            <form method="POST" action="{{route('alumnoCreate')}}">
                 @csrf
                 <div class="row">
                     <div class="col-md-2">
