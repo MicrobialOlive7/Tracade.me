@@ -26,12 +26,12 @@ class AlumnoController extends Controller
         $alumno = Alumno::create([
             'alu_nombre' => $data['name'],
             'email' => $data['email'],
-            'alu_apellido_paterno' => $data['ap_pat'],
-            'alu_apellido_materno' => $data['ap_mat'],
-            'alu_fecha_nacimiento' => $data['fecha'],
+            'alu_apellido_paterno' => $data['alu_apellido_paterno'],
+            'alu_apellido_materno' => $data['alu_apellido_materno'],
+            'alu_fecha_nacimiento' => $data['alu_fecha_nacimiento'],
             'alu_biografia' => "",
             'aca_id' => 1,
-            'tipo_usuario' => $data['usuario'],
+            'tipo_usuario' => 'alumno',
             'password' => Hash::make($data['password']),
         ]);
         $this->generateImage($alumno);
@@ -64,7 +64,7 @@ class AlumnoController extends Controller
     }
     public function show()
     {
-        return view('auth.register');
+        return view('Instructor.CrearModAlumno');
     }
 
     public function read(){

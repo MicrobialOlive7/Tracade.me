@@ -230,23 +230,7 @@ class InitSeeder extends Seeder
          */
 
         factory(\App\Evaluacion::class, 100)->create();
-
-        //administrador
-        factory(\App\Alumno::class)->create([
-            'alu_nombre' => 'Admin',
-            'tipo_usuario' => 'admin',
-            'email' => 'admin@tracade.me',
-            'password' => bcrypt('admin'),
-        ]);
-
-        factory(\App\Alumno::class)->create([
-            'alu_nombre' => 'Alumno',
-            'tipo_usuario' => 'alumno',
-            'email' => 'alumno@tracade.me',
-            'password' => bcrypt('alumno'),
-        ]);
-
-
+        
     }
 
     public function seedAlumno(){
