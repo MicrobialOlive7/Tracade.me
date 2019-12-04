@@ -54,7 +54,7 @@
                                 </div>
                                 <!-- // pricing-plan-list -->
                                 <div class="landy-content-button text-uppercase">
-                                    <a href="#">CONTRATAR AHORA</a>
+                                    <a href="{{route('compra', 1)}}">CONTRATAR AHORA</a>
                                 </div>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                                 </div>
                                 <!-- // pricing-plan-list -->
                                 <div class="landy-content-button text-uppercase">
-                                    <a href="#">CONTRATAR AHORA</a>
+                                    <a href="{{route('compra')}}">CONTRATAR AHORA</a>
                                 </div>
                             </div>
                         </div>
@@ -119,7 +119,7 @@
                                 </div>
                                 <!-- // pricing-plan-list -->
                                 <div class="landy-content-button text-uppercase">
-                                    <a href="#">CONTRATAR AHORA</a>
+                                    <a href="{{route('compra', 2)}}">CONTRATAR AHORA</a>
                                 </div>
                             </div>
                         </div>

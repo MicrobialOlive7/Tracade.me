@@ -1,103 +1,64 @@
-@extends('Instructor.templates.master')
-@section('alu-active', 'active')
+@extends('Corporativa.templates.master')
 @section('content')
-    <!-- Header -->
-    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8"> </div>
-    <div class="container-fluid mt--7">
-        <!-- Header End -->
-        <div class="card shadow">
-            <div class="card-header border-0">
-                <h3 class="mb-0">Agregar alumnos</h3>
+
+    <!-- Start of download
+        ============================================= -->
+    <section id="download-area" class="download-section">
+        <div class="container">
+            <div class="row section-content">
+                <div class="download-area-content  text-center">
+                    <div class="download-now pb40">
+                        <h3><strong>Crear una cuenta</strong></h3>
+                    </div>
+                    <div class="download-area-text  pb20">
+                        <span>Necesitas ser un usuario registrado para poder contratar un plan.</span>
+                    </div>
+                </div>
+            </div><!--  /row -->
+        </div><!--  /container -->
+    </section>
+    <!-- End of  download
+        ============================================= -->
+    <!-- Start of contact section
+        ============================================= -->
+    <section id="contact" class="contact-section text-center">
+        <div class="row section-content">
+            <!-- //section-title -->
+            <div class="col-md-12 text-center">
+                <h1 class="title deep-black pb40"><strong>Ingresa tus datos</strong></h1>
+                <div class="comment-form">
+                    <form id="contact_form" method="POST" enctype="multipart/form-data" action="{{route('register')}}">
+                        @csrf
+                        <div class="contact-info-1">
+                            <input class="name mr30" name="name" type="text" placeholder="Nombre*">
+                        </div>
+                        <div class="contact-info-1">
+                            <input class="name mr30" name="ap" type="text" placeholder="Apellido Paterno*">
+                        </div>
+                        <div class="contact-info-1">
+                            <input class="name mr30" name="am" type="text" placeholder="Apellido Materno*">
+                        </div>
+                        <div class="contact-info-1">
+                            <input class="email" name="email" type="text" placeholder="Correo Electrónico*">
+                        </div>
+                        <div class="contact-info-1">
+                            <input class="email" name="password" type="password" placeholder="Contraseña*">
+                        </div>
+                        <div class="contact-info-1">
+                            <input class="email" name="fecha_nac" type="datetime-local" placeholder="Fecha de Nacimiento*">
+                        </div>
+                        <div class="contact-info-1">
+                            <input class="email" name="academia" type="text" placeholder="Nombre de la Academia*">
+                        </div>
+                        <div class="submit-btn text-center mt20">
+                            <button type="submit" value="Submit">Registrarme</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <form method="POST" action="{{route('register')}}">
-                @csrf
-                <div class="row">
-                    <div class="col-md-2">
-                        <div class="custom-control custom-checkbox mb-3">
-                            <input class="custom-control-input" value="1" name="disciplina" id="customCheck1" type="checkbox">
-                            <label class="custom-control-label" for="customCheck1">Pole Fitness</label>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="custom-control custom-checkbox mb-3">
-                            <input class="custom-control-input" value="2" name="disciplina" id="customCheck2" type="checkbox">
-                            <label class="custom-control-label" for="customCheck2">Telas Aéreas</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm">
-                        <div class="form-group">
-                            <input type="text" name="name" class="form-control" id="name" placeholder="Nombre" required>
-                        </div>
-                    </div>
-                    <div class="col-sm">
-                        <div class="form-group">
-                            <input type="text" name="ap_pat" class="form-control" id="ap_pat" placeholder="Apellido Paterno" required>
-                        </div>
-                    </div>
-                    <div class="col-sm">
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="ap_mat" id="ap_mat" placeholder="Apellido Materno" required>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <div class="input-group mb-4">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                                </div>
-                                <input class="form-control" id="email" name="email" placeholder="Correo Electrónico" type="email" required>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <div class="input-group mb-4">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                                </div>
-                                <input class="form-control" id="password" name="password" placeholder="Contraseña" type="password" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <div class="input-group mb-4">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-                                </div>
-                                <input class="form-control datepicker" id="fecha" name="fecha" placeholder="Fecha de Nacimiento" type="text" required>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row justify-content-md-center">
-                        <div class="col-auto">
-                            <div  class="col-md-offset-right-1">
-                                <div class="form-group">
-                                                <span class="btn-inner--icon">
-                                                    <button type="submit" class="btn btn-icon btn-2 btn-info btn-lg">
-                                                        {{ __('Agregar') }}
-                                                    </button>
-                                                </span>
-                                    <span class="btn-inner--icon">
-                                                     <a class="btn btn-icon btn-2 btn-danger btn-lg" role="button" title="Cancelar" href="{{ route('alumnos') }}">
-                                                         {{ __('Cancelar') }}
-                                                     </a>
-                                                </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
+        </div><!--  //row-->
+        <!--  //container -->
+    </section>
+    <!-- End of contact section
+        ============================================= -->
 @endsection
-

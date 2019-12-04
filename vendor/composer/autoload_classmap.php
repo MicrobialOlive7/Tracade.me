@@ -37,6 +37,7 @@ return array(
     'App\\Http\\Controllers\\Auth\\ResetPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ResetPasswordController.php',
     'App\\Http\\Controllers\\Auth\\VerificationController' => $baseDir . '/app/Http/Controllers/Auth/VerificationController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+    'App\\Http\\Controllers\\Corporativa\\ContactController' => $baseDir . '/app/Http/Controllers/Corporativa/ContactController.php',
     'App\\Http\\Controllers\\Corporativa\\CorpController' => $baseDir . '/app/Http/Controllers/Corporativa/CorpController.php',
     'App\\Http\\Controllers\\EvaluacionController' => $baseDir . '/app/Http/Controllers/EvaluacionController.php',
     'App\\Http\\Controllers\\EventoController' => $baseDir . '/app/Http/Controllers/EventoController.php',

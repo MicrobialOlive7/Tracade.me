@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Academia;
 use App\Alumno;
 use App\DiciplinaAlumno;
 use App\Http\Controllers\Controller;
 use App\User;
+use Carbon\Carbon;
+use Closure;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use LasseRafn\InitialAvatarGenerator\InitialAvatar;
+use Psy\Input\CodeArgument;
 
 class RegisterController extends Controller
 {
@@ -32,7 +36,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'alumnos';
+    protected $redirectTo = '/Precios';
 
     /**
      * Create a new controller instance.
@@ -69,22 +73,37 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
 //hacer try para evitar error de correos duplicados
 
+        $corte15 = Carbon::create(null, null, 15);
+        $corte1 = Carbon::create(null, null, 1);
+        if($corte15->diffInDays(Carbon::now()) < $corte1->diffInDays(Carbon::now()))
+            $corte = $corte15;
+        else
+            $corte = $corte1;
+
+
+        $academia = Academia::create([
+            'aca_nombre' => $data['academia'],
+            'aca_status' => 'creada',
+            'aca_fecha_corte' => $corte,
+            'aca_num_alumnos' => 0,
+            'aca_adeudo' => 0.00,
+        ]);
         $alumno = Alumno::create([
             'alu_nombre' => $data['name'],
             'email' => $data['email'],
-            'alu_apellido_paterno' => $data['ap_pat'],
-            'alu_apellido_materno' => $data['ap_mat'],
-            'alu_fecha_nacimiento' => $data['fecha'],
+            'alu_apellido_paterno' => $data['ap'],
+            'alu_apellido_materno' => $data['am'],
+            'alu_fecha_nacimiento' => $data['fecha_nac'],
             'alu_biografia' => "",
+            'aca_id' => $academia->id,
+            'tipo_usuario' => 'admin',
             'password' => Hash::make($data['password']),
         ]);
         $this->generateImage($alumno);
-        $dis_alu = DiciplinaAlumno::create([
-            'alu_id' => $alumno->id,
-            'dis_id' => $data['disciplina']
-        ]);
+
 
       return redirect()->route('alumnos')->with('flash_message', 'Alumno creado con éxito.');
     }

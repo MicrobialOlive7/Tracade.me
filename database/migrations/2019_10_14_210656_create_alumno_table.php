@@ -29,6 +29,12 @@ class CreateAlumnoTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
 
+            //para admin
+            $table->unsignedBigInteger('aca_id');
+            $table->foreign('aca_id')->references('id')->on('academia');
+
+            $table->string('tipo_usuario', 20);
+
             $table->timestamps();
         });
     }

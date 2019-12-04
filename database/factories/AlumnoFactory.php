@@ -10,6 +10,8 @@ $factory->define(\App\Alumno::class, function (Faker $faker) {
         'alu_nombre' => $faker->firstName,
         'alu_apellido_paterno' => $faker->lastName,
         'alu_apellido_materno' => $faker->lastName,
+        'aca_id' => 1,
+        'tipo_usuario' => 'alumno',
         'email' => $faker->unique()->safeEmail,
         'alu_fecha_nacimiento' => $faker->date(),
         'password' => bcrypt('password'),

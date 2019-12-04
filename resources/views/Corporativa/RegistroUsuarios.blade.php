@@ -27,7 +27,8 @@
             <div class="col-md-12 text-center">
                 <h1 class="title deep-black pb40"><strong>Ingresa tus datos</strong></h1>
                 <div class="comment-form">
-                    <form id="contact_form" method="POST" enctype="multipart/form-data" >
+                    <form id="contact_form" method="POST" enctype="multipart/form-data" action="{{route('adminRegister')}}">
+                        @csrf
                                 <div class="contact-info-1">
                                     <input class="name mr30" name="name" type="text" placeholder="Nombre*">
                                 </div>
@@ -41,7 +42,10 @@
                                 <input class="email" name="email" type="text" placeholder="Correo Electrónico*">
                             </div>
                             <div class="contact-info-1">
-                                <input class="email" name="telefono" type="text" placeholder="Teléfono*">
+                                <input class="email" name="password" type="password" placeholder="Contraseña*">
+                            </div>
+                            <div class="contact-info-1">
+                                <input class="email" name="fecha_nac" type="datetime-local" placeholder="Fecha de Nacimiento*">
                             </div>
                             <div class="contact-info-1">
                                 <input class="email" name="academia" type="text" placeholder="Nombre de la Academia*">

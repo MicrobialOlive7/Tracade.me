@@ -20,7 +20,7 @@ class Alumno extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'alu_nombre', 'email', 'password', 'alu_apellido_paterno', 'alu_apellido_materno', 'alu_fecha_nacimiento', 'alu_biografia'
+        'alu_nombre', 'email', 'password', 'alu_apellido_paterno', 'alu_apellido_materno', 'alu_fecha_nacimiento', 'alu_biografia', 'aca_id', 'tipo_usuario'
     ];
 
 
