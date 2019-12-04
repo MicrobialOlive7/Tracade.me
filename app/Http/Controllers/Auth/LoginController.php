@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Academia;
 use App\Http\Controllers\Controller;
+use Closure;
 use http\Env\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -28,7 +31,8 @@ class LoginController extends Controller
      *
      * CAMBIAR LOGIN POR DASHBOARD DE ESTUDIANTE E INSTRUCTOR
      */
-    protected $redirectTo = '/inicio';
+
+    protected $redirectTo = '/alumno/inicio';
 
     /**
      * Create a new controller instance.
@@ -38,5 +42,34 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+
+    }
+
+    protected function authenticated() {
+        if (Auth::check()) {
+            if(Auth::user()->tipo_usuario == 'admin'){
+                $academia = Academia::all()->where('id', Auth::user()->aca_id)->first();
+                switch ($academia->aca_status ){
+                    case "activa":
+                        return redirect('/inicio');
+                        break;
+                    case "suspendida":
+                        echo "Academia suspendida por falta de pago";
+                        break;
+                    case "creada":
+                        return redirect()->route('precios');
+                        break;
+                    case "pendiente":
+                        echo "estamos contruyendo tu plan, pronto tendra tracademe";
+                        break;
+                    default:
+                        return "Un error ha ocurrido, envia un mensaje a webmaster@tracade.me";
+                }
+            }
+            else{
+                return redirect('/alumno/inicio');
+            }
+        }
+
     }
 }
