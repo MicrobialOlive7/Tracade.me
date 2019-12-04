@@ -131,7 +131,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  href="{{ url('alumno/politicas') }}">
+                    <a class="nav-link"  href="{{ route('alumno-politicas') }}">
                         <i class="ni ni-single-copy-04"></i> Políticas
                     </a>
                 </li>

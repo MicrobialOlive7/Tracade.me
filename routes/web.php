@@ -291,8 +291,8 @@ Route::get('/alumno/inicio', 'Alumno\ChartsController@index')->name('alumno-inic
 |--------------
  */
 Route::get('/alumno/politicas', function (){
-    return view('alumno.politicas');
-})->name('politicas');
+    return view('Alumno.politicas');
+})->name('alumno-politicas');
 
 
 /**

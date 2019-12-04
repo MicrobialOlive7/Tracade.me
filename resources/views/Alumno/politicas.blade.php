@@ -1,4 +1,4 @@
-@extends('Instructor.templates.master')
+@extends('Alumno.templates.master')
 @extends('layouts.modal')
 @section('content')
     <!--<nav class="navbar navbar-top navbar-expand-md navbard-dark" id="navbar-main">
