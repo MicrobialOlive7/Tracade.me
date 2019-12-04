@@ -105,12 +105,12 @@
                     <div class="row justify-content-md-start">
                       <div class="col-md-4">
                           <div class="form-group">
-                              <input value="{{$CamposAd->cad_nombre}}" type="nombre" class="form-control" id="cad_nombre" placeholder="Nombre campo">
+                              <input value="{{$CamposAd->cad_nombre}}" type="text" class="form-control" id="cad_nombre" name="cad_nombre" placeholder="Nombre campo">
                           </div>
                       </div>
                       <div class="col-md-4">
                           <div class="form-group">
-                              <input type="nombre" value="{{$CamposAd->cad_contenido}}" class="form-control" id="cad_contenido" placeholder="Contenido campo">
+                              <input type="text" value="{{$CamposAd->cad_contenido}}" class="form-control" id="cad_contenido" name="cad_contenido" placeholder="Contenido campo">
                           </div>
                       </div>
                     </div>
@@ -122,8 +122,16 @@
                 <div class="container">
                     <div class="row justify-content-md-start">
                         <div class="col">
+                            <label class="text-default font-weight-700"> Imagen</label>
                             <div class="form-group">
                                 <input type="file" id="hab_imagen" name="hab_imagen" accept="image/*">
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <label class="text-default font-weight-700"> Video</label>
+                            <div class="form-group">
+                                <input type="file" id="video" name="video" accept="video/*">
                             </div>
                         </div>
                     </div>

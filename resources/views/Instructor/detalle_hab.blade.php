@@ -58,6 +58,16 @@
                                         @endif
                                     </span>
                                 </p>
+                                @if($campo_ad != null)
+                                    <p class="mt-3 mb-0 text-muted text-md text-left">
+                                        <span class="h4">{{$campo_ad->cad_nombre}}</span>
+                                    </p>
+                                    <p class="mt-3 mb-0 text-muted text-md text-left">
+                                    <span class="text-gray-dark">
+                                        {{$campo_ad->cad_contenido}}
+                                    </span>
+                                    </p>
+                                    @endif
                             </div>
                         </div>
                     </div>
@@ -72,7 +82,7 @@
                                     <span class="h2 font-weight-bold mb-0"> Foto </span>
                                 </p>
                                 <p class="text-center mt-3 mb-0 text-muted">
-                                    <img class="carousel__image col-7" src="{{asset('storage/habilidades/'.$habilidad->id.'/principal.jpg')}}" alt="costos">
+                                    <img class="carousel__image col-7" src="{{asset('storage/habilidades/'.$habilidad->id.'/'.$habilidad->hab_imagen)}}">
                                 </p>
 
                             </div>

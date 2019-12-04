@@ -34,10 +34,14 @@ class HabilidadesController extends Controller
     public function detailread($id){
 
         $habilidad = Habilidad::all()->find($id);
-        $hab_anterior = DB::table('habilidad_anterior')->join('habilidad', 'hab_id', '=', 'habilidad.id') -> get() -> first();
+        //$hab_anterior = DB::table('habilidad_anterior')->join('habilidad', 'hab_id', '=', 'habilidad.id') -> get() -> first();
+        if(HabilidadAnterior::all()->count() != 0)
+            $hab_anterior = Habilidad::all()->where('id', HabilidadAnterior::all()->where('hab_id', $id)->first()->hab_ant_id)->first();
+        else
+            $hab_anterior = [];
         $evaluacion = DB::table('habilidad')->join('evaluacion', 'habilidad.id', '=', 'hab_id') -> where('alu_id', $id) -> orderBy('evaluacion.created_at','desc')->get() -> first();
-
-        return view('Instructor.detalle_hab', compact('habilidad', 'hab_anterior','evaluacion'));
+        $campo_ad = CampoAdicional::all()->where('hab_id', $id)->first();
+        return view('Instructor.detalle_hab', compact('habilidad', 'hab_anterior','evaluacion', 'campo_ad'));
 
 
     }
@@ -112,22 +116,26 @@ class HabilidadesController extends Controller
             Storage::disk('public')->putFileAs('habilidades/'.$habilidad->id, $file_img, $file_name );
             $habilidad->hab_imagen = $file_name;
         }
+
+
+        $file_video = $request->file('video');
+
+        if ($file_video!=null) {
+            $name = $_FILES['video']['name'];
+            $videoname = explode(".", $name);
+            $filename =$videoname[0].'.'.$file_video->getClientOriginalExtension();
+
+            Storage::disk('public')->putFileAs('habilidades/'.$habilidad->id, $file_video, $filename );
+            $habilidad->hab_video = $filename;
+        }
         $habilidad->save();
 
         //$request->file('hab_imagen')->storeAs('local', 'nombrecito.png');
 
         // if $request->habilidadAanterior
-
-        if($request->hab_id == ""){
-          //Quitar hab hab_ant_id
-          //No hacer nada
-          $habilidadAnt = HabilidadAnterior::all()->where('hab_id', $id)->first();
-          if($habilidadAnt != null){
-              $habilidadAnt = HabilidadAnterior::where('hab_id', $id)->first()->delete();
-          }
-        }else{
-
-          $habilidadAnt = HabilidadAnterior::all()->where('hab_id', $id)->first();
+        $hab_id = $request->hab_id;
+        if(isset($hab_id)){
+         $habilidadAnt = HabilidadAnterior::all()->where('hab_id', $id)->first();
 
           if($habilidadAnt != null){
             //Cambiar
@@ -145,36 +153,23 @@ class HabilidadesController extends Controller
         }
 
 
-        if($cad_nombre == ""){
-            //modificar $requests
-            $campoAdicional = CampoAdicional::all()->where('hab_id', $id)->first();
-
-            if($campoAdicional != null){
-              $campoAdicional->delete();
-            }
-        }else{
-
+        if(isset($cad_nombre))
+        {
             $campoAdicional = CampoAdicional::all()->where('hab_id', $id)->first();
             if($campoAdicional != null){
-
               $campoAdicional->cad_nombre = $cad_nombre;
               $campoAdicional->cad_contenido = $cad_contenido;
               $campoAdicional->hab_id = $habilidad->id;
               $campoAdicional->save();
-
             }else{
-
               $newCampoAdicional = new CampoAdicional();
               $newCampoAdicional->cad_nombre = $cad_nombre;
               $newCampoAdicional->cad_contenido = $cad_contenido;
               $newCampoAdicional->hab_id = $habilidad->id;
               $newCampoAdicional->save();
-
             }
         }
-
         return redirect()->route('Habilidades')->with('flash_message', 'Habilidad modificada con éxito.');
-
     }
 
 
