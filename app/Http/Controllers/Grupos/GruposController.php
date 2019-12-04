@@ -113,7 +113,7 @@ class GruposController extends Controller
     }
 
     public function showAgregarAlumnos($id){
-        $alumnos = Alumno::all();
+        $alumnos = Alumno::all()->where('tipo_alumno', 'alumno');
 
         $disciplinas = Disciplina::all();
         $dis_alu = DisciplinaAlumno::all();
@@ -128,6 +128,7 @@ class GruposController extends Controller
             })
             ->where('grupo_alumno.alu_id',null)
             ->where('alumno.deleted_at', null)
+            ->where('alumno.tipo_usuario', 'alumno')
             ->select('alumno.*')
             ->paginate(5,['+'], 'disponibles');
         return view('Instructor.agregarAlumnos', compact('alumnos', 'disciplinas', 'dis_alu', 'id', 'grupo', 'alumnosGrupo', 'alumnosNuevos'));
