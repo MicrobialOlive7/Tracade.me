@@ -53,7 +53,7 @@ Route::post('/Contacto', 'Corporativa\ContactController@store') ->name('contacto
 | Resumen de Compra
 |-------------------------------------------
  */
-Route::get('compra/{planID?}', 'PagoController@show')->name('compra')->middleware('auth', 'admin');
+Route::get('compra/{planID}', 'PagoController@show')->name('compra')->middleware('auth', 'admin');
 Route::get('plan-contratado/{planID}/{acaID}', 'PagoController@register')->name('plan-contratado');
 Route::get('crear-plan/{acaID}/{precio}', 'PagoController@create')->name('planCreate');
 /**
@@ -311,3 +311,7 @@ Route::get('alumno/perfil', function (){
 Route::post('alumno/updatePerfil', 'Alumno\AlumnoController@update')->name('perfilAlumnoUpdate')->middleware('auth', 'alumno');
 
 
+Route::get('academia-suspendida', 'AdministradorController@suspendida')->name('academia-suspendida')->middleware('auth');
+Route::get('academia-pendiente', 'AdministradorController@pendiente')->name('academia-pendiente')->middleware('auth');
+
+Route::post('planPersonalizado', 'PlanController@personalizadoEmail')->name('planPersonalizado')->middleware('auth', 'auth');

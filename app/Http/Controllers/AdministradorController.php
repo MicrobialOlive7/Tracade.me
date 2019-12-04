@@ -44,4 +44,35 @@ class AdministradorController extends Controller
         $plan = Plan::all()->find($academia->pla_id);
         return view('Instructor.perfil', compact('pago', 'academia', 'fecha_corte', 'precio', 'plan'));
     }
+
+    public function suspendida(){
+        $pago = Pago::where('aca_id', Auth::user()->aca_id)
+            ->orderBy('created_at', 'desc')
+            ->get()
+            ->first();
+        $academia = Academia::all()->find(Auth::user()->aca_id);
+        $fecha_corte = Carbon::parse($academia->aca_fecha_corte);
+        $fecha_corte = Carbon::create(Carbon::now()->year, Carbon::now()->month, $fecha_corte->day);
+        $precio = Plan::all()->find($academia->pla_id)->pla_precio;
+        $plan = Plan::all()->find($academia->pla_id);
+
+        return view('Instructor.academia-suspendida', compact('pago', 'academia', 'fecha_corte', 'precio', 'plan'));
+    }
+
+    public function pendiente(){
+        $pago = Pago::where('aca_id', Auth::user()->aca_id)
+            ->orderBy('created_at', 'desc')
+            ->get()
+            ->first();
+        $academia = Academia::all()->find(Auth::user()->aca_id);
+        $fecha_corte = Carbon::parse($academia->aca_fecha_corte);
+        $fecha_corte = Carbon::create(Carbon::now()->year, Carbon::now()->month, $fecha_corte->day);
+        $plan = Plan::all()->find($academia->pla_id);
+        if(isset($plan))
+            $precio = Plan::all()->find($academia->pla_id)->pla_precio;
+        else
+            $precio = 0;
+
+        return view('Instructor.academia-pendiente', compact('pago', 'academia', 'fecha_corte', 'precio', 'plan'));
+    }
 }
