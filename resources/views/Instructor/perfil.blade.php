@@ -40,13 +40,13 @@
               <div class="h5 mt-4">
                 <i class="ni business_briefcase-24 mr-2"></i>Plan
               </div>
-              <div>
-                <i class="ni education_hat mr-2"></i>{{$plan->pla_nombre}}
-              </div>
-
+              <p>{{$plan->pla_nombre}}</p>
               <hr class="my-4" />
+              <div class="h5 mt-4">
+                <i class="ni business_briefcase-24 mr-2"></i>Sobre mi
+              </div>
               <p>{{Auth::user()->alu_biografia}}</p>
-
+              
             </div>
           </div>
         </div>

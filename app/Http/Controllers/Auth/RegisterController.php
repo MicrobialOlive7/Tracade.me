@@ -83,10 +83,11 @@ class RegisterController extends Controller
         else
             $corte = $corte1;
 
+        $status = 'creada';
 
         $academia = Academia::create([
             'aca_nombre' => $data['academia'],
-            'aca_status' => 'creada',
+            'aca_status' => $status,
             'aca_fecha_corte' => $corte,
             'aca_num_alumnos' => 0,
             'aca_adeudo' => 0.00,

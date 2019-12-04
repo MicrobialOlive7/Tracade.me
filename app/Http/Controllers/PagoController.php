@@ -11,19 +11,18 @@ use Illuminate\Support\Facades\Auth;
 
 class PagoController extends Controller
 {
-    public function show($planID = 0) {
-        if ($planID != 0) {
+    public function show($planID) {
+        if($planID == 3)
+            return view('Corporativa.plan-personalizado');
+        elseif ($planID != 0)
+        {
             $plan = Plan::all()->find($planID);
             return view('Corporativa.ResumenCompra', compact('plan'));
-        }else {
-            $plan = [];
-            return $plan;
         }
-
-        //
     }
     public function register($planID, $acaID){
         $plan = Plan::all()->find($planID);
+        $status = 'activa';
         $pago = new Pago([
             'pag_fecha' => Carbon::now(),
             'pag_cantidad' => $plan->pla_precio,
@@ -32,9 +31,10 @@ class PagoController extends Controller
         $pago->save();
 
         $academia = Academia::all()->find($acaID);
-        $academia->aca_status = 'activa';
+        $academia->aca_status = $status;
         $academia->pla_id = $planID;
         $academia->save();
+
         return redirect()->route('inicio');
 
     }

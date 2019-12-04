@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use App\Academia;
+use App\Pago;
+use Carbon\Carbon;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\Facades\Auth;
@@ -26,26 +28,36 @@ class Admin
 
         if($this->auth->user()->tipo_usuario == 'admin')
         {
+
             $academia = Academia::all()->where('id', Auth::user()->aca_id)->first();
-            //return $next($request);
 
             switch ($academia->aca_status ){
                 case "activa":
+                    $pago = Pago::where('aca_id', Auth::user()->aca_id)
+                        ->orderBy('created_at', 'desc')
+                        ->get()
+                        ->first();
+                    $fecha_corte = Carbon::parse($academia->aca_fecha_corte);
+                    $fecha_corte = Carbon::create(Carbon::now()->year, Carbon::now()->month, $fecha_corte->day)->subMonthNoOverflow(1);
+                    if(Carbon::parse($pago->created_at)->lessThan($fecha_corte) )//|| Carbon::parse($pago->created_at)->diffInDays($fecha_corte) == 0)
+                    {
+                        $academia->aca_status = 'suspendida';
+                        $academia->save();
+                    }
                     //pantalla para aumentar o reducir plan
                     return $next($request);
                     break;
                 case "suspendida":
-                    echo "Academia suspendida por falta de pago";
+                    return redirect()->route('academia-suspendida');
                     break;
                 case "creada":
                     if(isset($request->planID))
                         return $next($request);
                     else
                         return redirect()->route('precios');
-
                     break;
                 case "pendiente":
-                    echo "estamos contruyendo tu plan, pronto tendra tracademe";
+                    return redirect()->route('academia-pendiente');
                     break;
                 default:
                     return "Un error ha ocurrido, envia un mensaje a webmaster@tracade.me";

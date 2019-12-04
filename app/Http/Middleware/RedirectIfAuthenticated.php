@@ -26,13 +26,13 @@ class RedirectIfAuthenticated
                         return redirect('/inicio');
                         break;
                     case "suspendida":
-                        echo "Academia suspendida por falta de pago";
+                        return redirect()->route('academia-suspendida');
                         break;
                     case "creada":
                         return redirect()->route('precios');
                         break;
                     case "pendiente":
-                        echo "estamos contruyendo tu plan, pronto tendra tracademe";
+                        return redirect()->route('academia-pendiente');
                         break;
                     default:
                         return "Un error ha ocurrido, envia un mensaje a webmaster@tracade.me";

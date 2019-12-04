@@ -95,34 +95,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Form -->
-            <!-- Navigation -->
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class=" nav-link @yield('ini-active')" href="{{ url('inicio') }}"> <i class="ni ni-chart-pie-35 text-primary"></i> Inicio
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link @yield('cal-active')" href="{{ url('calendario') }}">
-                        <i class="ni ni-calendar-grid-58 text-blue"></i> Calendario
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link @yield('alu-active')"  href="{{ url('alumnos') }}">
-                        <i class="ni ni-single-02 text-purple"></i> Alumnos
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link @yield('gru-active')"  href="{{ url('grupos') }}">
-                        <i class="ni ni-bullet-list-67 text-pink"></i> Grupos
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link  @yield('hab-active') " href="{{ url('habilidades') }}">
-                        <i class="ni ni-trophy text-red"></i> Habilidades
-                    </a>
-                </li>
-            </ul>
             <!-- Divider -->
             <hr class="my-3">
             <!-- Navigation -->
@@ -132,11 +104,7 @@
                         <i class="ni ni-circle-08"></i> Mi Perfil
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('politicas') }}">
-                        <i class="ni ni-single-copy-04"></i> Políticas
-                    </a>
-                </li>
+
             </ul>
         </div>
     </div>
@@ -196,10 +164,157 @@
     <!-- End Navbar -->
 
 
-@yield('content')
 
 
-<!-- Footer -->
+    <!-- Header -->
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 400px; background-image: url(../assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+        <!-- Mask -->
+        <span class="mask bg-gradient-primary opacity-8"></span>
+        <!-- Header container -->
+        <div class="container-fluid d-flex align-items-center">
+            <div class="row">
+                <div class="col-lg-12 col-md-10">
+                    <h1 class="display-2 text-white">Hola, <Strong>{{Auth::user()->alu_nombre}}</Strong></h1>
+                    <p class="text-white mt-0 mb-5">Bienvenido a tu perfil.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--7">
+        <div class="row">
+            <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+                <div class="card card-profile shadow">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-3 order-lg-2">
+                            <div class="card-profile-image">
+                                <a href="#">
+                                    <img src="{{asset('storage/alumnos/'.Auth::user()->id.'/perfil.png')}}" class="rounded-circle">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body border-top pt-0 pt-md-9">
+                        <div class="text-center">
+                            <h3>
+                                {{Auth::user()->alu_nombre}} {{Auth::user()->alu_apellido_materno}}<span class="font-weight-light">, {{\Carbon\Carbon::parse(Auth::user()->alu_fecha_nacimiento)->age}}</span>
+                            </h3>
+                            <div class="h5 font-weight-300">
+                                <i class="ni location_pin mr-2"></i>{{$academia->aca_nombre}}
+                            </div>
+
+                            @if(isset($plan))
+                            <div>
+                                <div class="h5 mt-4">
+                                    <i class="ni business_briefcase-24 mr-2"></i>Plan
+                                </div>
+                                <i class="ni education_hat mr-2"></i>{{$plan->pla_nombre}}
+                                <div class="h4 text-left text-center">
+                                    <span class="font-weight-700">Detalles: </span><span class="font-weight-300 ">{{$plan->pla_descripcion}}</span>
+                                </div>
+                            </div>
+                            @endif
+                            <hr class="my-4" />
+                            <p>{{Auth::user()->alu_biografia}}</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-4"></div>
+            </div>
+
+            <div class="col-xl-8 order-xl-1">
+                <div class="card bg-secondary shadow">
+                    <div class="card-header bg-white border-0">
+                        <div class="text-center mb-2">
+                            <h3>
+                                PENDIENTE
+                            </h3>
+
+
+                            @if(isset($plan))
+
+                                <hr class="my-4" />
+                                <div class="h4 text-left text-center">
+                                    <span class="font-weight-700 text-pink">Tu plan ha sido creado</span>
+                                </div>
+                                <div class="h4 text-left text-center">
+                                    <span class="font-weight-300 ">Procede a realizar el pago y comienza a utilizar Tracade.me.</span>
+                                </div>
+                                <div class="h4 text-left text-center">
+                                    <span class="font-weight-700">Detalles: </span><span class="font-weight-300 ">{{$plan->pla_descripcion}}</span>
+                                </div>
+                                <div class="h4 text-left text-center">
+                                    <span class="font-weight-700 ">Total a pagar: </span><span class="font-weight-300 ">{{$precio}}</span>
+                                </div>
+
+                                <div id="paypal-button"></div>
+                            @else
+                                <hr class="my-4" />
+                                <div class="h4 text-left text-center">
+                                    <span class="font-weight-700 text-pink">Tu tracade.me se esta creando</span>
+                                </div>
+                                <div class="h4 text-left text-center">
+                                    <span class="font-weight-300 ">En cuanto tu plan este listo, aqui mismo podras pagarlo para comenzar a usarlo.</span>
+                                </div>
+                            @endif
+
+                        </div>
+                    </div>
+                    <div class="card-body">
+                    </div>
+                </div>
+            </div>
+        </div>
+        @if(isset($plan))
+        <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+        <script>
+            var total = {{$precio}};
+
+            paypal.Button.render({
+                env: 'sandbox', // sandbox | production
+
+                // PayPal Client IDs - replace with your own
+                // Create a PayPal app: https://developer.paypal.com/developer/applications/create
+                client: {
+                    sandbox:    'AbM9ljm6nbmbfuro_f1_9oC5ViOnOIVMvQSBI4ije_UKdBPMTPdJW6U6Ad2NiVWN5JX53tYcr1IpU8yD',
+                    production: ''
+                },
+
+
+                // Show the buyer a 'Pay Now' button in the checkout flow
+                commit: true,
+
+                // payment() is called when the button is clicked
+                payment: function(data, actions) {
+
+                    // Make a call to the REST api to create the payment
+                    return actions.payment.create({
+                        payment: {
+                            transactions: [
+                                {
+                                    amount: { total: total.toFixed(2), currency: 'MXN' }//"'"+total.toFixed(2)+"'"
+                                }
+                            ]
+                        }
+                    });
+                },
+
+                // onAuthorize() is called when the buyer approves the payment
+                onAuthorize: function(data, actions) {
+
+                    // Make a call to the REST api to execute the payment
+                    return actions.payment.execute().then(function() {
+                        window.location = '{{ route('plan-contratado', [$plan->id,$academia->id]) }}';
+                    });
+                }
+            }, '#paypal-button');
+        </script>
+@endif
+
+
+
+    <!-- Footer -->
     <footer class="footer">
 
     </footer>
@@ -221,13 +336,7 @@
     });
 </script>
 
-<script>
-    $('#borrarTodo').click(function() {
-        var c = this.checked;
-        $(':checkbox').prop('checked',c);
-    });
-</script>
-@yield('js_content')
+
 
 </body>
 
